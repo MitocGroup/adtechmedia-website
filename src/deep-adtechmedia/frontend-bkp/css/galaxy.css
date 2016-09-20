@@ -1,0 +1,12 @@
+.large-header {
+	background: url(../images/stars-sky.jpg) center center no-repeat;
+	background-size: cover;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+}
