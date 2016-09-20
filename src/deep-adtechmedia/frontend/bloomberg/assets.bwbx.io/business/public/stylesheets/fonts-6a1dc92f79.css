@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "AvenirNext-Demi";
+    src: url('../fonts/AvenirNext-Demi-07326ffcf3.eot') format('embedded-opentype'), url('../fonts/AvenirNext-Demi-80d6dec71d.woff') format('woff'), url('../fonts/AvenirNext-Demi-c55bd4ef45.ttf') format('truetype'), url('../fonts/AvenirNext-Demi-896ccbff79.svg') format('svg')
+}
+
+@font-face {
+    font-family: "NHaasGroteskTXPro-55Rg";
+    src: url('../fonts/NHaasGroteskTXPro-55Rg-33be4a64a9.eot') format('embedded-opentype'), url('../fonts/NHaasGroteskTXPro-55Rg-339621f4e6.woff') format('woff'), url('../fonts/NHaasGroteskTXPro-55Rg-555249d5a7.ttf') format('truetype'), url('../fonts/NHaasGroteskTXPro-55Rg-c744a47189.svg') format('svg')
+}
+
+@font-face {
+    font-family: "NHaasGroteskTXPro-56It";
+    src: url('../fonts/NHaasGroteskTXPro-56It-62dd81002a.eot') format('embedded-opentype'), url('../fonts/NHaasGroteskTXPro-56It-c1639c88ca.woff') format('woff'), url('../fonts/NHaasGroteskTXPro-56It-7fb1929da3.ttf') format('truetype'), url('../fonts/NHaasGroteskTXPro-56It-c4edd7f87a.svg') format('svg')
+}
+
+@font-face {
+    font-family: "NHaasGroteskDSPro-75Bd";
+    src: url('../fonts/NHaasGroteskDSPro-75Bd-318c53f519.eot') format('embedded-opentype'), url('../fonts/NHaasGroteskDSPro-75Bd-a03ae47c23.woff') format('woff'), url('../fonts/NHaasGroteskDSPro-75Bd-4a63d1980d.ttf') format('truetype'), url('../fonts/NHaasGroteskDSPro-75Bd-6a9967fe0d.svg') format('svg')
+}
+
+@font-face {
+    font-family: "NHaasGroteskTXPro-75Bd";
+    src: url('../fonts/NHaasGroteskTXPro-75Bd-b7a726082f.eot') format('embedded-opentype'), url('../fonts/NHaasGroteskTXPro-75Bd-ca3bb2a159.woff') format('woff'), url('../fonts/NHaasGroteskTXPro-75Bd-f1aaf2410c.ttf') format('truetype'), url('../fonts/NHaasGroteskTXPro-75Bd-73114f815b.svg') format('svg')
+}
+
+@font-face {
+    font-family: "NHaasGroteskDSPro-95Blk";
+    src: url('../fonts/NHaasGroteskDSPro-95Blk-a6735db27c.eot') format('embedded-opentype'), url('../fonts/NHaasGroteskDSPro-95Blk-8ea906f99d.woff') format('woff'), url('../fonts/NHaasGroteskDSPro-95Blk-30a98026bd.ttf') format('truetype'), url('../fonts/NHaasGroteskDSPro-95Blk-3320fa6e3a.svg') format('svg')
+}
+
+@font-face {
+    font-family: "Bloomberg";
+    src: url('../fonts/Bloomberg-ecb725f361.eot') format('embedded-opentype'), url('../fonts/Bloomberg-a0ee9c9c73.woff') format('woff'), url('../fonts/Bloomberg-cfdded9bc7.ttf') format('truetype'), url('../fonts/Bloomberg-c1ffd9b2c9.svg') format('svg')
+}
+
+@font-face {
+    font-family: "AvenirNext-Regular";
+    src: url('../fonts/AvenirNext-Regular-bfcab206b9.eot') format('embedded-opentype'), url('../fonts/AvenirNext-Regular-bb2c0bebff.woff') format('woff'), url('../fonts/AvenirNext-Regular-ddfabb3b0c.svg') format('svg')
+}
+
+@font-face {
+    font-family: "TiemposTextWeb-Regular";
+    src: url('../fonts/TiemposTextWeb-Regular-d1a13989fe.eot') format('embedded-opentype'), url('../fonts/TiemposTextWeb-Regular-ce6578caa5.woff') format('woff'), url('../fonts/TiemposTextWeb-Regular-564ae670c4.svg') format('svg')
+}
+
+@font-face {
+    font-family: "TiemposTextWeb-RegularItalic";
+    src: url('../fonts/TiemposTextWeb-RegularItalic-61ef11cb84.eot') format('embedded-opentype'), url('../fonts/TiemposTextWeb-RegularItalic-9e71cd6b62.woff') format('woff'), url('../fonts/TiemposTextWeb-RegularItalic-86dd520b81.svg') format('svg')
+}
+
+@font-face {
+    font-family: "TiemposHeadlineWeb-Bold";
+    src: url('../fonts/TiemposHeadlineWeb-Bold-05b4c6f7da.eot') format('embedded-opentype'), url('../fonts/TiemposHeadlineWeb-Bold-1ad7e9391b.woff') format('woff'), url('../fonts/TiemposHeadlineWeb-Bold-7789a6022c.svg') format('svg')
+}
+
+@font-face {
+    font-family: "TiemposTextWeb-Semibold";
+    src: url('../fonts/TiemposTextWeb-Semibold-f61d7b7fe1.eot') format('embedded-opentype'), url('../fonts/TiemposTextWeb-Semibold-9d56c0eef1.woff') format('woff'), url('../fonts/TiemposTextWeb-Semibold-4d2044a5b2.svg') format('svg')
+}
+
+@font-face {
+    font-family: "MetricWeb-Semibold";
+    src: url('../fonts/MetricWeb-Semibold-dbda55f8df.eot') format('embedded-opentype'), url('../fonts/MetricWeb-Semibold-ae1582e9cc.woff') format('woff'), url('../fonts/MetricWeb-Semibold-000ce010e7.woff2.html') format('woff2')
+}

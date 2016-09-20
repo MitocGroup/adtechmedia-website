@@ -1,0 +1,20 @@
+@media screen and (min-width: 63.75em) and (max-width: 79.9375em) {
+    .brief {
+        max-height: 114.375rem
+    }
+}
+
+@media screen and (min-width: 63.75em) {
+    .brief {
+        overflow: hidden
+    }
+    .brief:after {
+        content: none
+    }
+}
+
+@media screen and (min-width: 80em) and (max-width: 9999em) {
+    .brief {
+        max-height: 128.125rem
+    }
+}
