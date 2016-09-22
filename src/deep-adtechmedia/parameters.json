@@ -5,8 +5,8 @@
       "displayName": "ATM host",
       "type": "string",
       "required": true,
-      "example": "http://deep.dev.public.b9d80b17.s3-website-us-east-1.amazonaws.com",
-      "default": "http://deep.dev.public.772b703e.s3-website-us-east-1.amazonaws.com"
+      "example": "http://deep.dev.public.cdi50b11.s3-website-us-east-1.amazonaws.com",
+      "default": "http://localhost:8000"
     }
   },
   "globals": {}
