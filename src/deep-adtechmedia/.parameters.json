@@ -3,5 +3,8 @@
   "frontend": {
     "atm|host": "http://deep.dev.public.772b703e.s3-website-us-east-1.amazonaws.com"
   },
-  "backend": {}
+  "backend": {
+    "email|sourceEmail": "ascripnic@mitocgroup.com",
+    "email|destinationEmails": "ascripnic@mitocgroup.com"
+  }
 }

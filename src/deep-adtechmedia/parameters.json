@@ -1,5 +1,18 @@
 {
-  "backend": {},
+  "backend": {
+    "email|sourceEmail": {
+      "displayName": "The source email that will send contact us mails",
+      "type": "string",
+      "required": true,
+      "example": "testmail@gmail.com"
+    },
+    "email|destinationEmails": {
+      "displayName": "The destination emails that will receive contact us mails",
+      "type": "string",
+      "required": true,
+      "example": "testmail@gmail.com,anothertestmail@gmail.com"
+    }
+  },
   "frontend": {
     "atm|host": {
       "displayName": "ATM host",
