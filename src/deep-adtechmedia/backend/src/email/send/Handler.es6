@@ -15,31 +15,52 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
    * @param {Object} data
    */
   handle(data) {
-    this._sendMail(data, () => {
+    this._sendMail(this._buildMessage(data), this._buildSubject(data), () => {
       this.createResponse({}).send();
     });
   }
 
   /**
-   * Send email
    * @param {Object} data
-   * @param {Function} callback
+   * @returns {String}
    * @private
    */
-  _sendMail(data, callback) {
-    let ses = new AWS.SES();
+  _buildSubject(data) {
+    return data.name ? 'Contact us' : 'Get started';
+  }
 
-    let message = `
+  /**
+   * Build email message
+   * @param {Object} data
+   * @returns {String}
+   * @private
+   */
+  _buildMessage(data) {
+    if (data.name) {
+      return `
       name: ${data.name}
       phone: ${data.phone}
       email: ${data.email}
-      message: ${data.message}
-    `;
+      message: ${data.message} `
+    }
+
+    return `email: ${data.email}`
+  }
+
+  /**
+   * Send email
+   * @param {String} message
+   * @param {String} subject
+   * @param {Function} callback
+   * @private
+   */
+  _sendMail(message, subject, callback) {
+    let ses = new AWS.SES();
     let parameters = this.kernel.config.microservices['deep-adtechmedia'].parameters.email;
 
     let params = {
       Destination: {
-        ToAddresses: parameters.destinationEmails.split(','),
+        ToAddresses: parameters.destinationEmails.split(',').map(el => el.trim()),
       },
       Message: {
         Body: {
@@ -48,7 +69,7 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
           },
         },
         Subject: {
-          Data: 'Contact us'
+          Data: subject
         }
       },
       Source: parameters.sourceEmail,
@@ -72,12 +93,17 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
      * @link: https://github.com/hapijs/joi/tree/v5.1.0
      */
     return (Joi) => {
-      return Joi.object().keys({
-        name: Joi.string().required(),
-        phone: Joi.string().required(),
-        email: Joi.string().email().required(),
-        message: Joi.string().max(255).required()
-      });
+      return Joi.alternatives().try(
+        Joi.object().keys({
+          name: Joi.string().max(255).required(),
+          phone: Joi.string().max(255).required(),
+          email: Joi.string().email().required(),
+          message: Joi.string().max(255).required()
+        }),
+        Joi.object().keys({
+          email: Joi.string().email().required()
+        })
+      );
     }
   }
 }
