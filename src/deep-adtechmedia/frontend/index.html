@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="/deep-adtechmedia/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="/deep-adtechmedia/css/main.css" />
+    <script src='https://www.google.com/recaptcha/api.js?onload=setCaptchaKey&render=explicit' async defer></script>
+    <script type="text/javascript" src="/lib/deep-framework.js"></script>
+    <script type="text/javascript" src="/bootstrap.js"></script>
     <deep-favicon/>
     <deep-version/>
     <deep-deploy-id/>
@@ -664,7 +667,7 @@
                             <label class="text-field__label">Message</label>
                         </div>
                         <div class="captcha-block">
-                            <img src="/deep-adtechmedia/images/captcha.png" alt="captcha">
+                            <div class="g-recaptcha" id="re-captcha"></div>
                         </div>
                         <div>
                             <button class="btn" id="contact-button" type="submit">
@@ -771,8 +774,6 @@
         Copyright &copy; 2016 <a href="https://www.mitocgroup.com">Mitoc Group</a>. All rights reserved.
     </div>
 
-    <script type="text/javascript" src="/lib/deep-framework.js"></script>
-    <script type="text/javascript" src="/bootstrap.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/nav.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.vide.js"></script>
