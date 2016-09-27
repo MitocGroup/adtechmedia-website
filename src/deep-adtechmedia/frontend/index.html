@@ -633,7 +633,7 @@
         </div>
 
         <section id="contact" class="white-section cd-section">
-            <form onsubmit="return sendContactUsEmail()">
+            <form onsubmit="return sendContactUsEmail()" id="contactus-form">
                 <h1>contact</h1>
                 <div class="contact-inner">
                     <div id="googleMap"></div>
@@ -641,25 +641,25 @@
                         <h3>get in touch</h3>
 
                         <div class="custom-input">
-                            <input type="text" id="name-field" required />
+                            <input type="text" name="name" id="name-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Name</label>
                         </div>
 
                         <div class="custom-input">
-                            <input type="number" id="phone-field" required />
+                            <input type="number" name="phone" id="phone-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Phone</label>
                         </div>
 
                         <div class="custom-input">
-                            <input type="text" id="email-field" required />
+                            <input type="text" name="email" id="email-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Email</label>
                         </div>
 
                         <div class="custom-input">
-                            <textarea onkeyup="auto_grow(this)" id="message-field" required></textarea>
+                            <textarea onkeyup="auto_grow(this)" name="message" id="message-field" required></textarea>
                             <span class="bar"></span>
                             <label class="text-field__label">Message</label>
                         </div>
@@ -667,7 +667,7 @@
                             <img src="/deep-adtechmedia/images/captcha.png" alt="captcha">
                         </div>
                         <div>
-                            <button class="btn" type="submit">
+                            <button class="btn" id="contact-button" type="submit">
                                 <i class="fa fa-check"></i> submit
                             </button>
                         </div>
@@ -777,6 +777,7 @@
     <script type="text/javascript" src="/deep-adtechmedia/js/nav.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.vide.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ILEj6leGokPnvmh4YhDES7je21MvvCE"></script>
+    <script type="text/javascript" src="/deep-adtechmedia/js/jquery.noty.packaged.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/main.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/contact.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>

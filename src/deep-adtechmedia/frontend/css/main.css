@@ -801,6 +801,11 @@ footer {
   .bottom-info span {
     color: #1b93f2; }
 
+.disabled {
+  pointer-events: none;
+  opacity: .5;
+  cursor: default; }
+
 @media (min-width: 1171px) {
   #solutions section .solution-cont .solution-text {
     flex: 0 0 65%;
