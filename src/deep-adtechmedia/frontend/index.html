@@ -142,13 +142,13 @@
             <h3 class="info-text">Provide your business email address below and let’s start creating complimentary revenue streams together</h3>
             <form>
                 <div class="form-row">
-                    <input class="form-input" type="text" placeholder="john.smith@email.com" />
+                    <input class="form-input" type="text" id="get-started-email" placeholder="john.smith@email.com" />
                 </div>
                 <div class="form-row">
                     <img class="captcha-placeholder" src="/deep-adtechmedia/images/captcha.png" alt="captcha">
                 </div>
                 <div class="form-row">
-                    <button class="form-button" type="button"><i class="arrow"></i> get started</button>
+                    <button class="form-button" type="button" onclick="sendGetStartedEmail()"><i class="arrow"></i> get started</button>
                 </div>
             </form>
         </div>
@@ -633,53 +633,55 @@
         </div>
 
         <section id="contact" class="white-section cd-section">
-            <h1>contact</h1>
-            <div class="contact-inner">
-                <div id="googleMap"></div>
-                <div class="contact-form">
-                    <h3>get in touch</h3>
+            <form onsubmit="return sendContactUsEmail()" id="contactus-form">
+                <h1>contact</h1>
+                <div class="contact-inner">
+                    <div id="googleMap"></div>
+                    <div class="contact-form">
+                        <h3>get in touch</h3>
 
-                    <div class="custom-input">
-                        <input type="text" required />
-                        <span class="bar"></span>
-                        <label class="text-field__label">Name</label>
-                    </div>
+                        <div class="custom-input">
+                            <input type="text" name="name" id="name-field" required />
+                            <span class="bar"></span>
+                            <label class="text-field__label">Name</label>
+                        </div>
 
-                    <div class="custom-input">
-                        <input type="number" required />
-                        <span class="bar"></span>
-                        <label class="text-field__label">Phone</label>
-                    </div>
+                        <div class="custom-input">
+                            <input type="number" name="phone" id="phone-field" required />
+                            <span class="bar"></span>
+                            <label class="text-field__label">Phone</label>
+                        </div>
 
-                    <div class="custom-input">
-                        <input type="text" required />
-                        <span class="bar"></span>
-                        <label class="text-field__label">Email</label>
-                    </div>
+                        <div class="custom-input">
+                            <input type="text" name="email" id="email-field" required />
+                            <span class="bar"></span>
+                            <label class="text-field__label">Email</label>
+                        </div>
 
-                    <div class="custom-input">
-                        <textarea onkeyup="auto_grow(this)" required></textarea>
-                        <span class="bar"></span>
-                        <label class="text-field__label">Message</label>
-                    </div>
-                    <div class="captcha-block">
-                        <img src="/deep-adtechmedia/images/captcha.png" alt="captcha">
-                    </div>
-                    <div>
-                        <button class="btn" type="submit">
-                            <i class="fa fa-check"></i> submit
-                        </button>
-                    </div>
-                    <div class="company-info">
-                        Address:
-                        <a href="https://goo.gl/maps/XJev9bE4QxC2">50 Tice Blvd Woodcliff Lake NJ 07677</a>
-                    </div>
-                    <div class="company-info">
-                        Tel: <a href="tel:+18018108186">801.810.8186</a> |
-                        Email: <a href="mailto:hello@adtechmedia.io?Subject=Website%20contact%20link">hello@adtechmedia.io</a>
+                        <div class="custom-input">
+                            <textarea onkeyup="auto_grow(this)" name="message" id="message-field" required></textarea>
+                            <span class="bar"></span>
+                            <label class="text-field__label">Message</label>
+                        </div>
+                        <div class="captcha-block">
+                            <img src="/deep-adtechmedia/images/captcha.png" alt="captcha">
+                        </div>
+                        <div>
+                            <button class="btn" id="contact-button" type="submit">
+                                <i class="fa fa-check"></i> submit
+                            </button>
+                        </div>
+                        <div class="company-info">
+                            Address:
+                            <a href="https://goo.gl/maps/XJev9bE4QxC2">50 Tice Blvd Woodcliff Lake NJ 07677</a>
+                        </div>
+                        <div class="company-info">
+                            Tel: <a href="tel:+18018108186">801.810.8186</a> |
+                            Email: <a href="mailto:hello@adtechmedia.io?Subject=Website%20contact%20link">hello@adtechmedia.io</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </section>
     </main>
 
@@ -769,11 +771,15 @@
         Copyright &copy; 2016 <a href="https://www.mitocgroup.com">Mitoc Group</a>. All rights reserved.
     </div>
 
+    <script type="text/javascript" src="/lib/deep-framework.js"></script>
+    <script type="text/javascript" src="/bootstrap.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/nav.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.vide.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ILEj6leGokPnvmh4YhDES7je21MvvCE"></script>
+    <script type="text/javascript" src="/deep-adtechmedia/js/jquery.noty.packaged.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/main.js"></script>
+    <script type="text/javascript" src="/deep-adtechmedia/js/contact.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>
 </body>
 </html>
