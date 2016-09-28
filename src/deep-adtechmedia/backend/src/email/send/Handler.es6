@@ -94,10 +94,6 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
    * @param {Function} callback
    */
   _checkCaptcha(data, callback) {
-    if (!data.name) {
-      return callback();
-    }
-
     request(this.buildGoogleLink(data.captchaResponse), (error, response, body) => {
       if (error) {
         throw new DeepFramework.Core.Exception.Exception(error);
