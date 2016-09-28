@@ -1,21 +1,15 @@
-var contactUsCaptchaResponse, getStartedCaptchaResponse;
+var contactUsCaptcha, getStartedCaptcha;
 
 function setCaptchaKey() {
   var captchaSiteKey = DeepFramework.Kernel.config
     .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
 
-  grecaptcha.render('contact-us-re-captcha', {
-    sitekey: captchaSiteKey,
-    callback: function(responseKey) {
-      contactUsCaptchaResponse = responseKey;
-    }
+  contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
+    sitekey: captchaSiteKey
   });
 
-  grecaptcha.render('get-started-re-captcha', {
-    sitekey: captchaSiteKey,
-    callback: function(responseKey) {
-      getStartedCaptchaResponse = responseKey;
-    }
+  getStartedCaptcha = grecaptcha.render('get-started-re-captcha', {
+    sitekey: captchaSiteKey
   });
 }
 
@@ -55,6 +49,14 @@ function enableForm(form) {
   }
 }
 
+function checkCaptchaNotification() {
+  noty({
+    text: 'Please pass the captcha',
+    type: 'warning',
+    timeout: 3000
+  });
+}
+
 function sendEmail(payload, callback) {
   var emailResource = DeepFramework.Kernel.get('resource').get('@deep-adtechmedia:email');
 
@@ -70,6 +72,11 @@ function sendEmail(payload, callback) {
 }
 
 function sendContactUsEmail() {
+  if (!grecaptcha.getResponse(contactUsCaptcha)) {
+    checkCaptchaNotification()
+    return false;
+  }
+
   var formElement = document.getElementById('contactus-form');
   var form = {
     nameElement : document.getElementById('name-field'),
@@ -84,7 +91,7 @@ function sendContactUsEmail() {
     phone: form.phoneElement.value,
     email: form.emailElement.value,
     message: form.messageElement.value,
-    captchaResponse: contactUsCaptchaResponse,
+    captchaResponse: grecaptcha.getResponse(contactUsCaptcha),
   };
 
   disableForm(form);
@@ -93,7 +100,7 @@ function sendContactUsEmail() {
     enableForm(form);
 
     if (!error) {
-      contactUsCaptchaResponse = '';
+      grecaptcha.reset(contactUsCaptcha);
       formElement.reset();
     }
   });
@@ -102,6 +109,11 @@ function sendContactUsEmail() {
 }
 
 function sendGetStartedEmail() {
+  if (!grecaptcha.getResponse(getStartedCaptcha)) {
+    checkCaptchaNotification()
+    return false;
+  }
+
   var emailElement = document.getElementById('get-started-email');
   var formElement = document.getElementById('get-started-form');
 
@@ -111,7 +123,7 @@ function sendGetStartedEmail() {
 
   var payload = {
     email: emailElement.value,
-    captchaResponse: getStartedCaptchaResponse
+    captchaResponse: grecaptcha.getResponse(getStartedCaptcha)
   };
 
   disableForm(form);
@@ -120,8 +132,8 @@ function sendGetStartedEmail() {
     enableForm(form);
 
     if (!error) {
-      getStartedCaptchaResponse = '';
-      formElement.reset()
+      grecaptcha.reset(getStartedCaptcha);
+      formElement.reset();
     }
   });
 
