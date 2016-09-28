@@ -1,3 +1,18 @@
+var contactUsCaptcha, getStartedCaptcha;
+
+function setCaptchaKey() {
+  var captchaSiteKey = DeepFramework.Kernel.config
+    .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
+
+  contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
+    sitekey: captchaSiteKey
+  });
+
+  getStartedCaptcha = grecaptcha.render('get-started-re-captcha', {
+    sitekey: captchaSiteKey
+  });
+}
+
 function handleCallback(error) {
   if (error) {
     return noty({
@@ -34,6 +49,14 @@ function enableForm(form) {
   }
 }
 
+function checkCaptchaNotification() {
+  noty({
+    text: 'Please pass the captcha',
+    type: 'warning',
+    timeout: 3000
+  });
+}
+
 function sendEmail(payload, callback) {
   var emailResource = DeepFramework.Kernel.get('resource').get('@deep-adtechmedia:email');
 
@@ -49,7 +72,12 @@ function sendEmail(payload, callback) {
 }
 
 function sendContactUsEmail() {
-  var formElement = new FormData(document.getElementById('contactus-form'));
+  if (!grecaptcha.getResponse(contactUsCaptcha)) {
+    checkCaptchaNotification()
+    return false;
+  }
+
+  var formElement = document.getElementById('contactus-form');
   var form = {
     nameElement : document.getElementById('name-field'),
     phoneElement : document.getElementById('phone-field'),
@@ -63,6 +91,7 @@ function sendContactUsEmail() {
     phone: form.phoneElement.value,
     email: form.emailElement.value,
     message: form.messageElement.value,
+    captchaResponse: grecaptcha.getResponse(contactUsCaptcha),
   };
 
   disableForm(form);
@@ -71,6 +100,7 @@ function sendContactUsEmail() {
     enableForm(form);
 
     if (!error) {
+      grecaptcha.reset(contactUsCaptcha);
       formElement.reset();
     }
   });
@@ -79,14 +109,21 @@ function sendContactUsEmail() {
 }
 
 function sendGetStartedEmail() {
+  if (!grecaptcha.getResponse(getStartedCaptcha)) {
+    checkCaptchaNotification()
+    return false;
+  }
+
   var emailElement = document.getElementById('get-started-email');
+  var formElement = document.getElementById('get-started-form');
 
   var form = {
     email : emailElement
   };
 
   var payload = {
-    email: emailElement.value
+    email: emailElement.value,
+    captchaResponse: grecaptcha.getResponse(getStartedCaptcha)
   };
 
   disableForm(form);
@@ -95,7 +132,10 @@ function sendGetStartedEmail() {
     enableForm(form);
 
     if (!error) {
-      emailElement.value = '';
+      grecaptcha.reset(getStartedCaptcha);
+      formElement.reset();
     }
   });
+
+  return false;
 }

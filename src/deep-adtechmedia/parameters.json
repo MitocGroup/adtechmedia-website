@@ -11,6 +11,12 @@
       "type": "string",
       "required": true,
       "example": "testmail@gmail.com,anothertestmail@gmail.com"
+    },
+    "reCaptchaSecret": {
+      "displayName": "ReCaptcha secret key",
+      "type": "string",
+      "required": true,
+      "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
     }
   },
   "frontend": {
@@ -20,6 +26,12 @@
       "required": true,
       "example": "http://deep.dev.public.cdi50b11.s3-website-us-east-1.amazonaws.com",
       "default": "http://localhost:8000"
+    },
+    "captchaSiteKey": {
+      "displayName": "Captcha site key for reCaptcha",
+      "type": "string",
+      "required": true,
+      "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
     }
   },
   "globals": {}
