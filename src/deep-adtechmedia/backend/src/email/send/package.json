@@ -11,10 +11,10 @@
     "compile": "deepify compile es6 `pwd`"
   },
   "dependencies": {
-    "deep-framework": "^1.x.x"
+    "deep-framework": "^1.x.x",
+    "request": "^2.75.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "preferGlobal": false,
   "private": true,
   "analyze": true

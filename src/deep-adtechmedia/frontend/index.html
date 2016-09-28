@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="/deep-adtechmedia/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="/deep-adtechmedia/css/main.css" />
+    <script src='https://www.google.com/recaptcha/api.js?onload=setCaptchaKey&render=explicit'></script>
+    <script type="text/javascript" src="/lib/deep-framework.js"></script>
+    <script type="text/javascript" src="/bootstrap.js"></script>
     <deep-favicon/>
     <deep-version/>
     <deep-deploy-id/>
@@ -140,15 +143,15 @@
         <div class="register-block">
             <h2>READY? SET... GO!</h2>
             <h3 class="info-text">Provide your business email address below and let’s start creating complimentary revenue streams together</h3>
-            <form>
+            <form id="get-started-form" onsubmit="return sendGetStartedEmail()">
                 <div class="form-row">
-                    <input class="form-input" type="text" id="get-started-email" placeholder="john.smith@email.com" />
+                    <input class="form-input" type="email" id="get-started-email" placeholder="john.smith@email.com" required/>
                 </div>
                 <div class="form-row">
-                    <img class="captcha-placeholder" src="/deep-adtechmedia/images/captcha.png" alt="captcha">
+                    <div class="g-recaptcha" id="get-started-re-captcha"></div>
                 </div>
                 <div class="form-row">
-                    <button class="form-button" type="button" onclick="sendGetStartedEmail()"><i class="arrow"></i> get started</button>
+                    <button class="form-button" type="submit"><i class="arrow"></i> get started</button>
                 </div>
             </form>
         </div>
@@ -653,7 +656,7 @@
                         </div>
 
                         <div class="custom-input">
-                            <input type="text" name="email" id="email-field" required />
+                            <input type="email" name="email" id="email-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Email</label>
                         </div>
@@ -664,7 +667,7 @@
                             <label class="text-field__label">Message</label>
                         </div>
                         <div class="captcha-block">
-                            <img src="/deep-adtechmedia/images/captcha.png" alt="captcha">
+                            <div class="g-recaptcha" id="contact-us-re-captcha"></div>
                         </div>
                         <div>
                             <button class="btn" id="contact-button" type="submit">
@@ -771,8 +774,6 @@
         Copyright &copy; 2016 <a href="https://www.mitocgroup.com">Mitoc Group</a>. All rights reserved.
     </div>
 
-    <script type="text/javascript" src="/lib/deep-framework.js"></script>
-    <script type="text/javascript" src="/bootstrap.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/nav.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.vide.js"></script>
