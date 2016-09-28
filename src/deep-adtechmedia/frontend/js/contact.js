@@ -1,13 +1,20 @@
-var captchaResponse;
+var contactUsCaptchaResponse, getStartedCaptchaResponse;
 
 function setCaptchaKey() {
   var captchaSiteKey = DeepFramework.Kernel.config
     .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
 
-  grecaptcha.render('re-captcha', {
+  grecaptcha.render('contact-us-re-captcha', {
     sitekey: captchaSiteKey,
     callback: function(responseKey) {
-      captchaResponse = responseKey;
+      contactUsCaptchaResponse = responseKey;
+    }
+  });
+
+  grecaptcha.render('get-started-re-captcha', {
+    sitekey: captchaSiteKey,
+    callback: function(responseKey) {
+      getStartedCaptchaResponse = responseKey;
     }
   });
 }
@@ -77,7 +84,7 @@ function sendContactUsEmail() {
     phone: form.phoneElement.value,
     email: form.emailElement.value,
     message: form.messageElement.value,
-    captchaResponse: captchaResponse,
+    captchaResponse: contactUsCaptchaResponse,
   };
 
   disableForm(form);
@@ -86,6 +93,7 @@ function sendContactUsEmail() {
     enableForm(form);
 
     if (!error) {
+      contactUsCaptchaResponse = '';
       formElement.reset();
     }
   });
@@ -95,13 +103,15 @@ function sendContactUsEmail() {
 
 function sendGetStartedEmail() {
   var emailElement = document.getElementById('get-started-email');
+  var formElement = document.getElementById('get-started-form');
 
   var form = {
     email : emailElement
   };
 
   var payload = {
-    email: emailElement.value
+    email: emailElement.value,
+    captchaResponse: getStartedCaptchaResponse
   };
 
   disableForm(form);
@@ -110,7 +120,10 @@ function sendGetStartedEmail() {
     enableForm(form);
 
     if (!error) {
-      emailElement.value = '';
+      getStartedCaptchaResponse = '';
+      formElement.reset()
     }
   });
+
+  return false;
 }

@@ -156,7 +156,8 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
           captchaResponse: Joi.string().required(),
         }),
         Joi.object().keys({
-          email: Joi.string().email().required()
+          email: Joi.string().email().required(),
+          captchaResponse: Joi.string().required(),
         })
       );
     }
