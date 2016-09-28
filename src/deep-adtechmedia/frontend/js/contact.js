@@ -1,3 +1,17 @@
+var captchaResponse;
+
+function setCaptchaKey() {
+  var captchaSiteKey = DeepFramework.Kernel.config
+    .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
+
+  grecaptcha.render('re-captcha', {
+    sitekey: captchaSiteKey,
+    callback: function(responseKey) {
+      captchaResponse = responseKey;
+    }
+  });
+}
+
 function handleCallback(error) {
   if (error) {
     return noty({
@@ -49,7 +63,7 @@ function sendEmail(payload, callback) {
 }
 
 function sendContactUsEmail() {
-  var formElement = new FormData(document.getElementById('contactus-form'));
+  var formElement = document.getElementById('contactus-form');
   var form = {
     nameElement : document.getElementById('name-field'),
     phoneElement : document.getElementById('phone-field'),
@@ -63,6 +77,7 @@ function sendContactUsEmail() {
     phone: form.phoneElement.value,
     email: form.emailElement.value,
     message: form.messageElement.value,
+    captchaResponse: captchaResponse,
   };
 
   disableForm(form);
