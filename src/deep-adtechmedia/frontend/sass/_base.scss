@@ -53,3 +53,191 @@ img {
 li {
   list-style: none;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: .5;
+  cursor: default;
+}
+
+//custom radio input
+.radio {
+  display: block;
+  padding: 10px 20px 0 0;
+  cursor: pointer;
+  font-size: 13px;
+  &:hover {
+    .inner {
+      @include transform(scale(0.5));
+      opacity: .5;
+    }
+  }
+
+  input {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    &:checked,
+    &:focus {
+      & + .outer {
+        .inner {
+          @include transform(scale(1));
+          opacity: 1;
+        }
+      }
+    }
+
+    &:checked + .outer {
+      border: 2px solid #1b93f2;
+    }
+
+    &:focus + .outer {
+      .inner {
+        background-color: #1b93f2;
+      }
+    }
+  }
+
+  .outer {
+    width: 18px;
+    height: 18px;
+    display: block;
+    float: left;
+    border: 2px solid #e6e6e6;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+
+  .inner {
+    @include transition(all 0.25s ease-in-out);
+    width: 10px;
+    height: 10px;
+    @include transform(scale(0));
+    display: block;
+    margin: 2px;
+    border-radius: 50%;
+    background-color: #1b93f2;
+    opacity: 0;
+  }
+}
+
+//custom button
+.btn {
+  z-index: 2;
+  display: inline-block;
+  vertical-align: top;
+  min-width: 100px;
+  border: none;
+  color: #fff;
+  background-color: #1b93f2;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font: 13px/36px FuturaICG, sans-serif;
+  margin: 20px 0;
+  letter-spacing: .5px;
+  @include transition(background .3s ease-in-out);
+  &:hover {
+    background: darken(#1b93f2, 10%);
+  }
+}
+
+//custom input
+.custom-input {
+  padding-top: 20px;
+  padding-bottom: 8px;
+  position: relative;
+  label {
+    display: block;
+    color: rgba(0, 0, 0, .38);
+    line-height: 28px;
+    @include transform(translateY(24px));
+    @include transform-origin(bottom left);
+    @include transition(.4s cubic-bezier(.23, 1, .32, 1));
+    top: 0;
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+  }
+
+  input {
+    height: 32px;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    box-shadow: none;
+    cursor: text;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    font-size: 13px;
+    font-family: FuturaICG, sans-serif;
+    color: rgba(0, 0, 0, .7);
+    &:focus {
+      & + .bar:after {
+        @include transform(scale(1));
+      }
+      & ~ label {
+        color: rgba(0,0,0,.38);
+        @include transform(scale(.85) translateY(0));
+      }
+    }
+    &:valid {
+      & ~ label {
+        color: rgba(0,0,0,.38);
+        @include transform(scale(.85) translateY(0));
+      }
+    }
+    &.touched:invalid {
+      & ~ label {
+        color: red;
+        @include transform(scale(.85) translateY(0));
+      }
+    }
+  }
+
+  textarea {
+    text-align: left;
+    resize: none;
+    overflow: auto;
+    height: 32px;
+    max-height: 100px;
+    padding-top: 8px;
+    &:not(:empty) {
+      & ~ label {
+        color: rgba(0,0,0,.38);
+        @include transform(scale(.85) translateY(0));
+      }
+    }
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &:before {
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      content: '';
+      position: absolute;
+      left: 0;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background-color: #1b93f2;
+      @include transform(scale(0));
+      @include transition(.6s cubic-bezier(.23, 1, .32, 1));
+    }
+  }
+}

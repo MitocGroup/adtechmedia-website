@@ -52,3 +52,7 @@ $(window).on('scroll touchmove', function() {
 $('.show-toggle').click(function() {
     $(this).closest('.member-info').toggleClass('shown');
 });
+
+$(':required').on('blur keydown', function() {
+    $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
+});

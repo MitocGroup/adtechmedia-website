@@ -72,6 +72,11 @@
   -webkit-align-self: $value;
 }
 
+@mixin flex-justify-content($value) {
+  justify-content: $value;
+  -webkit-justify-content: $value;
+}
+
 @mixin grayscale($value) {
   filter: grayscale($value);
   -webkit-filter: grayscale($value);
