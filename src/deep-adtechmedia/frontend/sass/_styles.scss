@@ -283,9 +283,15 @@ h2 {
       }
 
       label {
-        text-transform: uppercase;
         display: block;
-        margin: 20px 0 0;
+        margin: 15px 0 0;
+        a {
+          display: inline-block;
+          color: inherit;
+          font-size: 12px;
+          line-height: normal;
+          opacity: .5;
+        }
       }
 
       blockquote {

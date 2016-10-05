@@ -490,9 +490,14 @@ h2 {
       .challenges .challenges-block .challenges-block-inner .cont-block {
         padding: 20px 0 0; }
       .challenges .challenges-block .challenges-block-inner label {
-        text-transform: uppercase;
         display: block;
-        margin: 20px 0 0; }
+        margin: 15px 0 0; }
+        .challenges .challenges-block .challenges-block-inner label a {
+          display: inline-block;
+          color: inherit;
+          font-size: 12px;
+          line-height: normal;
+          opacity: .5; }
       .challenges .challenges-block .challenges-block-inner blockquote {
         quotes: "\201c" "\201e"; }
         .challenges .challenges-block .challenges-block-inner blockquote:before {
