@@ -54,7 +54,7 @@
                         <a href="#solutions" class="page-scroll">solutions</a>
                     </li>
                     <li>
-                        <a href="#demo" class="page-scroll">demo</a>
+                        <a href="#try-it" class="page-scroll">try it</a>
                     </li>
                     <li>
                         <a href="#team" class="page-scroll">team</a>
@@ -138,23 +138,18 @@
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="try-btn cd-secondary-nav">
+                <ul>
+                    <li>
+                        <a href="#try-it">
+                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                            try it
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="register-block">
-            <h2>READY? SET... GO!</h2>
-            <h3 class="info-text">Provide your business email address below and let’s start creating complimentary revenue streams together</h3>
-            <form id="get-started-form" onsubmit="return sendGetStartedEmail()">
-                <div class="form-row">
-                    <input class="form-input" type="email" id="get-started-email" placeholder="john.smith@email.com" required/>
-                </div>
-                <div class="form-row">
-                    <div class="g-recaptcha" id="get-started-re-captcha"></div>
-                </div>
-                <div class="form-row">
-                    <button class="form-button" type="submit"><i class="arrow"></i> get started</button>
-                </div>
-            </form>
-        </div>
+        </section>
 
         <div id="solutions" class="cd-section">
             <div class="custom-headline-block">
@@ -261,243 +256,316 @@
                         </div>
                     </div>
                 </div>
+
+            </section>
+            <div class="try-btn cd-secondary-nav">
+                <ul>
+                    <li>
+                        <a href="#try-it">
+                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                            try it
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="try-it" class="try-it cd-section">
+            <div class="custom-headline-block">
+                <section>
+                    <h1>try it</h1>
+                    <h2>
+                        Either you are a new customer or returning one, please use below email address
+                        input field to get started.
+                    </h2>
+                </section>
+            </div>
+            <section>
+                <div class="register-blocks">
+                    <div class="register-pic">
+                        <img src="/deep-adtechmedia/images/register.png" />
+                    </div>
+
+                    <div class="register-fields">
+                        <form id="get-started-form" onsubmit="return sendGetStartedEmail()">
+                            <div class="custom-input">
+                                <input type="email" name="name" id="get-started-email" required />
+                                <span class="bar"></span>
+                                <label class="text-field__label">Email address</label>
+                                <small>e.g. john.smith@email.com</small>
+                            </div>
+
+                            <div class="custom-radio">
+                                <label class="radio">
+                                    <input id="radio1" type="radio" name="radios" checked>
+                                    <span class="outer">
+                                        <span class="inner"></span>
+                                    </span>
+                                    New customer
+                                </label>
+
+                                <label class="radio">
+                                    <input id="radio2" type="radio" name="radios">
+                                    <span class="outer">
+                                        <span class="inner"></span>
+                                    </span>
+                                    Returning customer
+                                </label>
+                            </div>
+
+                            <div class="custom-input">
+                                <input type="password" name="name" id="get-started-code" required />
+                                <span class="bar"></span>
+                                <label class="text-field__label">Password or code</label>
+                                <small><b>note:</b> 4-64 alphanumeric characters</small>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="g-recaptcha" id="get-started-re-captcha"></div>
+                            </div>
+                            <div class="form-row form-btn">
+                                <button class="btn form-button" type="submit"><i class="fa fa-check"></i> get in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </section>
         </div>
 
-        <div id="demo" class="cd-section">
-            <div class="custom-headline-block">
-                <section>
-                    <h1>demo</h1>
-                    <h2>User Interface and User eXperience is like a joke. If you have to explain it,
-                    it's not that good. Here below are couple of demos that we believe doesn't
-                    need any explanations.</h2>
-                </section>
-            </div>
-            <div id="new-york-times" class="demo-container">
-                <section>
-                    <div class="block-logo">
-                        <img src="/deep-adtechmedia/images/demo/nyt.svg" alt="The New York Times" />
-                    </div>
+        <!--<div id="demo" class="cd-section">-->
+            <!--<div class="custom-headline-block">-->
+                <!--<section>-->
+                    <!--<h1>demo</h1>-->
+                    <!--<h2>User Interface and User eXperience is like a joke. If you have to explain it,-->
+                        <!--it's not that good. Here below are couple of demos that we believe doesn't-->
+                        <!--need any explanations.</h2>-->
+                <!--</section>-->
+            <!--</div>-->
+            <!--<div id="new-york-times" class="demo-container">-->
+                <!--<section>-->
+                    <!--<div class="block-logo">-->
+                        <!--<img src="/deep-adtechmedia/images/demo/nyt.svg" alt="The New York Times" />-->
+                    <!--</div>-->
 
-                    <div class="container">
-                        <ul id="ny-slides" class="slides">
+                    <!--<div class="container">-->
+                        <!--<ul id="ny-slides" class="slides">-->
 
-                            <li class="slide showing">
-                                <div class="demo-row">
-                                    <div class="demo-block">
+                            <!--<li class="slide showing">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
 
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt1-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt1-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt1-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt1-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt1-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt1-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
 
-                            <li class="slide">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/a-brooklyn-neighborhood-where-airbnb-is-being-put-to-the-test.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt2-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/a-brooklyn-neighborhood-where-airbnb-is-being-put-to-the-test.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt2-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/a-brooklyn-neighborhood-where-airbnb-is-being-put-to-the-test.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt2-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="slide">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt3-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt3-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html">
-                                            <img src="/deep-adtechmedia/images/demo/nyt-demo/nyt3-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                            <!--<li class="slide">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/a-brooklyn-neighborhood-where-airbnb-is-being-put-to-the-test.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt2-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/a-brooklyn-neighborhood-where-airbnb-is-being-put-to-the-test.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt2-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/a-brooklyn-neighborhood-where-airbnb-is-being-put-to-the-test.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt2-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="slide">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt3-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt3-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/nytimes/www.nytimes.com/2016/07/04/technology/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/nyt-demo/nyt3-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
 
-                        </ul>
+                        <!--</ul>-->
 
-                        <div id="ny-pagination" class="pagination"></div>
-                    </div>
+                        <!--<div id="ny-pagination" class="pagination"></div>-->
+                    <!--</div>-->
 
-                </section>
-            </div>
+                <!--</section>-->
+            <!--</div>-->
 
-            <div id="washington-post" class="demo-container">
-                <section>
-                    <div class="block-logo">
-                        <img src="/deep-adtechmedia/images/demo/wp.svg" alt="The Washington Post" />
-                    </div>
+            <!--<div id="washington-post" class="demo-container">-->
+                <!--<section>-->
+                    <!--<div class="block-logo">-->
+                        <!--<img src="/deep-adtechmedia/images/demo/wp.svg" alt="The Washington Post" />-->
+                    <!--</div>-->
 
-                    <div class="container">
-                        <ul id="wp-slides" class="slides">
-                            <li class="slide showing">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes/index.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp1-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes/index.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp1-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes/index.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp1-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                    <!--<div class="container">-->
+                        <!--<ul id="wp-slides" class="slides">-->
+                            <!--<li class="slide showing">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes/index.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp1-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes/index.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp1-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes/index.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp1-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
 
-                            <li class="slide">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet/index.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp2-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet/index.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp2-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet/index.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp2-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                            <!--<li class="slide">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet/index.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp2-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet/index.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp2-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet/index.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp2-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
 
-                            <li class="slide">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/806f2610-5727-11e6-9aee-8075993d73a2_story.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp3-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/806f2610-5727-11e6-9aee-8075993d73a2_story.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp3-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/806f2610-5727-11e6-9aee-8075993d73a2_story.html">
-                                            <img src="/deep-adtechmedia/images/demo/wp-demo/wp3-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                            <!--<li class="slide">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/806f2610-5727-11e6-9aee-8075993d73a2_story.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp3-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/806f2610-5727-11e6-9aee-8075993d73a2_story.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp3-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/806f2610-5727-11e6-9aee-8075993d73a2_story.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/wp-demo/wp3-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                        <!--</ul>-->
 
-                        <div id="wp-pagination" class="pagination"></div>
-                    </div>
-                </section>
-            </div>
+                        <!--<div id="wp-pagination" class="pagination"></div>-->
+                    <!--</div>-->
+                <!--</section>-->
+            <!--</div>-->
 
-            <div id="bloomberg" class="demo-container">
-                <section>
-                    <div class="block-logo">
-                        <img src="/deep-adtechmedia/images/demo/blmg.svg" alt="Bloomberg" />
-                    </div>
+            <!--<div id="bloomberg" class="demo-container">-->
+                <!--<section>-->
+                    <!--<div class="block-logo">-->
+                        <!--<img src="/deep-adtechmedia/images/demo/blmg.svg" alt="Bloomberg" />-->
+                    <!--</div>-->
 
-                    <div class="container">
-                        <ul id="bmg-slides" class="slides">
-                            <li class="slide showing">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/banks-embrace-their-fintech-disruptors-finding-ways-to-profit.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg1-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/banks-embrace-their-fintech-disruptors-finding-ways-to-profit.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg1-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/banks-embrace-their-fintech-disruptors-finding-ways-to-profit.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg1-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                    <!--<div class="container">-->
+                        <!--<ul id="bmg-slides" class="slides">-->
+                            <!--<li class="slide showing">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/banks-embrace-their-fintech-disruptors-finding-ways-to-profit.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg1-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/banks-embrace-their-fintech-disruptors-finding-ways-to-profit.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg1-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/banks-embrace-their-fintech-disruptors-finding-ways-to-profit.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg1-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
 
-                            <li class="slide">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/threat-of-blockchain-prompts-new-strategy-for-germany-s-sap.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg2-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/threat-of-blockchain-prompts-new-strategy-for-germany-s-sap.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg2-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/threat-of-blockchain-prompts-new-strategy-for-germany-s-sap.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg2-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                            <!--<li class="slide">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/threat-of-blockchain-prompts-new-strategy-for-germany-s-sap.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg2-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/threat-of-blockchain-prompts-new-strategy-for-germany-s-sap.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg2-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-07-29/threat-of-blockchain-prompts-new-strategy-for-germany-s-sap.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg2-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
 
-                            <li class="slide">
-                                <div class="demo-row">
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-08-03/bitcoin-plunges-after-hackers-breach-h-k-exchange-steal-coins.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg3-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-08-03/bitcoin-plunges-after-hackers-breach-h-k-exchange-steal-coins.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg3-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="demo-block">
-                                        <a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-08-03/bitcoin-plunges-after-hackers-breach-h-k-exchange-steal-coins.html">
-                                            <img src="/deep-adtechmedia/images/demo/bmg-demo/bmg3-3.jpg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                            <!--<li class="slide">-->
+                                <!--<div class="demo-row">-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-08-03/bitcoin-plunges-after-hackers-breach-h-k-exchange-steal-coins.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg3-1.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-08-03/bitcoin-plunges-after-hackers-breach-h-k-exchange-steal-coins.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg3-2.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="demo-block">-->
+                                        <!--<a href="/deep-adtechmedia/bloomberg/www.bloomberg.com/news/articles/2016-08-03/bitcoin-plunges-after-hackers-breach-h-k-exchange-steal-coins.html">-->
+                                            <!--<img src="/deep-adtechmedia/images/demo/bmg-demo/bmg3-3.jpg" />-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                        <!--</ul>-->
 
-                        <div id="bmg-pagination" class="pagination"></div>
-                    </div>
-                </section>
-            </div>
-        </div>
+                        <!--<div id="bmg-pagination" class="pagination"></div>-->
+                    <!--</div>-->
+                <!--</section>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div id="team" class="cd-section">
             <div class="custom-headline-block">
@@ -747,9 +815,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#demo">
-                                    <i class="fa fa-key"></i>
-                                    <span>Demo</span>
+                                <a href="#try-it">
+                                    <i class="fa fa-lightbulb-o"></i>
+                                    <span>Try It</span>
                                 </a>
                             </li>
                             <li>
@@ -781,6 +849,6 @@
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.noty.packaged.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/main.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/contact.js"></script>
-    <script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>
+    <!--<script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>-->
 </body>
 </html>

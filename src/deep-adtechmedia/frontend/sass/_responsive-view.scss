@@ -50,14 +50,6 @@
     }
   }
 
-  .custom-headline-block {
-    background-size: 100% 90px;
-    & > h1 {
-      height: 90px;
-      line-height: 90px;
-    }
-  }
-
   #solutions {
     section {
       padding-top: 25px;
@@ -246,7 +238,11 @@
 
   h1 {
     font-size: 34px;
-    line-height: 70px
+    line-height: 70px;
+    &.custom-headline {
+      height: 80px;
+      line-height: 80px;
+    }
   }
 
   #solutions {
@@ -384,9 +380,18 @@
     }
   }
 
-  .register-block {
-    h2 {
-      font-size: 32px;
+  .try-it {
+    .register-blocks {
+      .register-pic,
+      .register-fields {
+        @include flex-width(0 0 50%, 50%);
+      }
+
+      .register-pic {
+        img {
+          max-width: 90%;
+        }
+      }
     }
   }
 }
@@ -505,17 +510,9 @@
     }
   }
 
-  .custom-headline-block {
-    background-size: 100% 70px;
-    & > h1 {
-      height: 70px;
-      line-height: 70px;
-    }
-  }
-
   #solutions {
     section {
-      padding: 10px 20px 25px;
+      padding: 10px 20px 0;
       h1 {
         font-size: 24px;
       }
@@ -748,25 +745,28 @@
     }
   }
 
-  .register-block {
-    h2 {
-      font-size: 28px;
-      padding: 25px 0;
-    }
+  .try-it {
+    .register-blocks {
+      padding-bottom: 5px;
+      position: relative;
+      .register-pic {
+        position: absolute;
+        opacity: .1;
+        right: 0;
+        top: 30%;
+        @include transform(translateY(-30%) scaleX(-1));
+        img {
+          max-width: 80%;
+        }
+      }
 
-    .form-row {
-      width: 300px;
-    }
+      .register-fields {
+        @include flex-width(0 0 100%, 100%);
+      }
 
-    .form-input {
-      font-size: 14px;
-      line-height: 34px;
-    }
-
-    .form-button {
-      font-size: 13px;
-      line-height: 34px;
-      padding: 0 15px;
+      .form-btn {
+        text-align: center;
+      }
     }
   }
 
@@ -776,6 +776,12 @@
       h2 {
         margin-bottom: 0;
       }
+    }
+  }
+
+  .g-recaptcha {
+    & > *:first-child {
+      margin: 0 auto;
     }
   }
 }
@@ -922,12 +928,6 @@
   .bottom-info {
     line-height: 40px;
   }
-
-  .register-block {
-    .info-text {
-      font-size: 14px;
-    }
-  }
 }
 
 @media (max-width: 400px) {
@@ -979,6 +979,14 @@
       height: 250px;
     }
   }
+
+  .try-it {
+    .register-blocks {
+      .register-pic img {
+        max-width: 90%;
+      }
+    }
+  }
 }
 
 @media (max-width: 360px) {
@@ -998,16 +1006,6 @@
     }
   }
 
-  .register-block {
-    h2 {
-      font-size: 24px;
-    }
-
-    .form-row {
-      width: 250px;
-    }
-  }
-
   #contact {
     .captcha-block {
       img {
@@ -1015,6 +1013,10 @@
         max-width: 100%;
       }
     }
+  }
+
+  .g-recaptcha {
+    margin: 10px -10px 0 -10px;
   }
 }
 
