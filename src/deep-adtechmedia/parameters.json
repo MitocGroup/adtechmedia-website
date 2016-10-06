@@ -16,7 +16,8 @@
       "displayName": "ReCaptcha secret key",
       "type": "string",
       "required": true,
-      "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
+      "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv",
+      "default": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
     }
   },
   "frontend": {
@@ -31,14 +32,8 @@
       "displayName": "Captcha site key for reCaptcha",
       "type": "string",
       "required": true,
-      "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
+      "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv",
+      "default": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
     }
-  },
-  "globals": {
-      "sourceEmail": "testmail@gmail.com",
-      "destinationEmails": "testmail@gmail.com,anothertestmail@gmail.com",
-      "reCaptchaSecret": "TestTest1111reCaptchaSecret",
-      "atm": "http://deep.dev.public.test.s3-website-us-east-1.amazonaws.com",
-      "captchaSiteKey": "TestTest1111reCaptchaSiteKey"
   }
 }
