@@ -38,11 +38,11 @@
     "backend": {
       "sourceEmail": "testmail@gmail.com",
       "destinationEmails": "testmail@gmail.com,anothertestmail@gmail.com",
-      "reCaptchaSecret": "TestTest1111reCaptchaSecret",
+      "reCaptchaSecret": "TestTest1111reCaptchaSecret"
     },
     "frontend": {
       "atm": "http://deep.dev.public.test.s3-website-us-east-1.amazonaws.com",
-      "captchaSiteKey": "TestTest1111reCaptchaSiteKey",
+      "captchaSiteKey": "TestTest1111reCaptchaSiteKey"
     }
   }
 }
