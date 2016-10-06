@@ -1,0 +1,10 @@
+# http://eslint.org/docs/rules/
+rules:
+  # Possible Errors
+  no-empty: 0
+
+  # Best Practices
+  complexity: [2, 11]
+
+  # Variables
+  no-use-before-define: 2

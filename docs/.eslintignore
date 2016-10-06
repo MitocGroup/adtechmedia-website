@@ -1,0 +1,22 @@
+# Custom ignore file
+**/assets
+**/www.washingtonpost*
+**/www.bloomberg*
+**/www.nytimes*
+**/wapost*
+**/bloomberg*
+**/nytimes*
+**/atm-build
+**/src/**/backend/vendor
+**/aws-262
+
+#####=== DEEP ===#####
+**/src/deep-root-*
+
+####=== Third party ===###
+carousel.js
+contact.js
+gtm.js
+jquery.js
+jquery.noty.packaged.js
+jquery.vide.js
