@@ -1,8 +1,8 @@
 adtechmedia-website
 ===================
 
-[![Build Status](https://travis-ci.com/MitocGroup/atm.svg?token=K6deyi9kwkfxRyXwcv6c&branch=master)](https://travis-ci.com/MitocGroup/atm)
-[![Test Coverage](https://codeclimate.com/repos/57a060a407d52e68a80049b3/badges/07123f9abd69477b5450/coverage.svg)](https://codeclimate.com/repos/57a060a407d52e68a80049b3/coverage)
+[![Build Status](https://travis-ci.org/AdTechMedia/adtechmedia-website.svg?branch=master)](https://travis-ci.org/AdTechMedia/adtechmedia-website)
+[![Test Coverage](https://codeclimate.com/repos/57f64bd8e1fafd02fc0026ac/badges/b99788ea59ab482de3cd/coverage.svg)](https://codeclimate.com/repos/57f64bd8e1fafd02fc0026ac/coverage)
 
 [Repository_Description_Placeholder]
 
