@@ -42,10 +42,6 @@ deep-framework.js
 # Debug log from npm
 npm-debug.log
 
-
-#####=== DEEP ===#####
-**/src/deep-root-*
-
 # Compiled libraries
 **/compile/
 **/lib.compiled/
@@ -71,3 +67,18 @@ deeploy.*.json
 config.core.js
 config.system.js
 config.test.js
+
+# Custom ignore file
+**/assets
+**/www.washingtonpost*
+**/www.bloomberg*
+**/www.nytimes*
+**/wapost*
+**/bloomberg*
+**/nytimes*
+**/atm-build
+**/src/**/backend/vendor
+**/aws-262
+
+#####=== DEEP ===#####
+**/src/deep-root-*

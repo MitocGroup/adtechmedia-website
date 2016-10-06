@@ -1,0 +1,29 @@
+env:
+  # Parallelize backend and fronted test
+  matrix:
+  - TEST_SUITE=backend
+  - TEST_SUITE=frontend
+  global:
+  # To enable run full CI build for specified branches
+  - MAJOR_VERSIONS=master,stage
+  # URL used to e2e testing in CI
+  # Disable interactive user mode ###
+  - DEEP_NO_INTERACTION=1
+  # Set type of E2E tests. Public, private or none
+  - E2E_TESTING=private
+  # S3_BUCKET_NAME=[secured]
+  # AWS_DEFAULT_REGION=[secured]
+  # GITHUB_OAUTH_TOKEN=[secured]
+  # AWS_ACCESS_KEY_ID=[secured]
+  # AWS_SECRET_ACCESS_KEY=[secured]
+  # CODECLIMATE_REPO_TOKEN_MASTER=[secured]
+  # CODECLIMATE_REPO_TOKEN_DEV=[secured]
+  # SAUCE_USERNAME=[secured]
+  # SAUCE_ACCESS_KEY=[secured]
+addons:
+  sauce_connect: true
+notifications:
+  # Send notifications to Slack
+  slack:
+    secure: MS1n6DfKgz4EXJJJ8v875n42dGxdzWvIbuWAkuAU4mCB0osrO3f/EyEyJGpJjLD6Q5imZ2jR1cOuOU9Xt35aIdKLQknGuajyM156Thy/aIanowG1QTwI5dUcMzJo5W+WQ5ghl+EuDRJNq6QgjXBrYMrDy5y91sr6G4hF12fP8XFy4EV3DhVFdQbBDAyXk6aJPbDWLN0VPYfd7B3FtTicVTO++niWG6/xEidEzv5jt86VrNZKlTsBvRc8I2bGGd+D1+lr7Q0g0uqEHMj41kYzJLlPxaUlbS5vFv978xqSrO8pbLZ+3BYQs9H4rm1kEfjkCEIPPZ15ifkrLrejjmmY7xInlCKHwa/qYivjp4VCc6paW+qufG192iT1N4rNH7KXhjPvwSjxz3uvG1YgNAWTWkuJOuOzn5IuEjV/3iJk6lcoNtX21jb3iA8ejbF1GOdVBixTw5AZJN1KEQ3zU67cUSrtSvZGxR7PFnnAUFMukXvqLe497gtVVo8Gx6mVV9q6joguSYLrQEy5opcNkN7V4GA3+fffOeKT1tf6yqUkZk5aNlSHWsMJ2Ob9rgtEMNBMyUlMRAuzLbr9jCXvuYk/KU8zbbQhaDN6SIovWS1r6J/uMFWg1dNdgj29QhYjPie/XH/qU6TvsrlZ5795CTTi0jkQEw8d6mxKyTP817+hUBc=
+
