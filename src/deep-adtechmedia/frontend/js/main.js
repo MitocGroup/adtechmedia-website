@@ -1,58 +1,60 @@
-var videoBlock = document.getElementById("video-block");
-var videoFile = document.getElementById("video-file");
+/*eslint no-undef:0, no-unused-vars:0 */
+
+var videoBlock = document.getElementById('video-block');
+var videoFile = document.getElementById('video-file');
 var myCenter = new google.maps.LatLng(41.043671, -74.0764);
 
 function initialize() {
-    var map = new google.maps.Map(
-        document.getElementById("googleMap"), {
-            center: myCenter,
-            zoom: 15,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+  var map = new google.maps.Map(
+        document.getElementById('googleMap'), {
+          center: myCenter,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
-    var marker = new google.maps.Marker({
-        position: myCenter,
-    });
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
 
-    marker.setMap(map);
+  marker.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function _youtubeVideoShow() {
-    var container = document.querySelector('.carousel-overlay.youtube-overlay');
+  var container = document.querySelector('.carousel-overlay.youtube-overlay');
 
-    container.querySelector('iframe').src = container.dataset.src;
-    container.classList.remove('hidden');
+  container.querySelector('iframe').src = container.dataset.src;
+  container.classList.remove('hidden');
 }
 
 function _videoShow() {
-    videoBlock.classList.remove('hidden');
-    videoFile.autoplay = true;
-    videoFile.load();
+  videoBlock.classList.remove('hidden');
+  videoFile.autoplay = true;
+  videoFile.load();
 }
 
 function _videoHide() {
-    videoBlock.classList.add('hidden');
-    videoFile.pause();
-    videoFile.currentTime = 0;
+  videoBlock.classList.add('hidden');
+  videoFile.pause();
+  videoFile.currentTime = 0;
 }
 
-function auto_grow(element) {
-    if (element.scrollHeight < 100) {
-        element.style.height = 32 + 'px';
-        element.style.height = (element.scrollHeight) + "px";
-    }
+function autoGrow(element) {
+  if (element.scrollHeight < 100) {
+    element.style.height = 32 + 'px';
+    element.style.height = (element.scrollHeight) + 'px';
+  }
 }
 
 $(window).on('scroll touchmove', function() {
-    $("#navTrigger").removeAttr('checked');
+  $('#navTrigger').removeAttr('checked');
 });
 
 $('.show-toggle').click(function() {
-    $(this).closest('.member-info').toggleClass('shown');
+  $(this).closest('.member-info').toggleClass('shown');
 });
 
 $(':required').on('blur keydown', function() {
-    $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
+  $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
 });
