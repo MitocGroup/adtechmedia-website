@@ -4,13 +4,15 @@
       "displayName": "The source email that will send contact us mails",
       "type": "string",
       "required": true,
-      "example": "testmail@gmail.com"
+      "example": "testmail@gmail.com",
+      "default": "testmail@gmail.com"
     },
     "email|destinationEmails": {
       "displayName": "The destination emails that will receive contact us mails",
       "type": "string",
       "required": true,
-      "example": "testmail@gmail.com,anothertestmail@gmail.com"
+      "example": "testmail@gmail.com,anothertestmail@gmail.com",
+      "default": "testmail@gmail.com,anothertestmail@gmail.com"
     },
     "reCaptchaSecret": {
       "displayName": "ReCaptcha secret key",
