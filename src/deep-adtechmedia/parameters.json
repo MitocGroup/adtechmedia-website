@@ -35,14 +35,10 @@
     }
   },
   "globals": {
-    "backend": {
       "sourceEmail": "testmail@gmail.com",
       "destinationEmails": "testmail@gmail.com,anothertestmail@gmail.com",
-      "reCaptchaSecret": "TestTest1111reCaptchaSecret"
-    },
-    "frontend": {
+      "reCaptchaSecret": "TestTest1111reCaptchaSecret",
       "atm": "http://deep.dev.public.test.s3-website-us-east-1.amazonaws.com",
       "captchaSiteKey": "TestTest1111reCaptchaSiteKey"
-    }
   }
 }
