@@ -4,7 +4,7 @@ adtechmedia-website
 [![Build Status](https://travis-ci.org/AdTechMedia/adtechmedia-website.svg?branch=master)](https://travis-ci.org/AdTechMedia/adtechmedia-website)
 [![Test Coverage](https://codeclimate.com/repos/57f64bd8e1fafd02fc0026ac/badges/b99788ea59ab482de3cd/coverage.svg)](https://codeclimate.com/repos/57f64bd8e1fafd02fc0026ac/coverage)
 
-[Repository_Description_Placeholder]
+This repository stores the code and data for www.adtechmedia.io.
 
 
 ## Getting Started
@@ -30,7 +30,7 @@ inside Git Bash.
 ### Step 2. Install Microservice(s) Locally
 
 ```bash
-deepify install github://MitocGroup/adtechmedia-website ~/adtechmedia-website
+deepify install github://AdTechMedia/adtechmedia-website ~/adtechmedia-website
 ```
 
 > Path parameter in all `deepify` commands is optional and if not specified, assumes current
@@ -75,10 +75,10 @@ Having questions related to adtechmedia-website?
 
 Interested in contributing to adtechmedia-website?
 
-- Contributing: https://github.com/MitocGroup/adtechmedia-website/blob/master/CONTRIBUTING.md
-- Issue tracker: https://github.com/MitocGroup/adtechmedia-website/issues
-- Releases: https://github.com/MitocGroup/adtechmedia-website/releases
-- Roadmap: https://github.com/MitocGroup/adtechmedia-website/blob/master/ROADMAP.md
+- Contributing: https://github.com/AdTechMedia/adtechmedia-website/blob/master/CONTRIBUTING.md
+- Issue tracker: https://github.com/AdTechMedia/adtechmedia-website/issues
+- Releases: https://github.com/AdTechMedia/adtechmedia-website/releases
+- Roadmap: https://github.com/AdTechMedia/adtechmedia-website/blob/master/ROADMAP.md
 
 Looking for web applications that use (or are similar to) adtechmedia-website?
 
@@ -94,4 +94,4 @@ This repository is being sponsored by:
 - [DEEP Marketplace](https://www.deep.mg)
 
 This code can be used under MIT license:
-> See [LICENSE](https://github.com/MitocGroup/adtechmedia-website/blob/master/LICENSE) for more details.
+> See [LICENSE](https://github.com/AdTechMedia/adtechmedia-website/blob/master/LICENSE) for more details.
