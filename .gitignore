@@ -76,3 +76,5 @@ _vars.sh
 **/coverage/
 **/coverages/
 **/.DS_Store
+
+deep-root-*

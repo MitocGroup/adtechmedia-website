@@ -1,6 +1,8 @@
 
 'use strict';
 
+/*eslint no-eval: 0 */
+
 import chai from 'chai';
 import dir from 'node-dir';
 import path from 'path';
