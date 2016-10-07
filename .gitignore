@@ -48,6 +48,7 @@ jspm_packages
 
 # App specific files
 .parameters.json
+src/**/.parameters.json
 deeploy.json*
 *_config.json*
 *.provisioning.json*
@@ -74,3 +75,6 @@ _vars.sh
 **/.sass-cache/
 **/coverage/
 **/coverages/
+**/.DS_Store
+
+deep-root-*

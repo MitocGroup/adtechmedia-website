@@ -4,6 +4,8 @@
 
 'use strict';
 
+/* eslint  max-len:0 */
+
 var path = require('path');
 var fs = require('fs');
 
@@ -24,7 +26,7 @@ function walkDir(dir, filter, callback) {
       callback(filename);
     }
   }
-};
+}
 
 function replaceInFile(file, pattern, replacement) {
   fs.readFile(file, 'utf8', (err, data) => {
@@ -38,7 +40,7 @@ function replaceInFile(file, pattern, replacement) {
       }
     });
   });
-};
+}
 
 const articlesPaths = [
   '/nytimes/www.nytimes.com/2016/07/04/technology',

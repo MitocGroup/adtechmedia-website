@@ -1,0 +1,11 @@
+{
+  "appIdentifier": "dfg45645654gffdgfd6565",
+  "appName": "My Custom AdTechMedia App",
+  "env": "dev",
+  "awsAccountId": 123456789022,
+  "aws": {
+    "accessKeyId": "gfdgfd",
+    "secretAccessKey": "+gfdgfdgfdgfd/dEFpHV20ZxpQAkUqXwCSZBtZhCL",
+    "region": "us-west-2"
+  }
+}
