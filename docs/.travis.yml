@@ -10,8 +10,7 @@ env:
   # Disable interactive user mode ###
   - DEEP_NO_INTERACTION=1
   # Set type of E2E tests. Public, private or none
-  - E2E_TESTING=private
-
+  - E2E_TESTING=none
   # JSPM_GITHUB_AUTH_TOKEN=[secured]
   - secure: cFvoqd5nmp3rCXVXLKNYwMpnuu5C9dNFNI10oHs/sdo0BxR+nwYjsZAH7QGasTywpCEljP+Fhi1KKwjs+4QnKephW0kh/XK+S6oZBXUZEOE5nGOwhahdtAcXjEhilxbPQZk/+VM8YRmEk/+Yfk8WySc9QzaZAbnumBcw6pIrs5oKU9R1/cZbEnorUvA3q/sQo5RAQXq99Pe260S4zF7itqfXJET93inGskbL7LbqCqHEk29rgSjMZgdSY4gTaGZmL1uAE4EUUrFOlWwr0H2u6DKbRCD6jkeGlueFrOYGIPb7vegw/3I4/qCXQEZkycJJFaJVb9pWYuK5klzDc6OTYCKPMuhUOYTcGmlJqdjs1Fqh8O0oCLPCVfoNH/lVMQZxUmhf9e8B5Inldn9kN0zTmVoAjV3rLiYL78PN4bb1gOM4NFgkNvgX4sh6Vv3/LgxpNJLzIBDlzX8sm8ICiL89AL/kOzuByy3IOqUI0FL3p7TwJ6mNwDUF0oLDy/B7J4dQRgviXIqOn658RSlM9Sic/03jj2czjkC5kIo8v906WyxS9ku5eiS7NhUGHcjP2e52gzfauhJcD/sGFUXLhVLB1Qj2RjkyMw6NqjSi774Mnj5vlV9fIWEIVeBGw9NLwWIA7wZBnUIuL8718BweS/Dv5M5Bo4GPIoULp8H/mB6HseY=
   # S3_BUCKET_NAME=[secured]
