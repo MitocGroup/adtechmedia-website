@@ -139,3 +139,15 @@ function sendGetStartedEmail() {
 
   return false;
 }
+
+function initGetStartedForm() {
+  $('input[type=radio][name=get-started]').change(function() {
+    $('#get-started-code').prop('disabled', this.id === 'newCustomer');
+  });
+}
+
+function init() {
+  initGetStartedForm();
+}
+
+init();
