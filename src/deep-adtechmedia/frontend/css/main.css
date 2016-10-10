@@ -665,7 +665,7 @@ h2 {
   position: absolute;
   left: 0;
   top: 0;
-  width: 350px;
+  width: 360px;
   height: 100%;
   background: rgba(255, 255, 255, 0.9);
   z-index: 1;
@@ -1205,26 +1205,14 @@ footer {
       width: 100px; }
 
   .team-block {
-    display: block; }
+    flex-flow: wrap;
+    -webkit-flex-flow: wrap;
+    padding: 0; }
     .team-block .team-member {
-      max-width: none; }
-      .team-block .team-member:not(:last-child) {
-        margin: 0 0 50px; }
-    .team-block .member-social:before {
-      width: 130px; }
-
-  .team-block {
-    padding: 30px 0 0; }
-    .team-block .member-pic {
-      margin-bottom: 10px; }
-    .team-block .member-info {
-      margin: 10px 0 15px;
-      padding: 0;
-      max-height: 40px;
-      line-height: 20px; }
-      .team-block .member-info .show-more {
-        bottom: 0;
-        right: 0; }
+      flex: 0 0 50%;
+      -webkit-flex: 0 0 50%;
+      max-width: 50%;
+      margin: 50px 0 0; }
 
   #contact .contact-inner {
     margin: 30px 0 0; }
@@ -1359,6 +1347,13 @@ footer {
 
   .g-recaptcha > *:first-child {
     margin: 0 auto; } }
+@media (min-width: 480px) and (max-width: 640px) {
+  .team-block .member-pic {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 15px; }
+  .team-block .member-name {
+    font-size: 20px; } }
 @media (max-width: 560px) {
   .carousel {
     height: 250px; }
@@ -1439,6 +1434,18 @@ footer {
 
   .bottom-info {
     line-height: 40px; } }
+@media (max-width: 479px) {
+  .team-block {
+    display: block;
+    padding: 30px 0 0; }
+    .team-block .team-member {
+      max-width: none; }
+      .team-block .team-member:not(:last-child) {
+        margin: 0 0 50px; }
+    .team-block .member-pic {
+      margin-bottom: 10px; }
+    .team-block .member-social:before {
+      width: 130px; } }
 @media (max-width: 400px) {
   .logo img {
     height: 35px; }
