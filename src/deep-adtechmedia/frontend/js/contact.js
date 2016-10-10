@@ -110,11 +110,12 @@ function sendContactUsEmail() {
 
 function sendGetStartedEmail() {
   if (!grecaptcha.getResponse(getStartedCaptcha)) {
-    checkCaptchaNotification()
+    checkCaptchaNotification();
     return false;
   }
 
   var emailElement = document.getElementById('get-started-email');
+  var codeElement = document.getElementById('get-started-code');
   var formElement = document.getElementById('get-started-form');
 
   var form = {
@@ -126,7 +127,13 @@ function sendGetStartedEmail() {
     captchaResponse: grecaptcha.getResponse(getStartedCaptcha)
   };
 
+  if ($('input[name=customer-type]:checked', '#get-started-form').val() === 'old') {
+    form.code = codeElement;
+    payload.code = codeElement.value;
+  }
+
   disableForm(form);
+
   sendEmail(payload, function(error) {
     handleCallback(error);
     enableForm(form);
@@ -141,8 +148,8 @@ function sendGetStartedEmail() {
 }
 
 function initGetStartedForm() {
-  $('input[type=radio][name=get-started]').change(function() {
-    $('#get-started-code').prop('disabled', this.id === 'newCustomer');
+  $('input[type=radio][name=customer-type]').change(function() {
+    $('#get-started-code').prop('disabled', this.value === 'new');
   });
 }
 
