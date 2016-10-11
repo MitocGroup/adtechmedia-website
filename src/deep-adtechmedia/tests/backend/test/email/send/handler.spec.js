@@ -3,6 +3,7 @@
 'use strict';
 
 import chai from 'chai';
+import Joi from 'joi';
 import Handler from '../../../../../backend/src/email/send/Handler';
 import Kernel from '../../../node_modules/deep-framework/node_modules/deep-kernel';
 import KernelFactory from '../../common/KernelFactory';
@@ -37,7 +38,23 @@ suite('Handlers', () => {
   });
 
   test('Check handle method exists', () => {
-    chai.expect(handler.handle).to.be.an('function');
+    chai.expect(handler.handle).to.be.a('function');
   });
 
+  test('Check validation schema to be a function', () => {
+    chai.expect(handler.validationSchema).to.be.a('function');
+  });
+
+  test('Check validation\'s schema function to return an object', () => {
+    chai.expect(handler.validationSchema(Joi)).to.be.an('object');
+  });
+
+  test('Check _dataToMail function to return an object', () => {
+    let data = {
+      name: 'TestName',
+      email: 'hello@test.com',
+    };
+
+    chai.expect(handler._dataToMail(data)).to.be.an('object');
+  });
 });
