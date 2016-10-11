@@ -24,7 +24,7 @@
     <deep-root-assets/>
 </head>
 
-<body>
+<body onload="onLoad()">
     <script type="text/javascript" src="/deep-adtechmedia/js/gtm.js"></script>
     <deep-gtm/>
     <deep-config/>
@@ -333,7 +333,7 @@
                                 </label>
                             </div>
 
-                            <div class="custom-input">
+                            <div class="custom-input disabled">
                                 <input type="password" name="name" id="get-started-code" required disabled />
                                 <span class="bar"></span>
                                 <label class="text-field__label">Password or code</label>
@@ -738,18 +738,21 @@
                             <input type="text" name="name" id="name-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Name</label>
+                            <small>e.g. John Smith</small>
                         </div>
 
                         <div class="custom-input">
-                            <input type="number" name="phone" id="phone-field" required />
+                            <input type="text" name="phone" id="phone-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Phone</label>
+                            <small>e.g. (999) 999-9999</small>
                         </div>
 
                         <div class="custom-input">
                             <input type="email" name="email" id="email-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Email</label>
+                            <small>e.g. john.smith@email.com</small>
                         </div>
 
                         <div class="custom-input">
@@ -870,6 +873,7 @@
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.vide.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ILEj6leGokPnvmh4YhDES7je21MvvCE"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.noty.packaged.js"></script>
+    <script type="text/javascript" src="/deep-adtechmedia/js/input-mask.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/main.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/contact.js"></script>
     <!--<script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>-->

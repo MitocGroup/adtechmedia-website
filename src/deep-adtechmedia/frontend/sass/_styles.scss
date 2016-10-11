@@ -496,7 +496,7 @@ h2 {
   .contact-inner {
     margin: 50px 0 0;
     position: relative;
-    height: 500px;
+    height: 600px;
   }
 
   #googleMap {
@@ -518,6 +518,10 @@ h2 {
     h3 {
       text-transform: uppercase;
       font-size: 16px;
+      text-align: left;
+    }
+
+    .custom-input {
       text-align: left;
     }
 

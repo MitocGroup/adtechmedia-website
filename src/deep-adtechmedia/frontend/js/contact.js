@@ -149,7 +149,9 @@ function sendGetStartedEmail() {
 
 function initGetStartedForm() {
   $('input[type=radio][name=customer-type]').change(function() {
-    $('#get-started-code').prop('disabled', this.value === 'new');
+    $('#get-started-code')
+      .prop('disabled', this.value === 'new')
+      .parent().toggleClass('disabled');
   });
 }
 
