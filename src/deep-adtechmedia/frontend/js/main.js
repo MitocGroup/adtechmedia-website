@@ -59,7 +59,7 @@ $(':required').on('blur keydown', function() {
   $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
 });
 
-new InputMask().Initialize(document.querySelectorAll("#phone-field"),
+new InputMask().Initialize(document.querySelectorAll('#phone-field'),
   {
     mask: InputMaskDefaultMask.Phone
   });
