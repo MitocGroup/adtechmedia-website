@@ -52,6 +52,10 @@ $(':required').on('blur keydown', function() {
   $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
 });
 
+$('form').on('reset', function () {
+  $(':required').removeClass('touched');
+});
+
 new InputMask().Initialize(document.querySelectorAll('#phone-field'),
   {
     mask: InputMaskDefaultMask.Phone
