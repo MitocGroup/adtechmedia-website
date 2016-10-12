@@ -21,13 +21,6 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function _youtubeVideoShow() {
-  var container = document.querySelector('.carousel-overlay.youtube-overlay');
-
-  container.querySelector('iframe').src = container.dataset.src;
-  container.classList.remove('hidden');
-}
-
 function _videoShow() {
   videoBlock.classList.remove('hidden');
   videoFile.autoplay = true;
@@ -63,3 +56,4 @@ new InputMask().Initialize(document.querySelectorAll('#phone-field'),
   {
     mask: InputMaskDefaultMask.Phone
   });
+
