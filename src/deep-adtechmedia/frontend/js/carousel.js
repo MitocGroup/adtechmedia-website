@@ -70,6 +70,7 @@
 
               // show slides again
               resumeSliding();
+              player.destroy();
             }
           }
         }
