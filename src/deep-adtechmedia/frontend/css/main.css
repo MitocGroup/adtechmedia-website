@@ -831,7 +831,7 @@ footer {
 
 .slides {
   position: relative;
-  height: 350px; }
+  height: 600px; }
 
 .slide {
   position: absolute;
@@ -874,6 +874,13 @@ footer {
       border-color: transparent;
       cursor: pointer; }
 
+.video-hide {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  z-index: 11111111;
+  top: 50%; }
+
 @media (min-width: 1171px) {
   #solutions section .solution-cont .solution-text {
     flex: 0 0 65%;
@@ -893,9 +900,6 @@ footer {
 
   .main-nav li a {
     margin: 0 0 0 30px; }
-
-  .slides {
-    height: 340px; }
 
   #video-block {
     height: calc(100% - 120px);

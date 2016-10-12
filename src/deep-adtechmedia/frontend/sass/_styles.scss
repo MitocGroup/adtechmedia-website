@@ -704,7 +704,7 @@ footer {
 
 .slides{
   position: relative;
-  height: 350px;
+  height: 600px;
 }
 
 .slide{
@@ -742,4 +742,12 @@ footer {
       cursor: pointer;
     }
   }
+}
+
+.video-hide {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  z-index: 11111111;
+  top: 50%;
 }

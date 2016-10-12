@@ -36,9 +36,25 @@
       slides[currentSlide].className = 'slide showing';
       pbuttons[currentSlide].className = 'active';
     }
+
+    $('.video-show').click(function() {
+      // stops slides
+      clearInterval(slideInterval);
+
+      // @todo - hide slide buttons
+
+      // shows youtube video player
+      var $slide = $(this).siblings('.carousel-overlay.youtube-overlay');
+      $slide.children('iframe').attr('src', $slide.data('src'));
+      $slide.removeClass('hidden');
+    });
   }
 
   carouselSlide('#ny-slides .slide', 'ny-pagination');
-  carouselSlide('#wp-slides .slide', 'wp-pagination');
-  carouselSlide('#bmg-slides .slide', 'bmg-pagination');
+//carouselSlide('#wp-slides .slide', 'wp-pagination');
+//carouselSlide('#bmg-slides .slide', 'bmg-pagination');
 })(window);
+
+
+
+

@@ -22,7 +22,14 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function _youtubeVideoShow() {
-  var container = document.querySelector('.carousel-overlay.youtube-overlay');
+  var container = document.querySelector('#home .carousel-overlay.youtube-overlay');
+
+  container.querySelector('iframe').src = container.dataset.src;
+  container.classList.remove('hidden');
+}
+
+function _youtubeVideoShow1() {
+  var container = document.querySelector('#home1 .carousel-overlay.youtube-overlay');
 
   container.querySelector('iframe').src = container.dataset.src;
   container.classList.remove('hidden');
@@ -63,3 +70,4 @@ new InputMask().Initialize(document.querySelectorAll('#phone-field'),
   {
     mask: InputMaskDefaultMask.Phone
   });
+

@@ -68,22 +68,50 @@
     </header>
 
     <main class="cb-container">
-        <div id="home" class="carousel cd-section"
-             data-vide-bg="mp4: /deep-adtechmedia/video.mp4, webm: /deep-adtechmedia/video.webm, ogv: /deep-adtechmedia/video.ogv, poster: /deep-adtechmedia/images/video.png"
-             data-vide-options="loop: true, muted: true, position: 0% 0%, posterType: png">
 
-            <button class="video-show" onclick="_youtubeVideoShow()"><i class="fa fa-play"></i></button>
 
-            <div class="carousel-overlay youtube-overlay hidden" data-src="https://www.youtube.com/embed/i-5EHXFp29w?rel=0&showinfo=0&autoplay=1&modestbranding=1">
-                <iframe frameborder="0" allowfullscreen></iframe>
-            </div>
+        <ul id="ny-slides" class="slides">
+            <li class="slide showing">
+                <div id="home" class="carousel cd-section"
+                     data-vide-bg="mp4: /deep-adtechmedia/video.mp4, webm: /deep-adtechmedia/video.webm, ogv: /deep-adtechmedia/video.ogv, poster: /deep-adtechmedia/images/video.png"
+                     data-vide-options="loop: true, muted: true, position: 0% 0%, posterType: png">
 
-            <div class="carousel-overlay with-headline">
-                <div class="carousel-heading">
-                    Let's create complementary <br/> revenue streams together
+                    <button class="video-show" onclick="_youtubeVideoShow()"><i class="fa fa-play"></i></button>
+
+                    <div class="carousel-overlay youtube-overlay hidden" data-src="https://www.youtube.com/embed/i-5EHXFp29w?rel=0&showinfo=0&autoplay=1&modestbranding=1">
+                        <iframe frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="carousel-overlay with-headline">
+                        <div class="carousel-heading">
+                            Let's create complementary <br/> revenue streams together
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </li>
+            <li class="slide">
+                <div id="home1" class="carousel cd-section"
+                     data-vide-bg="mp4: /deep-adtechmedia/video2.mp4, webm: /deep-adtechmedia/video2.webm, ogv: /deep-adtechmedia/video2.ogv, poster: /deep-adtechmedia/images/video.png"
+                     data-vide-options="loop: true, muted: true, autoplay: true, position: 0% 0%, posterType: png">
+
+                    <button class="video-show" onclick="_youtubeVideoShow1()"><i class="fa fa-play"></i></button>
+
+                    <!--<button class="video-hide" ><i class="fa fa-close"></i></button>-->
+
+                    <div class="carousel-overlay youtube-overlay hidden" data-src="https://www.youtube.com/embed/DiBh8r3lPpM?rel=0&showinfo=0&autoplay=1&modestbranding=1">
+                        <iframe frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="carousel-overlay with-headline">
+                        <div class="carousel-heading">
+                            OUR TECHNOLOGY IS WHITE LABELED <br /> AND DATA DRIVEN
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div id="ny-pagination" class="pagination"></div>
+
 
         <section id="challenges" class="white-section cd-section">
             <h1>challenges</h1>
@@ -876,6 +904,6 @@
     <script type="text/javascript" src="/deep-adtechmedia/js/input-mask.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/main.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/contact.js"></script>
-    <!--<script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>-->
+    <script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>
 </body>
 </html>
