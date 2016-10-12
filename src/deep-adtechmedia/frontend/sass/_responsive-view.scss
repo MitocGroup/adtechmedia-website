@@ -12,6 +12,23 @@
       }
     }
   }
+
+  .carousel {
+    .carousel-overlay {
+      .carousel-heading {
+        width: 1100px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .pagination {
+    button {
+      width: 35px;
+      height: 10px;
+      margin: 0 5px;
+    }
+  }
 }
 
 @media (max-width: 1170px) {
@@ -63,12 +80,6 @@
   }
 }
 
-@media (max-width: 1050px) {
-  .slides {
-    height: 300px;
-  }
-}
-
 @media (max-width: 1170px) and (min-width: 1025px) {
   #solutions {
     section {
@@ -104,6 +115,10 @@
 }
 
 @media (max-width: 1024px) {
+  .slides {
+    height: 500px;
+  }
+
   .carousel {
     height: 500px;
     & > *:not(.with-headline) {
@@ -118,7 +133,6 @@
         top: 50%;
         text-shadow: none;
         font-size: 50px;
-        padding: 0 25px;
       }
     }
   }
@@ -401,10 +415,6 @@
     }
   }
 
-  .slides {
-    height: 260px;
-  }
-
   .demo-container {
     .demo-row {
       margin: 0 -5px;
@@ -464,6 +474,10 @@
 
   #video-block {
     width: 500px;
+  }
+
+  .slides {
+    height: 300px;
   }
 
   .carousel {
@@ -566,10 +580,6 @@
     }
   }
 
-  .slides {
-    height: 400px;
-  }
-
   .demo-container {
     .demo-row {
       display: block;
@@ -601,6 +611,10 @@
         }
       }
     }
+  }
+
+  #home {
+    margin: 0 0 20px;
   }
 }
 
@@ -775,6 +789,10 @@
 }
 
 @media (max-width: 560px) {
+  .slides {
+    height: 250px;
+  }
+
   .carousel {
     height: 250px;
     .carousel-overlay.with-headline {
@@ -822,10 +840,6 @@
     top: 20px;
   }
 
-  .slides {
-    height: 340px;
-  }
-
   .demo-container {
     .demo-row {
       a {
@@ -836,6 +850,10 @@
         height: 280px;
       }
     }
+  }
+
+  .slides {
+    height: 200px;
   }
 
   .carousel {
@@ -1001,10 +1019,6 @@
 }
 
 @media (max-width: 360px) {
-  .slides {
-    height: 300px;
-  }
-
   .demo-container {
     .demo-row {
       a {
@@ -1033,7 +1047,6 @@
 
 @media (max-width: 340px) {
   .carousel {
-    height: 200px;
     .carousel-overlay.with-headline {
       .carousel-heading {
         font-size: 22px;

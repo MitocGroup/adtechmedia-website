@@ -21,20 +21,6 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function _youtubeVideoShow() {
-  var container = document.querySelector('#home .carousel-overlay.youtube-overlay');
-
-  container.querySelector('iframe').src = container.dataset.src;
-  container.classList.remove('hidden');
-}
-
-function _youtubeVideoShow1() {
-  var container = document.querySelector('#home1 .carousel-overlay.youtube-overlay');
-
-  container.querySelector('iframe').src = container.dataset.src;
-  container.classList.remove('hidden');
-}
-
 function _videoShow() {
   videoBlock.classList.remove('hidden');
   videoFile.autoplay = true;

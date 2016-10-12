@@ -355,6 +355,7 @@ header {
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.65);
       text-transform: uppercase;
       position: relative;
+      padding: 0 25px;
       -webkit-transform: translateY(-40%);
       -moz-transform: translateY(-40%);
       -o-transform: translateY(-40%);
@@ -874,12 +875,10 @@ footer {
       border-color: transparent;
       cursor: pointer; }
 
-.video-hide {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  z-index: 11111111;
-  top: 50%; }
+#home {
+  position: relative;
+  padding: 0 0 20px;
+  margin: 0 0 50px; }
 
 @media (min-width: 1171px) {
   #solutions section .solution-cont .solution-text {
@@ -889,7 +888,16 @@ footer {
   #solutions section .solution-cont .solution-benefits {
     flex: 0 0 35%;
     -webkit-flex: 0 0 35%;
-    max-width: 35%; } }
+    max-width: 35%; }
+
+  .carousel .carousel-overlay .carousel-heading {
+    width: 1100px;
+    margin: 0 auto; }
+
+  .pagination button {
+    width: 35px;
+    height: 10px;
+    margin: 0 5px; } }
 @media (max-width: 1170px) {
   section,
   header section,
@@ -917,9 +925,6 @@ footer {
 
   #demo .demos-block .demo-block .demo-block-inner {
     max-width: 100%; } }
-@media (max-width: 1050px) {
-  .slides {
-    height: 300px; } }
 @media (max-width: 1170px) and (min-width: 1025px) {
   #solutions section .solution-cont .solution-text {
     flex: 0 0 60%;
@@ -938,6 +943,9 @@ footer {
   #solutions section .solution-cont .solution-benefits {
     padding: 0 25px; } }
 @media (max-width: 1024px) {
+  .slides {
+    height: 500px; }
+
   .carousel {
     height: 500px; }
     .carousel > *:not(.with-headline) {
@@ -952,8 +960,7 @@ footer {
         transform: translateY(-50%);
         top: 50%;
         text-shadow: none;
-        font-size: 50px;
-        padding: 0 25px; }
+        font-size: 50px; }
 
   #challenges,
   .solution-inner {
@@ -1137,9 +1144,6 @@ footer {
   .carousel .carousel-overlay.with-headline .carousel-heading {
     font-size: 46px; }
 
-  .slides {
-    height: 260px; }
-
   .demo-container .demo-row {
     margin: 0 -5px; }
     .demo-container .demo-row .demo-block {
@@ -1174,6 +1178,9 @@ footer {
 
   #video-block {
     width: 500px; }
+
+  .slides {
+    height: 300px; }
 
   .carousel {
     height: 300px; }
@@ -1233,9 +1240,6 @@ footer {
       #demo .demos-block .demo-block .demo-block-inner:after {
         background-size: auto 50%; }
 
-  .slides {
-    height: 400px; }
-
   .demo-container .demo-row {
     display: block;
     margin: 0; }
@@ -1256,7 +1260,10 @@ footer {
     display: none; }
 
   .slide:nth-child(3) .demo-row .demo-block:not(:nth-child(3)) {
-    display: none; } }
+    display: none; }
+
+  #home {
+    margin: 0 0 20px; } }
 @media (max-width: 640px) {
   .main-nav li {
     height: 40px;
@@ -1364,6 +1371,9 @@ footer {
   .team-block .member-name {
     font-size: 20px; } }
 @media (max-width: 560px) {
+  .slides {
+    height: 250px; }
+
   .carousel {
     height: 250px; }
     .carousel .carousel-overlay.with-headline .carousel-heading {
@@ -1391,13 +1401,13 @@ footer {
   #video-block {
     top: 20px; }
 
-  .slides {
-    height: 340px; }
-
   .demo-container .demo-row a {
     width: 320px; }
   .demo-container .demo-row img {
     height: 280px; }
+
+  .slides {
+    height: 200px; }
 
   .carousel {
     height: 200px; }
@@ -1479,9 +1489,6 @@ footer {
   .try-it .register-blocks .register-pic img {
     max-width: 90%; } }
 @media (max-width: 360px) {
-  .slides {
-    height: 300px; }
-
   .demo-container .demo-row a {
     width: 280px; }
   .demo-container .demo-row img {
@@ -1494,9 +1501,7 @@ footer {
   .g-recaptcha {
     margin: 10px -10px 0 -10px; } }
 @media (max-width: 340px) {
-  .carousel {
-    height: 200px; }
-    .carousel .carousel-overlay.with-headline .carousel-heading {
-      font-size: 22px; } }
+  .carousel .carousel-overlay.with-headline .carousel-heading {
+    font-size: 22px; } }
 
 /*# sourceMappingURL=main.css.map */

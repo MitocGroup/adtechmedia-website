@@ -18,15 +18,23 @@
     for(var j=0; j<pbuttons.length; j++){
       pbuttons[j].onclick = (function(n){
         return function(){
-          clearInterval(slideInterval);
+          pauseSliding();
           goToSlide(n);
-          slideInterval = setInterval(nextSlide,4000);
+          resumeSliding();
         };
       })(j);
     }
 
     function nextSlide(){
       goToSlide(currentSlide+1);
+    }
+
+    function pauseSliding(){
+      clearInterval(slideInterval);
+    }
+
+    function resumeSliding(){
+      slideInterval = setInterval(nextSlide,4000);
     }
 
     function goToSlide(n){
@@ -39,20 +47,37 @@
 
     $('.video-show').click(function() {
       // stops slides
-      clearInterval(slideInterval);
+      pauseSliding();
 
-      // @todo - hide slide buttons
+      var $video = $(this).siblings('.carousel-overlay.youtube-overlay');
+      $video.removeClass('hidden');
 
       // shows youtube video player
-      var $slide = $(this).siblings('.carousel-overlay.youtube-overlay');
-      $slide.children('iframe').attr('src', $slide.data('src'));
-      $slide.removeClass('hidden');
+      var player = new YT.Player($video.children('.youtube-video').attr('id'), {
+        height: '100%',
+        width: '100%',
+        videoId: $video.data('video-id'),
+        playerVars: {
+          autoplay: 1,
+          showinfo: 0,
+          rel: 0,
+          modestbranding: 1
+        },
+        events: {
+          'onStateChange': function(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+              $video.addClass('hidden');
+
+              // show slides again
+              resumeSliding();
+            }
+          }
+        }
+      });
     });
   }
 
-  carouselSlide('#ny-slides .slide', 'ny-pagination');
-//carouselSlide('#wp-slides .slide', 'wp-pagination');
-//carouselSlide('#bmg-slides .slide', 'bmg-pagination');
+  carouselSlide('#home-slides .slide', 'home-pagination');
 })(window);
 
 
