@@ -18,47 +18,55 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
    */
   handle(data) {
     this._checkCaptcha(data, () => {
-      this._sendMail(this._buildMessage(data), this._buildSubject(data), () => {
+      let mailMetadata = this._dataToMail(data);
+
+      this._sendMail(mailMetadata.subject, mailMetadata.message, () => {
         this.createResponse({}).send();
       });
     });
   }
 
   /**
-   * @param {Object} data
-   * @returns {String}
+   * @param {*} data
+   * @returns {*}
    * @private
    */
-  _buildSubject(data) {
-    return data.name ? 'Contact us' : 'Get started';
-  }
+  _dataToMail(data) {
+    let mailObj = {};
 
-  /**
-   * Build email message
-   * @param {Object} data
-   * @returns {String}
-   * @private
-   */
-  _buildMessage(data) {
+    // Get in touch
     if (data.name) {
-      return `
-      name: ${data.name}
-      phone: ${data.phone}
-      email: ${data.email}
-      message: ${data.message} `
+      mailObj.subject = 'Contact us';
+      mailObj.message = `
+        name: ${data.name}
+        phone: ${data.phone}
+        email: ${data.email}
+        message: ${data.message} `;
+    }
+    // [TRY IT] - Returning customer
+    else if (data.code) {
+      mailObj.subject = '[TRY IT] - Returning Customer';
+      mailObj.message = `
+        email: ${data.email}
+        code: ${data.code} `;
+    }
+    // [TRY IT] - New customer
+    else {
+      mailObj.subject = '[TRY IT] - New Customer';
+      mailObj.message = `email: ${data.email}`;
     }
 
-    return `email: ${data.email}`
+    return mailObj;
   }
 
   /**
    * Send email
-   * @param {String} message
    * @param {String} subject
+   * @param {String} message
    * @param {Function} callback
    * @private
    */
-  _sendMail(message, subject, callback) {
+  _sendMail(subject, message, callback) {
     let ses = new AWS.SES();
     let parameters = this.kernel.config.microservices['deep-adtechmedia'].parameters.email;
 
@@ -153,6 +161,11 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
         }),
         Joi.object().keys({
           email: Joi.string().email().required(),
+          captchaResponse: Joi.string().required(),
+        }),
+        Joi.object().keys({
+          email: Joi.string().email().required(),
+          code: Joi.string().required(),
           captchaResponse: Joi.string().required(),
         })
       );

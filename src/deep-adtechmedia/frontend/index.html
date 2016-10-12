@@ -68,22 +68,49 @@
     </header>
 
     <main class="cb-container">
-        <div id="home" class="carousel cd-section"
-             data-vide-bg="mp4: /deep-adtechmedia/video.mp4, webm: /deep-adtechmedia/video.webm, ogv: /deep-adtechmedia/video.ogv, poster: /deep-adtechmedia/images/video.png"
-             data-vide-options="loop: true, muted: true, position: 0% 0%, posterType: png">
+        <div id="home" class="cd-section">
+            <ul id="home-slides" class="slides">
+                <li class="slide showing">
+                    <div class="carousel"
+                         data-vide-bg="mp4: /deep-adtechmedia/video.mp4, webm: /deep-adtechmedia/video.webm, ogv: /deep-adtechmedia/video.ogv, poster: /deep-adtechmedia/images/video.png"
+                         data-vide-options="loop: true, muted: true, position: 0% 0%, posterType: png">
 
-            <button class="video-show" onclick="_youtubeVideoShow()"><i class="fa fa-play"></i></button>
+                        <button class="video-show"><i class="fa fa-play"></i></button>
 
-            <div class="carousel-overlay youtube-overlay hidden" data-src="https://www.youtube.com/embed/i-5EHXFp29w?rel=0&showinfo=0&autoplay=1&modestbranding=1">
-                <iframe frameborder="0" allowfullscreen></iframe>
-            </div>
+                        <div class="carousel-overlay youtube-overlay hidden" data-video-id="i-5EHXFp29w" data-src="https://www.youtube.com/embed/i-5EHXFp29w?rel=0&showinfo=0&autoplay=1&modestbranding=1">
+                            <div id="youtubeVideo1" class="youtube-video"></div>
+                        </div>
 
-            <div class="carousel-overlay with-headline">
-                <div class="carousel-heading">
-                    Let's create complementary <br/> revenue streams together
-                </div>
-            </div>
+                        <div class="carousel-overlay with-headline">
+                            <div class="carousel-heading">
+                                Let's create complementary <br/> revenue streams together
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="carousel"
+                         data-vide-bg="mp4: /deep-adtechmedia/video2.mp4, webm: /deep-adtechmedia/video2.webm, ogv: /deep-adtechmedia/video2.ogv, poster: /deep-adtechmedia/images/video.png"
+                         data-vide-options="loop: true, muted: true, autoplay: true, position: 0% 0%, posterType: png">
+
+                        <button class="video-show"><i class="fa fa-play"></i></button>
+
+                        <div class="carousel-overlay youtube-overlay hidden" data-video-id="DiBh8r3lPpM" data-src="https://www.youtube.com/embed/DiBh8r3lPpM?rel=0&showinfo=0&autoplay=1&modestbranding=1">
+                            <div id="youtubeVideo2" class="youtube-video"></div>
+                        </div>
+
+                        <div class="carousel-overlay with-headline">
+                            <div class="carousel-heading">
+                                OUR TECHNOLOGY IS WHITE LABELED AND DATA DRIVEN
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="home-pagination" class="pagination"></div>
         </div>
+
+
 
         <section id="challenges" class="white-section cd-section">
             <h1>challenges</h1>
@@ -317,7 +344,7 @@
 
                             <div class="custom-radio">
                                 <label class="radio">
-                                    <input id="radio1" type="radio" name="radios" checked>
+                                    <input id="newCustomer" value="new" type="radio" name="customer-type" checked>
                                     <span class="outer">
                                         <span class="inner"></span>
                                     </span>
@@ -325,7 +352,7 @@
                                 </label>
 
                                 <label class="radio">
-                                    <input id="radio2" type="radio" name="radios">
+                                    <input id="oldCustomer" value="old" type="radio" name="customer-type">
                                     <span class="outer">
                                         <span class="inner"></span>
                                     </span>
@@ -333,8 +360,8 @@
                                 </label>
                             </div>
 
-                            <div class="custom-input">
-                                <input type="password" name="name" id="get-started-code" required />
+                            <div class="custom-input disabled">
+                                <input type="password" name="name" id="get-started-code" required disabled />
                                 <span class="bar"></span>
                                 <label class="text-field__label">Password or code</label>
                                 <small><b>note: </b>between 4 and 64 alphanumeric characters</small>
@@ -738,18 +765,21 @@
                             <input type="text" name="name" id="name-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Name</label>
+                            <small>e.g. John Smith</small>
                         </div>
 
                         <div class="custom-input">
-                            <input type="number" name="phone" id="phone-field" required />
+                            <input type="text" name="phone" id="phone-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Phone</label>
+                            <small>e.g. (999) 999-9999</small>
                         </div>
 
                         <div class="custom-input">
                             <input type="email" name="email" id="email-field" required />
                             <span class="bar"></span>
                             <label class="text-field__label">Email</label>
+                            <small>e.g. john.smith@email.com</small>
                         </div>
 
                         <div class="custom-input">
@@ -870,8 +900,11 @@
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.vide.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ILEj6leGokPnvmh4YhDES7je21MvvCE"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/jquery.noty.packaged.js"></script>
+    <script type="text/javascript" src="/deep-adtechmedia/js/input-mask.js"></script>
+    <script type="text/javascript" async src="https://www.youtube.com/iframe_api"></script>
+
     <script type="text/javascript" src="/deep-adtechmedia/js/main.js"></script>
     <script type="text/javascript" src="/deep-adtechmedia/js/contact.js"></script>
-    <!--<script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>-->
+    <script type="text/javascript" src="/deep-adtechmedia/js/carousel.js"></script>
 </body>
 </html>

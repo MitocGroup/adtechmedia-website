@@ -21,13 +21,6 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function _youtubeVideoShow() {
-  var container = document.querySelector('.carousel-overlay.youtube-overlay');
-
-  container.querySelector('iframe').src = container.dataset.src;
-  container.classList.remove('hidden');
-}
-
 function _videoShow() {
   videoBlock.classList.remove('hidden');
   videoFile.autoplay = true;
@@ -58,3 +51,13 @@ $('.show-toggle').click(function() {
 $(':required').on('blur keydown', function() {
   $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
 });
+
+$('form').on('reset', function () {
+  $(':required').removeClass('touched');
+});
+
+new InputMask().Initialize(document.querySelectorAll('#phone-field'),
+  {
+    mask: InputMaskDefaultMask.Phone
+  });
+

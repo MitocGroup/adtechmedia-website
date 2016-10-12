@@ -8,7 +8,9 @@
     "test": "bash node-bin/test.sh",
     "posttest": "bash node-bin/posttest.sh"
   },
-  "dependencies": {},
+  "dependencies": {
+    "joi": "5.x.x"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
