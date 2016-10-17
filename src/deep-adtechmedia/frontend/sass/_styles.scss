@@ -338,7 +338,7 @@ h2 {
 }
 
 .custom-headline-block {
-  @include custom-headline(url('../images/solutions/solutions.jpg'));
+  @include custom-headline(url('../images/solution.jpg'));
   h1 {
     color: #fff;
     @include text-gradient( -webkit-linear-gradient(left, white, #add5f4 80%));
@@ -423,6 +423,9 @@ h2 {
 
 #team {
   padding-bottom: 20px;
+  .custom-headline-block {
+    @include custom-headline(url('../images/team.jpg'));
+  }
 }
 
 .team-block {
@@ -623,6 +626,18 @@ footer {
 
 .g-recaptcha {
   margin: 10px 0 0;
+}
+
+#demo {
+  .custom-headline-block {
+    @include custom-headline(url('../images/demo/demo.jpg'));
+  }
+}
+
+#try-it {
+  .custom-headline-block {
+    @include custom-headline(url('../images/cont.jpg'));
+  }
 }
 
 .demo-container {
