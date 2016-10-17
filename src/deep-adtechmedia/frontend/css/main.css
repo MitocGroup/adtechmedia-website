@@ -532,7 +532,7 @@ h2 {
     font-size: 20px; }
 
 .custom-headline-block {
-  background: url("../images/solutions/solutions.jpg") center center/100% auto no-repeat;
+  background: url("../images/solution.jpg") center center/100% auto no-repeat;
   color: #fff; }
   .custom-headline-block h1 {
     color: #fff;
@@ -599,6 +599,9 @@ h2 {
 
 #team {
   padding-bottom: 20px; }
+  #team .custom-headline-block {
+    background: url("../images/team.jpg") center center/100% auto no-repeat;
+    color: #fff; }
 
 .team-block {
   display: flex;
@@ -759,6 +762,14 @@ footer {
 
 .g-recaptcha {
   margin: 10px 0 0; }
+
+#demo .custom-headline-block {
+  background: url("../images/demo/demo.jpg") center center/100% auto no-repeat;
+  color: #fff; }
+
+#try-it .custom-headline-block {
+  background: url("../images/cont.jpg") center center/100% auto no-repeat;
+  color: #fff; }
 
 .demo-container {
   background: white;
