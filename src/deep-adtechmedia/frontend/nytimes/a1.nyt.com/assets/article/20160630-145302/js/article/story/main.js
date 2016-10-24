@@ -6046,7 +6046,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 					action: "click",
 					contentCollection: this.getCollectionByArticleElement(c)
 				}), t.metaKey !== !0 && t.ctrlKey !== !0 ? (t.preventDefault(), this.$el.find(".collection-item").removeClass("active"), c.addClass("active"), "tap" === t.type ? (r = .25 * this.collectionStoryWidth - c.offset().left, l = this.returnXForTransform() + r, n = this.animateSwipe(l)) : (o = c.offset().left, i = Math.floor(o / this.collectionStoryWidth), n = this.ribbonAnimation(-i)), n.done(function() {
-				 var shref = s.attr("href").replace(/^([^?]+)?.*/, '$1'); shref = shref.indexOf('/') === 0 ? window.location.origin + shref : shref; window.location.href = shref
+				 var shref = s.attr("href").replace(/^([^?]+)?.*/, '$1').replace(/^\/\/.*?\//, '/');
+          shref = shref.indexOf('/') === 0 ? window.location.origin + shref : shref;
+					window.location.href = shref;
 				})) : s.attr("href", a)) : d.parents(".collection-marker").length > 0 && (window.location.href = t.target.href)
 			},
 			handleScroll: function() {

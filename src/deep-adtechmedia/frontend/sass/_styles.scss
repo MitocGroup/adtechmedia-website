@@ -338,7 +338,7 @@ h2 {
 }
 
 .custom-headline-block {
-  @include custom-headline(url('../images/solutions/solutions.jpg'));
+  @include custom-headline(url('../images/solution.jpg'));
   h1 {
     color: #fff;
     @include text-gradient( -webkit-linear-gradient(left, white, #add5f4 80%));
@@ -423,6 +423,9 @@ h2 {
 
 #team {
   padding-bottom: 20px;
+  .custom-headline-block {
+    @include custom-headline(url('../images/team.jpg'));
+  }
 }
 
 .team-block {
@@ -625,6 +628,18 @@ footer {
   margin: 10px 0 0;
 }
 
+#demo {
+  .custom-headline-block {
+    @include custom-headline(url('../images/demo/demo.jpg'));
+  }
+}
+
+#try-it {
+  .custom-headline-block {
+    @include custom-headline(url('../images/try.jpg'));
+  }
+}
+
 .demo-container {
   background: rgb(255,255,255); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(243,243,243,.3) 100%); /* FF3.6-15 */
@@ -644,57 +659,18 @@ footer {
   }
 
   .demo-row {
-    padding: 40px 0 0;
+    padding: 20px 0;
     @include flex-container;
     margin: 0 -25px;
     .demo-block {
       @include flex-width(0 0 33.33333%, 33.33333%);
       padding: 0 25px;
-      @include flex-container;
     }
 
     img {
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
       -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.1)));
       width: 100%;
-    }
-
-    a {
-      display: block;
-      position: relative;
-      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-      &:after {
-        display: none;
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba(31, 149, 242, .5);
-      }
-
-      &:before {
-        display: none;
-        content: 'view demo';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        z-index: 1;
-        @include transform(translateX(-50%) translateY(-50%));
-        text-transform: uppercase;
-        background: #fff;
-        color: #1f95f2;
-        height: 45px;
-        line-height: 46px;
-        width: 175px;
-      }
-
-      &:hover {
-        &:before,
-        &:after {
-          display: block;
-        }
-      }
     }
   }
 }
