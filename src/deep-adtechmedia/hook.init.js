@@ -4,7 +4,7 @@
 
 'use strict';
 
-/* eslint  max-len:0 */
+/* eslint  max-len: 0, no-catch-shadow: 0 */
 
 var ATM_SW_URL = 'https://adm.adtechmedia.io/atm-core/atm-build/sw.js';
 var path = require('path');
@@ -50,7 +50,7 @@ function get(url, cb) {
     var rawData = '';
     var output = response;
     
-    if (response.headers['content-encoding'] == 'gzip') {
+    if (response.headers['content-encoding'] === 'gzip') {
       output = zlib.createGunzip();
       
       response.pipe(output);
