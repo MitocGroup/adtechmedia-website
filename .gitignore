@@ -78,3 +78,5 @@ _vars.sh
 **/.DS_Store
 
 deep-root-*
+
+sw.js*
