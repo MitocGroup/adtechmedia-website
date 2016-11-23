@@ -7,7 +7,7 @@
 /* eslint  max-len: 0, no-catch-shadow: 0 */
 
 var ATM_SW_URL = 'https://adm.adtechmedia.io/atm-core/atm-build/sw.js';
-var ATM_SW_PATH = 'js/sw.js';
+var ATM_SW_PATH = 'sw.js';
 
 var path = require('path');
 var fs = require('fs');
