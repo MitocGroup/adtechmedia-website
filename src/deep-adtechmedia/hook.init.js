@@ -111,9 +111,10 @@ module.exports = function(callback) {
       articlesPaths.forEach(function(articlesPath) {
         var fullArticlesPath = path.join(frontendDir, articlesPath);
         
-        console.log('Inject ATM base url (' + atmHost + ') at ' + fullArticlesPath);
-        
         walkDir(fullArticlesPath, /\.html$/, function(filename) {
+          console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
+          console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
+          
           replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
           replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
         });
