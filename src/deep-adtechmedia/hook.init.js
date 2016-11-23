@@ -34,17 +34,13 @@ function walkDir(dir, filter, callback) {
 }
 
 function replaceInFile(file, pattern, replacement) {
-  fs.readFile(file, 'utf8', function(err, data) {
-    if (err) {
-      return console.error('Error on reading from ' + file + ' file. ' + err);
-    }
-
-    fs.writeFile(file, data.replace(pattern, replacement), 'utf8', function(err) {
-      if (err) {
-        return console.error('Error on writing to ' + file + ' file. ' + err);
-      }
-    });
-  });
+  var data = fs.readFileSync(file);
+  
+  fs.writeFileSync(
+    file, 
+    fs.readFileSync(file).toString()
+      .replace(pattern, replacement)
+  );
 }
 
 function get(url, cb) {
@@ -115,8 +111,12 @@ module.exports = function(callback) {
           console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
           console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
           
-          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
-          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
+          try {
+            replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
+            replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
+          } catch (error) {
+            console.error(error);
+          }
         });
       });
       
