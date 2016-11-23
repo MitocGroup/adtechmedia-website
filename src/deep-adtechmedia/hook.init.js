@@ -34,8 +34,6 @@ function walkDir(dir, filter, callback) {
 }
 
 function replaceInFile(file, pattern, replacement) {
-  var data = fs.readFileSync(file);
-  
   fs.writeFileSync(
     file, 
     fs.readFileSync(file).toString()
