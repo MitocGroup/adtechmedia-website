@@ -7,6 +7,8 @@
 /* eslint  max-len: 0, no-catch-shadow: 0 */
 
 var ATM_SW_URL = 'https://adm.adtechmedia.io/atm-core/atm-build/sw.js';
+var ATM_SW_PATH = 'js/sw.js';
+
 var path = require('path');
 var fs = require('fs');
 var https = require('https');
@@ -32,17 +34,11 @@ function walkDir(dir, filter, callback) {
 }
 
 function replaceInFile(file, pattern, replacement) {
-  fs.readFile(file, 'utf8', function(err, data) {
-    if (err) {
-      return console.error('Error on reading from ' + file + ' file. ' + err);
-    }
-
-    fs.writeFile(file, data.replace(pattern, replacement), 'utf8', function(err) {
-      if (err) {
-        return console.error('Error on writing to ' + file + ' file. ' + err);
-      }
-    });
-  });
+  fs.writeFileSync(
+    file, 
+    fs.readFileSync(file).toString()
+      .replace(pattern, replacement)
+  );
 }
 
 function get(url, cb) {
@@ -67,15 +63,6 @@ function get(url, cb) {
     cb(error, null);
   });
 }
-
-const articlesDirs = [
-  '/bloomberg/www.bloomberg.com/news/articles/2016-07-29',
-  '/bloomberg/www.bloomberg.com/news/articles/2016-08-03',
-  '/nytimes/www.nytimes.com/2016/07/04/technology',
-  '/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trump-has-a-totally-plausible-path-to-270-electoral-votes',
-  '/wapost/www.washingtonpost.com/news/the-fix/wp/2016/08/01/donald-trumps-abc-interview-may-be-his-bestworst-yet',
-  '/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes/2016/07/31/',
-];
 
 const articlesPaths = [
   '/nytimes/www.nytimes.com/2016/07/04/technology',
@@ -103,28 +90,32 @@ module.exports = function(callback) {
       
       var frontendDir = this.microservice.autoload.frontend;
       var atmHost = this.microservice.parameters.frontend.atm.host;
+      var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
+      var atmSwWebPath = '/' + path.join(this.microservice.identifier, ATM_SW_PATH);
+
+      console.log('Persist ATM Service Worker to ' + atmSwPath);
+
+      try {
+        fs.writeFileSync(atmSwPath, swContent);
+        fs.writeFileSync(atmSwPath + '.map', swMapContent);
+      } catch (error) {
+        console.error(error);
+      }
 
       articlesPaths.forEach(function(articlesPath) {
         var fullArticlesPath = path.join(frontendDir, articlesPath);
         
-        console.log('Inject ATM base url (' + atmHost + ') at ' + fullArticlesPath);
-        
         walkDir(fullArticlesPath, /\.html$/, function(filename) {
-          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
+          console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
+          console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
+          
+          try {
+            replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
+            replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
+          } catch (error) {
+            console.error(error);
+          }
         });
-      });
-      
-      articlesDirs.forEach(function(articlesDir) {
-        var fullArticlesDir = path.join(frontendDir, articlesDir);
-        
-        console.log('Persist ATM Service Worker to ' + fullArticlesDir);
-        
-        try {
-          fs.writeFileSync(path.join(fullArticlesDir, 'sw.js'), swContent);
-          fs.writeFileSync(path.join(fullArticlesDir, 'sw.js.map'), swMapContent);
-        } catch (error) {
-          console.error(error);
-        }
       });
       
       callback();
