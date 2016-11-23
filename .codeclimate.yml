@@ -58,3 +58,4 @@ exclude_paths:
   - '**/jquery.noty.packaged.js'
   - '**/jquery.vide.js'
   - '**/input-mask.js'
+  - '**/sw.js'
