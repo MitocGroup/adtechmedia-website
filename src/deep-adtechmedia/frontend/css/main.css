@@ -545,7 +545,7 @@ h2 {
     padding: 20px;
     overflow: auto; }
 
-.try-it .register-blocks {
+.login .register-blocks {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -554,17 +554,17 @@ h2 {
   -webkit-justify-content: center;
   text-align: left;
   padding: 25px 0; }
-  .try-it .register-blocks .register-fields {
+  .login .register-blocks .register-fields {
     flex: 0 0 330px;
     -webkit-flex: 0 0 330px;
     max-width: 330px; }
-  .try-it .register-blocks .register-pic {
+  .login .register-blocks .register-pic {
     flex: 0 0 500px;
     -webkit-flex: 0 0 500px;
     max-width: 500px;
     align-self: center;
     -webkit-align-self: center; }
-.try-it .custom-radio {
+.login .custom-radio {
   padding: 0 0 10px; }
 
 #solutions {
@@ -767,7 +767,7 @@ footer {
   background: url("../images/demo/demo.jpg") center center/100% auto no-repeat;
   color: #fff; }
 
-#try-it .custom-headline-block {
+#login .custom-headline-block {
   background: url("../images/try.jpg") center center/100% auto no-repeat;
   color: #fff; }
 
@@ -1104,12 +1104,12 @@ footer {
     footer .social-links {
       margin: 0 30px 0 0; }
 
-  .try-it .register-blocks .register-pic,
-  .try-it .register-blocks .register-fields {
+  .login .register-blocks .register-pic,
+  .login .register-blocks .register-fields {
     flex: 0 0 50%;
     -webkit-flex: 0 0 50%;
     max-width: 50%; }
-  .try-it .register-blocks .register-pic img {
+  .login .register-blocks .register-pic img {
     max-width: 90%; } }
 @media (max-width: 890px) {
   .carousel .carousel-overlay.with-headline .carousel-heading {
@@ -1299,10 +1299,10 @@ footer {
     footer ul li a span {
       padding: 3px 0 0; }
 
-  .try-it .register-blocks {
+  .login .register-blocks {
     padding-bottom: 5px;
     position: relative; }
-    .try-it .register-blocks .register-pic {
+    .login .register-blocks .register-pic {
       position: absolute;
       opacity: .1;
       right: 0;
@@ -1311,13 +1311,13 @@ footer {
       -moz-transform: translateY(-30%) scaleX(-1);
       -o-transform: translateY(-30%) scaleX(-1);
       transform: translateY(-30%) scaleX(-1); }
-      .try-it .register-blocks .register-pic img {
+      .login .register-blocks .register-pic img {
         max-width: 80%; }
-    .try-it .register-blocks .register-fields {
+    .login .register-blocks .register-fields {
       flex: 0 0 100%;
       -webkit-flex: 0 0 100%;
       max-width: 100%; }
-    .try-it .register-blocks .form-btn {
+    .login .register-blocks .form-btn {
       text-align: center; }
 
   .custom-headline-block section {
@@ -1444,7 +1444,7 @@ footer {
   #contact #googleMap {
     height: 250px; }
 
-  .try-it .register-blocks .register-pic img {
+  .login .register-blocks .register-pic img {
     max-width: 90%; } }
 @media (max-width: 360px) {
   #contact .captcha-block img {

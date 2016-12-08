@@ -353,7 +353,7 @@ h2 {
   }
 }
 
-.try-it {
+.login {
   .register-blocks {
     @include font-smoothing;
     @include flex-container;
@@ -634,7 +634,7 @@ footer {
   }
 }
 
-#try-it {
+#login {
   .custom-headline-block {
     @include custom-headline(url('../images/try.jpg'));
   }
