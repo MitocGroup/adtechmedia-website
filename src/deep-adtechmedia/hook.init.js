@@ -7,6 +7,8 @@
 /* eslint  max-len: 0, no-catch-shadow: 0 */
 
 var ATM_SW_URL = 'https://adm.adtechmedia.io/atm-core/atm-build/sw.js';
+var ATM_SW_PATH = 'sw.js';
+
 var path = require('path');
 var fs = require('fs');
 var https = require('https');
@@ -32,17 +34,11 @@ function walkDir(dir, filter, callback) {
 }
 
 function replaceInFile(file, pattern, replacement) {
-  fs.readFile(file, 'utf8', function(err, data) {
-    if (err) {
-      return console.error('Error on reading from ' + file + ' file. ' + err);
-    }
-
-    fs.writeFile(file, data.replace(pattern, replacement), 'utf8', function(err) {
-      if (err) {
-        return console.error('Error on writing to ' + file + ' file. ' + err);
-      }
-    });
-  });
+  fs.writeFileSync(
+    file, 
+    fs.readFileSync(file).toString()
+      .replace(pattern, replacement)
+  );
 }
 
 function get(url, cb) {
@@ -85,36 +81,36 @@ module.exports = function(callback) {
       return callback();
     }
     
-    get(ATM_SW_URL + '.map', function(error, swMapContent) {
-      if (error) {
-        console.error(error);
-        
-        return callback();
-      }
-      
-      var frontendDir = this.microservice.autoload.frontend;
-      var atmHost = this.microservice.parameters.frontend.atm.host;
+    var frontendDir = this.microservice.autoload.frontend;
+    var atmHost = this.microservice.parameters.frontend.atm.host;
+    var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
+    var atmSwWebPath = '/' + path.join(this.microservice.identifier, ATM_SW_PATH);
 
-      articlesPaths.forEach(function(articlesPath) {
-        var fullArticlesPath = path.join(frontendDir, articlesPath);
-        
-        console.log('Inject ATM base url (' + atmHost + ') at ' + fullArticlesPath);
-        
-        walkDir(fullArticlesPath, /\.html$/, function(filename) {
-          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
-        });
-        
-        console.log('Persist ATM Service Worker to ' + fullArticlesPath);
+    console.log('Persist ATM Service Worker to ' + atmSwPath);
+
+    try {
+      fs.writeFileSync(atmSwPath, swContent);
+      fs.writeFileSync(atmSwPath + '.map', swMapContent);
+    } catch (error) {
+      console.error(error);
+    }
+
+    articlesPaths.forEach(function(articlesPath) {
+      var fullArticlesPath = path.join(frontendDir, articlesPath);
+      
+      walkDir(fullArticlesPath, /\.html$/, function(filename) {
+        console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
+        console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
         
         try {
-          fs.writeFileSync(path.join(fullArticlesPath, 'sw.js'), swContent);
-          fs.writeFileSync(path.join(fullArticlesPath, 'sw.js.map'), swMapContent);
+          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
+          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
         } catch (error) {
           console.error(error);
         }
       });
-      
-      callback();
-    }.bind(this));
+    });
+    
+    callback();
   }.bind(this));
 };
