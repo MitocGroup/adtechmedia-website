@@ -81,44 +81,36 @@ module.exports = function(callback) {
       return callback();
     }
     
-    get(ATM_SW_URL + '.map', function(error, swMapContent) {
-      if (error) {
-        console.error(error);
-        
-        return callback();
-      }
+    var frontendDir = this.microservice.autoload.frontend;
+    var atmHost = this.microservice.parameters.frontend.atm.host;
+    var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
+    var atmSwWebPath = '/' + path.join(this.microservice.identifier, ATM_SW_PATH);
+
+    console.log('Persist ATM Service Worker to ' + atmSwPath);
+
+    try {
+      fs.writeFileSync(atmSwPath, swContent);
+      fs.writeFileSync(atmSwPath + '.map', swMapContent);
+    } catch (error) {
+      console.error(error);
+    }
+
+    articlesPaths.forEach(function(articlesPath) {
+      var fullArticlesPath = path.join(frontendDir, articlesPath);
       
-      var frontendDir = this.microservice.autoload.frontend;
-      var atmHost = this.microservice.parameters.frontend.atm.host;
-      var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
-      var atmSwWebPath = '/' + path.join(this.microservice.identifier, ATM_SW_PATH);
-
-      console.log('Persist ATM Service Worker to ' + atmSwPath);
-
-      try {
-        fs.writeFileSync(atmSwPath, swContent);
-        fs.writeFileSync(atmSwPath + '.map', swMapContent);
-      } catch (error) {
-        console.error(error);
-      }
-
-      articlesPaths.forEach(function(articlesPath) {
-        var fullArticlesPath = path.join(frontendDir, articlesPath);
+      walkDir(fullArticlesPath, /\.html$/, function(filename) {
+        console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
+        console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
         
-        walkDir(fullArticlesPath, /\.html$/, function(filename) {
-          console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
-          console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
-          
-          try {
-            replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
-            replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
-          } catch (error) {
-            console.error(error);
-          }
-        });
+        try {
+          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
+          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
+        } catch (error) {
+          console.error(error);
+        }
       });
-      
-      callback();
-    }.bind(this));
+    });
+    
+    callback();
   }.bind(this));
 };
