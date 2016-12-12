@@ -90,7 +90,9 @@ module.exports = function(callback) {
 
     try {
       fs.writeFileSync(atmSwPath, swContent);
-      fs.writeFileSync(atmSwPath + '.map', swMapContent);
+
+      // @todo: map file content is not fetched, should we ?
+      // fs.writeFileSync(atmSwPath + '.map', swMapContent);
     } catch (error) {
       console.error(error);
     }
