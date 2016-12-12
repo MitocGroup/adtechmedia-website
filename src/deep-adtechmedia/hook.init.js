@@ -35,7 +35,7 @@ function walkDir(dir, filter, callback) {
 
 function replaceInFile(file, pattern, replacement) {
   fs.writeFileSync(
-    file, 
+    file,
     fs.readFileSync(file).toString()
       .replace(pattern, replacement)
   );
@@ -45,17 +45,17 @@ function get(url, cb) {
   https.get(url, function(response) {
     var rawData = '';
     var output = response;
-    
+
     if (response.headers['content-encoding'] === 'gzip') {
       output = zlib.createGunzip();
-      
+
       response.pipe(output);
     }
-    
+
     output.on('data', function(chunk) {
       rawData += chunk;
     });
-    
+
     output.on('end', function() {
       cb(null, rawData);
     });
@@ -71,16 +71,16 @@ const articlesPaths = [
   '/wapost/www.washingtonpost.com/politics/clinton-headed-to-nebraska-which-could-provide-exactly-1-of-270-electoral-votes'
 ];
 
-module.exports = function(callback) {  
+module.exports = function(callback) {
   console.log('Downloading latest ATM Service Worker from ' + ATM_SW_URL);
-  
+
   get(ATM_SW_URL, function(error, swContent) {
     if (error) {
       console.error(error);
-      
+
       return callback();
     }
-    
+
     var frontendDir = this.microservice.autoload.frontend;
     var atmHost = this.microservice.parameters.frontend.atm.host;
     var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
@@ -99,11 +99,11 @@ module.exports = function(callback) {
 
     articlesPaths.forEach(function(articlesPath) {
       var fullArticlesPath = path.join(frontendDir, articlesPath);
-      
+
       walkDir(fullArticlesPath, /\.html$/, function(filename) {
         console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
         console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
-        
+
         try {
           replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
           replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
@@ -112,7 +112,7 @@ module.exports = function(callback) {
         }
       });
     });
-    
+
     callback();
   }.bind(this));
 };
