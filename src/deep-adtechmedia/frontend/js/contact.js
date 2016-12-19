@@ -58,17 +58,7 @@ function checkCaptchaNotification() {
 }
 
 function sendEmail(payload, callback) {
-  var emailResource = DeepFramework.Kernel.get('resource').get('@deep-adtechmedia:email');
-
-  DeepFramework.Kernel.get('security').anonymousLogin(function() {
-    emailResource.request('send', payload).send(function(response) {
-      if (response.isError) {
-        return callback(response.error);
-      }
-
-      return callback(null, response.data);
-    });
-  });
+  callback(new Error('Send email is not available.'));
 }
 
 function sendContactUsEmail() {
