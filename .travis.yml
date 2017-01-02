@@ -2,7 +2,7 @@ language: node_js
 sudo: required
 node_js:
   - '4.3'
-  - '7.1'
+  - '7.3'
 cache:
   edge: true
   directories:
@@ -23,9 +23,6 @@ after_success:
 after_script:
   - npm run remove-coverage
 env:
-  matrix:
-    - TEST_SUITE=backend
-    - TEST_SUITE=frontend
   global:
     - 'MAJOR_VERSIONS=master,stage'
     - DEEP_NO_INTERACTION=1
@@ -46,9 +43,12 @@ env:
         AfJyQ/uTYESmAwSdX5TFyiDSLAsSCVgi2O6evez3wKDdzuD11oZMo4prHupBdG8OOiG2cTRAaZOhNm3XwQOK63+cS7/nVwsfSqXLDxWUDWD5JM/+0Z8TNFPWf8I2tpflcLks5xRBVf3z8GPLB0MqdG/pj8bHDD9oqlKiPRqVtybpuLtFQC64d51L4JsTMX/LczCjTD5t21R9HiLfvpewqMEG/Z1vdCkpFxLOz2x0351paJonhP1GEGhIAPM82LqYFljyqU+0KcKQJQCWl5laSK9Qu/y4pwVWDGv07VNSLUU/UjWokniaLSdDryw/9/PKBCj45TMvjrmb4cYkOarWnG1c/Gh8kB9bVeIienJG9qC0SwCOS+8zhQokCttHyxoGymeZ6EAKZ2qfBwx+FquyUgnhpuuENde8I5zDbMwUD/tTeejMdzKyd3uYIH/Gs8E+p2emlP9S+OMq03In97zl3PJi5fWITokk7g43RFSzBZooj3WNRqkXRxGfS9Pf0iyQT6luQ2UQ9bUaI8TcYUMv7jhwvl50vsjswZUrSlnitPZ1R4uTgCnc/Y3avMNIN6zwrdnOIpd/GzN8qJA6fepS8/654phtlS86txmqX1CRCS0CFFfdycITWANZ2lNYoHWQGaiwISSi5y0i+5eseIPuuBJa3XVDDTQfeGDxDn6VW3E=
     - secure: 
         jXxTvnKDIghxgwb6GIvHEkIY2VLCf1CSnOBtM229EC6XY2pcbvjBW89rBnfrp+4KNjbiCviC/drVGcSCw7xoIf6bVMNuL9Gsc/kqT9vMbgWoVVbnge5cupMSzhUbQCyqLCIu/lz6x2solzZaI3lhAQLGN0GHjtqgd59zRF13cqw0w08tupiCI7PuehQoCNEKwb3zRl1iVPul5eFR2ordXwl3zlBT/SG2MRCWWMGXYsAE/nfXxyj5PkpllM+fl5pElpOwJh4+k/BwWVxz1GAWjTVo0diJTUI6iWlOymAg3Lg5HB6MGTh1sFcK+2Pr0i5zN4ngF0v0A1tIap+NS80CxilLEvUN0IFMMWKMDxIgBCElU87iqKig/9up+sS0tB19/G/hopiYRyyQ3kuDVgS7/OF0pFEVyPp3q6arFgzYX3pRbxeKC6f3VJkmQb9JGxwhsEcdVijj0DYfcFoRACrXMmbZyJM9KGAqqoKWPJIMsPQ1uefEIpR/aFc/sKuevQ3jdcGiG4Q7T72DHgEXAvIIoM6dWw7aVO8s6CPXWJZ1jms/ZiWnONZ+lJ1CXPHZE/tt9CZ7Y5haUsCuXDEw4rr0zMHu1lnZjXOOqVDjqQosR4ROKwT/i1cRaTRJ8UcIbcXMX/sr1bvqDTurOUWCQQcABdLYtxrRph5BqTf8eorECpA=
-addons:
-  sauce_connect: true
+  matrix:
+    - TEST_SUITE=backend
+    - TEST_SUITE=frontend
 notifications:
   slack:
     secure: 
       MS1n6DfKgz4EXJJJ8v875n42dGxdzWvIbuWAkuAU4mCB0osrO3f/EyEyJGpJjLD6Q5imZ2jR1cOuOU9Xt35aIdKLQknGuajyM156Thy/aIanowG1QTwI5dUcMzJo5W+WQ5ghl+EuDRJNq6QgjXBrYMrDy5y91sr6G4hF12fP8XFy4EV3DhVFdQbBDAyXk6aJPbDWLN0VPYfd7B3FtTicVTO++niWG6/xEidEzv5jt86VrNZKlTsBvRc8I2bGGd+D1+lr7Q0g0uqEHMj41kYzJLlPxaUlbS5vFv978xqSrO8pbLZ+3BYQs9H4rm1kEfjkCEIPPZ15ifkrLrejjmmY7xInlCKHwa/qYivjp4VCc6paW+qufG192iT1N4rNH7KXhjPvwSjxz3uvG1YgNAWTWkuJOuOzn5IuEjV/3iJk6lcoNtX21jb3iA8ejbF1GOdVBixTw5AZJN1KEQ3zU67cUSrtSvZGxR7PFnnAUFMukXvqLe497gtVVo8Gx6mVV9q6joguSYLrQEy5opcNkN7V4GA3+fffOeKT1tf6yqUkZk5aNlSHWsMJ2Ob9rgtEMNBMyUlMRAuzLbr9jCXvuYk/KU8zbbQhaDN6SIovWS1r6J/uMFWg1dNdgj29QhYjPie/XH/qU6TvsrlZ5795CTTi0jkQEw8d6mxKyTP817+hUBc=
+addons:
+  sauce_connect: true
