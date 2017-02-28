@@ -47,8 +47,8 @@ jspm_packages
 **/lib.compiled/
 
 # App specific files
-.parameters.json
-src/**/.parameters.json
+src/adtechmedia-website/.parameters.json
+src/adtechmedia-website/.parameters.json
 deeploy.json*
 *_config.json*
 *.provisioning.json*
@@ -61,8 +61,8 @@ deeploy.json*
 
 # Frontend dependencies
 **/js/vendor/
-**/frontend/vendor/
-**/frontend/_build/
+src/adtechmedia-website/frontend/vendor/
+src/adtechmedia-website/frontend/_build/
 
 # Tests resources
 GitDiffWalker.js
