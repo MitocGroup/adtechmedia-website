@@ -1,0 +1,38 @@
+.api-action {
+  float: right;
+  label {
+    display: block;
+  }
+
+  .custom-input {
+    width: calc(100% - 100px);
+  }
+
+  .btn {
+    margin: 20px 0 0;
+  }
+}
+
+.swagger-section {
+  .swagger-ui-wrap {
+    #api_info {
+      .info_title {
+        font: 30px Futura-Light, sans-serif;
+        color: #595959;
+        text-transform: uppercase;
+        margin-top: -50px;
+      }
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    ul#resources {
+      li.resource {
+        border: 0;
+      }
+    }
+  }
+}
+

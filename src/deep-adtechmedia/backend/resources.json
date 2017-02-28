@@ -1,0 +1,12 @@
+{
+  "email": {
+    "send": {
+      "description": "Send email",
+      "type": "lambda",
+      "methods": [
+        "POST"
+      ],
+      "source": "src/email/send"
+    }
+  }
+}

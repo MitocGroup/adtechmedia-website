@@ -1,0 +1,9 @@
+{
+  "identifier": "deep-adtechmedia",
+  "name": "deep-adtechmedia",
+  "description": "This is the description of deep-adtechmedia microapp, built on top of DEEP Framework",
+  "version": "0.0.1",
+  "propertyRoot": false,
+  "frontendEngine": ["angular2"],
+  "dependencies": {}
+}
