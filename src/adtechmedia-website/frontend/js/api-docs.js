@@ -4,6 +4,10 @@ jQuery(function($) {
   var $apiKey = $('#api-key');
   var $apiKeyBtn = $('#api-key-apply');
 
+  $.notify.defaults({
+    position: 'bottom right'
+  });
+
   /**
    * Apply user's api key
    */
@@ -13,6 +17,7 @@ jQuery(function($) {
       swaggerUi.api.clientAuthorizations.add(
         'api_key', new SwaggerClient.ApiKeyAuthorization('X-Api-Key', token, 'header')
       );
+      $.notify('Api-key successfully applied', 'success');
     }
   });
 
@@ -24,8 +29,9 @@ jQuery(function($) {
     url: '/deep-adtechmedia/files/swagger.yaml',
     dom_id: 'swagger-ui-container',
     supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
-    onFailure: function(data) {
-      console.error('Unable to Load SwaggerUI', data);
+    onFailure: function(error) {
+      $.notify('Unable to Load SwaggerUI', 'error');
+      console.error(error);
     },
     docExpansion: 'list',
     jsonEditor: false,

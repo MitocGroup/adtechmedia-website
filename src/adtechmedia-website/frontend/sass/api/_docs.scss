@@ -20,7 +20,6 @@
         font: 30px Futura-Light, sans-serif;
         color: #595959;
         text-transform: uppercase;
-        margin-top: -50px;
       }
     }
 
@@ -31,6 +30,23 @@
     ul#resources {
       li.resource {
         border: 0;
+        ul.endpoints {
+          li.endpoint {
+            ul.operations {
+              li.operation {
+                div.heading {
+                  ul.options {
+                    margin-top: 3px;
+                  }
+                }
+
+                div.content {
+                  overflow: scroll;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

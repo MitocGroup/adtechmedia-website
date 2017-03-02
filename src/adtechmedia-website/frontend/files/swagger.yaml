@@ -5,19 +5,19 @@ info:
   title: "ATM API DOCS"
 host: "api.adtechmedia.io"
 basePath: "/v1"
+schemes:
+- "https"
 tags:
-- name: "theme-config"
-  description: "Manage theme's configuration"
 - name: "api-gateway-key"
   description: "Manage API gateway key"
+- name: "property"
+  description: "Manage property"
+- name: "theme-config"
+  description: "Manage theme's configuration"
 - name: "content"
   description: "Manage content property"
 - name: "email-template"
   description: "Manage email template"
-- name: "property"
-  description: "Manage property"
-schemes:
-- "https"
 paths:
   /atm-admin/theme-config/create:
     put:
@@ -84,7 +84,7 @@ paths:
       - "application/json"
       parameters:
       - in: "query"
-        name: "ThemeConfig"
+        name: "Id"
         type: "string"
         required: true
       responses:
@@ -136,11 +136,10 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "ApiGatewayKey"
+      - in: "query"
+        name: "Id"
         required: true
-        schema:
-          $ref: "#/definitions/Id"
+        type: "string"
       responses:
         200:
           description: "200 response"
@@ -223,11 +222,14 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "Content"
+      - in: "query"
+        name: "ContentId"
         required: true
-        schema:
-          $ref: "#/definitions/ContentModelDelete"
+        type: "string"
+      - in: "query"
+        name: "PropertyId"
+        required: true
+        type: "string"
       responses:
         200:
           description: "200 response"
@@ -253,8 +255,12 @@ paths:
       - "application/json"
       parameters:
       - in: "query"
-        name: "Content"
-        type: "integer"
+        name: "ContentId"
+        type: "string"
+        required: true
+      - in: "query"
+        name: "PropertyId"
+        type: "string"
         required: true
       responses:
         200:
@@ -397,7 +403,7 @@ paths:
       parameters:
       - in: "query"
         name: "Id"
-        type: "integer"
+        type: "string"
         required: true
       responses:
         200:
@@ -481,11 +487,10 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "Property"
+      - in: "query"
+        name: "Id"
         required: true
-        schema:
-          $ref: "#/definitions/Id"
+        type: "string"
       responses:
         200:
           description: "200 response"
@@ -509,11 +514,6 @@ paths:
       - "application/json"
       produces:
       - "application/json"
-      parameters:
-      - in: "query"
-        name: "Empty"
-        type: "integer"
-        required: true
       responses:
         200:
           description: "200 response"
@@ -621,14 +621,6 @@ securityDefinitions:
     description: "Api Key Header required to invoke ATM Api endpoints"
     in: "header"
 definitions:
-  Id:
-    type: "object"
-    title: "Entity Id"
-    required: [ "Id" ]
-    properties:
-      Id:
-        type: "string"
-        description: "Entity Identifier"
   SupportedCountry:
     type: "object"
     title: "Supported Country"
@@ -739,17 +731,6 @@ definitions:
       PluginVersion:
         type: "string"
         description: "Caller Plugin Version"
-  ContentModelDelete:
-    type: "object"
-    title: "Content Schema"
-    required: [ "ContentId", "PropertyId" ]
-    properties:
-      ContentId:
-        type: "string"
-        description: "Content On-site Identifier"
-      PropertyId:
-        type: "string"
-        description: "Property Identifier"
   ContentModelCreateAndUpdate:
     type: "object"
     title: "Content Schema"
@@ -832,6 +813,7 @@ definitions:
   EmailTemplateModelRender:
     type: "object"
     title: "Email Template Schema"
+    required: [ "Name", "PropertyId" ]
     properties:
       Name:
         type: "string"

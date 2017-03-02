@@ -194,6 +194,18 @@
   }
 }
 
+@media (min-width: 992px) {
+  .swagger-section {
+    .swagger-ui-wrap {
+      #api_info {
+        .info_title {
+          margin-top: -50px;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .home-blocks {
     & > .flex-row {
@@ -222,6 +234,11 @@
 
   .main-pic {
     height: 300px;
+  }
+
+  .api-action {
+    float: none;
+    margin: 0 0 50px;
   }
 }
 
@@ -256,6 +273,16 @@
     h1 {
       font-size: 26px;
       margin-bottom: 20px;
+    }
+  }
+
+  .swagger-section {
+    .swagger-ui-wrap {
+      #api_info {
+        .info_title {
+          font-size: 26px;
+        }
+      }
     }
   }
 }

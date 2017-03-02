@@ -1318,12 +1318,15 @@ footer {
 .swagger-section .swagger-ui-wrap #api_info .info_title {
   font: 30px Futura-Light, sans-serif;
   color: #595959;
-  text-transform: uppercase;
-  margin-top: -50px; }
+  text-transform: uppercase; }
 .swagger-section .swagger-ui-wrap h2 {
   margin: 0; }
 .swagger-section .swagger-ui-wrap ul#resources li.resource {
   border: 0; }
+  .swagger-section .swagger-ui-wrap ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operation div.heading ul.options {
+    margin-top: 3px; }
+  .swagger-section .swagger-ui-wrap ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operation div.content {
+    overflow: scroll; }
 
 @media (min-width: 1231px) {
   .dev-docs .user-guide .content-root {
@@ -1435,6 +1438,9 @@ footer {
     margin-top: 15px; }
   .case-studies .case-logo {
     max-width: 60%; } }
+@media (min-width: 992px) {
+  .swagger-section .swagger-ui-wrap #api_info .info_title {
+    margin-top: -50px; } }
 @media (max-width: 991px) {
   .home-blocks > .flex-row {
     flex-direction: column;
@@ -1453,7 +1459,11 @@ footer {
     margin-bottom: 0; }
 
   .main-pic {
-    height: 300px; } }
+    height: 300px; }
+
+  .api-action {
+    float: none;
+    margin: 0 0 50px; } }
 @media (max-width: 860px) {
   .case-studies > .flex-row {
     display: block;
@@ -1471,7 +1481,10 @@ footer {
 @media (max-width: 768px) {
   .dev-docs h1 {
     font-size: 26px;
-    margin-bottom: 20px; } }
+    margin-bottom: 20px; }
+
+  .swagger-section .swagger-ui-wrap #api_info .info_title {
+    font-size: 26px; } }
 @media (max-width: 767px) {
   .dev-docs section {
     padding-top: 25px;
