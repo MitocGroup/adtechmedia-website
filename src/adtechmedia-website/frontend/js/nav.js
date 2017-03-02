@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
       var actual = $(this),
         actualHeight = actual.height() + parseInt(actual.css('paddingTop').replace('px', ''))
           + parseInt(actual.css('paddingBottom').replace('px', '')),
-        actualAnchor = secondaryNav.find('a[href="#' + actual.attr('id') + '"]');
+        actualAnchor = secondaryNav.find('a[href="/' + actual.attr('id') + '/"]');
 
       if (( actual.offset().top - secondaryNav.height() <= $(window).scrollTop() ) &&
         ( actual.offset().top + actualHeight - secondaryNav.height() > $(window).scrollTop() )) {
@@ -34,16 +34,22 @@ jQuery(document).ready(function ($) {
 
   //smooth scrolling when clicking on the secondary navigation items
   secondaryNav.find('ul a').on('click', function (event) {
-    if (this.hash) {
-      event.preventDefault();
-      var target = $(this.hash);
+    var $a = $(this);
 
-      $('body,html').animate(
-        {
-          'scrollTop': target.offset().top - secondaryNav.height() + 1
-        },
-        500
-      );
+    if ($a.hasClass('page-scroll')) {
+      event.preventDefault();
+
+      var href = $a.attr('href');
+      var scrollTop = null;
+
+      if (href === '/') {
+        scrollTop = 0;
+      } else {
+        var target = $('#' + href.replace(/\//g, ''));
+        scrollTop = target.offset().top - secondaryNav.height() + 1;
+      }
+
+      $('body,html').animate({'scrollTop': scrollTop}, 500);
     }
   });
 });

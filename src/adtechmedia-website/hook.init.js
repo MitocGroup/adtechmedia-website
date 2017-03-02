@@ -6,8 +6,10 @@
 
 /* eslint  max-len: 0, no-catch-shadow: 0 */
 
-var ATM_SW_URL = 'https://adm.adtechmedia.io/atm-core/atm-build/sw.js';
+// @todo move it to config
+var ATM_SW_URL = 'https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js';
 var ATM_SW_PATH = 'sw.js';
+var ATM_NYT_RIBBON_PATH = 'assets/nyt-ribbon.html';
 
 var path = require('path');
 var fs = require('fs');
@@ -64,6 +66,62 @@ function get(url, cb) {
   });
 }
 
+// ---- START: Sync static pages hook ---- //
+function copyFileSync(source, target) {
+  var targetFile = target;
+
+  //if target is a directory a new file with the same name will be created
+  if (fs.existsSync(target)) {
+    if (fs.lstatSync(target).isDirectory()) {
+      targetFile = path.join(target, path.basename(source));
+    }
+  }
+
+  fs.writeFileSync(targetFile, fs.readFileSync(source));
+}
+
+function copyFolderRecursiveSync(source, target, level) {
+  var targetFolder = target;
+  level = level || 0;
+
+  // check if folder needs to be created or integrated (skip first level)
+  if (level > 0) {
+    targetFolder = path.join(target, path.basename(source));
+    if (!fs.existsSync(targetFolder)) {
+      fs.mkdirSync(targetFolder);
+    }
+  }
+
+  if (fs.lstatSync(source).isDirectory()) {
+    fs.readdirSync(source).forEach(function(item) {
+      var curSource = path.join(source, item);
+
+      if (fs.lstatSync(curSource).isDirectory()) {
+        copyFolderRecursiveSync(curSource, targetFolder, ++level);
+      } else {
+        copyFileSync(curSource, targetFolder);
+      }
+    });
+  }
+}
+
+function getRootMicroservice(microservices) {
+  for (let i in microservices) {
+    if (!microservices.hasOwnProperty(i)) {
+      continue;
+    }
+
+    let microservice = microservices[i];
+
+    if (microservice.isRoot) {
+      return microservice;
+    }
+  }
+
+  return null;
+}
+// ---- END: Sync static pages hook ---- //
+
 const articlesPaths = [
   '/nytimes/www.nytimes.com/2016/07/04/technology',
   '/bloomberg/www.bloomberg.com/news/articles',
@@ -72,6 +130,18 @@ const articlesPaths = [
 ];
 
 module.exports = function(callback) {
+  var rootMs = getRootMicroservice(this.microservice.property.microservices);
+
+  if (rootMs) {
+    console.log('Copying all static pages into root microservice');
+    var source = path.join(this.microservice.autoload.frontend, 'static-pages');
+    var target = rootMs.autoload.frontend;
+
+    copyFolderRecursiveSync(source, target);
+  } else {
+    console.error('Error copying static pages. Root microservice is not found.');
+  }
+
   console.log('Downloading latest ATM Service Worker from ' + ATM_SW_URL);
 
   get(ATM_SW_URL, function(error, swContent) {
@@ -85,14 +155,21 @@ module.exports = function(callback) {
     var atmHost = this.microservice.parameters.frontend.atm.host;
     var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
     var atmSwWebPath = '/' + path.join(this.microservice.identifier, ATM_SW_PATH);
+    var nytRibbonPath = path.join(__dirname, ATM_NYT_RIBBON_PATH);
+    var nytRibbonContent;
+
+    console.log('Persist NYT Ribbon content from ' + nytRibbonPath);
+
+    try {
+      nytRibbonContent = fs.readFileSync(nytRibbonPath);
+    } catch (error) {
+      console.error(error);
+    }
 
     console.log('Persist ATM Service Worker to ' + atmSwPath);
 
     try {
       fs.writeFileSync(atmSwPath, swContent);
-
-      // @todo: map file content is not fetched, should we ?
-      // fs.writeFileSync(atmSwPath + '.map', swMapContent);
     } catch (error) {
       console.error(error);
     }
@@ -105,6 +182,7 @@ module.exports = function(callback) {
         console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
 
         try {
+          replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, nytRibbonContent);
           replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
           replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
         } catch (error) {

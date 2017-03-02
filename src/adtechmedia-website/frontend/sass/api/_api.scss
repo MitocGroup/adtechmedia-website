@@ -1,0 +1,34 @@
+.dev-docs {
+  text-align: left;
+  margin: 70px 0 0;
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    &.case-studies {
+      padding-top: 40px;
+    }
+  }
+
+  h1 {
+    font: 30px Futura-Light, sans-serif;
+    color: #595959;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    background: transparent;
+    -webkit-text-fill-color: inherit;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.main-pic {
+  background: url('../images/api/banner.jpg') 0 0/cover no-repeat;
+  height: 400px;
+}
+
+.home-blocks {
+  img {
+    margin: 0 0 15px;
+  }
+}

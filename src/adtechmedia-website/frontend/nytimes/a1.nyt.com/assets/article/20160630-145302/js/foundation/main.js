@@ -407,7 +407,7 @@
 			return t.toUpperCase()
 		};
 	Z.fn = Z.prototype = {
-		jquery: Q,
+		jquery: Q || window.jQuery,
 		constructor: Z,
 		selector: "",
 		length: 0,
@@ -3019,9 +3019,15 @@
 	}, typeof t === Se && (e.jQuery = e.$ = Z), Z
 }), define("foundation/consolefix", ["jquery/nyt"], function(e) {
 		"use strict";
-		for (var t, n = ["assert", "clear", "count", "debug", "dir", "dirxml", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "markTimeline", "profile", "profileEnd", "table", "time", "timeEnd", "timeStamp", "trace", "warn"], r = n.length, i = window.console = window.console || {}; r--;) t = n[r], i[t] || (i[t] = e.noop)
+		
+		e = e || window.jQuery;
+		
+		for (var t, n = ["assert", "clear", "count", "debug", "dir", "dirxml", "error", "exception", "group", "groupCollapsed", "groupEnd", "info", "log", "markTimeline", "profile", "profileEnd", "table", "time", "timeEnd", "timeStamp", "trace", "warn"], r = n.length, i = window.console = window.console || {}; r--;) t = n[r], i[t] || (i[t] = (function(){}))
 	}), define("foundation/cookies", ["jquery/nyt"], function(e) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		var t = {
 				expires: 365,
 				domain: ".nytimes.com",
@@ -3756,6 +3762,9 @@
 	}.call(this),
 	function(e, t) {
 		if ("function" == typeof define && define.amd) define("foundation/lib/backbone/1.1.2", ["underscore/nyt", "jquery/nyt", "exports"], function(n, r, i) {
+			r = r || window.jQuery;
+			n = n || window._;
+			
 			e.Backbone = t(e, i, n, r)
 		});
 		else if ("undefined" != typeof exports) {
@@ -5847,6 +5856,10 @@ JSON || (JSON = {}),
 		return SockJS
 	}), define("foundation/views/page-manager", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/cookies"], function(e, t, n, r) {
 		"use strict";
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var i = n.View.extend({
 			el: e(window),
 			$document: e(document),
@@ -6183,7 +6196,7 @@ JSON || (JSON = {}),
 				return !1
 			},
 			addRoute: function(t, n) {
-				this.router.route(t, n, e.noop)
+				this.router.route(t, n, (function(){}))
 			},
 			checkRoute: t.once(function() {
 				n.History.started && n.history.loadUrl()
@@ -6202,6 +6215,10 @@ JSON || (JSON = {}),
 		return new i
 	}), define("foundation/base-mixin", ["jquery/nyt", "underscore/nyt", "foundation/views/page-manager"], function(e, t, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var r = {
 			pageManager: n,
 			dateHelper: {
@@ -6281,6 +6298,10 @@ JSON || (JSON = {}),
 		return r
 	}), define("foundation/tracking/tracking-mixin", ["jquery/nyt", "underscore/nyt", "foundation/helpers/utils", "foundation/views/page-manager", "foundation/hosts", "foundation/cookies"], function(e, t, n, r, i, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = {
 			trackingBaseData: {},
 			trackingCombineData: function(e) {
@@ -6323,6 +6344,10 @@ JSON || (JSON = {}),
 		return a
 	}), define("foundation/models/base-model", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/base-mixin"], function(e, t, n, r) {
 		"use strict";
+		
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var i = n.Model.extend(t.extend({}, r));
 		return i
 	}), define("foundation/helpers/model-mixin", [], function() {
@@ -6339,6 +6364,11 @@ JSON || (JSON = {}),
 		return e
 	}), define("foundation/models/user-data", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/models/base-model", "foundation/helpers/model-mixin", "foundation/cookies", "foundation/hosts"], function(e, t, n, r, i, o, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var s = r.extend(i).extend({
 			defaults: {
 				id: "",
@@ -6457,6 +6487,11 @@ JSON || (JSON = {}),
 		return new s
 	}), define("foundation/models/page-storage", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/models/base-model", "foundation/helpers/model-mixin", "foundation/hosts"], function(e, t, n, r, i, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var a = r.extend(i).extend({
 			storageKey: "nyt:site-storage",
 			serviceUrl: "../../../../../www.nytimes.com/svc/web/localstorage.html",
@@ -6496,10 +6531,15 @@ JSON || (JSON = {}),
 			}
 		});
 		return window.Modernizr.localstorage && window.Modernizr.postmessage || (a = n.Model.extend({
-			ready: e.noop
+			ready: (function(){})
 		})), new a
 	}), define("foundation/views/base-view", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "hammer/nyt", "foundation/views/page-manager", "foundation/base-mixin", "foundation/tracking/tracking-mixin", "foundation/models/user-data", "foundation/models/page-storage"], function(e, t, n, r, i, o, a, s, u) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var c = n.View.prototype.delegateEvents,
 			l = n.View.prototype.undelegateEvents,
 			f = n.View.extend(t.extend({}, o, a, {
@@ -6597,6 +6637,11 @@ JSON || (JSON = {}),
 		}, f
 	}), define("foundation/collections/base-collection", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/views/page-manager", "foundation/base-mixin"], function(e, t, n, r, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var o = n.Collection.extend(t.extend({}, i));
 		return o
 	}), define("foundation/views/sitewide-view", ["foundation/views/base-view"], function(e) {
@@ -6626,6 +6671,11 @@ JSON || (JSON = {}),
 		new e
 	}), define("foundation/models/group-name", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/models/base-model", "foundation/helpers/model-mixin", "foundation/hosts", "foundation/models/user-data"], function(e, t, n, r, i, o, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var s = r.extend(i).extend({
 			defaults: {
 				groupAccountName: ""
@@ -6658,6 +6708,11 @@ JSON || (JSON = {}),
 		return new s
 	}), define("foundation/models/token", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/models/base-model", "foundation/helpers/model-mixin", "foundation/cookies", "foundation/hosts"], function(e, t, n, r, i, o, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var s = r.extend({
 			defaults: {
 				token: ""
@@ -6694,6 +6749,10 @@ JSON || (JSON = {}),
 		return new s
 	}), define("foundation/views/user-data", ["underscore/nyt", "jquery/nyt", "foundation/models/user-data", "foundation/views/base-view"], function(e, t, n, r) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.jQuery;
+		
 		var i = r.extend({
 			handleUserReady: function() {
 				this.addUserCapabilities()
@@ -6705,6 +6764,11 @@ JSON || (JSON = {}),
 		return new i
 	}), define("foundation/views/websockets-transport", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/lib/sockjs", "foundation/views/base-view", "foundation/hosts"], function(e, t, n, r, i, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		n = n || window.Backbone;
+		t = t || window._;
+		
 		var a = i.extend({
 			url: "",
 			apps: {},
@@ -6762,19 +6826,19 @@ JSON || (JSON = {}),
 				})
 			},
 			initWebSockets: function() {
-				var e = this;
-				if (this.url && this.state !== this.states.connected && this.state !== this.states.stopConnecting) {
-					if (this.webSocket = null, Modernizr.websockets && (this.webSocket = new WebSocket(this.url, ["fabrik"])), null === this.webSocket) return void this.initiateFailOver(e);
-					this.webSocket.onopen = function() {
-						e.state = e.states.connected, e.local(e, "nyt:fabrik-client-connected", e)
-					}, this.webSocket.onmessage = function(t) {
-						e.reconnectAttempt = 0, e.onMessage(t, e)
-					}, this.webSocket.onclose = function(t) {
-						e.updateAppStatus(!1, e), e.reconnect(t, e)
-					}, this.webSocket.onerror = function(t) {
-						e.updateAppStatus(!1, e), e.onError(t, e)
-					}
-				}
+				// var e = this;
+				// if (this.url && this.state !== this.states.connected && this.state !== this.states.stopConnecting) {
+				// 	if (this.webSocket = null, Modernizr.websockets && (this.webSocket = new WebSocket(this.url, ["fabrik"])), null === this.webSocket) return void this.initiateFailOver(e);
+				// 	this.webSocket.onopen = function() {
+				// 		e.state = e.states.connected, e.local(e, "nyt:fabrik-client-connected", e)
+				// 	}, this.webSocket.onmessage = function(t) {
+				// 		e.reconnectAttempt = 0, e.onMessage(t, e)
+				// 	}, this.webSocket.onclose = function(t) {
+				// 		e.updateAppStatus(!1, e), e.reconnect(t, e)
+				// 	}, this.webSocket.onerror = function(t) {
+				// 		e.updateAppStatus(!1, e), e.onError(t, e)
+				// 	}
+				// }
 			},
 			publish: function(e) {
 				this.webSocket && this.webSocket.readyState === WebSocket.OPEN && this.webSocket.send(JSON.stringify(e))
@@ -6817,6 +6881,9 @@ JSON || (JSON = {}),
 		return new a
 	}), define("foundation/lib/auth/userauth", ["jquery/nyt", "foundation/hosts"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		var n, r, i, o, a, s = t.myaccountHost,
 			u = t.tokenHost + "/svc/profile/token.jsonp?callback=?",
 			c = 5e3,
@@ -6891,7 +6958,10 @@ JSON || (JSON = {}),
 			getSocialLinkUrl: w
 		}
 	}), define("foundation/lib/polyfills/placeholder", ["jquery/nyt"], function(e) {
-		if (window.Modernizr.input.placeholder) return e.noop;
+		
+		e = e || window.jQuery;
+		
+		if (window.Modernizr.input.placeholder) return (function(){});
 		var t = function(t) {
 			var n = "[placeholder]",
 				r = t ? t.find(n) : e(n);
@@ -6916,6 +6986,9 @@ JSON || (JSON = {}),
 		return t
 	}), define("foundation/lib/polyfills/balancetext", ["foundation/views/page-manager", "backbone/nyt", "jquery/nyt"], function(e, t, n) {
 		"use strict";
+		
+		n = n || window.jQuery;
+		t = t || window.Backbone;
 
 		function r() {
 			this.reset()

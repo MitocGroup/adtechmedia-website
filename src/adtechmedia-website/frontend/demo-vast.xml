@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="3.0">
+  <Ad id="1488203922939">
+    <InLine>
+      <AdSystem version="1.0">Test Ad Server</AdSystem>
+      <AdTitle><![CDATA[Test Video Ad]]></AdTitle>
+      <Description><![CDATA[]]></Description>
+      <Error><![CDATA[https://www.adtechmedia.io/404]]></Error>
+      <Creatives>
+        <Creative>
+          <Linear skipoffset="00:00:05">
+            <Duration>00:00:29.960</Duration>
+            <TrackingEvents/>
+            <VideoClicks>
+              <ClickThrough id="">https://www.adtechmedia.io</ClickThrough>
+            </VideoClicks>
+            <MediaFiles>
+              <MediaFile type="video/mp4" width="1000" height="564" delivery="progressive" id="1488203922940" bitrate="517"><![CDATA[https://www.adtechmedia.io/deep-adtechmedia/video2.mp4]]></MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+      </Creatives>
+    </InLine>
+  </Ad>
+</VAST>

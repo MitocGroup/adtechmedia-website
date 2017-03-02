@@ -1,15 +1,13 @@
-var contactUsCaptcha, getStartedCaptcha;
+var contactUsCaptcha;
 
 function setCaptchaKey() {
-  var captchaSiteKey = DeepFramework.Kernel.config
-    .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
+  DeepFramework.Kernel.bootstrap(function (kernel) {
+    var captchaSiteKey = DeepFramework.Kernel.config
+      .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
 
-  contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
-    sitekey: captchaSiteKey
-  });
-
-  getStartedCaptcha = grecaptcha.render('get-started-re-captcha', {
-    sitekey: captchaSiteKey
+    contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
+      sitekey: captchaSiteKey
+    });
   });
 }
 
@@ -58,7 +56,17 @@ function checkCaptchaNotification() {
 }
 
 function sendEmail(payload, callback) {
-  callback(new Error('Send email is not available.'));
+  var emailResource = DeepFramework.Kernel.get('resource').get('@deep-adtechmedia:email');
+
+  DeepFramework.Kernel.get('security').anonymousLogin(function() {
+    emailResource.request('send', payload).send(function(response) {
+      if (response.isError) {
+        return callback(response.error);
+      }
+
+      return callback(null, response.data);
+    });
+  });
 }
 
 function sendContactUsEmail() {
@@ -91,45 +99,6 @@ function sendContactUsEmail() {
 
     if (!error) {
       grecaptcha.reset(contactUsCaptcha);
-      formElement.reset();
-    }
-  });
-
-  return false;
-}
-
-function sendGetStartedEmail() {
-  if (!grecaptcha.getResponse(getStartedCaptcha)) {
-    checkCaptchaNotification();
-    return false;
-  }
-
-  var emailElement = document.getElementById('get-started-email');
-  var codeElement = document.getElementById('get-started-code');
-  var formElement = document.getElementById('get-started-form');
-
-  var form = {
-    email : emailElement
-  };
-
-  var payload = {
-    email: emailElement.value,
-    captchaResponse: grecaptcha.getResponse(getStartedCaptcha)
-  };
-
-  if ($('input[name=customer-type]:checked', '#get-started-form').val() === 'old') {
-    form.code = codeElement;
-    payload.code = codeElement.value;
-  }
-
-  disableForm(form);
-
-  sendEmail(payload, function(error) {
-    handleCallback(error);
-    enableForm(form);
-
-    if (!error) {
-      grecaptcha.reset(getStartedCaptcha);
       formElement.reset();
     }
   });
