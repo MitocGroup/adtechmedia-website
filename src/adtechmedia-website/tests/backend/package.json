@@ -1,7 +1,7 @@
 {
-  "name": "deep-adtechmedia-backend-test",
+  "name": "adtechmedia-website-backend-test",
   "version": "0.0.1",
-  "description": "Description of deep-adtechmedia-backend-test",
+  "description": "Description of adtechmedia-website-backend-test",
   "scripts": {
     "preinstall": "bash node-bin/preinstall.sh",
     "install": "bash node-bin/install.sh",

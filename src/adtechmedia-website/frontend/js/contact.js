@@ -56,7 +56,7 @@ function checkCaptchaNotification() {
 }
 
 function sendEmail(payload, callback) {
-  var emailResource = DeepFramework.Kernel.get('resource').get('@deep-adtechmedia:email');
+  var emailResource = DeepFramework.Kernel.get('resource').get('@adtechmedia-website:email');
 
   DeepFramework.Kernel.get('security').anonymousLogin(function() {
     emailResource.request('send', payload).send(function(response) {
@@ -71,7 +71,7 @@ function sendEmail(payload, callback) {
 
 function sendContactUsEmail() {
   if (!grecaptcha.getResponse(contactUsCaptcha)) {
-    checkCaptchaNotification()
+    checkCaptchaNotification();
     return false;
   }
 

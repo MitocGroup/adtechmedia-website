@@ -68,7 +68,7 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
    */
   _sendMail(subject, message, callback) {
     let ses = new AWS.SES();
-    let parameters = this.kernel.config.microservices['deep-adtechmedia'].parameters.email;
+    let parameters = this.kernel.config.microservices['adtechmedia-website'].parameters.email;
 
     let params = {
       Destination: {
@@ -133,7 +133,7 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
    * @returns {String}
    */
   buildGoogleLink(captchaResponse) {
-    let reCaptchaSecret = this.kernel.config.microservices['deep-adtechmedia'].parameters.reCaptchaSecret;
+    let reCaptchaSecret = this.kernel.config.microservices['adtechmedia-website'].parameters.reCaptchaSecret;
     let parameters = querystring.stringify({
       secret : reCaptchaSecret,
       response : captchaResponse,
