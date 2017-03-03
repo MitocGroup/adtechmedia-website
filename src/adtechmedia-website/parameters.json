@@ -27,8 +27,8 @@
       "displayName": "ATM host",
       "type": "string",
       "required": true,
-      "example": "https://adm-dev.adtechmedia.io",
-      "default": "https://adm-dev.adtechmedia.io"
+      "example": "https://api-dev.adtechmedia.io",
+      "default": "https://api-dev.adtechmedia.io"
     },
     "captchaSiteKey": {
       "displayName": "Captcha site key for reCaptcha",

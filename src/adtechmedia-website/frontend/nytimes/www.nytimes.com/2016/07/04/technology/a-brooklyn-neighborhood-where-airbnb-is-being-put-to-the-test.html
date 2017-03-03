@@ -328,7 +328,7 @@
     </script>
 
     <!-- ATM vendor START -->
-    <script src="/lib/deep-framework.js"></script>
+    <script src="/js/lib/deep-framework.js"></script>
     <!-- ATM vendor -->
 
     <script id="display_overrides">
@@ -448,7 +448,7 @@
         }
     </script>
 
-    <script>
+    <!-- <script>
         var require = {
             baseUrl: '../../../../../a1.nyt.com/assets/',
             waitSeconds: 20,
@@ -469,7 +469,7 @@
                 }
             }
         };
-    </script>
+    </script> -->
     <!--[if (gte IE 9)|!(IE)]> <!-->
     <script data-main="foundation/main"
             src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/foundation/lib/framework.js"></script>
@@ -481,7 +481,7 @@
     <script data-main="foundation/legacy_main"
             src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/foundation/lib/framework.js"></script>
     <![endif]-->
-    <script>
+    <!-- <script>
         window.magnum.processFlags(["limitFabrikSave", "moreFollowSuggestions", "unfollowComments", "scoopTool", "videoVHSCover", "videoVHSShareTools", "videoVHSLive", "videoVHSNewControls", "videoVHSEmbeddedOnly", "allTheEmphases", "freeTrial", "dedupeWhatsNext", "trendingPageLinks", "sprinklePaidPost", "headerBidder", "largeLedeXXL", "standardizeWhatsNextCollection", "onlyLayoutA", "simple", "simpleExtendedByline", "collectionsWhatsNext", "shareToolsUnderHeadline", "mobileMediaViewer", "whitelistInterstitial", "storyPrint", "podcastInLede", "MovieTickets", "requestTragedyAd", "MoreInSubsectionFix", "seriesIssueMarginalia", "serverSideCollectionUrls", "multipleBylines", "minimalAds", "adDisclaimer", "bleedtransitions", "inlineAdStyles", "fabrikWebsocketsOnly", "reviewsMapZoom"]);
     </script>
     <script>
@@ -489,7 +489,7 @@
             // require(['auth/mtr', 'auth/growl']);
         });
     </script>
-    <script src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/article/common/layout.js"></script>
+    <script src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/article/common/layout.js"></script> -->
 </head>
 <body>
 
@@ -656,6 +656,7 @@
     <nav id="ribbon" class="ribbon ribbon-start nocontent robots-nocontent" aria-hidden="true">
         <div class="nocontent robots-nocontent">
             <ol class="ribbon-menu">
+                %_ATM_NYT_RIBBON_PLACEHOLDER_%
                 <li class="collection ribbon-loader">
                     <div class="loader loader-t-logo-32x32-ecedeb-ffffff"><span
                             class="visually-hidden">Loading...</span></div>
@@ -1831,7 +1832,7 @@ NREUM.info = {
     window.ATM_BASE_URL = '%_ATM_BASE_URL_PLACEHOLDER_%';
     window.ATM_SERVICE_WORKER = '%_ATM_SW_PATH_PLACEHOLDER_%';
 </script>
-<!-- <script src="/lib/deep-framework.js"></script> -->
+<!-- <script src="/js/lib/deep-framework.js"></script> -->
 <script src="%_ATM_BASE_URL_PLACEHOLDER_%/atm-core/atm-build/atm.js"></script>
 <!-- ATM -->
 

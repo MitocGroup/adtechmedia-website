@@ -1,7 +1,3 @@
-$base-color: #404040;
-$link-color: #1b93f2;
-$base-font-size: 14px;
-
 body {
   font-family: FuturaICG, sans-serif;
   text-align: center;
@@ -102,9 +98,9 @@ header {
 
 .logo {
   display: block;
-  height: 100px;
+  height: 70px;
   img {
-    height: 50px;
+    height: 35px;
     position: relative;
     top: 50%;
     @include transform(translateY(-50%));
@@ -177,13 +173,28 @@ header {
   float: right;
   li {
     float: left;
-    line-height: 100px;
-    height: 100px;
+    line-height: 70px;
+    height: 70px;
+    &.custom-menu-link {
+      a {
+        background: rgba(27, 147, 242, 0.8);
+        border: 1px solid transparent;
+        color: #fff;
+        font-size: 12px;
+        padding: 4px 10px;
+        transition: 0.4s ease-in-out;
+        &.active, &:hover {
+          background: transparent;
+          color: $link-color;
+          border-color: rgba(27, 147, 242, 0.67);
+        }
+      }
+    }
   }
 
   a {
     display: inline-block;
-    margin: 0 0 0 50px;
+    margin-left: 25px;
     text-transform: uppercase;
     line-height: normal;
     font-family: 'Futura', sans-serif;
@@ -229,7 +240,7 @@ h2 {
 }
 
 .cb-container {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .cd-section {
@@ -561,7 +572,7 @@ footer {
 
   .about-us {
     width: calc(100% - 500px);
-    padding: 30px 30px 10px 30px;
+    padding: 30px 30px 20px;
   }
 
   .footer-links {
@@ -619,13 +630,25 @@ footer {
 .bottom-info {
   line-height: 50px;
   font-size: 12px;
-  span {
-    color: $link-color;
-  }
 }
 
 .g-recaptcha {
   margin: 10px 0 0;
+}
+
+#api {
+  .custom-headline-block {
+    @include custom-headline(url('../images/api/api.jpg'));
+  }
+
+  .home-blocks {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: left;
+    .btn {
+      margin-bottom: 0;
+    }
+  }
 }
 
 #demo {
@@ -725,4 +748,32 @@ footer {
   position: relative;
   padding: 0 0 20px;
   margin: 0 0 50px;
+}
+
+.legal-pages {
+  background: #fafafa;
+  text-align: justify;
+  @include font-smoothing;
+  padding: 30px 0;
+  h1 {
+    background: transparent;
+    -webkit-text-fill-color: inherit;
+    font: 30px/70px Futura-Light, sans-serif;
+    color: #595959;
+    &:after {
+      display: none;
+    }
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-size: 17px;
+    margin: 0 0 3px;
+  }
+
+  .text-block {
+    &:not(:last-child) {
+      margin: 0 0 20px;
+    }
+  }
 }

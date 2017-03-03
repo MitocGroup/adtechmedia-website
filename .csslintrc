@@ -2,4 +2,4 @@
 --ignore=adjoining-classes,box-model,ids,order-alphabetical,unqualified-attributes
 --exclude-exts=.min.css
 --ignore=adjoining-classes,box-model,ids,order-alphabetical,unqualified-attributes
---exclude-list=src/deep-adtechmedia/frontend/css/main.css,src/deep-adtechmedia/frontend/css/main.css
+--exclude-list=src/adtechmedia-website/frontend/css/main.css,src/adtechmedia-website/frontend/css/main.css

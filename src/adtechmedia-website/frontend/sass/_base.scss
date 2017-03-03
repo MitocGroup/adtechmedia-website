@@ -1,3 +1,11 @@
+$base-color: #404040;
+$link-color: #1b93f2;
+$gray: #9090aa;
+$border-color: #dfe2e7;
+$base-font-size: 14px;
+$section-width: 1100px;
+$section-based-calc: calc((100% - #{$section-width}) / 2);
+
 @font-face {
   font-family: Futura-Light;
   src: url(../fonts/Futura-Light.ttf);
@@ -8,11 +16,46 @@
   src: url(../fonts/FuturaICG.ttf);
 }
 
+@function headings($from, $to) {
+  @if $from == $to {
+    @return 'h#{$from}';
+  } @else {
+    @return 'h#{$from},' + headings($from+1, $to);
+  }
+}
+
+.flex-row {
+  display: flex;
+  &.flex-gutter {
+    margin: 0 -25px;
+    & > * {
+      padding: 0 25px;
+      box-sizing: border-box;
+    }
+  }
+
+  &.flex-justify {
+    justify-content: center;
+  }
+}
+
+@for $i from 1 through 12 {
+  .flex-row > .flex-item-#{$i} {
+    flex: 0 0 #{(100 / 12) * $i + '%'};
+    max-width: #{(100 / 12) * $i + '%'};
+  }
+}
+
+.self-center {
+  @include flex-align-self(center);
+}
+
 * {
   margin: 0;
   padding: 0;
   outline: none;
   box-sizing: border-box;
+  @include font-smoothing;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,6 +78,10 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: #1b93f2;
+  &.banner-link {
+    color: #fff;
+    white-space: nowrap;
+  }
 }
 
 .pull-left {
@@ -43,6 +90,10 @@ a {
 
 .pull-right {
   float: right;
+}
+
+.text-right {
+  text-align: right;
 }
 
 img {
@@ -130,19 +181,18 @@ small {
   z-index: 2;
   display: inline-block;
   vertical-align: top;
-  min-width: 100px;
   border: none;
   color: #fff;
-  background-color: #1b93f2;
+  background-color: $link-color;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  font: 13px/36px FuturaICG, sans-serif;
-  margin: 20px 0;
-  letter-spacing: .5px;
-  @include transition(background .3s ease-in-out);
+  font: 12px/32px FuturaICG, sans-serif;
+  padding: 0 15px;
+  margin: 15px 0;
+  @include transition(.4s ease-in-out);
   &:hover {
-    background: darken(#1b93f2, 10%);
+    background: darken($link-color, 10%);
   }
 }
 

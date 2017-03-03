@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://www.adtechmedia.io/</loc>
+  <priority>1.00</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/terms/</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/privacy/</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/challenges/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/solutions/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/demo/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/team/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/contact/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/wordpress-plugin/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/drupal-module/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.adtechmedia.io/admin/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/</loc>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/ad-blocking-no-problem-welcome-to-adtechmedia-430b5d99634e</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/adtechmedia-the-moldovans-who-crossed-the-ocean-to-fight-for-better-journalism-7368910824f6</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/your-time-is-limited-so-ill-be-short-30-sec-short-to-be-precise-91e440da9169</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/how-serverless-computing-enables-microservices-and-micropayments-bdf2cc766f2f</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/three-powerful-messages-uncovered-by-iabs-ad-blocking-report-july-2016-d8764ce5fb07</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/how-to-beat-adblocking-without-hurting-the-user-experience-c4d7542fcc85</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/why-just-blocking-the-adblockers-doesnt-work-4840f6de4453</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/3-sustainable-ways-to-conquer-adblocking-software-a101cb05f9eb</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/a-new-way-to-fund-the-creation-of-high-quality-original-content-d0f7cacd40e0</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/adblocking-is-a-growing-problem-for-publishers-or-is-it-700ddecdbf6e</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://blog.adtechmedia.io/mobile-content-monetization-trends-publishers-need-to-watch-7813a08f812d</loc>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+</urlset>
