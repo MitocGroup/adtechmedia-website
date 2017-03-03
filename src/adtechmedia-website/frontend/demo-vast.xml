@@ -15,7 +15,7 @@
               <ClickThrough id="">https://www.adtechmedia.io</ClickThrough>
             </VideoClicks>
             <MediaFiles>
-              <MediaFile type="video/mp4" width="1000" height="564" delivery="progressive" id="1488203922940" bitrate="517"><![CDATA[https://www.adtechmedia.io/deep-adtechmedia/video2.mp4]]></MediaFile>
+              <MediaFile type="video/mp4" width="1000" height="564" delivery="progressive" id="1488203922940" bitrate="517"><![CDATA[https://www.adtechmedia.io/adtechmedia-website/video2.mp4]]></MediaFile>
             </MediaFiles>
           </Linear>
         </Creative>

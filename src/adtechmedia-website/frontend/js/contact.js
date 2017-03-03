@@ -3,7 +3,7 @@ var contactUsCaptcha;
 function setCaptchaKey() {
   DeepFramework.Kernel.bootstrap(function (kernel) {
     var captchaSiteKey = DeepFramework.Kernel.config
-      .microservices['deep-adtechmedia'].parameters.captchaSiteKey;
+      .microservices['adtechmedia-website'].parameters.captchaSiteKey;
 
     contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
       sitekey: captchaSiteKey
