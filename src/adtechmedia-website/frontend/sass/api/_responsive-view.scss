@@ -145,6 +145,10 @@
     .user-guide {
       width: 100%;
       margin: 0;
+      .back-link {
+        left: 50px;
+      }
+
       .content {
         border-left: 0 none;
         width: 100%;
@@ -194,18 +198,6 @@
   }
 }
 
-@media (min-width: 992px) {
-  .swagger-section {
-    .swagger-ui-wrap {
-      #api_info {
-        .info_title {
-          margin-top: -50px;
-        }
-      }
-    }
-  }
-}
-
 @media (max-width: 991px) {
   .home-blocks {
     & > .flex-row {
@@ -238,7 +230,12 @@
 
   .api-action {
     float: none;
-    margin: 0 0 50px;
+  }
+
+  .api-docs {
+    h1 {
+      float: none;
+    }
   }
 }
 
@@ -274,6 +271,14 @@
       font-size: 26px;
       margin-bottom: 20px;
     }
+
+    .back-link {
+      padding-left: 12px;
+      padding-right: 12px;
+      line-height: 30px;
+      height: 30px;
+      width: 30px;
+    }
   }
 
   .swagger-section {
@@ -289,14 +294,22 @@
 
 @media (max-width: 767px) {
   .dev-docs {
-    section {
+    section, section.home-blocks {
       padding-top: 25px;
       padding-bottom: 25px;
     }
 
     .user-guide {
+      .back-link {
+        left: 25px;
+      }
+
       .content {
         padding: 40px 25px;
+        h1 {
+          margin-left: 35px;
+        }
+
         h1, h2, .big-heading {
           &:before {
             left: -25px;
@@ -370,6 +383,11 @@
     }
 
     .user-guide {
+      .back-link {
+        left: 20px;
+        top: 30px;
+      }
+
       .content {
         padding: 20px;
         padding-top: 30px;

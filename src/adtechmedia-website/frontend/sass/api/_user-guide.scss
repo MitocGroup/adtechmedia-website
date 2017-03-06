@@ -2,6 +2,12 @@
   .user-guide {
     padding: 0;
     margin-left: $section-based-calc;
+
+    .back-link {
+      position: absolute;
+      top: 40px;
+      left: 270px;
+    }
     .content-root {
       min-height: 90%;
       position: relative;
@@ -28,6 +34,7 @@
 
       h1 {
         margin-bottom: 0;
+        margin-left: 45px;
         &:first-child {
           padding-top: 0;
           &:before {

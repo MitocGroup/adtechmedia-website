@@ -13,13 +13,17 @@
   }
 }
 
+.api-docs {
+  h1 {
+    float: left;
+  }
+}
+
 .swagger-section {
   .swagger-ui-wrap {
     #api_info {
       .info_title {
-        font: 30px Futura-Light, sans-serif;
-        color: #595959;
-        text-transform: uppercase;
+        display: none;
       }
     }
 

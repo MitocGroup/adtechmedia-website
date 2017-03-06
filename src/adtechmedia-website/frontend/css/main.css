@@ -1042,10 +1042,10 @@ footer {
   text-align: left;
   margin: 70px 0 0; }
   .dev-docs section {
-    padding-top: 50px;
+    padding-top: 40px;
     padding-bottom: 50px; }
-    .dev-docs section.case-studies {
-      padding-top: 40px; }
+    .dev-docs section.home-blocks {
+      padding-top: 50px; }
   .dev-docs h1 {
     font: 30px Futura-Light, sans-serif;
     color: #595959;
@@ -1055,6 +1055,24 @@ footer {
     -webkit-text-fill-color: inherit; }
     .dev-docs h1:after {
       display: none; }
+  .dev-docs .back-link {
+    vertical-align: top;
+    margin-top: -3px;
+    display: inline-block;
+    padding-left: 14px;
+    padding-right: 14px;
+    line-height: 36px;
+    height: 36px;
+    width: 36px;
+    font-size: 1.0625rem;
+    border-radius: 50%;
+    color: inherit;
+    background: #fff;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+    transition: box-shadow .4s ease-in-out;
+    z-index: 1; }
+    .dev-docs .back-link:hover {
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.14), 0 4px 5px 0 rgba(0, 0, 0, 0.098), 0 1px 10px 0 rgba(0, 0, 0, 0.084); }
 
 .main-pic {
   background: url("../images/api/banner.jpg") 0 0/cover no-repeat;
@@ -1123,6 +1141,10 @@ footer {
   padding: 0;
   margin-left: calc((100% - 1100px) / 2);
   /* Menu */ }
+  .dev-docs .user-guide .back-link {
+    position: absolute;
+    top: 40px;
+    left: 270px; }
   .dev-docs .user-guide .content-root {
     min-height: 90%;
     position: relative; }
@@ -1140,7 +1162,8 @@ footer {
       .dev-docs .user-guide .content h1 + p, .dev-docs .user-guide .content h1 ul, .dev-docs .user-guide .content h1 ol, .dev-docs .user-guide .content h2 + p, .dev-docs .user-guide .content h2 ul, .dev-docs .user-guide .content h2 ol, .dev-docs .user-guide .content h3 + p, .dev-docs .user-guide .content h3 ul, .dev-docs .user-guide .content h3 ol, .dev-docs .user-guide .content h4 + p, .dev-docs .user-guide .content h4 ul, .dev-docs .user-guide .content h4 ol, .dev-docs .user-guide .content h5 + p, .dev-docs .user-guide .content h5 ul, .dev-docs .user-guide .content h5 ol, .dev-docs .user-guide .content h6 + p, .dev-docs .user-guide .content h6 ul, .dev-docs .user-guide .content h6 ol {
         padding-top: 10px; }
     .dev-docs .user-guide .content h1 {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      margin-left: 45px; }
       .dev-docs .user-guide .content h1:first-child {
         padding-top: 0; }
         .dev-docs .user-guide .content h1:first-child:before {
@@ -1315,10 +1338,11 @@ footer {
   .api-action .btn {
     margin: 20px 0 0; }
 
+.api-docs h1 {
+  float: left; }
+
 .swagger-section .swagger-ui-wrap #api_info .info_title {
-  font: 30px Futura-Light, sans-serif;
-  color: #595959;
-  text-transform: uppercase; }
+  display: none; }
 .swagger-section .swagger-ui-wrap h2 {
   margin: 0; }
 .swagger-section .swagger-ui-wrap ul#resources li.resource {
@@ -1412,6 +1436,8 @@ footer {
   .dev-docs .user-guide {
     width: 100%;
     margin: 0; }
+    .dev-docs .user-guide .back-link {
+      left: 50px; }
     .dev-docs .user-guide .content {
       border-left: 0 none;
       width: 100%;
@@ -1438,9 +1464,6 @@ footer {
     margin-top: 15px; }
   .case-studies .case-logo {
     max-width: 60%; } }
-@media (min-width: 992px) {
-  .swagger-section .swagger-ui-wrap #api_info .info_title {
-    margin-top: -50px; } }
 @media (max-width: 991px) {
   .home-blocks > .flex-row {
     flex-direction: column;
@@ -1462,8 +1485,10 @@ footer {
     height: 300px; }
 
   .api-action {
-    float: none;
-    margin: 0 0 50px; } }
+    float: none; }
+
+  .api-docs h1 {
+    float: none; } }
 @media (max-width: 860px) {
   .case-studies > .flex-row {
     display: block;
@@ -1482,15 +1507,25 @@ footer {
   .dev-docs h1 {
     font-size: 26px;
     margin-bottom: 20px; }
+  .dev-docs .back-link {
+    padding-left: 12px;
+    padding-right: 12px;
+    line-height: 30px;
+    height: 30px;
+    width: 30px; }
 
   .swagger-section .swagger-ui-wrap #api_info .info_title {
     font-size: 26px; } }
 @media (max-width: 767px) {
-  .dev-docs section {
+  .dev-docs section, .dev-docs section.home-blocks {
     padding-top: 25px;
     padding-bottom: 25px; }
+  .dev-docs .user-guide .back-link {
+    left: 25px; }
   .dev-docs .user-guide .content {
     padding: 40px 25px; }
+    .dev-docs .user-guide .content h1 {
+      margin-left: 35px; }
     .dev-docs .user-guide .content h1:before, .dev-docs .user-guide .content h2:before, .dev-docs .user-guide .content .big-heading:before {
       left: -25px;
       width: calc(100% + 50px); }
@@ -1520,6 +1555,9 @@ footer {
       font-size: 12px; }
     .dev-docs section.case-studies .case-logo {
       height: 45px; }
+  .dev-docs .user-guide .back-link {
+    left: 20px;
+    top: 30px; }
   .dev-docs .user-guide .content {
     padding: 20px;
     padding-top: 30px; }
