@@ -10,11 +10,13 @@
 var ATM_SW_URL = 'https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js';
 var ATM_SW_PATH = 'sw.js';
 var ATM_NYT_RIBBON_PATH = 'assets/nyt-ribbon.html';
+var SWAGGER_URL = 'https://mitocgroup.github.io/atm/api.swagger.yml';
 
 var path = require('path');
 var fs = require('fs');
 var https = require('https');
 var zlib = require('zlib');
+var yaml = require('yamljs');
 
 function walkDir(dir, filter, callback) {
   if (!fs.existsSync(dir)) {
@@ -131,6 +133,7 @@ const articlesPaths = [
 
 module.exports = function(callback) {
   var rootMs = getRootMicroservice(this.microservice.property.microservices);
+  var env = this.microservice.property.env;
 
   if (rootMs) {
     console.log('Copying all static pages into root microservice');
@@ -142,8 +145,24 @@ module.exports = function(callback) {
     console.error('Error copying static pages. Root microservice is not found.');
   }
 
-  console.log('Downloading latest ATM Service Worker from ' + ATM_SW_URL);
+  console.log('Start downloading latest Swagger Specification file');
+  get(SWAGGER_URL, function (err, res) {
+    if (err) {
+      console.error(err);
+      return;
+    }
 
+    var json = yaml.parse(res);
+    if (env !== 'prod') {
+      json.host = 'api-dev.adtechmedia.io'
+    }
+
+    fs.writeFile('frontend/files/swagger.json', JSON.stringify(json), function () {
+      console.log('Swagger Specification file successfully persisted');
+    });
+  });
+
+  console.log('Downloading latest ATM Service Worker from ' + ATM_SW_URL);
   get(ATM_SW_URL, function(error, swContent) {
     if (error) {
       console.error(error);
