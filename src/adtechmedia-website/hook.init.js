@@ -1,21 +1,20 @@
-/**
- * Created by mgoria on 9/15/16.
- */
-
 'use strict';
 
-/* eslint  max-len: 0, no-catch-shadow: 0 */
-
-// @todo move it to config
-var ATM_SW_URL = 'https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js';
-var ATM_SW_PATH = 'sw.js';
-var ATM_NYT_RIBBON_PATH = 'assets/nyt-ribbon.html';
-var SWAGGER_URL = 'https://mitocgroup.github.io/atm/api.swagger.yml';
+/* eslint  max-len: 0, no-catch-shadow: 0, no-use-before-define: 0 */
 
 var path = require('path');
 var fs = require('fs');
 var https = require('https');
 var zlib = require('zlib');
+var child = require('child_process');
+
+/**
+ * Install required npm modules
+ */
+if (!fs.existsSync('node_modules')) {
+  child.execSync('npm install');
+}
+
 var yaml = require('yamljs');
 
 function walkDir(dir, filter, callback) {
@@ -40,8 +39,7 @@ function walkDir(dir, filter, callback) {
 function replaceInFile(file, pattern, replacement) {
   fs.writeFileSync(
     file,
-    fs.readFileSync(file).toString()
-      .replace(pattern, replacement)
+    fs.readFileSync(file).toString().replace(pattern, replacement)
   );
 }
 
@@ -52,7 +50,6 @@ function get(url, cb) {
 
     if (response.headers['content-encoding'] === 'gzip') {
       output = zlib.createGunzip();
-
       response.pipe(output);
     }
 
@@ -68,7 +65,6 @@ function get(url, cb) {
   });
 }
 
-// ---- START: Sync static pages hook ---- //
 function copyFileSync(source, target) {
   var targetFile = target;
 
@@ -122,7 +118,6 @@ function getRootMicroservice(microservices) {
 
   return null;
 }
-// ---- END: Sync static pages hook ---- //
 
 const articlesPaths = [
   '/nytimes/www.nytimes.com/2016/07/04/technology',
@@ -132,24 +127,15 @@ const articlesPaths = [
 ];
 
 module.exports = function(callback) {
-  var rootMs = getRootMicroservice(this.microservice.property.microservices);
-  var env = this.microservice.property.env;
+  var mService = this.microservice;
+  var env = mService.property.env;
+  var frontendParams = mService.parameters.frontend;
+  var atmSwUrl = frontendParams.atm.swSource;
 
-  if (rootMs) {
-    console.log('Copying all static pages into root microservice');
-    var source = path.join(this.microservice.autoload.frontend, 'static-pages');
-    var target = rootMs.autoload.frontend;
-
-    copyFolderRecursiveSync(source, target);
-  } else {
-    console.error('Error copying static pages. Root microservice is not found.');
-  }
-
-  console.log('Start downloading latest Swagger Specification file');
-  get(SWAGGER_URL, function (err, res) {
+  console.log('Downloading latest Swagger Specification file');
+  get(frontendParams.atm.swaggerUrl, function (err, res) {
     if (err) {
-      console.error(err);
-      return;
+      throw err;
     }
 
     var json = yaml.parse(res);
@@ -157,59 +143,75 @@ module.exports = function(callback) {
       json.host = 'api-dev.adtechmedia.io'
     }
 
-    fs.writeFile('frontend/files/swagger.json', JSON.stringify(json), function () {
-      console.log('Swagger Specification file successfully persisted');
-    });
+    fs.writeFileSync('frontend/files/swagger.json', JSON.stringify(json));
+
+    console.log('Copying all static pages into root microservice');
+    copyStaticPages();
   });
 
-  console.log('Downloading latest ATM Service Worker from ' + ATM_SW_URL);
-  get(ATM_SW_URL, function(error, swContent) {
-    if (error) {
-      console.error(error);
+  var copyStaticPages = function() {
+    var rootMs = getRootMicroservice(mService.property.microservices);
 
-      return callback();
+    if (rootMs) {
+      var source = path.join(mService.autoload.frontend, 'static-pages');
+      var target = rootMs.autoload.frontend;
+
+      copyFolderRecursiveSync(source, target);
+    } else {
+      console.error('Error copying static pages. Root microservice is not found.');
     }
 
-    var frontendDir = this.microservice.autoload.frontend;
-    var atmHost = this.microservice.parameters.frontend.atm.host;
-    var atmSwPath = path.join(frontendDir, ATM_SW_PATH);
-    var atmSwWebPath = '/' + path.join(this.microservice.identifier, ATM_SW_PATH);
-    var nytRibbonPath = path.join(__dirname, ATM_NYT_RIBBON_PATH);
-    var nytRibbonContent;
+    console.log('Downloading latest ATM Service Worker from ' + atmSwUrl);
+    injectServiceWorker();
+  };
 
-    console.log('Persist NYT Ribbon content from ' + nytRibbonPath);
+  var injectServiceWorker = function() {
+    get(atmSwUrl, function(error, swContent) {
+      if (error) {
+        throw error;
+      }
 
-    try {
-      nytRibbonContent = fs.readFileSync(nytRibbonPath);
-    } catch (error) {
-      console.error(error);
-    }
+      var frontendDir = mService.autoload.frontend;
+      var atmHost = frontendParams.atm.host;
+      var atmSwPath = frontendParams.atm.swPath;
+      var atmSwPathFull = path.join(frontendDir, atmSwPath);
+      var atmSwWebPath = '/' + path.join(mService.identifier, atmSwPath);
+      var nytRibbonPath = path.join(__dirname, 'assets/nyt-ribbon.html');
+      var nytRibbonContent;
 
-    console.log('Persist ATM Service Worker to ' + atmSwPath);
+      console.log('Persist NYT Ribbon content from ' + nytRibbonPath);
+      try {
+        nytRibbonContent = fs.readFileSync(nytRibbonPath);
+      } catch (error) {
+        console.error(error);
+      }
 
-    try {
-      fs.writeFileSync(atmSwPath, swContent);
-    } catch (error) {
-      console.error(error);
-    }
+      console.log('Persist ATM Service Worker to ' + atmSwPathFull);
+      try {
+        fs.writeFileSync(atmSwPathFull, swContent);
+      } catch (error) {
+        console.error(error);
+      }
 
-    articlesPaths.forEach(function(articlesPath) {
-      var fullArticlesPath = path.join(frontendDir, articlesPath);
+      articlesPaths.forEach(function(articlesPath) {
+        var fullArticlesPath = path.join(frontendDir, articlesPath);
 
-      walkDir(fullArticlesPath, /\.html$/, function(filename) {
-        console.log('Inject ATM base url (' + atmHost + ') in ' + filename);
-        console.log('Inject SW path (' + atmSwWebPath + ') in ' + filename);
+        walkDir(fullArticlesPath, /\.html$/, function(filename) {
+          console.log('Inject ATM base url (' + atmHost + ') in ' + articlesPath);
+          console.log('Inject SW path (' + atmSwWebPath + ') in ' + articlesPath);
 
-        try {
-          replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, nytRibbonContent);
-          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
-          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
-        } catch (error) {
-          console.error(error);
-        }
+          try {
+            replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, nytRibbonContent);
+            replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
+            replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
+          } catch (error) {
+            console.error(error);
+          }
+        });
       });
-    });
 
-    callback();
-  }.bind(this));
+      callback();
+    });
+  };
+
 };

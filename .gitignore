@@ -44,6 +44,7 @@ jspm_packages
 # App specific files
 src/adtechmedia-website/.parameters.json
 src/adtechmedia-website/frontend/files/swagger.json
+src/adtechmedia-website/frontend/sw.js
 deeploy.json*
 *_config.json*
 *.provisioning.json*
