@@ -30,6 +30,27 @@
       "example": "https://api-dev.adtechmedia.io",
       "default": "https://api-dev.adtechmedia.io"
     },
+    "atm|swSource": {
+      "displayName": "Service Worker source url",
+      "type": "string",
+      "required": true,
+      "example": "https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js",
+      "default": "https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js"
+    },
+    "atm|swPath": {
+      "displayName": "Service Worker destination path",
+      "type": "string",
+      "required": true,
+      "example": "sw.js",
+      "default": "sw.js"
+    },
+    "atm|swaggerUrl": {
+      "displayName": "Swagger Specification file url",
+      "type": "string",
+      "required": true,
+      "example": "https://mitocgroup.github.io/atm/api.swagger.yml",
+      "default": "https://mitocgroup.github.io/atm/api.swagger.yml"
+    },
     "captchaSiteKey": {
       "displayName": "Captcha site key for reCaptcha",
       "type": "string",

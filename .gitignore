@@ -1,6 +1,5 @@
 # Logs
 logs
-*.log
 npm-debug.log*
 
 # Runtime data
@@ -41,14 +40,11 @@ jspm_packages
 
 #####=== DEEP ===#####
 **/src/deep-root-*
-**/src/deep-monitoring
-
-# Compiled libraries
-**/lib.compiled/
 
 # App specific files
 src/adtechmedia-website/.parameters.json
-src/adtechmedia-website/.parameters.json
+src/adtechmedia-website/frontend/files/swagger.json
+src/adtechmedia-website/frontend/sw.js
 deeploy.json*
 *_config.json*
 *.provisioning.json*
@@ -57,11 +53,9 @@ deeploy.json*
 **/backend/src/**/*.js
 **/backend/src/**/*.zip
 **/backend/src/**/*.sfv
-**/backend/src/**/_config.json
 
 # Frontend dependencies
 **/js/vendor/
-src/adtechmedia-website/frontend/vendor/
 src/adtechmedia-website/frontend/_build/
 
 # Tests resources
@@ -71,11 +65,7 @@ CoverageComparator.js
 CoverageManager.js
 GitHubMsgPublisher.js
 _vars.sh
-/package.json
 **/.sass-cache/
 **/coverage/
 **/coverages/
 **/.DS_Store
-
-deep-root-*
-
