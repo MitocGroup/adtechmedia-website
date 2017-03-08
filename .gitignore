@@ -45,6 +45,7 @@ jspm_packages
 src/adtechmedia-website/.parameters.json
 src/adtechmedia-website/frontend/files/swagger.json
 src/adtechmedia-website/frontend/sw.js
+src/adtechmedia-website/frontend/static-pages/robots.txt
 deeploy.json*
 *_config.json*
 *.provisioning.json*
