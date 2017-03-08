@@ -151,10 +151,10 @@ module.exports = function(callback) {
 
   function injectRobotsTxt() {
     var sourceRobots = 'frontend/files/dev-robots.txt';
-
-    if (env == 'prod') {
+    if (env === 'prod') {
       sourceRobots = 'frontend/files/prod-robots.txt';
     }
+
     fs.writeFileSync('frontend/static-pages/robots.txt', fs.readFileSync(sourceRobots));
 
     console.log('Copying all static pages into root microservice');
