@@ -145,11 +145,23 @@ module.exports = function(callback) {
 
     fs.writeFileSync('frontend/files/swagger.json', JSON.stringify(json));
 
-    console.log('Copying all static pages into root microservice');
-    copyStaticPages();
+    console.log('Inject corresponding robots.txt');
+    injectRobotsTxt();
   });
 
-  var copyStaticPages = function() {
+  function injectRobotsTxt() {
+    var sourceRobots = 'frontend/files/dev-robots.txt';
+
+    if (env == 'prod') {
+      sourceRobots = 'frontend/files/prod-robots.txt';
+    }
+    fs.writeFileSync('frontend/static-pages/robots.txt', fs.readFileSync(sourceRobots));
+
+    console.log('Copying all static pages into root microservice');
+    copyStaticPages();
+  }
+
+  function copyStaticPages() {
     var rootMs = getRootMicroservice(mService.property.microservices);
 
     if (rootMs) {
@@ -163,9 +175,9 @@ module.exports = function(callback) {
 
     console.log('Downloading latest ATM Service Worker from ' + atmSwUrl);
     injectServiceWorker();
-  };
+  }
 
-  var injectServiceWorker = function() {
+  function injectServiceWorker() {
     get(atmSwUrl, function(error, swContent) {
       if (error) {
         throw error;
@@ -212,6 +224,6 @@ module.exports = function(callback) {
 
       callback();
     });
-  };
+  }
 
 };
