@@ -12,7 +12,7 @@ var child = require('child_process');
  * Install required npm modules
  */
 if (!fs.existsSync('node_modules')) {
-  child.execSync('cd '+ __dirname +' && npm install');
+  child.execSync(`cd ${__dirname} && npm install`);
 }
 
 var yaml = require('yamljs');
