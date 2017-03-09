@@ -12,7 +12,7 @@ var child = require('child_process');
  * Install required npm modules
  */
 if (!fs.existsSync('node_modules')) {
-  child.execSync('npm install');
+  child.execSync('cd '+ __dirname +' && npm install');
 }
 
 var yaml = require('yamljs');
@@ -129,6 +129,7 @@ const articlesPaths = [
 module.exports = function(callback) {
   var mService = this.microservice;
   var env = mService.property.env;
+  var frontendPath = mService.autoload.frontend;
   var frontendParams = mService.parameters.frontend;
   var atmSwUrl = frontendParams.atm.swSource;
 
@@ -143,19 +144,19 @@ module.exports = function(callback) {
       json.host = 'api-dev.adtechmedia.io'
     }
 
-    fs.writeFileSync('frontend/files/swagger.json', JSON.stringify(json));
+    fs.writeFileSync(path.join(frontendPath, 'files/swagger.json'), JSON.stringify(json));
 
     console.log('Inject corresponding robots.txt');
     injectRobotsTxt();
   });
 
   function injectRobotsTxt() {
-    var sourceRobots = 'frontend/files/dev-robots.txt';
-    if (env === 'prod') {
-      sourceRobots = 'frontend/files/prod-robots.txt';
-    }
+    var sourceRobots = (env === 'prod') ? 'prod-robots.txt' : 'dev-robots.txt';
 
-    fs.writeFileSync('frontend/static-pages/robots.txt', fs.readFileSync(sourceRobots));
+    fs.writeFileSync(
+      path.join(frontendPath, 'static-pages/robots.txt'),
+      fs.readFileSync(path.join(frontendPath, 'files', sourceRobots))
+    );
 
     console.log('Copying all static pages into root microservice');
     copyStaticPages();
@@ -165,7 +166,7 @@ module.exports = function(callback) {
     var rootMs = getRootMicroservice(mService.property.microservices);
 
     if (rootMs) {
-      var source = path.join(mService.autoload.frontend, 'static-pages');
+      var source = path.join(frontendPath, 'static-pages');
       var target = rootMs.autoload.frontend;
 
       copyFolderRecursiveSync(source, target);
@@ -183,10 +184,9 @@ module.exports = function(callback) {
         throw error;
       }
 
-      var frontendDir = mService.autoload.frontend;
       var atmHost = frontendParams.atm.host;
       var atmSwPath = frontendParams.atm.swPath;
-      var atmSwPathFull = path.join(frontendDir, atmSwPath);
+      var atmSwPathFull = path.join(frontendPath, atmSwPath);
       var atmSwWebPath = '/' + path.join(mService.identifier, atmSwPath);
       var nytRibbonPath = path.join(__dirname, 'assets/nyt-ribbon.html');
       var nytRibbonContent;
@@ -206,7 +206,7 @@ module.exports = function(callback) {
       }
 
       articlesPaths.forEach(function(articlesPath) {
-        var fullArticlesPath = path.join(frontendDir, articlesPath);
+        var fullArticlesPath = path.join(frontendPath, articlesPath);
 
         walkDir(fullArticlesPath, /\.html$/, function(filename) {
           console.log('Inject ATM base url (' + atmHost + ') in ' + articlesPath);
