@@ -149,6 +149,10 @@
       }
     }
   }
+
+  .cb-container {
+    min-height: calc(100vh - 360px);
+  }
 }
 
 @media (min-width: 992px) {
@@ -189,6 +193,10 @@
         }
       }
     }
+  }
+
+  .cb-container {
+    min-height: calc(100vh - 390px);
   }
 
   .main-nav {
@@ -240,10 +248,6 @@
         }
       }
     }
-  }
-
-  .cb-container {
-    margin-top: 70px;
   }
 
   h1 {
@@ -508,8 +512,11 @@
     font-size: 15px;
   }
 
-  .cb-container > section {
-    padding-bottom: 20px;
+  .cb-container {
+    min-height: calc(100vh - 70px);
+    & > section {
+      padding-bottom: 20px;
+    }
   }
 
   .main-nav {
@@ -1076,6 +1083,10 @@
         }
       }
     }
+  }
+
+  .cb-container {
+    min-height: calc(100vh - 250px);
   }
 
   #solutions {
