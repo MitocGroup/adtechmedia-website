@@ -241,6 +241,11 @@ h2 {
 
 .cb-container {
   margin-top: 70px;
+  min-height: calc(100vh - 330px);
+  &.not-found {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .cd-section {
