@@ -523,7 +523,6 @@ h2 {
   margin-top: 70px;
   min-height: calc(100vh - 330px); }
   .cb-container.not-found {
-    display: flex;
     align-items: center; }
 
 .cd-section .try-btn {
