@@ -4,15 +4,15 @@
       "displayName": "The source email that will send contact us mails",
       "type": "string",
       "required": true,
-      "example": "testmail@gmail.com",
-      "default": "testmail@gmail.com"
+      "example": "no-reply@adtechmedia.io",
+      "default": "no-reply@adtechmedia.io"
     },
     "email|destinationEmails": {
-      "displayName": "The destination emails that will receive contact us mails",
+      "displayName": "Coma-separated destination emails that will receive contact us mails",
       "type": "string",
       "required": true,
-      "example": "testmail@gmail.com,anothertestmail@gmail.com",
-      "default": "testmail@gmail.com,anothertestmail@gmail.com"
+      "example": "hello@adtechmedia.io",
+      "default": "hello@adtechmedia.io"
     },
     "reCaptchaSecret": {
       "displayName": "ReCaptcha secret key",
