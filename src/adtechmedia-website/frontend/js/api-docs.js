@@ -13,10 +13,11 @@ jQuery(function($) {
    */
   $apiKeyBtn.on('click', function() {
     var token = $apiKey[0].value;
-    if(token && token.trim() != '') {
+    if(token && token.trim() !== '') {
       swaggerUi.api.clientAuthorizations.add(
         'api_key', new SwaggerClient.ApiKeyAuthorization('X-Api-Key', token, 'header')
       );
+      window.apiKey = token;
       $.notify('Api-key successfully applied', 'success');
     }
   });
@@ -33,6 +34,7 @@ jQuery(function($) {
       $.notify('Unable to Load SwaggerUI', 'error');
       console.error(error);
     },
+    useJQuery: true,
     docExpansion: 'list',
     jsonEditor: false,
     defaultModelRendering: 'schema',
@@ -40,4 +42,20 @@ jQuery(function($) {
   });
 
   swaggerUi.load();
+
+  /**
+   * Ajax pre-send listener
+   */
+  $(document).ajaxSend(function(event, request, settings) {
+    var requestUrl = settings.url;
+    var allowedRegExp = new RegExp('/atm-admin\/api-gateway-key/');
+
+    if (!allowedRegExp.test(requestUrl)) {
+      if (!window.apiKey) {
+        request.abort();
+        $.notify('Api key is wrong or missing', 'warn');
+      }
+    }
+  });
+
 });
