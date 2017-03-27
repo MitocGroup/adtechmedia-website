@@ -19,6 +19,10 @@
       zoom: 1;
       max-width: 800px;
       border-left: solid 1px $border-color;
+      & > *:first-child {
+        padding-left: 85px;
+      }
+
       p, ul, ol, pre, blockquote, #{headings(1,6)} {
         padding: 10px 0;
         box-sizing: border-box;
@@ -34,7 +38,6 @@
 
       h1 {
         margin-bottom: 0;
-        margin-left: 45px;
         &:first-child {
           padding-top: 0;
           &:before {

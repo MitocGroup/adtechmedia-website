@@ -88,6 +88,10 @@
             overflow: auto;
           }
         }
+
+        & > *:first-child {
+          padding-left: 45px;
+        }
       }
     }
   }
@@ -306,8 +310,8 @@
 
       .content {
         padding: 40px 25px;
-        h1 {
-          margin-left: 35px;
+        & > *:first-child {
+          padding-left: 35px;
         }
 
         h1, h2, .big-heading {

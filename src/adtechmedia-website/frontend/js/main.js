@@ -4,6 +4,9 @@
 
 var videoBlock = document.getElementById('video-block');
 var videoFile = document.getElementById('video-file');
+var $menu = $('.main-nav ul');
+var headerHeight = $('header').height();
+var $menuIcon = $('#navTrigger');
 
 function _initGoogleMaps() {
   var mapContainer = document.getElementById('googleMap');
@@ -46,8 +49,28 @@ function autoGrow(element) {
   }
 }
 
-$(window).on('scroll touchmove', function() {
-  $('#navTrigger').removeAttr('checked');
+//show spinner while page loads
+$(window).load(function() {
+  $(".loader").fadeOut("slow");
+});
+
+// Main nav on mobile
+$menuIcon.on('click', function(){
+  if($menuIcon.prop('checked')) {
+    if($(window).height() > $menu.height() + headerHeight) {
+      $(window).on('scroll touchmove', function() {
+        $menuIcon.removeAttr('checked');
+      });
+    } else {
+      $('body').addClass('menu-shown');
+      $menu.on('click touchmove', 'a', function() {
+        $menuIcon.removeAttr('checked');
+        $('body').removeClass('menu-shown');
+      });
+    }
+  } else {
+    $('body').removeClass('menu-shown');
+  }
 });
 
 $('.show-toggle').click(function() {
