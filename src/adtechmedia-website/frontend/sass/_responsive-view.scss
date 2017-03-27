@@ -208,6 +208,8 @@
       background: #fff;
       left: 0;
       width: 100%;
+      overflow: auto;
+      max-height: calc(100vh - 70px);
     }
 
     input#navTrigger:checked ~ ul {
