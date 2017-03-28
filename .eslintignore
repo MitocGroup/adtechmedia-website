@@ -6,6 +6,9 @@ tmp/**/*
 **.spec.js
 **.min.js
 **.min.css
+**.css
+docs/
+src/**/frontend/js/app/angular2/components/shared/
 
 # third party css files
 **/font-awesome.css
@@ -79,15 +82,10 @@ config.test.js
 **/atm-build
 **/src/**/backend/vendor
 **/aws-262
+**/_build/
 
 #####=== DEEP ===#####
 **/src/deep-root-*
 
-####=== Third party ===###
-carousel.js
-contact.js
-gtm.js
-jquery.js
-jquery.noty.packaged.js
-jquery.vide.js
-input-mask.js
+/src/adtechmedia-website/frontend/js/
+/src/adtechmedia-website/frontend/sw.js

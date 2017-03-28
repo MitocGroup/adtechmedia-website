@@ -4,15 +4,15 @@
       "displayName": "The source email that will send contact us mails",
       "type": "string",
       "required": true,
-      "example": "testmail@gmail.com",
-      "default": "testmail@gmail.com"
+      "example": "no-reply@adtechmedia.io",
+      "default": "no-reply@adtechmedia.io"
     },
     "email|destinationEmails": {
-      "displayName": "The destination emails that will receive contact us mails",
+      "displayName": "Coma-separated destination emails that will receive contact us mails",
       "type": "string",
       "required": true,
-      "example": "testmail@gmail.com,anothertestmail@gmail.com",
-      "default": "testmail@gmail.com,anothertestmail@gmail.com"
+      "example": "hello@adtechmedia.io",
+      "default": "hello@adtechmedia.io"
     },
     "reCaptchaSecret": {
       "displayName": "ReCaptcha secret key",
@@ -27,8 +27,29 @@
       "displayName": "ATM host",
       "type": "string",
       "required": true,
-      "example": "https://adm-dev.adtechmedia.io",
-      "default": "https://adm-dev.adtechmedia.io"
+      "example": "https://api-dev.adtechmedia.io",
+      "default": "https://api-dev.adtechmedia.io"
+    },
+    "atm|swSource": {
+      "displayName": "Service Worker source url",
+      "type": "string",
+      "required": true,
+      "example": "https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js",
+      "default": "https://api-dev.adtechmedia.io/atm-core/atm-build/sw.js"
+    },
+    "atm|swPath": {
+      "displayName": "Service Worker destination path",
+      "type": "string",
+      "required": true,
+      "example": "sw.js",
+      "default": "sw.js"
+    },
+    "atm|swaggerUrl": {
+      "displayName": "Swagger Specification file url",
+      "type": "string",
+      "required": true,
+      "example": "https://mitocgroup.github.io/atm/api.swagger.yml",
+      "default": "https://mitocgroup.github.io/atm/api.swagger.yml"
     },
     "captchaSiteKey": {
       "displayName": "Captcha site key for reCaptcha",

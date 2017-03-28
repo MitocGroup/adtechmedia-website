@@ -47,6 +47,12 @@
       a {
         margin: 0 0 0 30px;
       }
+
+      &:first-child {
+        a {
+          margin: 0;
+        }
+      }
     }
   }
 
@@ -143,6 +149,10 @@
       }
     }
   }
+
+  .cb-container {
+    min-height: calc(100vh - 360px);
+  }
 }
 
 @media (min-width: 992px) {
@@ -152,13 +162,6 @@
 }
 
 @media (max-width: 991px) {
-  .logo {
-    height: 70px;
-    img {
-      height: 40px;
-    }
-  }
-
   header {
     nav {
       .navTrigger-label {
@@ -192,6 +195,10 @@
     }
   }
 
+  .cb-container {
+    min-height: calc(100vh - 390px);
+  }
+
   .main-nav {
     height: 70px;
     ul {
@@ -201,6 +208,8 @@
       background: #fff;
       left: 0;
       width: 100%;
+      overflow: auto;
+      max-height: calc(100vh - 70px);
     }
 
     input#navTrigger:checked ~ ul {
@@ -214,6 +223,15 @@
       text-align: left;
       height: 50px;
       line-height: 50px;
+      &.custom-menu-link {
+        a {
+          display: inline-block;
+          height: auto;
+          line-height: normal;
+          margin: 0 0 0 50px;
+        }
+      }
+
       &:nth-child(odd) {
         background: #fafafa;
       }
@@ -232,10 +250,6 @@
         }
       }
     }
-  }
-
-  .cb-container {
-    margin-top: 70px;
   }
 
   h1 {
@@ -390,6 +404,17 @@
       }
     }
   }
+
+  .landing-page {
+    margin-top: 70px;
+    section {
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+  }
 }
 
 @media (max-width: 890px) {
@@ -425,6 +450,49 @@
   }
 }
 
+@media (max-width: 768px) {
+  h1 {
+    @include text-gradient(-webkit-linear-gradient(left, black, white 100%));
+  }
+
+  .landing-page {
+    section {
+      padding: 25px 0;
+    }
+
+    .flex-row {
+      display: block;
+      &.flex-gutter {
+        margin: 0;
+      }
+      & > [class^="flex-item-"] {
+        max-width: 100%;
+        padding: 0;
+        &:not(:last-child) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+
+    .install-btn {
+      display: block;
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .video-cont {
+      height: 300px;
+    }
+
+    .customer-reviews {
+      blockquote {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   body {
     line-height: 1.4;
@@ -446,12 +514,21 @@
     font-size: 15px;
   }
 
-  .cb-container > section {
-    padding-bottom: 20px;
+  .cb-container {
+    min-height: calc(100vh - 70px);
+    & > section {
+      padding-bottom: 20px;
+    }
   }
 
   .main-nav {
     li {
+      &.custom-menu-link {
+        a {
+          margin: 0 0 0 20px;
+        }
+      }
+
       a {
         padding: 0 20px;
       }
@@ -587,6 +664,37 @@
   #home {
     margin: 0 0 20px;
   }
+
+  .legal-pages {
+    padding: 15px 0;
+    h1 {
+      font-size: 24px;
+    }
+    .text-block {
+      h4 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .bottom-info {
+    line-height: 1.5;
+    font-size: 12px;
+    padding: 10px 0;
+    span {
+      display: block;
+      a {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  #api {
+    .home-blocks {
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+  }
 }
 
 @media (max-width: 640px) {
@@ -597,7 +705,7 @@
       a {
         height: 40px;
         line-height: 40px;
-        font-size: 12px;
+        font-size: 13px;
       }
     }
   }
@@ -790,6 +898,12 @@
       padding: 0;
     }
   }
+
+  .landing-page {
+    h1 {
+      font-size: 25px;
+    }
+  }
 }
 
 @media (min-width: 481px) {
@@ -870,10 +984,6 @@
     }
   }
 
-  .bottom-info {
-    line-height: 40px;
-  }
-
   .demo-container {
     .demo-row {
       flex-direction: column;
@@ -906,6 +1016,38 @@
       &:before {
         width: 130px;
       }
+    }
+  }
+
+  .landing-page {
+    .social-links {
+      label {
+        display: none;
+      }
+    }
+
+    .video-cont {
+      height: 200px;
+    }
+
+    .heading-desc {
+      margin: 15px 0;
+    }
+
+    .customer-reviews {
+      blockquote {
+        font-size: 15px;
+      }
+    }
+
+    .install-btn {
+      width: 280px;
+      height: 40px;
+      line-height: 38px;
+    }
+
+    h1 {
+      font-size: 23px;
     }
   }
 }
@@ -945,6 +1087,10 @@
     }
   }
 
+  .cb-container {
+    min-height: calc(100vh - 250px);
+  }
+
   #solutions {
     section {
       h1 {
@@ -965,6 +1111,13 @@
       .register-pic img {
         max-width: 90%;
       }
+    }
+  }
+
+  .bottom-info {
+    padding: 10px 20px;
+    span {
+      display: inline;
     }
   }
 }

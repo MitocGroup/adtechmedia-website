@@ -1,3 +1,81 @@
+// var _origDefine = define;
+// 
+// var define = function (path, deps, cb) {
+// 	 _origDefine(path, deps, function() {
+// 		 var depsVector = arguments;
+// 		 
+// 		 for (var i = 0; i < deps.length; i++) {
+// 			 switch (deps[i]) {
+// 				 case 'jquery/nyt':
+// 				 	depsVector[i] = depsVector[i] || window.jQuery;
+// 					break;
+// 				case 'backbone/nyt':
+//  				 	depsVector[i] = depsVector[i] || window.Backbone;
+//  					break;
+// 				case 'underscore/nyt':
+// 				case 'shared/adlibrary/views/base-ad':
+//  				 	depsVector[i] = depsVector[i] || window._;
+//  					break;
+// 				case 'article/story/views/sprinkler':
+// 				case 'shared/adlibrary/views/adx':
+// 				case 'shared/adlibrary/views/dfp':
+// 				case 'shared/data/collections/location':
+// 				case 'shared/interstitialmodal/views/whitelist-interstitial':
+// 				case 'article/story/views/image-resizer':
+// 				case 'shared/community/models/community-user':
+// 				case 'shared/sharetools/collections/cross-platform-save':
+// 				case 'shared/sharetools/collections/short-url':
+// 				case 'article/story/views/related-combined-coverage/related-combined-coverage':
+// 				case 'shared/data/collections/trending-pages':
+// 				case 'shared/data/collections/recommendations':
+// 				case 'shared/data/collections/context':
+// 				case 'shared/data/collections/top-news':
+// 				case 'shared/data/collections/section-origin':
+// 				case 'shared/data/collections/nyt-collection':
+// 				case 'shared/ribbon/collections/ribbon':
+// 				case 'shared/searchform/collections/search-suggest':
+// 				case 'shared/ribbon/views/ribbon':
+// 				case 'shared/community/collections/community-loader':
+// 				case 'shared/masthead/views/masthead':
+// 				case 'shared/masthead/views/search':
+// 				case 'shared/masthead/views/user-settings-modal':
+// 				case 'shared/masthead/views/user-name-modal':
+// 				case 'shared/masthead/views/in-story-theme':
+// 				case 'shared/fontsizer/views/font-sizer':
+// 				case 'shared/account/views/login-modal':
+// 				case 'shared/account/views/registration-modal':
+// 				case 'shared/data/collections/taxonomy':
+// 				case 'shared/community/views/comments-panel':
+// 				case 'shared/navigation/views/navigation':
+// 				case 'shared/community/views/comments':
+// 				case 'shared/navigation/views/navigation-edge-adjust':
+// 				case 'shared/community/views/comments-peek':
+// 					depsVector[i] = depsVector[i] || function(){return {
+// 						enabled: function(cb) {cb()}
+// 					}};
+// 					break;	
+// 				case 'shared/modal/templates':
+// 				case 'shared/interstitialmodal/templates':
+// 				case 'shared/community/templates':
+// 				case 'shared/sharetools/templates':
+// 				case 'shared/ribbon/templates':
+// 				case 'shared/account/templates':
+// 				case 'shared/navigation/templates':
+// 					depsVector[i] = depsVector[i] || {
+// 						whitelistHeader: function(){return ''},
+// 						userProfileModalHeader: function(){return ''},
+// 						accountModalHeader: function(){return ''},
+// 						loginModalFooter: function(){return ''},
+// 						registrationModalFooter: function(){return ''},
+// 					};
+// 					break;
+// 			 }
+// 		 }
+// 
+// 		 cb.apply(this, depsVector);
+// 	 });
+// }
+
 define("article/story/templates", ["underscore/nyt"], function(_) {
 		var templates = {};
 		return templates.communityPlaceholder = function(obj) {
@@ -80,9 +158,13 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("article/story/helpers/sprinkling-rules", ["jquery/nyt", "underscore/nyt", "article/story/templates"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var n = {
 			sprinkler: null,
-			1: e.noop,
+			1: (function(){}),
 			2: function() {
 				var e = this.getItemFromDrawer("NewsEvent"),
 					t = this.sprinkler.getNextAvailableColumn();
@@ -174,6 +256,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("article/story/views/sprinkler", ["underscore/nyt", "jquery/nyt", "foundation/views/base-view", "article/story/templates", "article/story/helpers/sprinkling-rules"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.jQuery;
+		
 		var a = i.extend({
 			config: {
 				ads: {
@@ -343,6 +429,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new t
 	}), define("shared/adlibrary/helpers/filter-placements-mixin", ["underscore/nyt"], function(e) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var t = {
 			map: {
 				forcexxl: {
@@ -388,6 +477,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return t
 	}), define("shared/adlibrary/views/base-ad", ["underscore/nyt", "foundation/views/base-view", "shared/adlibrary/helpers/filter-placements-mixin"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var n = t.extend({
 			isReady: !1,
 			constructor: function(e) {
@@ -466,6 +558,8 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("shared/adlibrary/helpers/dfp-ordered-custom-criteria-mixin", ["underscore/nyt", "foundation/views/page-manager"], function(e, t) {
 		"use strict";
+
+		e = e || window._;
 
 		function i(t) {
 			var i = "";
@@ -690,6 +784,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/modal/views/modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/templates"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var s = i.registerView("modal").extend({
 			template: n.modal,
 			className: "modal-container",
@@ -747,7 +845,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 				var i = this;
 				return t ? (t.returnValue = !1, t.preventDefault(), this.$target = e(t.currentTarget)) : this.$target = e(this.settings.binding).eq(0), this.$el.fadeIn(this.settings.toggleSpeed, function() {
 					i.broadcast("nyt:modal-show"), i.broadcast("nyt:modal-show-" + i.settings.id)
-				}), this.settings.autoPosition ? this.autoPosition() : this.positionDialog(!0), (this.settings.openCallback || e.noop).call(this), this.subscribe("nyt:page-resize", this.positionDialog), this.settings.closeOnEsc && this.subscribeOnce("nyt:page-key-esc", this.close), this.$body.on("click", this.handleClickClose), this.pageManager.isMobile() && this.$body.css("cursor", "pointer"), this.settings.focusOnShow && this.$modal.focus(), this
+				}), this.settings.autoPosition ? this.autoPosition() : this.positionDialog(!0), (this.settings.openCallback || (function(){})).call(this), this.subscribe("nyt:page-resize", this.positionDialog), this.settings.closeOnEsc && this.subscribeOnce("nyt:page-key-esc", this.close), this.$body.on("click", this.handleClickClose), this.pageManager.isMobile() && this.$body.css("cursor", "pointer"), this.settings.focusOnShow && this.$modal.focus(), this
 			},
 			mouseEnterOpen: function(e) {
 				window.clearTimeout(this.mouseLeaveTimeout), this.mouseEnterTimeout = t.delay(this.open, this.settings.mouseEnterDelay, e)
@@ -755,7 +853,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 			close: function(t) {
 				var i = this;
 				return t && t.currentTarget && this.settings.disableBindings && e(t.currentTarget).hasClass("modal-pointer") ? this : (this.$el.fadeOut(this.settings.toggleSpeed, function() {
-					(i.settings.closeCallback || e.noop).call(i), i.broadcast("nyt:modal-hide"), i.broadcast("nyt:modal-hide-" + i.settings.id)
+					(i.settings.closeCallback || (function(){})).call(i), i.broadcast("nyt:modal-hide"), i.broadcast("nyt:modal-hide-" + i.settings.id)
 				}), this.stopSubscribing("nyt:page-resize", this.positionDialog), this.$body.off("click", this.handleClickClose), window.clearTimeout(this.mouseEnterTimeout), this.pageManager.isMobile() && this.$body.css("cursor", ""), this)
 			},
 			mouseOutClose: function(t) {
@@ -837,6 +935,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return s
 	}), define("shared/adlibrary/helpers/dfp-sitewide-requirements-mixin", ["jquery/nyt", "underscore/nyt", "foundation/models/user-data", "shared/adlibrary/templates", "shared/modal/views/modal"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = {
 			aax: "3030",
 			async: !0,
@@ -949,7 +1051,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 						width: n + "px"
 					}).text("ADVERTISEMENT").end(), t.prepend(s))
 				} catch (a) {
-					e.noop()
+					(function(){})()
 				}
 			},
 			integrateKrux: function() {
@@ -973,8 +1075,8 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 			setUpAmazonGlobal: function() {
 				var t = this;
 				window.amznads = {
-					updateAds: e.noop,
-					renderAd: e.noop
+					updateAds: (function(){}),
+					renderAd: (function(){})
 				}, e.ajax({
 					url: "//c.amazon-adsystem.com/aax2/amzn_ads.js",
 					dataType: "script",
@@ -989,7 +1091,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 				try {
 					i = encodeURIComponent("" + window.top.location.toString().split("?")[0])
 				} catch (n) {
-					e.noop()
+					(function(){})()
 				}
 				e.ajax({
 					url: "//aax.amazon-adsystem.com/e/dtb/bid?src=" + t.aax + "&u=" + i + "&cb=" + Math.round(1e7 * Math.random()),
@@ -1175,6 +1277,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/adlibrary/views/dfp", ["jquery/nyt", "underscore/nyt", "shared/adlibrary/views/base-ad", "foundation/hosts", "shared/adlibrary/helpers/dfp-ordered-custom-criteria-mixin", "shared/adlibrary/helpers/dfp-placements-mixin", "shared/adlibrary/helpers/dfp-sitewide-requirements-mixin"], function(e, t, i, n, s, a, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var r = i.extend({
 			alreadyRequested: {},
 			notYetRequested: {},
@@ -1379,10 +1485,17 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return r
 	}), define("shared/ad/models/ad", ["backbone/nyt"], function(e) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		
 		var t = e.Model.extend({});
 		return t
 	}), define("shared/adlibrary/collections/adx-collection", ["backbone/nyt", "underscore/nyt", "foundation/collections/base-collection", "foundation/hosts", "shared/ad/models/ad"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		t = t || window._;
+		
 		var a = i.extend({
 			url: n.ADXHost + "/adx/bin/adxrun.html",
 			model: s,
@@ -1437,6 +1550,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return e
 	}), define("shared/adlibrary/views/adx", ["jquery/nyt", "underscore/nyt", "shared/adlibrary/views/base-ad", "shared/adlibrary/templates", "shared/adlibrary/collections/adx-collection", "shared/adlibrary/helpers/adx-placements-mixin"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var o = i.extend({
 			viewName: "adx",
 			placements: a,
@@ -1606,6 +1723,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return e
 	}), define("article/common/views/adlibrary/requirements/dfp-article-requirements-mixin", ["jquery/nyt", "underscore/nyt"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var i = {
 			dfp: null,
 			closeTimeout: null,
@@ -1817,7 +1938,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 					}), !n) try {
 					1605 !== i[0] && 0 === t.find("iframe").contents().find("html #politicalAd").length && 0 !== i[0] && (s = e("<div>").addClass("ad-header").attr("aria-hidden", "true").append(e("<p>")).find("p").text("ADVERTISEMENT").end(), t.prepend(s))
 				} catch (a) {
-					e.noop()
+					(function(){})()
 				}
 			},
 			handleRibbonAd: function(e, t) {
@@ -1977,6 +2098,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return e
 	}), define("shared/data/collections/location", ["backbone/nyt", "foundation/collections/base-collection", "underscore/nyt", "shared/data/helpers/collection-mixin", "foundation/hosts"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		i = i || window._;
+		
 		var a = t.extend(i.extend({}, n, {
 			initialize: function() {
 				this.fetch()
@@ -1997,6 +2122,11 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/interstitialmodal/views/whitelist-interstitial", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/interstitialmodal/templates", "foundation/models/page-storage", "foundation/cookies", "shared/data/instances/location", "foundation/hosts"], function(e, t, i, n, s, a, o, r, l, d) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		i = i || window.Backbone;
+		
 		var c = n.registerView("interstitial").extend({
 			template: a.whitelistMessage,
 			events: {
@@ -2204,6 +2334,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("article/story/views/image-resizer", ["underscore/nyt", "jquery/nyt", "foundation/views/base-view"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.jQuery;
+		
 		var n = i.extend({
 			imageRatioLimit: .6,
 			initialize: function() {
@@ -2226,6 +2360,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/community/api-mixin", ["jquery/nyt", "underscore/nyt", "foundation/hosts"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var n = {
 			apiPath: i.communityApiHost + "/svc/community/V3/requestHandler",
 			COMMANDS: {
@@ -2327,6 +2465,11 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("shared/community/models/community-user", ["jquery/nyt", "backbone/nyt", "underscore/nyt", "foundation/models/base-model", "foundation/hosts", "foundation/models/user-data", "shared/community/api-mixin"], function(e, t, i, n, s, a, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window.Backbone;
+		i = i || window._;
+		
 		var r = n.extend(i.extend({}, o, {
 			defaults: {
 				userID: null,
@@ -2481,6 +2624,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/community/models/post", ["underscore/nyt", "foundation/models/base-model", "shared/community/api-mixin", "shared/community/instances/community-user"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var s = t.extend(e.extend({}, i, {
 			defaults: {
 				commentID: 0,
@@ -2585,6 +2731,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return s
 	}), define("shared/community/collections/stream", ["underscore/nyt", "foundation/collections/base-collection", "shared/community/models/post"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var n = t.extend({
 			model: i,
 			sortMethods: {
@@ -2635,6 +2784,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("shared/community/models/thread", ["underscore/nyt", "foundation/models/base-model", "shared/community/collections/stream"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var n = t.extend({
 			defaults: {
 				context: "0",
@@ -2690,6 +2842,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("shared/community/models/discussion", ["underscore/nyt", "foundation/models/base-model", "foundation/collections/base-collection", "shared/community/api-mixin", "shared/community/models/thread"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var a = t.extend(e.extend({}, n, {
 			defaults: {
 				views: [],
@@ -2956,6 +3111,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/community/collections/community-loader", ["underscore/nyt", "foundation/collections/base-collection", "shared/community/models/discussion", "shared/community/instances/community-user"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var s = t.extend({
 			model: i,
 			StatusCode: {
@@ -3073,6 +3231,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/community/views/comments-panel", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/community/templates", "foundation/hosts"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = i.extend({
 			className: "comments-panel",
 			template: n.commentsPanel,
@@ -3150,6 +3312,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/community/views/utils-mixin", ["jquery/nyt", "underscore/nyt"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var i = {
 			request: function() {
 				this.broadcast("nyt:community-request", this.settings.asset, this, this.settings)
@@ -3238,6 +3404,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return i
 	}), define("shared/community/views/comments-button", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/community/views/utils-mixin", "shared/community/templates"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = i.extend(t.extend({}, n, {
 			template: s.button,
 			events: {
@@ -3281,6 +3451,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/community/views/comments-peek", ["underscore/nyt", "foundation/views/base-view", "shared/community/views/utils-mixin", "shared/community/templates"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var s = t.extend(e.extend({}, i, {
 			className: "comments-peek",
 			template: n.peek,
@@ -3330,6 +3503,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return s
 	}), define("shared/ad/collections/ads", ["backbone/nyt", "underscore/nyt", "foundation/collections/base-collection", "foundation/hosts", "shared/ad/models/ad"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		t = t || window._;
+		
 		var a = i.extend({
 			deliveryProofParams: ["adxforce", "debug"],
 			adForceLookup: {
@@ -3409,6 +3586,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/ad/views/ads", ["underscore/nyt", "jquery/nyt", "foundation/views/base-view", "foundation/views/ad-view-manager", "shared/ad/collections/ads", "shared/ad/templates", "shared/modal/views/modal"], function(e, t, i, n, s, a, o) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.jQuery;
+		
 		var r = i.registerView("ads").extend({
 			el: ".ad",
 			template: a,
@@ -3627,6 +3808,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return r
 	}), define("shared/sharetools/helpers/share-tools-config", ["underscore/nyt", "foundation/views/page-manager"], function(e, t) {
 		"use strict";
+		
+		e = e || window._;
+		
 		var i = {
 				width: 600,
 				height: 450,
@@ -3831,6 +4015,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/sharetools/views/email", ["jquery/nyt", "underscore/nyt", "foundation/hosts", "foundation/views/base-view", "shared/modal/views/modal", "shared/sharetools/templates"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var o = n.extend({
 			template: a.emailModal,
 			className: "email-view-container",
@@ -3881,6 +4069,11 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return o
 	}), define("shared/sharetools/models/saved-article", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/models/base-model"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		i = i || window.Backbone;
+		
 		var s = n.extend({
 			getSummary: function() {
 				return this.get("Data") ? this.get("Data").Summary : ""
@@ -3918,6 +4111,11 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return s
 	}), define("shared/sharetools/collections/cross-platform-save", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/collections/base-collection", "foundation/hosts", "foundation/lib/auth/userauth", "shared/sharetools/models/saved-article"], function(e, t, i, n, s, a, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		i = i || window.Backbone;
+		
 		var r = n.extend({
 			model: o,
 			offset: 0,
@@ -4019,6 +4217,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/sharetools/collections/short-url", ["jquery/nyt", "backbone/nyt", "foundation/collections/base-collection", "foundation/hosts"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window.Backbone;
+		
 		var s = i.extend({
 			url: n.shortenHost + "/svc/bitly/shorten.jsonp",
 			initialize: function() {
@@ -4060,6 +4262,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/sharetools/views/common-mixin", ["jquery/nyt", "underscore/nyt", "foundation/hosts", "foundation/models/user-data", "foundation/models/page-storage", "foundation/tracking/tracking-mixin", "shared/modal/views/modal", "shared/sharetools/templates", "shared/sharetools/views/email", "shared/sharetools/helpers/share-tools-config", "shared/sharetools/instances/cross-platform-save", "shared/sharetools/instances/short-url"], function(e, t, i, n, s, a, o, r, l, d, c, h) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var u = {
 			handleShareAction: function(t, i) {
 				var s = e(t.target),
@@ -4207,6 +4413,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return u
 	}), define("shared/sharetools/views/share-tool", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/sharetools/views/common-mixin", "shared/sharetools/templates"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = i.extend(t.extend({}, n, {
 			tagName: "li",
 			events: {
@@ -4306,6 +4516,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return t
 	}), define("shared/sharetools/views/containers-mixin", ["jquery/nyt", "underscore/nyt", "shared/sharetools/models/share-data", "shared/sharetools/views/share-tool", "shared/sharetools/helpers/share-tools-config"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = {
 			getToolIdsAndCustomLabels: function(e) {
 				var t, i, n, a;
@@ -4340,6 +4554,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/sharetools/views/share-tools-modal-container", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/ad/views/ads", "shared/sharetools/helpers/share-tools-config", "shared/sharetools/views/share-tool", "shared/sharetools/views/common-mixin", "shared/sharetools/views/containers-mixin", "shared/sharetools/instances/short-url", "shared/sharetools/templates"], function(e, t, i, n, s, a, o, r, l, d, c) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var h = i.extend(t.extend({}, r, l, {
 			events: {
 				click: "handleModalShareAction"
@@ -4420,6 +4638,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return h
 	}), define("shared/community/views/flag-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/community/api-mixin", "shared/modal/views/modal", "shared/community/templates"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var o = i.extend(t.extend({}, n, {
 			defaultSettings: {
 				id: "flag-modal",
@@ -4494,6 +4716,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return o
 	}), define("shared/community/views/verified-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/community/templates"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = i.extend({
 			defaultSettings: {
 				id: "verified-modal",
@@ -4520,6 +4746,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/community/views/comments", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "foundation/models/user-data", "shared/community/views/utils-mixin", "shared/sharetools/views/share-tools-modal-container", "shared/sharetools/helpers/share-tools-config", "shared/community/views/flag-modal", "shared/community/views/verified-modal", "shared/community/templates", "foundation/lib/polyfills/placeholder", "shared/sharetools/models/share-data"], function(e, t, i, n, s, a, o, r, l, d, c, h) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var u = i.extend(t.extend({}, s, {
 			template: d.comments,
 			postTemplate: d.post,
@@ -5017,6 +5247,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		})
 	}), define("article/story/views/related-combined-coverage/related-combined-coverage", ["underscore/nyt", "jquery/nyt", "foundation/views/base-view"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.jQuery;
+		
 		var n = i.extend({
 			el: "#related-combined-coverage",
 			events: {
@@ -5064,6 +5298,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/data/models/article", ["underscore/nyt", "backbone/nyt"], function(e, t) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.Backbone;
+		
 		var i = t.Model.extend({
 			defaults: {
 				title: "",
@@ -5159,6 +5397,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return i
 	}), define("shared/data/collections/trending-pages", ["underscore/nyt", "backbone/nyt", "foundation/collections/base-collection", "foundation/hosts", "shared/data/models/article", "shared/data/helpers/collection-mixin"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window._;
+		t = t || window.Backbone;
+		
 		var o = i.extend(e.extend({}, a, {
 			model: s,
 			url: n.s1Host + "/du/trending/top_pages.jsonp",
@@ -5181,6 +5423,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/data/collections/recommendations", ["backbone/nyt", "foundation/collections/base-collection", "shared/data/models/article", "foundation/hosts", "underscore/nyt", "shared/data/helpers/collection-mixin"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		
 		var o = t.extend(s.extend({}, a, {
 			model: i,
 			url: "../../../../../www.nytimes.com/svc/recommendations/v3/personalized.json",
@@ -5233,9 +5478,15 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return o
 	}), define("shared/data/instances/recommendations", ["jquery/nyt", "foundation/views/page-manager", "shared/data/collections/recommendations"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		return new i
 	}), define("shared/data/collections/context", ["backbone/nyt", "foundation/collections/base-collection", "shared/data/models/article", "underscore/nyt", "shared/data/helpers/collection-mixin"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		
 		var a = t.extend(n.extend({}, s, {
 			model: i,
 			sync: function(t, i, n) {
@@ -6581,7 +6832,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 			handleDomReady: function() {
 				this.$list = this.$el.find(".auto-suggest"), this.$clearButton = this.$el.find(".clear-button"), this.$overlay = this.$shell.find(".search-overlay"), this.$input = this.$el.find(".search-input"), this.$submitButton = this.$el.find(".submit-button"), this.disableSubmitButton(), this.listenTo(this.collection, "sync change", this.render), this.throttledSuggestions = t.debounce(this.getAutoSuggestions, 250), this.afterInitialize()
 			},
-			afterInitialize: e.noop,
+			afterInitialize: (function(){}),
 			render: function() {
 				var e, t = "",
 					i = this.collection.toJSON()[0],
@@ -6609,7 +6860,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 			handleEnterKey: function() {
 				this.submitSearch()
 			},
-			handleRightLeftKey: e.noop,
+			handleRightLeftKey: (function(){}),
 			handleClearButton: function(e) {
 				e.preventDefault(), this.setSearchValue(""), this.$clearButton.fadeOut(200), this.disableSubmitButton(), this.$input.focus(), i()
 			},
@@ -6649,6 +6900,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return o
 	}), define("shared/masthead/views/search", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/searchform/helpers/search-form-mixin"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var s = i.extend(t.extend({}, n, {
 			el: e("#masthead").find(".search-flyout-panel"),
 			events: {
@@ -6705,6 +6960,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return s
 	}), define("shared/masthead/views/user-settings-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/masthead/templates"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = i.extend({
 			events: {
 				"click .edition-menu a": "handleEditionClick",
@@ -6815,6 +7074,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/account/views/user-profile-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/account/templates"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var a = i.extend({
 			events: {
 				"change #user-profile-avatar-input": "handleAvatarUpload",
@@ -6921,6 +7184,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return a
 	}), define("shared/masthead/views/user-name-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/masthead/templates", "foundation/models/user-data", "foundation/hosts", "shared/account/views/user-profile-modal"], function(e, t, i, n, s, a, o, r) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var l = i.extend({
 			events: {
 				"click .premier-subscriber a": "handleUserSubscriptionClick",
@@ -7014,6 +7281,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return l
 	}), define("shared/masthead/instances/masthead", ["jquery/nyt", "shared/masthead/views/masthead", "shared/masthead/views/in-story-theme", "shared/masthead/views/search", "shared/masthead/views/user-settings-modal", "shared/masthead/views/user-name-modal"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		new t, new n, new s({
 			fixedOverride: !0,
 			openCallback: function() {
@@ -7027,6 +7297,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}), e("#masthead .kicker").text().length > 1 && new i
 	}), define("shared/fontsizer/views/font-sizer", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "foundation/models/page-storage"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var s = i.extend({
 			events: {
 				doubletap: "handleDoubleTap"
@@ -7072,6 +7346,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		})
 	}), define("shared/account/helpers/account-modal-mixin", ["jquery/nyt", "underscore/nyt", "foundation/lib/polyfills/placeholder", "shared/account/templates", "foundation/models/token", "foundation/hosts"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var o = {
 			oauthProviders: ["google", "facebook"],
 			handleFormSubmit: function(e) {
@@ -7130,6 +7408,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return o
 	}), define("shared/account/views/login-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "foundation/models/user-data", "shared/modal/views/modal", "shared/account/templates", "foundation/hosts", "shared/account/helpers/account-modal-mixin", "foundation/lib/polyfills/placeholder"], function(e, t, i, n, s, a, o, r, l) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var d = i.extend(t.extend({}, r, {
 			state: n.isLoggedIn() ? "logged in" : "logged out",
 			events: {
@@ -7211,6 +7493,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return d
 	}), define("shared/account/views/registration-modal", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/modal/views/modal", "shared/account/templates", "foundation/hosts", "shared/account/helpers/account-modal-mixin", "foundation/lib/polyfills/placeholder"], function(e, t, i, n, s, a, o, r) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var l = i.extend(t.extend({}, o, {
 			events: {
 				"click .login-modal-trigger": "handleLoginClick",
@@ -7334,6 +7620,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/data/models/section", ["backbone/nyt"], function(e) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		
 		var t = e.Model.extend({
 			defaults: {
 				name: "",
@@ -7368,6 +7657,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return t
 	}), define("shared/data/collections/taxonomy", ["backbone/nyt", "underscore/nyt", "foundation/collections/base-collection", "shared/data/models/section", "foundation/hosts", "foundation/models/user-data"], function(e, t, i, n, s) {
 		"use strict";
+		
+		e = e || window.Backbone;
+		t = t || window._;
+		
 		var a = i.extend({
 			url: s.staticHost + "/services/json/taxonomy/v2/flat.jsonp",
 			model: n,
@@ -7430,6 +7723,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return new e
 	}), define("shared/navigation/views/navigation", ["module", "jquery/nyt", "underscore/nyt", "foundation/views/base-view", "foundation/views/page-manager", "foundation/hosts", "foundation/models/user-data", "shared/modal/views/modal", "shared/navigation/templates", "shared/data/instances/taxonomy"], function(e, t, i, n, s, a, o, r, l, d) {
 		"use strict";
+		
+		t = t || window.jQuery;
+		i = i || window._;
+		
 		var c = n.registerView("navigation").extend({
 			module: e,
 			el: "#navigation",
@@ -7755,6 +8052,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return c
 	}), define("shared/navigation/views/navigation-edge-adjust", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var n = i.registerView("navigation").extend({
 			el: "#navigation-edge",
 			events: {
@@ -7791,6 +8092,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("shared/navigation/views/mobile-navigation", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/navigation/views/navigation", "shared/navigation/views/navigation-edge-adjust", "shared/navigation/templates", "foundation/models/user-data"], function(e, t, i, n, s, a, o) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var r = i.registerView("mobile-navigation").extend({
 			el: "#mobile-navigation",
 			hiddenEl: "#main, #ribbon, #site-index",
@@ -7823,6 +8128,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return r
 	}), define("shared/navigation/views/site-index-responsive", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var n = i.registerView("navigation").extend({
 			events: {
 				"click a": "handleSiteIndexClick",
@@ -7868,11 +8177,18 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return n
 	}), define("shared/navigation/instances/navigation", ["jquery/nyt", "foundation/views/page-manager", "shared/navigation/views/navigation", "shared/navigation/views/mobile-navigation", "shared/navigation/views/navigation-edge-adjust", "shared/navigation/views/site-index-responsive"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		t.getCurrentBreakpoint() >= 120 ? (new i, new s) : new n, new a({
 			el: e("#site-index")
 		})
 	}), define("shared/sharetools/views/share-tools-container", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "foundation/models/user-data", "shared/sharetools/models/share-data", "shared/sharetools/views/containers-mixin", "shared/sharetools/views/share-tools-modal-container", "shared/sharetools/instances/cross-platform-save"], function(e, t, i, n, s, a, o, r) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var l = i.extend(t.extend({}, a, {
 			initializedAttribute: "data-share-tools-initialized",
 			initialize: function(t) {
@@ -7904,6 +8220,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return l
 	}), define("shared/sharetools/instances/sidebar", ["jquery/nyt", "shared/sharetools/views/share-tools-container"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		var i;
 		new t({
 			el: e("#sharetools-story"),
@@ -7930,6 +8249,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		})
 	}), define("shared/sharetools/instances/masthead", ["jquery/nyt", "shared/sharetools/views/share-tools-container"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		new t({
 			el: e("#sharetools-masthead"),
 			trackingRegion: "Masthead",
@@ -7950,6 +8272,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		})
 	}), define("shared/sharetools/instances/upshot", ["jquery/nyt", "shared/sharetools/views/share-tools-container"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		var i;
 		new t({
 			el: e("#upshot-sharetools"),
@@ -7976,6 +8301,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		})
 	}), define("shared/sharetools/instances/story-footer", ["jquery/nyt", "shared/sharetools/views/share-tools-container"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		var i;
 		new t({
 			el: e("#story-footer-sharetools"),
@@ -8002,6 +8330,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		})
 	}), define("shared/searchform/views/search-form", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "shared/searchform/helpers/search-form-mixin"], function(e, t, i, n) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var s = i.extend(t.extend({}, n, {
 			events: {
 				"keyup .search-input": "handleKeyUp",
@@ -8016,6 +8348,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return s
 	}), define("shared/searchform/instances/search-form", ["jquery/nyt", "foundation/views/page-manager", "shared/searchform/views/search-form"], function(e, t, i) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		t.getMeta("errorpage") && new i({
 			el: e(".error-page .search-form-control")
 		})
@@ -8030,6 +8365,11 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return t
 	}), define("article/story/collections/realestate-search-form/realestate-search-suggestions", ["jquery/nyt", "backbone/nyt", "underscore/nyt", "foundation/collections/base-collection", "article/story/models/realestate-search-form/search-suggestion", "foundation/hosts"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window.Backbone;
+		i = i || window._;
+		
 		var o = n.extend({
 			model: s,
 			basicSearchUrl: a.realestateBasicSearch,
@@ -8078,6 +8418,10 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return o
 	}), define("article/story/views/realestate-search-form/realestate-search-form", ["jquery/nyt", "underscore/nyt", "foundation/views/base-view", "foundation/hosts", "foundation/models/user-data", "article/story/templates", "shared/searchform/helpers/search-form-mixin", "article/story/collections/realestate-search-form/realestate-search-suggestions"], function(e, t, i, n, s, a, o, r) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		
 		var l = i.extend(t.extend({}, o, {
 			collection: new r,
 			postAdLink: n.realestatePostAdLink,
@@ -8152,7 +8496,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 				return this.isForSaleSection() ? this.$realEstateForSaleFilters : this.$realEstateForRentFilters
 			},
 			disableSubmitButton: function() {
-				return e.noop
+				return (function(){})
 			},
 			handleClickIfVisible: function() {
 				this.$el.find(".auto-suggest:visible").length && this.handlePageClicks()
@@ -8165,6 +8509,9 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		return l
 	}), define("article/story/instances/realestate-search-form", ["jquery/nyt", "article/story/views/realestate-search-form/realestate-search-form"], function(e, t) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		
 		e("#real-estate-search-ad").length && new t({
 			el: "#real-estate-search-ad"
 		})
@@ -8193,6 +8540,11 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 		}, templates
 	}), define("shared/slideshow/views/embedded-slideshow", ["jquery/nyt", "underscore/nyt", "backbone/nyt", "foundation/collections/base-collection", "foundation/views/base-view", "shared/slideshow/templates"], function(e, t, i, n, s, a) {
 		"use strict";
+		
+		e = e || window.jQuery;
+		t = t || window._;
+		i = i || window.Backbone;
+		
 		var o = s.extend({
 			speed: 1e3,
 			defaultSlideshowCaptionHeight: 50,
@@ -9046,7 +9398,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 						"nyt-s": t
 					},
 					handleMessage: this.handleMessage,
-					notifyOnError: e.noop,
+					notifyOnError: (function(){}),
 					handleFailover: this.switchToHTTP
 				})
 			},
@@ -9371,7 +9723,7 @@ define("article/story/templates", ["underscore/nyt"], function(_) {
 					s = e.get("id"), s && o.push(e)
 				}), n = o.length > 0 ? function() {
 					a.createMessageViews(o)
-				} : e.noop, this.pageManager.isDomReady() ? n() : this.subscribe(this.pageManager, "nyt:page-ready", t.debounce(n, 0))
+				} : (function(){}), this.pageManager.isDomReady() ? n() : this.subscribe(this.pageManager, "nyt:page-ready", t.debounce(n, 0))
 			},
 			createMessageViews: function(e) {
 				return e && t.each(e || [], function(e) {

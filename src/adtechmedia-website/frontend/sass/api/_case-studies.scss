@@ -1,0 +1,84 @@
+.case-studies {
+  .mockup {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, .08);
+    padding: 20px 50px 50px;
+    position: relative;
+    .logo-img {
+      height: 35px;
+      margin: 0 auto;
+    }
+
+    .mockup-head {
+      border-width: 1px 0;
+      border-color: #3b9ff3;
+      border-style: solid;
+      margin: 20px 0;
+      padding: 5px 0 15px 0;
+      h1 {
+        color: #3b9ff3;
+        font-size: 24px;
+        line-height: 40px;
+        margin: 0;
+        font-family: FuturaICG, sans-serif;
+      }
+    }
+
+    .mockup-cont {
+      & > p {
+        margin: 0 0 20px;
+      }
+
+      img {
+        margin-bottom: 20px;
+        opacity: .7;
+      }
+
+      .blurry {
+        position: relative;
+        p {
+          filter: blur(2.5px);
+          -webkit-filter: blur(2.5px);
+        }
+
+        .btn {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          -webkit-transform: translateX(-50%) translateY(-50%);
+          margin: 0;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .icons-cont {
+    i {
+      display: inline-block;
+      background: #eee;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      &:not(.fa) {
+        font-family: sans-serif;
+      }
+    }
+  }
+
+  .info-block {
+    p {
+      margin-top: 25px;
+      text-align: justify;
+    }
+  }
+
+  .case-logo {
+    display: block;
+    max-width: 70%;
+  }
+}

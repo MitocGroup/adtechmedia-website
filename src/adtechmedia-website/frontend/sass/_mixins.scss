@@ -81,3 +81,11 @@
   filter: grayscale($value);
   -webkit-filter: grayscale($value);
 }
+
+@mixin bg-gradient($value1, $value2, $value3) {
+  background: -webkit-linear-gradient($value1, $value2, $value3);
+  background: -moz-linear-gradient($value1, $value2, $value3);
+  background: -o-linear-gradient($value1, $value2, $value3);
+  background: -ms-linear-gradient($value1, $value2, $value3);
+  background: linear-gradient($value1, $value2, $value3);
+}

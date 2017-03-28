@@ -1,0 +1,58 @@
+.api-action {
+  float: right;
+  label {
+    display: block;
+  }
+
+  .custom-input {
+    width: calc(100% - 100px);
+  }
+
+  .btn {
+    margin: 20px 0 0;
+  }
+}
+
+.api-docs {
+  h1 {
+    float: left;
+  }
+}
+
+.swagger-section {
+  .swagger-ui-wrap {
+    #api_info {
+      .info_title {
+        display: none;
+      }
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    ul#resources {
+      li.resource {
+        border: 0;
+        ul.endpoints {
+          li.endpoint {
+            ul.operations {
+              li.operation {
+                div.heading {
+                  ul.options {
+                    margin-top: 3px;
+                  }
+                }
+
+                div.content {
+                  overflow: scroll;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

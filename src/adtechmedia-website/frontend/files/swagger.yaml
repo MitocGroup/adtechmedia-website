@@ -1,0 +1,1056 @@
+---
+swagger: "2.0"
+info:
+  version: "1.1.0"
+  title: "ATM API DOCS"
+host: "api.adtechmedia.io"
+basePath: "/v1"
+schemes:
+- "https"
+tags:
+- name: "api-gateway-key"
+  description: "Manage API gateway key"
+- name: "property"
+  description: "Manage property"
+- name: "theme-config"
+  description: "Manage theme's configuration"
+- name: "content"
+  description: "Manage content property"
+- name: "email-template"
+  description: "Manage email template"
+paths:
+  /atm-admin/theme-config/create:
+    put:
+      tags:
+      - "theme-config"
+      summary: "Generate Theme Config"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ThemeConfig"
+        required: true
+        schema:
+          $ref: "#/definitions/ThemeConfigModelCreate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ThemeConfigModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+  /atm-admin/theme-config/update:
+    post:
+      tags:
+      - "theme-config"
+      summary: "Update Theme Config"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ThemeConfig"
+        required: true
+        schema:
+          $ref: "#/definitions/ThemeConfigModelUpdate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ThemeConfigModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+  /atm-admin/theme-config/retrieve:
+    get:
+      tags:
+      - "theme-config"
+      summary: "Retrieve Theme Config"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Id"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ThemeConfigModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+  /atm-admin/api-gateway-key/create:
+    put:
+      tags:
+      - "api-gateway-key"
+      summary: "Generate Api Gateway Key"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ApiGatewayKey"
+        required: true
+        schema:
+          $ref: "#/definitions/ApiGatewayKeyModelCreate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ApiGatewayKeyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+  /atm-admin/api-gateway-key/delete:
+    delete:
+      tags:
+      - "api-gateway-key"
+      summary: "Delete an existing Api Gateway Key"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ApiGatewayKeyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/api-gateway-key/update:
+    post:
+      tags:
+      - "api-gateway-key"
+      summary: "Update en existing Api Gateway Key"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ApiGatewayKey"
+        required: true
+        schema:
+          $ref: "#/definitions/ApiGatewayKeyModelUpdate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ApiGatewayKeyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/content/create:
+    put:
+      tags:
+      - "content"
+      summary: "Store Property Content"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Content"
+        required: true
+        schema:
+          $ref: "#/definitions/ContentModelCreateAndUpdate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ContentModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/content/delete:
+    delete:
+      tags:
+      - "content"
+      summary: "Delete existing Property Content"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "ContentId"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "PropertyId"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ContentModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/content/retrieve:
+    get:
+      tags:
+      - "content"
+      summary: "Retrieve existing Property Content"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "ContentId"
+        type: "string"
+        required: true
+      - in: "query"
+        name: "PropertyId"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ContentModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/content/update:
+    post:
+      tags:
+      - "content"
+      summary: "Update existing Property Content"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Content"
+        required: true
+        schema:
+          $ref: "#/definitions/ContentModelCreateAndUpdate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ContentModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/email-template/create:
+    put:
+      tags:
+      - "email-template"
+      summary: "Create Email Template"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "EmailTemplate"
+        required: true
+        schema:
+          $ref: "#/definitions/EmailTemplateModelCreate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/EmailTemplateModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/email-template/delete:
+    delete:
+      tags:
+      - "email-template"
+      summary: "Delete existing Email Template"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Id"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/EmailTemplateModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/email-template/render:
+    put:
+      tags:
+      - "email-template"
+      summary: "Render existing Email Template"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "EmailTemplate"
+        required: true
+        schema:
+          $ref: "#/definitions/EmailTemplateModelRender"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/EmailTemplateModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/email-template/retrieve:
+    get:
+      tags:
+      - "email-template"
+      summary: "Retrieve existing Email Template"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Id"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/EmailTemplateModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/email-template/update:
+    post:
+      tags:
+      - "email-template"
+      summary: "Update existing Email Template"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "EmailTemplate"
+        required: true
+        schema:
+          $ref: "#/definitions/EmailTemplateModelUpdate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/EmailTemplateModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/property/create:
+    put:
+      tags:
+      - "property"
+      summary: "Create a Property"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Property"
+        required: true
+        schema:
+          $ref: "#/definitions/PropertyModelCreate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PropertyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/property/delete:
+    delete:
+      tags:
+      - "property"
+      summary: "Delete existing Property"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PropertyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/property/supported-countries:
+    get:
+      tags:
+      - "property"
+      summary: "Retrieve supported countries"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SupportedCountries"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/property/retrieve:
+    get:
+      tags:
+      - "property"
+      summary: "Retrieve existing Property"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "Id"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PropertyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/property/update:
+    post:
+      tags:
+      - "property"
+      summary: "Update existing Property"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Property"
+        required: true
+        schema:
+          $ref: "#/definitions/PropertyModelUpdate"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PropertyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+  /atm-admin/property/update-config:
+    patch:
+      tags:
+      - "property"
+      summary: "Update existing Property Configuration"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Property"
+        required: true
+        schema:
+          $ref: "#/definitions/PropertyModelUpdateConfig"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PropertyModel"
+          headers:
+            Access-Control-Expose-Headers:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            x-amzn-original-RequestId:
+              type: "string"
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "X-Api-Key"
+    description: "Api Key Header required to invoke ATM Api endpoints"
+    in: "header"
+definitions:
+  SupportedCountry:
+    type: "object"
+    title: "Supported Country"
+    properties:
+      Name:
+        type: "string"
+        description: "Country Name"
+      UN:
+        type: "string"
+        description: "Country A3 (UN) Code"
+      ISO:
+        type: "string"
+        description: "Country A2 (ISO) Code"
+      RevenueModel:
+        type: "array"
+        description: "Available Revenue Models"
+        items:
+          type: "string"
+      Currency:
+        type: "array"
+        description: "Available Transaction Currencies"
+        items:
+          type: "string"
+  SupportedCountries:
+    type: "object"
+    title: "Supported Countries"
+    properties:
+      Countries:
+        type: "array"
+        description: "Supported Countries"
+        items:
+          $ref: "#/definitions/SupportedCountry"
+  ApiGatewayKeyModelCreate:
+    type: "object"
+    title: "Api Gateway Key Schema"
+    required: [ "Name" ]
+    properties:
+      Name:
+        type: "string"
+        description: "Key Name"
+      OldKey:
+        type: "string"
+        description: "The old Api Gateway Key used if any"
+      Hostname:
+        type: "string"
+        description: "Caller Hostname"
+      IP:
+        type: "string"
+        description: "Caller IP Address"
+      Platform:
+        type: "string"
+        description: "Caller Platform"
+      PlatformVersion:
+        type: "string"
+        description: "Caller Platform Version"
+      PluginVersion:
+        type: "string"
+        description: "Caller Plugin Version"
+      ApiGatewayPlanId:
+        type: "string"
+        description: "Plan Identifier"
+        default: "FREE"
+  ApiGatewayKeyModelUpdate:
+    type: "object"
+    title: "Api Gateway Key Schema"
+    required: [ "Id", "Name" ]
+    properties:
+      Id:
+        type: "string"
+        description: "Key Identifier"
+      Name:
+        type: "string"
+        description: "Key Name"
+  ApiGatewayKeyModel:
+    type: "object"
+    title: "Api Gateway Key Schema"
+    properties:
+      Id:
+        type: "string"
+        description: "Key Identifier"
+      Name:
+        type: "string"
+        description: "Key Name"
+      ApiGatewayPlanAwsId:
+        type: "string"
+        description: "Plan AWS Identifier"
+      ApiGatewayPlanId:
+        type: "string"
+        description: "Plan Identifier"
+      Key:
+        type: "string"
+        description: "Key Value"
+      AwsId:
+        type: "string"
+        description: "Key AWS Identifier"
+      Hostname:
+        type: "string"
+        description: "Caller Hostname"
+      IP:
+        type: "string"
+        description: "Caller IP Address"
+      Platform:
+        type: "string"
+        description: "Caller Platform"
+      PlatformVersion:
+        type: "string"
+        description: "Caller Platform Version"
+      PluginVersion:
+        type: "string"
+        description: "Caller Plugin Version"
+  ContentModelCreateAndUpdate:
+    type: "object"
+    title: "Content Schema"
+    required: [ "ContentId", "PropertyId", "Content", "ConfigOverwrite" ]
+    properties:
+      ContentId:
+        type: "string"
+        description: "Content On-site Identifier"
+      PropertyId:
+        type: "string"
+        description: "Property Identifier"
+      Content:
+        type: "string"
+        description: "Content"
+      ConfigOverwrite:
+        type: "object"
+        description: "Content Specific Configuration"
+        externalDocs:
+          description: "Configuration Javascript Source File (@see 'defaults' section)"
+          url: "https://github.com/MitocGroup/atm/blob/dev/plugin/src/lib/config/core.js#L11"
+  ContentModel:
+    type: "object"
+    title: "Content Schema"
+    properties:
+      Id:
+        type: "string"
+        description: "Content Identifier"
+      ContentId:
+        type: "string"
+        description: "Content On-site Identifier"
+      PropertyId:
+        type: "string"
+        description: "Property Identifier"
+      Content:
+        type: "string"
+        description: "Content"
+      ConfigOverwrite:
+        type: "object"
+        description: "Content Specific Configuration"
+        externalDocs:
+          description: "Configuration Javascript Source File (@see 'defaults' section)"
+          url: "https://github.com/MitocGroup/atm/blob/dev/plugin/src/lib/config/core.js#L11"
+  EmailTemplateModelUpdate:
+    type: "object"
+    title: "Email Template Schema"
+    required: [ "Id", "Subject", "Html", "Text" ]
+    properties:
+      Id:
+        type: "string"
+        description: "Email Template Identifier"
+      Subject:
+        type: "string"
+        description: "Email Subject"
+      Html:
+        type: "string"
+        description: "Email Html Content"
+      Text:
+        type: "string"
+        description: "Email Text Content"
+  EmailTemplateModelCreate:
+    type: "object"
+    title: "Email Template Schema"
+    required: [ "Name", "Subject", "Html", "Text", "PropertyId" ]
+    properties:
+      Name:
+        type: "string"
+        description: "Email Template Name"
+      Subject:
+        type: "string"
+        description: "Email Subject"
+      Html:
+        type: "string"
+        description: "Email Html Content"
+      Text:
+        type: "string"
+        description: "Email Text Content"
+      PropertyId:
+        type: "string"
+        description: "Assigned Property Identifier"
+  EmailTemplateModelRender:
+    type: "object"
+    title: "Email Template Schema"
+    required: [ "Name", "PropertyId" ]
+    properties:
+      Name:
+        type: "string"
+        description: "Email Template Name"
+      PropertyId:
+        type: "string"
+        description: "Assigned Property Identifier"
+      Data:
+        type: "object"
+        description: "Data Sent To Render"
+        externalDocs:
+          description: "Twig.js Template Engine Documentation"
+          url: "https://www.npmjs.com/package/twig#viewsindextwig"
+      Raw:
+        type: "boolean"
+        description: "Skip Rendering Email Template"
+        default: false
+  EmailTemplateModel:
+    type: "object"
+    title: "Email Template Schema"
+    properties:
+      Id:
+        type: "string"
+        description: "Email Template Identifier"
+      Name:
+        type: "string"
+        description: "Email Template Name"
+      Subject:
+        type: "string"
+        description: "Email Subject"
+      Html:
+        type: "string"
+        description: "Email Html Content"
+      Text:
+        type: "string"
+        description: "Email Text Content"
+      PropertyId:
+        type: "string"
+        description: "Assigned Property Identifier"
+  PropertyModelUpdateConfig:
+    type: "object"
+    title: "Property Schema"
+    required: [ "Id", "ConfigDefaults" ]
+    properties:
+      Id:
+        type: "string"
+        description: "Property Identifier"
+      ConfigDefaults:
+        type: "object"
+        description: "Property Specific Content Configuration"
+        externalDocs:
+          description: "Configuration Javascript Source File (@see 'defaults' section)"
+          url: "https://github.com/MitocGroup/atm/blob/dev/plugin/src/lib/config/core.js#L11"
+  PropertyModelUpdate:
+    type: "object"
+    title: "Property Schema"
+    required: [ "Id" ]
+    properties:
+      Id:
+        type: "string"
+        description: "Property Identifier"
+      Website:
+        type: "string"
+        description: "Property Website"
+      SupportEmail:
+        type: "string"
+        description: "Property Support Email"
+      Country:
+        type: "string"
+        description: "Property Country"
+      AWSAccessKeyId:
+        type: "string"
+        description: "AWSAccessKeyId Used For Route53 Access"
+      AWSSecretAccessKey:
+        type: "string"
+        description: "AWSSecretAccessKey Used For Route53 Access"
+      CloudFrontId:
+        type: "string"
+        description: "CloudFront Distribution Id To Setup Custom API Domain"
+  PropertyModelCreate:
+    type: "object"
+    title: "Property Schema"
+    required: [ "Name", "Website", "SupportEmail", "Country" ]
+    properties:
+      Name:
+        type: "string"
+        description: "Property Name"
+      Website:
+        type: "string"
+        description: "Property Website"
+      SupportEmail:
+        type: "string"
+        description: "Property Support Email"
+      Country:
+        type: "string"
+        description: "Property Country"
+      AWSAccessKeyId:
+        type: "string"
+        description: "AWSAccessKeyId Used For Route53 Access"
+      AWSSecretAccessKey:
+        type: "string"
+        description: "AWSSecretAccessKey Used For Route53 Access"
+      CloudFrontId:
+        type: "string"
+        description: "CloudFront Distribution Id To Setup Custom API Domain"
+      UserInfo:
+        type: "object"
+        description: "Property User Info"
+      ServerInfo:
+        type: "object"
+        description: "Property Server Info"
+      ConfigDefaults:
+        type: "object"
+        description: "Property Specific Content Configuration"
+        externalDocs:
+          description: "Configuration Javascript Source File (@see 'defaults' section)"
+          url: "https://github.com/MitocGroup/atm/blob/dev/plugin/src/lib/config/core.js#L11"
+  PropertyModel:
+    type: "object"
+    title: "Property Schema"
+    properties:
+      Id:
+        type: "string"
+        description: "Property Identifier"
+      Name:
+        type: "string"
+        description: "Property Name"
+      Website:
+        type: "string"
+        description: "Property Website"
+      SupportEmail:
+        type: "string"
+        description: "Property Support Email"
+      BuildPath:
+        type: "string"
+        description: "Property atm.js Build Path"
+      Country:
+        type: "string"
+        description: "Property Country"
+      AWSAccessKeyId:
+        type: "string"
+        description: "AWSAccessKeyId Used For Route53/CloudFront Access"
+      AWSSecretAccessKey:
+        type: "string"
+        description: "AWSSecretAccessKey Used For Route53/CloudFront Access"
+      CloudFrontId:
+        type: "string"
+        description: "CloudFront Distribution Id To Setup Custom API Domain"
+      UserInfo:
+        type: "object"
+        description: "Property User Info"
+      ServerInfo:
+        type: "object"
+        description: "Property Server Info"
+      Config:
+        type: "object"
+        description: "Property Specific Content Configuration"
+        externalDocs:
+          description: "Configuration Javascript Source File"
+          url: "https://github.com/MitocGroup/atm/blob/dev/plugin/src/lib/config/core.js#L7"
+  ThemeConfigModel:
+    type: "object"
+    title: "Theme Config Schema"
+    properties:
+      Id:
+        type: "string"
+        description: "Unique Configuration Identifier"
+      PropertyId:
+        type: "string"
+        description: "Property Identifier"
+      ThemeId:
+        type: "string"
+        description: "Unique Theme Identifier"
+      ThemeVersion:
+        type: "string"
+        description: "Theme Version"
+      ThemeName:
+        type: "string"
+        description: "Human Readable Theme Name"
+      PlatformId:
+        type: "string"
+        description: "Platform Identifier (e.g. Wordpress, Drupal)"
+      PlatformVersion:
+        type: "string"
+        description: "Platform Version"
+      ConfigName:
+        type: "string"
+        description: "Human Readable Configuration Name"
+      Config:
+        type: "object"
+        description: "Configuration Object"
+      Metadata:
+        type: "object"
+        description: "Additional Configuration Metadata Object"
+  ThemeConfigModelCreate:
+    type: "object"
+    title: "Property Schema"
+    required: [ "PropertyId", "ThemeId", "PlatformId", "Config" ]
+    properties:
+      PropertyId:
+        type: "string"
+        description: "Property Identifier"
+      ThemeId:
+        type: "string"
+        description: "Unique Theme Identifier"
+      ThemeVersion:
+        type: "string"
+        description: "Theme Version"
+      ThemeName:
+        type: "string"
+        description: "Human Readable Theme Name"
+      PlatformId:
+        type: "string"
+        description: "Platform Identifier (e.g. Wordpress, Drupal)"
+      PlatformVersion:
+        type: "string"
+        description: "Platform Version"
+      ConfigName:
+        type: "string"
+        description: "Human Readable Configuration Name"
+      Config:
+        type: "object"
+        description: "Configuration Object"
+      Metadata:
+        type: "object"
+        description: "Additional Configuration Metadata Object"
+  ThemeConfigModelUpdate:
+    type: "object"
+    title: "Property Schema"
+    required: [ "Id", "Config" ]
+    properties:
+      Id:
+        type: "string"
+        description: "Unique Configuration Identifier"
+      Config:
+        type: "object"
+        description: "Configuration Object"
+      Metadata:
+        type: "object"
+        description: "Additional Configuration Metadata Object"

@@ -1,0 +1,109 @@
+.landing-page {
+  margin-top: 100px;
+  text-align: left;
+  section {
+    width: 950px;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 1.3;
+    background: transparent;
+    -webkit-text-fill-color: inherit;
+    &:after {
+      display: none;
+    }
+  }
+
+  h2 {
+    font-size: 21px;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+
+  .mb15 {
+    margin-bottom: 15px;
+  }
+
+  hr {
+    border-width: 1px 0 0;
+    border-style: solid;
+    border-color: #eaeaea;
+  }
+
+  .install-btn {
+    display: inline-block;
+    text-transform: uppercase;
+    height: 46px;
+    background: #1b93f2;
+    color: #fff;
+    font-size: 17px;
+    line-height: 46px;
+    padding: 0 15px;
+    &:hover {
+      background: #0c78ce;
+    }
+  }
+
+  .heading-desc {
+    font-size: 15px;
+    margin: 25px 0;
+  }
+
+  .key-features {
+    li {
+      margin: 0 0 15px;
+    }
+
+    i.fa {
+      font-size: 17px;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      background: #1b93f2;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .feature-desc {
+      width: calc(100% - 45px);
+    }
+
+    h3 {
+      font-size: 17px;
+      margin: 5px 0 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .customer-reviews {
+    text-align: center;
+    & > * {
+      display: block;
+      color: rgba(0, 0, 0, .65);
+      &.customer-position {
+        color: rgba(0, 0, 0, .4);
+      }
+    }
+
+    blockquote {
+      font-size: 20px;
+    }
+
+    .img-placeholder {
+      color: rgba(0, 0, 0, .4);
+      font-size: 70px;
+    }
+
+    .customer-name {
+      font-size: 17px;
+    }
+
+    .customer-position {
+      font-size: 13px;
+    }
+  }
+}
