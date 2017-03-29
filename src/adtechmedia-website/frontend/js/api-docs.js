@@ -4,10 +4,6 @@ jQuery(function($) {
   var $apiKey = $('#api-key');
   var $apiKeyBtn = $('#api-key-apply');
 
-  $.notify.defaults({
-    position: 'bottom right'
-  });
-
   /**
    * Apply user's api key
    */
@@ -18,7 +14,11 @@ jQuery(function($) {
         'api_key', new SwaggerClient.ApiKeyAuthorization('X-Api-Key', token, 'header')
       );
       window.apiKey = token;
-      $.notify('Api-key successfully applied', 'success');
+      noty({
+        text: 'Api-key successfully applied',
+        type: 'success',
+        timeout: 3000
+      });
     }
   });
 
@@ -31,8 +31,11 @@ jQuery(function($) {
     dom_id: 'swagger-ui-container',
     supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
     onFailure: function(error) {
-      $.notify('Unable to Load SwaggerUI', 'error');
-      console.error(error);
+      noty({
+        text: 'Unable to Load SwaggerUI',
+        type: 'error',
+        timeout: 3000
+      });
     },
     useJQuery: true,
     docExpansion: 'list',
@@ -53,7 +56,11 @@ jQuery(function($) {
     if (!allowedRegExp.test(requestUrl)) {
       if (!window.apiKey) {
         request.abort();
-        $.notify('Api key is wrong or missing', 'warn');
+        noty({
+          text: 'Api key is wrong or missing',
+          type: 'warning',
+          timeout: 3000
+        });
       }
     }
   });
