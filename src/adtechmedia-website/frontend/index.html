@@ -15,11 +15,7 @@
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KF8XT7');</script>
+<script src="/adtechmedia-website/js/google-tag-manager.js"></script>
 <!-- End Google Tag Manager -->
 
 <script type="application/javascript">
@@ -42,8 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <header class="cd-secondary-nav">
     <section class="scroll-nav clearfix">
@@ -564,7 +559,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <section id="contact" class="white-section cd-section">
-        <form onsubmit="return sendContactUsEmail()" id="contactus-form">
+        <form onsubmit="return executeCaptcha()" id="contactus-form">
             <h1>contact</h1>
             <div class="contact-inner">
                 <div id="googleMap"></div>
@@ -724,7 +719,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script type="text/javascript" src="/js/lib/deep-framework.js"></script>
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=setCaptchaKey&render=explicit"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=setCaptchaKey&render=explicit&hl=en" async defer></script>
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/nav.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.vide.js"></script>
