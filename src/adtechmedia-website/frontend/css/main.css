@@ -1186,7 +1186,6 @@ footer {
   .dev-docs .user-guide .content {
     padding: 40px;
     zoom: 1;
-    max-width: 800px;
     border-left: solid 1px #dfe2e7; }
     .dev-docs .user-guide .content > *:first-child {
       padding-left: 85px; }
@@ -1395,8 +1394,7 @@ footer {
   .dev-docs .user-guide .content {
     padding-left: 0;
     padding-right: 0;
-    width: 930px;
-    max-width: none; }
+    width: 930px; }
     .dev-docs .user-guide .content > h1, .dev-docs .user-guide .content h2, .dev-docs .user-guide .content h3 {
       clear: both;
       width: 100%;
@@ -1438,38 +1436,30 @@ footer {
   .dev-docs .user-guide {
     width: 95%;
     margin-left: 5%; }
-    .dev-docs .user-guide .menubar.fixed {
-      left: 5%; }
-    .dev-docs .user-guide .content pre > code {
-      background: #f3f6fb;
-      border: solid 1px #e7eaee;
-      border-top: solid 1px #dbdde2;
-      border-left: solid 1px #e2e5e9;
-      display: block;
-      padding: 10px;
-      border-radius: 2px;
-      overflow: auto; }
-    .dev-docs .user-guide .content > *:first-child {
-      padding-left: 45px; } }
-@media (min-width: 1171px) {
-  .dev-docs .user-guide .menubar.fixed {
-    left: calc((100% - 1100px) / 2); } }
-@media (max-width: 1170px) {
-  .dev-docs .user-guide .menubar.fixed {
-    left: 50px; } }
+    .dev-docs .user-guide .content {
+      width: calc(100% - 230px); }
+      .dev-docs .user-guide .content pre > code {
+        background: #f3f6fb;
+        border: solid 1px #e7eaee;
+        border-top: solid 1px #dbdde2;
+        border-left: solid 1px #e2e5e9;
+        display: block;
+        padding: 10px;
+        border-radius: 2px;
+        overflow: auto; }
+      .dev-docs .user-guide .content > *:first-child {
+        padding-left: 45px; } }
 @media (min-width: 1025px) {
-  .dev-docs .user-guide .content-root {
-    padding-left: 230px; }
   .dev-docs .user-guide .menubar {
-    position: absolute;
+    position: sticky;
+    position: -webkit-sticky;
     left: 0;
-    top: 0;
+    top: 70px;
     bottom: 0;
-    width: 230px; }
-    .dev-docs .user-guide .menubar.fixed {
-      position: fixed;
-      top: 70px;
-      overflow-y: auto; } }
+    width: 230px;
+    float: left; }
+  .dev-docs .user-guide .content {
+    float: left; } }
 @media (max-width: 1024px) {
   .dev-docs .user-guide {
     width: 100%;
@@ -1479,7 +1469,6 @@ footer {
     .dev-docs .user-guide .content {
       border-left: 0 none;
       width: 100%;
-      max-width: none;
       box-sizing: border-box;
       padding: 40px 50px; }
       .dev-docs .user-guide .content h1, .dev-docs .user-guide .content h2, .dev-docs .user-guide .content .big-heading {
@@ -1597,8 +1586,7 @@ footer {
     left: 20px;
     top: 30px; }
   .dev-docs .user-guide .content {
-    padding: 20px;
-    padding-top: 30px; }
+    padding: 30px 20px 20px; }
     .dev-docs .user-guide .content h1, .dev-docs .user-guide .content h2, .dev-docs .user-guide .content .big-heading {
       padding-top: 40px; }
       .dev-docs .user-guide .content h1:before, .dev-docs .user-guide .content h2:before, .dev-docs .user-guide .content .big-heading:before {
