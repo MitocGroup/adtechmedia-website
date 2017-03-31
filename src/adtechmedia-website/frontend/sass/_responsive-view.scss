@@ -681,7 +681,7 @@
     line-height: 1.5;
     font-size: 12px;
     padding: 10px 0;
-    span {
+    & > span {
       display: block;
       a {
         white-space: nowrap;

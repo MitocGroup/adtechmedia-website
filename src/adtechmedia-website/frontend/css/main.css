@@ -2028,9 +2028,9 @@ footer {
     line-height: 1.5;
     font-size: 12px;
     padding: 10px 0; }
-    .bottom-info span {
+    .bottom-info > span {
       display: block; }
-      .bottom-info span a {
+      .bottom-info > span a {
         white-space: nowrap; }
 
   #api .home-blocks {
