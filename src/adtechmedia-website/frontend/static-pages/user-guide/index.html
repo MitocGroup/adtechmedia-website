@@ -24,7 +24,7 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/Webpage">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -33,9 +33,10 @@
     <section class="scroll-nav clearfix">
         <div class="logo-cont">
             <ul>
-                <li>
-                    <a class="logo" href="/">
-                        <img src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                <li itemscope itemtype="http://schema.org/Organization">
+                    <a itemprop="url" class="logo" href="/">
+                        <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                        <meta itemprop="name" content="AdTechMedia">
                     </a>
                 </li>
             </ul>
@@ -95,9 +96,9 @@
     <section>
         <div class="footer-blocks">
             <div class="footer-logo"></div>
-            <div class="about-us">
+            <div class="about-us" itemscope itemtype="http://schema.org/Audience">
                 <h3>About Us</h3>
-                <p>AdTechMedia is an advertising platform with micropayments capabilities for media content
+                <p itemprop="audienceType">AdTechMedia is an advertising platform with micropayments capabilities for media content
                     monetization. We help publishers and content providers to generate complementary revenue streams
                     that are immune to ad blocking software (e.g. native advertising or native micropayments).
                     Our solutions are white labeled, data driven and realtime.</p>
@@ -107,22 +108,22 @@
                     <h3>Social</h3>
                     <ul class="clearfix">
                         <li>
-                            <a href="https://linkedin.com/company/adtechmediapro">
+                            <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/adtechmediapro">
+                            <a itemprop="url" href="https://twitter.com/adtechmediapro">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://facebook.com/adtechmediapro">
+                            <a itemprop="url" href="https://facebook.com/adtechmediapro">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/adtechmedia">
+                            <a itemprop="url" href="https://github.com/adtechmedia">
                                 <i class="fa fa-github"></i>
                             </a>
                         </li>
@@ -180,7 +181,7 @@
     </section>
 </footer>
 <div class="bottom-info">
-    <span>Copyright &copy; <a href="https://www.mitocgroup.com">Mitoc Group</a> 2016-2017. All rights reserved.</span>
+    <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
     <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
 </div>
 
