@@ -750,7 +750,7 @@ h2 {
 #contact .contact-inner {
   margin: 50px 0 0;
   position: relative;
-  height: 600px; }
+  height: 500px; }
 #contact #googleMap {
   width: 100%;
   height: 100%; }
@@ -969,6 +969,9 @@ footer {
     margin: 0 0 3px; }
   .legal-pages .text-block:not(:last-child) {
     margin: 0 0 20px; }
+
+.grecaptcha-badge {
+  z-index: 10; }
 
 .loader {
   position: fixed;
@@ -1813,7 +1816,7 @@ footer {
       padding: 0 15px; }
 
   #contact .contact-inner {
-    height: 550px; }
+    height: 470px; }
   #contact .contact-form {
     padding: 20px 30px 0; }
   #contact .custom-input {
