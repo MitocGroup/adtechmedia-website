@@ -63,7 +63,7 @@ $menuIcon.on('click', function(){
       });
     } else {
       $('body').addClass('menu-shown');
-      $menu.on('click touchmove', 'a', function() {
+      $menu.on('click', 'a', function() {
         $menuIcon.removeAttr('checked');
         $('body').removeClass('menu-shown');
       });
