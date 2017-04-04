@@ -518,7 +518,7 @@ h2 {
   .contact-inner {
     margin: 50px 0 0;
     position: relative;
-    height: 600px;
+    height: 500px;
   }
 
   #googleMap {
@@ -779,6 +779,10 @@ footer {
       margin: 0 0 20px;
     }
   }
+}
+
+.grecaptcha-badge {
+  z-index: 10;
 }
 
 .loader {
