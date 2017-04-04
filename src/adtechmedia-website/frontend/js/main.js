@@ -42,13 +42,6 @@ function _videoHide() {
   videoFile.currentTime = 0;
 }
 
-function autoGrow(element) {
-  if (element.scrollHeight < 100) {
-    element.style.height = 32 + 'px';
-    element.style.height = (element.scrollHeight) + 'px';
-  }
-}
-
 //show spinner while page loads
 $(window).load(function() {
   $(".loader").fadeOut("slow");
