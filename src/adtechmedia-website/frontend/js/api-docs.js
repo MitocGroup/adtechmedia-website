@@ -27,7 +27,7 @@ jQuery(function($) {
    * @type {SwaggerUi}
    */
   var swaggerUi = new SwaggerUi({
-    url: '/adtechmedia-website/files/swagger.yaml',
+    url: '/adtechmedia-website/files/swagger.json',
     dom_id: 'swagger-ui-container',
     supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
     onFailure: function(error) {
@@ -51,7 +51,7 @@ jQuery(function($) {
    */
   $(document).ajaxSend(function(event, request, settings) {
     var requestUrl = settings.url;
-    var allowedRegExp = new RegExp('/atm-admin\/api-gateway-key/');
+    var allowedRegExp = new RegExp('atm-admin\/api-gateway-key\/create', 'gi');
 
     if (!allowedRegExp.test(requestUrl)) {
       if (!window.apiKey) {
