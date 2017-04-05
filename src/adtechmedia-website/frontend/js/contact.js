@@ -1,5 +1,8 @@
 var contactUsCaptcha;
 
+/**
+ * Init google captcha widget
+ */
 function setCaptchaKey() {
   DeepFramework.Kernel.bootstrap(function (kernel) {
     var captchaSiteKey = DeepFramework.Kernel.config
