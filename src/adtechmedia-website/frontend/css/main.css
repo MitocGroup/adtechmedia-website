@@ -5,61 +5,75 @@
   font-family: FuturaICG;
   src: url(../fonts/FuturaICG.ttf); }
 .flex-row {
-  display: flex; }
+  display: flex;
+  display: -webkit-flex; }
   .flex-row.flex-gutter {
     margin: 0 -25px; }
     .flex-row.flex-gutter > * {
       padding: 0 25px;
       box-sizing: border-box; }
   .flex-row.flex-justify {
-    justify-content: center; }
+    justify-content: center;
+    -webkit-justify-content: center; }
 
 .flex-row > .flex-item-1 {
   flex: 0 0 8.33333%;
+  -webkit-flex: 0 0 8.33333%;
   max-width: 8.33333%; }
 
 .flex-row > .flex-item-2 {
   flex: 0 0 16.66667%;
+  -webkit-flex: 0 0 16.66667%;
   max-width: 16.66667%; }
 
 .flex-row > .flex-item-3 {
   flex: 0 0 25%;
+  -webkit-flex: 0 0 25%;
   max-width: 25%; }
 
 .flex-row > .flex-item-4 {
   flex: 0 0 33.33333%;
+  -webkit-flex: 0 0 33.33333%;
   max-width: 33.33333%; }
 
 .flex-row > .flex-item-5 {
   flex: 0 0 41.66667%;
+  -webkit-flex: 0 0 41.66667%;
   max-width: 41.66667%; }
 
 .flex-row > .flex-item-6 {
   flex: 0 0 50%;
+  -webkit-flex: 0 0 50%;
   max-width: 50%; }
 
 .flex-row > .flex-item-7 {
   flex: 0 0 58.33333%;
+  -webkit-flex: 0 0 58.33333%;
   max-width: 58.33333%; }
 
 .flex-row > .flex-item-8 {
   flex: 0 0 66.66667%;
+  -webkit-flex: 0 0 66.66667%;
   max-width: 66.66667%; }
 
 .flex-row > .flex-item-9 {
   flex: 0 0 75%;
+  -webkit-flex: 0 0 75%;
   max-width: 75%; }
 
 .flex-row > .flex-item-10 {
   flex: 0 0 83.33333%;
+  -webkit-flex: 0 0 83.33333%;
   max-width: 83.33333%; }
 
 .flex-row > .flex-item-11 {
   flex: 0 0 91.66667%;
+  -webkit-flex: 0 0 91.66667%;
   max-width: 91.66667%; }
 
 .flex-row > .flex-item-12 {
   flex: 0 0 100%;
+  -webkit-flex: 0 0 100%;
   max-width: 100%; }
 
 .self-center {
@@ -750,7 +764,8 @@ h2 {
 #contact .contact-inner {
   margin: 50px 0 0;
   position: relative;
-  height: 500px; }
+  height: 500px;
+  z-index: 3; }
 #contact #googleMap {
   width: 100%;
   height: 100%; }
@@ -841,9 +856,6 @@ footer {
 .bottom-info {
   line-height: 50px;
   font-size: 12px; }
-
-.g-recaptcha {
-  margin: 10px 0 0; }
 
 #api .custom-headline-block {
   background: url("../images/api/api.jpg") center center/100% auto no-repeat;
@@ -969,9 +981,6 @@ footer {
     margin: 0 0 3px; }
   .legal-pages .text-block:not(:last-child) {
     margin: 0 0 20px; }
-
-.grecaptcha-badge {
-  z-index: 10; }
 
 .loader {
   position: fixed;
@@ -1495,10 +1504,13 @@ footer {
 @media (max-width: 991px) {
   .home-blocks > .flex-row {
     flex-direction: column;
+    -webkit-flex-direction: column;
     margin: 0; }
     .home-blocks > .flex-row > * {
       max-width: none;
-      padding: 0; }
+      padding: 0;
+      flex: 0 0 auto;
+      -webkit-flex: 0 0 auto; }
       .home-blocks > .flex-row > *:not(:last-child) {
         margin-bottom: 30px; }
   .home-blocks img {
@@ -1816,7 +1828,7 @@ footer {
       padding: 0 15px; }
 
   #contact .contact-inner {
-    height: 470px; }
+    height: 460px; }
   #contact .contact-form {
     padding: 20px 30px 0; }
   #contact .custom-input {
@@ -2008,8 +2020,8 @@ footer {
     margin: 0;
     padding: 0; }
     .demo-container .demo-row .demo-block {
-      flex: 0 0 70%;
-      -webkit-flex: 0 0 70%;
+      flex: 0 0 auto;
+      -webkit-flex: 0 0 auto;
       max-width: 70%;
       padding: 0;
       align-self: center;
@@ -2134,10 +2146,7 @@ footer {
   .custom-headline-block section {
     padding-top: 10px; }
     .custom-headline-block section h2 {
-      margin-bottom: 0; }
-
-  .g-recaptcha > *:first-child {
-    margin: 0 auto; } }
+      margin-bottom: 0; } }
 @media (min-width: 480px) and (max-width: 640px) {
   .team-block .member-pic {
     width: 160px;
@@ -2213,15 +2222,10 @@ footer {
   #solutions section h1 {
     font-size: 22px; }
 
-  .demo-container .demo-row {
-    flex-direction: column;
-    -webkit-flex-direction: column;
-    margin: 0;
-    padding: 0; }
-    .demo-container .demo-row .demo-block {
-      flex: 0 0 90%;
-      -webkit-flex: 0 0 90%;
-      max-width: 90%; } }
+  .demo-container .demo-row .demo-block {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    max-width: 90%; } }
 @media (max-width: 479px) {
   .team-block {
     display: block;
@@ -2283,10 +2287,7 @@ footer {
 @media (max-width: 360px) {
   #contact .captcha-block img {
     margin: 0 auto;
-    max-width: 100%; }
-
-  .g-recaptcha {
-    margin: 10px -10px 0 -10px; } }
+    max-width: 100%; } }
 @media (max-width: 340px) {
   .carousel .carousel-overlay.with-headline .carousel-heading {
     font-size: 22px; } }
