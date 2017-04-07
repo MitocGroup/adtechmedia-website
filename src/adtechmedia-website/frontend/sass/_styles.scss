@@ -519,6 +519,7 @@ h2 {
     margin: 50px 0 0;
     position: relative;
     height: 500px;
+    z-index: 3;
   }
 
   #googleMap {
@@ -633,10 +634,6 @@ footer {
 .bottom-info {
   line-height: 50px;
   font-size: 12px;
-}
-
-.g-recaptcha {
-  margin: 10px 0 0;
 }
 
 #api {
@@ -779,10 +776,6 @@ footer {
       margin: 0 0 20px;
     }
   }
-}
-
-.grecaptcha-badge {
-  z-index: 10;
 }
 
 .loader {

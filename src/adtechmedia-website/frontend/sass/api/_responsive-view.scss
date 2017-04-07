@@ -175,10 +175,13 @@
   .home-blocks {
     & > .flex-row {
       flex-direction: column;
+      -webkit-flex-direction: column;
       margin: 0;
       & > * {
         max-width: none;
         padding: 0;
+        flex: 0 0 auto;
+        -webkit-flex: 0 0 auto;
         &:not(:last-child) {
           margin-bottom: 30px;
         }
