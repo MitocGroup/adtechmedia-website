@@ -53,7 +53,8 @@
       var $close = $(this).siblings('.video-close');
       var $video = $(this).siblings('.carousel-overlay.youtube-overlay');
       var videoId = $video.data('video-id');
-      $($video, $close).removeClass('hidden');
+
+      $video.add($close).removeClass('hidden');
 
       if (players[videoId]) {
         players[videoId].playVideo();
@@ -78,7 +79,7 @@
               // show slides again
               resumeSliding();
               player.stopVideo();
-              $($video, $close).addClass('hidden');
+              $video.add($close).addClass('hidden');
             }
           }
         }
