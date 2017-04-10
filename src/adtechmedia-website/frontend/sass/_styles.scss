@@ -778,6 +778,16 @@ footer {
   }
 }
 
+.video-close {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 15px;
+  color: #E5E5E5;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .loader {
   position: fixed;
   left: 0;
