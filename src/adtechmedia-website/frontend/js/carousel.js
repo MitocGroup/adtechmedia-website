@@ -21,7 +21,9 @@
         return function(){
           pauseSliding();
           goToSlide(n);
-          resumeSliding();
+          setTimeout(function(){
+            resumeSliding();
+          }, 1000);
         };
       })(j);
     }
@@ -34,7 +36,15 @@
       clearInterval(slideInterval);
     }
 
-    function resumeSliding(){
+    function resumeSliding() {
+      for(var x in players) {
+        if(players.hasOwnProperty(x)) {
+          players[x].stopVideo();
+        }
+      }
+
+      $('.carousel-overlay.youtube-overlay').add('.video-close').addClass('hidden');
+
       slideInterval = setInterval(nextSlide,4000);
     }
 
@@ -78,8 +88,6 @@
 
               // show slides again
               resumeSliding();
-              player.stopVideo();
-              $video.add($close).addClass('hidden');
             }
           }
         }
@@ -92,11 +100,6 @@
      * Force currently playing video to stop
      */
     $('.video-close').on('click', function() {
-      var videoId = $(this).data('video-id');
-      $(this).addClass('hidden');
-
-      players[videoId].stopVideo();
-      $(this).siblings('.carousel-overlay.youtube-overlay').addClass('hidden');
       resumeSliding();
     });
 
