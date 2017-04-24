@@ -174,12 +174,27 @@ module.exports = function(callback) {
       console.error('Error copying static pages. Root microservice is not found.');
     }
 
-    console.log('Downloading latest ATM Service Worker from ' + atmSwUrl);
     injectServiceWorker();
+  }
+  
+  function swContent(cb) {
+    if (/^https?:\/\//i.test(atmSwUrl)) {
+      console.log('Downloading latest ATM Service Worker from ' + atmSwUrl);
+      
+      return get(atmSwUrl, cb);
+    }
+    
+    try {
+      console.log('Reading ATM Service Worker from ' + atmSwUrl);
+      
+      cb(null, fs.readFileSync(path.join(__dirname, atmSwUrl)));
+    } catch (error) {
+      cb(error, null);
+    }
   }
 
   function injectServiceWorker() {
-    get(atmSwUrl, function(error, swContent) {
+    swContent(function(error, swContent) {
       if (error) {
         throw error;
       }
