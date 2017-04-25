@@ -7,36 +7,53 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="UTF-8" />
-    <title>AdTechMedia Developer Portal</title>
-    <meta name="description" content="AdTechMedia platform solves most challenging problems (e.g. ad blocking, complementary revenue) on behalf of publishers and content providers" />
-    <meta name="author" content="hello AT adtechmedia DOT io" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
-    <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
-    <link rel="icon" href="/atm-core/images/favicon.png" type="image/x-icon" />
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KF8XT7');</script>
-    <!-- End Google Tag Manager -->
+<meta charset="UTF-8" />
+<title>AdTechMedia Developer Portal</title>
+<meta name="description" content="AdTechMedia platform solves most challenging problems (e.g. ad blocking, complementary revenue) on behalf of publishers and content providers" />
+<meta name="author" content="hello AT adtechmedia DOT io" />
+<meta property="og:title" content="AdTechMedia Developer Portal"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="AdTechMedia platform solves most challenging problems (e.g. ad blocking, complementary revenue) on behalf of publishers and content providers" />
+<meta property="og:url" content="https://www.adtechmedia.io/" />
+<meta property="og:site_name" content="AdTechMedia" />
+<meta property="og:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://www.adtechmedia.io/" />
+<meta name="twitter:title" content="AdTechMedia Developer Portal" />
+<meta name="twitter:description" content="AdTechMedia platform solves most challenging problems (e.g. ad blocking, complementary revenue) on behalf of publishers and content providers" />
+<meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
+<link rel="icon" href="/atm-core/images/favicon.png" type="image/x-icon" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KF8XT7');</script>
+<!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/Webpage">
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<!-- Facebook SDK for JavaScript -->
+<script>window.fbAsyncInit=function(){FB.init({appId:"228016877602327",xfbml:!0,version:"v2.8"}),
+FB.AppEvents.logPageView()},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];
+a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",
+e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
+<!-- End Facebook SDK for JavaScript -->
 <div class="loader"></div>
 <header class="cd-secondary-nav">
     <section class="scroll-nav clearfix">
         <div class="logo-cont">
             <ul>
-                <li>
-                    <a class="logo" href="/">
-                        <img src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                <li itemscope itemtype="http://schema.org/Organization">
+                    <a itemprop="url" class="logo" href="/">
+                        <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                        <meta itemprop="name" content="AdTechMedia">
                     </a>
                 </li>
             </ul>
@@ -79,15 +96,15 @@
 </header>
 
 <main class="dev-docs">
-    <div role='flatdoc' class='user-guide'>
-        <div class='content-root'>
-            <div class='menubar'>
-                <div class='menu section' role='flatdoc-menu'></div>
+    <div role="flatdoc" class="user-guide">
+        <div class="content-root clearfix">
+            <div class="menubar">
+                <div class="menu section" role="flatdoc-menu"></div>
             </div>
             <a class="back-link" href="/api/">
                 <i class="fa fa-angle-left"></i>
             </a>
-            <div role='flatdoc-content' class='content'></div>
+            <div role="flatdoc-content" class="content"></div>
         </div>
     </div>
 </main>
@@ -96,9 +113,9 @@
     <section>
         <div class="footer-blocks">
             <div class="footer-logo"></div>
-            <div class="about-us">
+            <div class="about-us" itemscope itemtype="http://schema.org/Audience">
                 <h3>About Us</h3>
-                <p>AdTechMedia is an advertising platform with micropayments capabilities for media content
+                <p itemprop="audienceType">AdTechMedia is an advertising platform with micropayments capabilities for media content
                     monetization. We help publishers and content providers to generate complementary revenue streams
                     that are immune to ad blocking software (e.g. native advertising or native micropayments).
                     Our solutions are white labeled, data driven and realtime.</p>
@@ -108,22 +125,22 @@
                     <h3>Social</h3>
                     <ul class="clearfix">
                         <li>
-                            <a href="https://linkedin.com/company/adtechmediapro">
+                            <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/adtechmediapro">
+                            <a itemprop="url" href="https://twitter.com/adtechmediapro">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://facebook.com/adtechmediapro">
+                            <a itemprop="url" href="https://facebook.com/adtechmediapro">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/adtechmedia">
+                            <a itemprop="url" href="https://github.com/adtechmedia">
                                 <i class="fa fa-github"></i>
                             </a>
                         </li>
@@ -181,7 +198,7 @@
     </section>
 </footer>
 <div class="bottom-info">
-    <span>Copyright &copy; <a href="https://www.mitocgroup.com">Mitoc Group</a> 2016-2017. All rights reserved.</span>
+    <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
     <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
 </div>
 

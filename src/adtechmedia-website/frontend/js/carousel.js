@@ -5,6 +5,7 @@
     var slideInterval = setInterval(nextSlide,4000);
     var p = document.getElementById(paginationId);
     var phtml = '';
+    var players = {};
 
     for(var i=1; i<=slides.length; i++){
       phtml+='<button></button>';
@@ -20,7 +21,9 @@
         return function(){
           pauseSliding();
           goToSlide(n);
-          resumeSliding();
+          setTimeout(function(){
+            resumeSliding();
+          }, 1000);
         };
       })(j);
     }
@@ -33,7 +36,15 @@
       clearInterval(slideInterval);
     }
 
-    function resumeSliding(){
+    function resumeSliding() {
+      for(var x in players) {
+        if(players.hasOwnProperty(x)) {
+          players[x].stopVideo();
+        }
+      }
+
+      $('.carousel-overlay.youtube-overlay').add('.video-close').addClass('hidden');
+
       slideInterval = setInterval(nextSlide,4000);
     }
 
@@ -45,18 +56,26 @@
       pbuttons[currentSlide].className = 'active';
     }
 
-    $('.video-show').click(function() {
+    $('.video-show').on('click', function() {
       // stops slides
       pauseSliding();
 
+      var $close = $(this).siblings('.video-close');
       var $video = $(this).siblings('.carousel-overlay.youtube-overlay');
-      $video.removeClass('hidden');
+      var videoId = $video.data('video-id');
+
+      $video.add($close).removeClass('hidden');
+
+      if (players[videoId]) {
+        players[videoId].playVideo();
+        return;
+      }
 
       // shows youtube video player
       var player = new YT.Player($video.children('.youtube-video').attr('id'), {
         height: '100%',
         width: '100%',
-        videoId: $video.data('video-id'),
+        videoId: videoId,
         playerVars: {
           autoplay: 1,
           showinfo: 0,
@@ -66,21 +85,25 @@
         events: {
           'onStateChange': function(event) {
             if (event.data === YT.PlayerState.ENDED) {
-              $video.addClass('hidden');
 
               // show slides again
               resumeSliding();
-              player.destroy();
             }
           }
         }
       });
+
+      players[videoId] = player;
     });
+
+    /**
+     * Force currently playing video to stop
+     */
+    $('.video-close').on('click', function() {
+      resumeSliding();
+    });
+
   }
 
   carouselSlide('#home-slides .slide', 'home-pagination');
 })(window);
-
-
-
-

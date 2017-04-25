@@ -4,10 +4,6 @@ jQuery(function($) {
   var $apiKey = $('#api-key');
   var $apiKeyBtn = $('#api-key-apply');
 
-  $.notify.defaults({
-    position: 'bottom right'
-  });
-
   /**
    * Apply user's api key
    */
@@ -18,7 +14,11 @@ jQuery(function($) {
         'api_key', new SwaggerClient.ApiKeyAuthorization('X-Api-Key', token, 'header')
       );
       window.apiKey = token;
-      $.notify('Api-key successfully applied', 'success');
+      noty({
+        text: 'Api-key successfully applied',
+        type: 'success',
+        timeout: 3000
+      });
     }
   });
 
@@ -27,12 +27,15 @@ jQuery(function($) {
    * @type {SwaggerUi}
    */
   var swaggerUi = new SwaggerUi({
-    url: '/adtechmedia-website/files/swagger.yaml',
+    url: '/adtechmedia-website/files/swagger.json',
     dom_id: 'swagger-ui-container',
     supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
     onFailure: function(error) {
-      $.notify('Unable to Load SwaggerUI', 'error');
-      console.error(error);
+      noty({
+        text: 'Unable to Load SwaggerUI',
+        type: 'error',
+        timeout: 3000
+      });
     },
     useJQuery: true,
     docExpansion: 'list',
@@ -48,12 +51,16 @@ jQuery(function($) {
    */
   $(document).ajaxSend(function(event, request, settings) {
     var requestUrl = settings.url;
-    var allowedRegExp = new RegExp('/atm-admin\/api-gateway-key/');
+    var allowedRegExp = new RegExp('atm-admin\/api-gateway-key\/create', 'gi');
 
     if (!allowedRegExp.test(requestUrl)) {
       if (!window.apiKey) {
         request.abort();
-        $.notify('Api key is wrong or missing', 'warn');
+        noty({
+          text: 'Api key is wrong or missing',
+          type: 'warning',
+          timeout: 3000
+        });
       }
     }
   });

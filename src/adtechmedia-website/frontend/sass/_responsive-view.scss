@@ -331,7 +331,7 @@
 
   #contact {
     .contact-inner {
-      height: 550px;
+      height: 460px;
     }
 
     .contact-form {
@@ -650,7 +650,7 @@
       margin: 0;
       padding: 0;
       .demo-block {
-        @include flex-width(0 0 70%, 70%);
+        @include flex-width(0 0 auto, 70%);
         padding: 0;
         align-self: center;
         -webkit-align-self: center;
@@ -681,7 +681,7 @@
     line-height: 1.5;
     font-size: 12px;
     padding: 10px 0;
-    span {
+    & > span {
       display: block;
       a {
         white-space: nowrap;
@@ -845,12 +845,6 @@
       }
     }
   }
-
-  .g-recaptcha {
-    & > *:first-child {
-      margin: 0 auto;
-    }
-  }
 }
 
 @media (min-width: 480px) and (max-width: 640px) {
@@ -986,12 +980,8 @@
 
   .demo-container {
     .demo-row {
-      flex-direction: column;
-      -webkit-flex-direction: column;
-      margin: 0;
-      padding: 0;
       .demo-block {
-        @include flex-width(0 0 90%, 90%);
+        @include flex-width(0 0 auto, 90%);
       }
     }
   }
@@ -1130,10 +1120,6 @@
         max-width: 100%;
       }
     }
-  }
-
-  .g-recaptcha {
-    margin: 10px -10px 0 -10px;
   }
 }
 

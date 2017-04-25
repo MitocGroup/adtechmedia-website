@@ -1,14 +1,30 @@
 var contactUsCaptcha;
 
+/**
+ * Init google captcha widget
+ */
 function setCaptchaKey() {
   DeepFramework.Kernel.bootstrap(function (kernel) {
     var captchaSiteKey = DeepFramework.Kernel.config
       .microservices['adtechmedia-website'].parameters.captchaSiteKey;
 
     contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
-      sitekey: captchaSiteKey
+      sitekey: captchaSiteKey,
+      size: 'invisible',
+      callback: function (token) {
+        sendContactUsEmail(token);
+      }
     });
   });
+}
+
+/**
+ * Execute google captcha
+ * @returns {boolean}
+ */
+function executeCaptcha() {
+  grecaptcha.execute(contactUsCaptcha);
+  return false;
 }
 
 function handleCallback(error) {
@@ -47,14 +63,6 @@ function enableForm(form) {
   }
 }
 
-function checkCaptchaNotification() {
-  noty({
-    text: 'Please pass the captcha',
-    type: 'warning',
-    timeout: 3000
-  });
-}
-
 function sendEmail(payload, callback) {
   var emailResource = DeepFramework.Kernel.get('resource').get('@adtechmedia-website:email');
 
@@ -69,12 +77,7 @@ function sendEmail(payload, callback) {
   });
 }
 
-function sendContactUsEmail() {
-  if (!grecaptcha.getResponse(contactUsCaptcha)) {
-    checkCaptchaNotification();
-    return false;
-  }
-
+function sendContactUsEmail(token) {
   var formElement = document.getElementById('contactus-form');
   var form = {
     nameElement : document.getElementById('name-field'),
@@ -89,7 +92,7 @@ function sendContactUsEmail() {
     phone: form.phoneElement.value,
     email: form.emailElement.value,
     message: form.messageElement.value,
-    captchaResponse: grecaptcha.getResponse(contactUsCaptcha),
+    captchaResponse: token,
   };
 
   disableForm(form);
@@ -98,9 +101,10 @@ function sendContactUsEmail() {
     enableForm(form);
 
     if (!error) {
-      grecaptcha.reset(contactUsCaptcha);
       formElement.reset();
     }
+
+    grecaptcha.reset(contactUsCaptcha);
   });
 
   return false;

@@ -11,6 +11,17 @@
 <title>AdTechMedia Privacy Policy</title>
 <meta name="description" content="This Privacy Policy explains how AdTechMedia.io collects, uses, and shares information we receive from you through your use of the AdTechMedia platform" />
 <meta name="author" content="hello AT adtechmedia DOT io" />
+<meta property="og:title" content="AdTechMedia Privacy Policy"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="This Privacy Policy explains how AdTechMedia.io collects, uses, and shares information we receive from you through your use of the AdTechMedia platform" />
+<meta property="og:url" content="https://www.adtechmedia.io/" />
+<meta property="og:site_name" content="AdTechMedia" />
+<meta property="og:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://www.adtechmedia.io/" />
+<meta name="twitter:title" content="AdTechMedia Privacy Policy" />
+<meta name="twitter:description" content="This Privacy Policy explains how AdTechMedia.io collects, uses, and shares information we receive from you through your use of the AdTechMedia platform" />
+<meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
@@ -24,18 +35,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/Webpage">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<!-- Facebook SDK for JavaScript -->
+<script>window.fbAsyncInit=function(){FB.init({appId:"228016877602327",xfbml:!0,version:"v2.8"}),
+FB.AppEvents.logPageView()},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];
+a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",
+e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
+<!-- End Facebook SDK for JavaScript -->
 <header class="cd-secondary-nav">
     <section class="scroll-nav clearfix">
         <div class="logo-cont">
             <ul>
-                <li>
-                    <a class="logo" href="/">
-                        <img src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                <li itemscope itemtype="http://schema.org/Organization">
+                    <a itemprop="url" class="logo" href="/">
+                        <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                        <meta itemprop="name" content="AdTechMedia">
                     </a>
                 </li>
             </ul>
@@ -227,34 +245,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section>
         <div class="footer-blocks">
             <div class="footer-logo"></div>
-            <div class="about-us">
+            <div class="about-us" itemscope itemtype="http://schema.org/Audience">
                 <h3>About Us</h3>
-                <p>AdTechMedia is an advertising platform with micropayments capabilities for media content
-                monetization. We help publishers and content providers to generate complementary revenue streams
-                that are immune to ad blocking software (e.g. native advertising or native micropayments).
-                Our solutions are white labeled, data driven and realtime.</p>
+                <p itemprop="audienceType">AdTechMedia is an advertising platform with micropayments capabilities for media content
+                    monetization. We help publishers and content providers to generate complementary revenue streams
+                    that are immune to ad blocking software (e.g. native advertising or native micropayments).
+                    Our solutions are white labeled, data driven and realtime.</p>
             </div>
             <div class="footer-links scroll-nav">
                 <div class="social-links">
                     <h3>Social</h3>
                     <ul class="clearfix">
                         <li>
-                            <a href="https://linkedin.com/company/adtechmediapro">
+                            <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/adtechmediapro">
+                            <a itemprop="url" href="https://twitter.com/adtechmediapro">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://facebook.com/adtechmediapro">
+                            <a itemprop="url" href="https://facebook.com/adtechmediapro">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/adtechmedia">
+                            <a itemprop="url" href="https://github.com/adtechmedia">
                                 <i class="fa fa-github"></i>
                             </a>
                         </li>
@@ -312,7 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </footer>
 <div class="bottom-info">
-    <span>Copyright &copy; <a href="https://www.mitocgroup.com">Mitoc Group</a> 2016-2017. All rights reserved.</span>
+    <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
     <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
 </div>
 

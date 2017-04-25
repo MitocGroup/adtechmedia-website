@@ -518,7 +518,8 @@ h2 {
   .contact-inner {
     margin: 50px 0 0;
     position: relative;
-    height: 600px;
+    height: 500px;
+    z-index: 3;
   }
 
   #googleMap {
@@ -553,10 +554,6 @@ h2 {
       margin: 0 0 2px;
       a {
         color: $base-color;
-      }
-
-      span {
-        color: $link-color;
       }
     }
   }
@@ -637,10 +634,6 @@ footer {
 .bottom-info {
   line-height: 50px;
   font-size: 12px;
-}
-
-.g-recaptcha {
-  margin: 10px 0 0;
 }
 
 #api {
@@ -783,6 +776,16 @@ footer {
       margin: 0 0 20px;
     }
   }
+}
+
+.video-close {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 15px;
+  color: #E5E5E5;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .loader {

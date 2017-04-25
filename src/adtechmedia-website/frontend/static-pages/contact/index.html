@@ -11,31 +11,48 @@
 <title>Contact AdTechMedia Team</title>
 <meta name="description" content="Contact AdTechMedia team to learn more about how can we help you to generate complementary revenue streams that are immune to ad blocking software" />
 <meta name="author" content="hello AT adtechmedia DOT io" />
+<meta property="og:title" content="Contact AdTechMedia Team"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="Contact AdTechMedia team to learn more about how can we help you to generate complementary revenue streams that are immune to ad blocking software" />
+<meta property="og:url" content="https://www.adtechmedia.io/" />
+<meta property="og:site_name" content="AdTechMedia" />
+<meta property="og:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://www.adtechmedia.io/" />
+<meta name="twitter:title" content="Contact AdTechMedia Team" />
+<meta name="twitter:description" content="Contact AdTechMedia team to learn more about how can we help you to generate complementary revenue streams that are immune to ad blocking software" />
+<meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
 <link rel="icon" href="/atm-core/images/favicon.png" type="image/x-icon" />
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KF8XT7');</script>
 <!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body itemscope itemtype="https://schema.org/ContactPage">
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<!-- Facebook SDK for JavaScript -->
+<script>window.fbAsyncInit=function(){FB.init({appId:"228016877602327",xfbml:!0,version:"v2.8"}),
+FB.AppEvents.logPageView()},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];
+a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",
+e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
+<!-- End Facebook SDK for JavaScript -->
 <header class="cd-secondary-nav">
     <section class="scroll-nav clearfix">
         <div class="logo-cont">
             <ul>
-                <li>
-                    <a class="logo" href="/">
-                        <img src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                <li itemscope itemtype="http://schema.org/Organization">
+                    <a itemprop="url" class="logo" href="/">
+                        <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                        <meta itemprop="name" content="AdTechMedia">
                     </a>
                 </li>
             </ul>
@@ -79,7 +96,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main class="cb-container">
     <section id="contact" class="white-section cd-section">
-        <form onsubmit="return sendContactUsEmail()" id="contactus-form">
+        <form onsubmit="return executeCaptcha()" id="contactus-form">
             <h1>contact</h1>
             <div class="contact-inner">
                 <div id="googleMap"></div>
@@ -108,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
 
                     <div class="custom-input">
-                        <textarea onkeyup="auto_grow(this)" name="message" id="message-field" required></textarea>
+                        <textarea name="message" id="message-field" required></textarea>
                         <span class="bar"></span>
                         <label class="text-field__label">Message</label>
                     </div>
@@ -120,9 +137,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <i class="fa fa-check"></i> submit
                         </button>
                     </div>
-                    <div class="company-info">
+                    <div class="company-info" itemscope itemtype="http://schema.org/Place">
                         Address:
-                        <a href="https://goo.gl/maps/XJev9bE4QxC2">50 Tice Blvd Woodcliff Lake NJ 07677</a>
+                        <a itemprop="url" href="https://goo.gl/maps/XJev9bE4QxC2">
+                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                <span itemprop="streetAddress">50 Tice Blvd</span>
+                                <span itemprop="addressLocality">Woodcliff Lake</span>
+                                <span itemprop="addressRegion"> NJ </span>
+                                <span itemprop="postalCode">07677</span>
+                            </span>
+                        </a>
                     </div>
                     <div class="company-info">
                         Tel: <a href="tel:+18018108186">801.810.8186</a> |
@@ -138,9 +162,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section>
         <div class="footer-blocks">
             <div class="footer-logo"></div>
-            <div class="about-us">
+            <div class="about-us" itemscope itemtype="http://schema.org/Audience">
                 <h3>About Us</h3>
-                <p>AdTechMedia is an advertising platform with micropayments capabilities for media content
+                <p itemprop="audienceType">AdTechMedia is an advertising platform with micropayments capabilities for media content
                 monetization. We help publishers and content providers to generate complementary revenue streams
                 that are immune to ad blocking software (e.g. native advertising or native micropayments).
                 Our solutions are white labeled, data driven and realtime.</p>
@@ -150,22 +174,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <h3>Social</h3>
                     <ul class="clearfix">
                         <li>
-                            <a href="https://linkedin.com/company/adtechmediapro">
+                            <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/adtechmediapro">
+                            <a itemprop="url" href="https://twitter.com/adtechmediapro">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://facebook.com/adtechmediapro">
+                            <a itemprop="url" href="https://facebook.com/adtechmediapro">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/adtechmedia">
+                            <a itemprop="url" href="https://github.com/adtechmedia">
                                 <i class="fa fa-github"></i>
                             </a>
                         </li>
@@ -223,10 +247,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </footer>
 <div class="bottom-info">
-    <span>Copyright &copy; <a href="https://www.mitocgroup.com">Mitoc Group</a> 2016-2017. All rights reserved.</span>
+    <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
     <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
 </div>
-
 
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/nav.js"></script>
@@ -234,7 +257,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.noty.packaged.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/input-mask.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ILEj6leGokPnvmh4YhDES7je21MvvCE"></script>
-
 <script type="text/javascript" src="/adtechmedia-website/js/main.js"></script>
+<script type="text/javascript" src="/js/lib/deep-framework.js"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=setCaptchaKey&render=explicit&hl=en"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/contact.js"></script>
 </body>
 </html>
