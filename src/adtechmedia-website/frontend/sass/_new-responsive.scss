@@ -1,0 +1,209 @@
+@media (min-width: 1300px) {
+  .main-page h1 {
+    font-size: 50px;
+  }
+
+  .main-slide {
+    section {
+      width: 1150px;
+    }
+
+    .info-block {
+      position: relative;
+      left: 75px;
+    }
+  }
+}
+
+@media (min-width: 1700px) {
+  body {
+    font-size: 16px;
+  }
+
+  section {
+    width: 1296px;
+    .steps & {
+      width: 1100px;
+    }
+  }
+
+  .main-page h1 {
+    font: 75px/1 FuturaICG, sans-serif;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 28px;
+    .demo-footer & {
+      font-size: 28px;
+    }
+
+    .steps .step-block &,
+    .modal__content .modal-inner & {
+      font-size: 22px;
+    }
+
+    .quick-links & {
+      margin-bottom: 10px;
+    }
+  }
+
+  .footer-blocks {
+    .social-links {
+      li {
+        a {
+          width: 72px;
+          height: 72px;
+          i {
+            font-size: 40px;
+            line-height: 72px;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-logo {
+    img {
+      height: 104px;
+    }
+  }
+
+  .main-slide {
+    .scroll-down {
+      width: 56px;
+      height: 56px;
+      bottom: 100px;
+      i {
+        font-size: 1.8rem;
+        line-height: 56px;
+      }
+    }
+  }
+
+  .steps {
+    .checks {
+      h3 {
+        padding: 0 0 0 2.7rem;
+        &:before {
+          left: 10px;
+          top: 35%;
+          width: 1.3rem;
+          height: .5rem;
+          transform: rotate(-45deg) translateY(-35%);
+          border-width: 3px;
+        }
+
+        &:after {
+          width: 1.3rem;
+          height: 1.3rem;
+          border-width: 3px;
+        }
+      }
+    }
+
+    h1 {
+      margin: 80px 0;
+    }
+
+    .flex-row {
+      margin: 0 0 80px;
+    }
+  }
+
+  .solutions-block {
+    width: 100%;
+    height: 1200px;
+    background: url(../images/devices.svg) center bottom 50px/900px auto no-repeat,
+    url(../images/tree.svg) center bottom 550px/400px auto no-repeat,
+    url(../images/wallpaper-prefooter.jpg) 0 bottom/auto 640px no-repeat;
+    .solutions-cont {
+      font-size: 18px;
+      width: 1250px;
+      .solutions-inner {
+        &:first-child {
+          padding: 0 0 0 50px;
+        }
+        
+        li {
+          padding: 0 0 0 20px;
+          &:before {
+            top: 10px;
+          }
+        }
+      }
+    }
+
+    .third-block {
+      margin-top: 15%;
+    }
+
+    .fourth-block {
+      margin-right: 50px;
+    }
+  }
+
+  .btn {
+    font: 16px/40px FuturaICG, sans-serif;
+    padding: 0 24px;
+    height: 40px;
+    margin-right: 24px;
+  }
+
+  .main-slide {
+    background: url('../images/white-shape.png') 0 bottom/100% 300px no-repeat,
+    url('../images/hero-blue.png') right bottom/auto 95% no-repeat,
+    url('../images/hero-wallpaper.jpg') 0 bottom/cover no-repeat;
+    section {
+      width: 1500px;
+    }
+
+    .flex-row {
+      height: 450px;
+    }
+
+    .laptop {
+      background-size: auto 450px;
+    }
+
+    .info-block {
+      position: relative;
+      left: 100px;
+      h2 {
+        margin: 40px 0 25px;
+      }
+    }
+  }
+
+  .bottom-info {
+    font-size: 15px;
+  }
+
+  .demo-footer {
+    height: 250px;
+    line-height: 150px;
+  }
+
+  .footer-blocks {
+    .social-links {
+      li {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .custom-input {
+    padding-top: 28px;
+    input {
+      font-size: 22px;
+      height: 40px;
+    }
+
+    label {
+      line-height: 44px;
+    }
+  }
+}
