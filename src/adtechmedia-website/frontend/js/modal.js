@@ -4,7 +4,7 @@ var Modal = (function() {
   var modals = $('.modal'); // the entire modal (takes up entire window)
   var modalsbg = $('.modal__bg'); // the entire modal (takes up entire window)
   var content = $('.modal__content'); // the inner content of the modal
-  var closers = $('.modal__close'); // an element used to close the modal
+  var closers = $('.close-btn'); // an element used to close the modal
   var w = window;
   var isOpen = false;
   var contentDelay = 400; // duration after you click the button and wait for the content to show
@@ -133,7 +133,7 @@ var Modal = (function() {
      * inside the modal and have it close.
      */
 
-    if (isOpen && target.classList.contains('modal__bg') || target.classList.contains('modal__close')) {
+    if (isOpen && target.classList.contains('modal__bg') || target.classList.contains('close-btn')) {
 
       // make the hidden div visible again and remove the transforms so it scales back to its original size
       div.style.opacity = '1';

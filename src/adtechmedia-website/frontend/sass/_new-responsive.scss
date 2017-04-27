@@ -1,9 +1,7 @@
 @media (min-width: 1300px) {
-  .main-page h1 {
-    font-size: 50px;
-  }
-
   .main-slide {
+    margin: 88px 0 0;
+    height: calc(100vh - 65px);
     section {
       width: 1150px;
     }
@@ -11,15 +9,28 @@
     .info-block {
       position: relative;
       left: 75px;
+      p {
+        width: 90%;
+      }
+    }
+  }
+
+  .logo {
+    height: 88px;
+    img {
+      height: 40px;
+    }
+  }
+
+  .main-nav {
+    li {
+      line-height: 88px;
+      height: 88px;
     }
   }
 }
 
 @media (min-width: 1700px) {
-  body {
-    font-size: 16px;
-  }
-
   section {
     width: 1296px;
     .steps & {
@@ -31,23 +42,18 @@
     font: 75px/1 FuturaICG, sans-serif;
   }
 
-  h2 {
+  p {
     font-size: 22px;
+  }
+
+  h2 {
+    font-size: 50px;
   }
 
   h3 {
     font-size: 28px;
-    .demo-footer & {
-      font-size: 28px;
-    }
-
-    .steps .step-block &,
     .modal__content .modal-inner & {
       font-size: 22px;
-    }
-
-    .quick-links & {
-      margin-bottom: 10px;
     }
   }
 
@@ -69,18 +75,6 @@
   .footer-logo {
     img {
       height: 104px;
-    }
-  }
-
-  .main-slide {
-    .scroll-down {
-      width: 56px;
-      height: 56px;
-      bottom: 100px;
-      i {
-        font-size: 1.8rem;
-        line-height: 56px;
-      }
     }
   }
 
@@ -121,7 +115,7 @@
     url(../images/tree.svg) center bottom 550px/400px auto no-repeat,
     url(../images/wallpaper-prefooter.jpg) 0 bottom/auto 640px no-repeat;
     .solutions-cont {
-      font-size: 18px;
+      font-size: 22px;
       width: 1250px;
       .solutions-inner {
         &:first-child {
@@ -131,7 +125,37 @@
         li {
           padding: 0 0 0 20px;
           &:before {
-            top: 10px;
+            top: 12px;
+          }
+        }
+      }
+    }
+
+    .first-block {
+      li {
+        &:before {
+          width: 6px;
+          height: 6px;
+        }
+
+        ul li {
+          &:before {
+            border-width: 4px;
+          }
+        }
+      }
+    }
+
+    .second-block {
+      li {
+        &:before {
+          width: 5px;
+          height: 5px;
+        }
+
+        ul li {
+          &:before {
+            border-width: 4px;
           }
         }
       }
@@ -139,10 +163,27 @@
 
     .third-block {
       margin-top: 15%;
+      li {
+        &:before {
+          width: 6px;
+          height: 6px;
+        }
+      }
     }
 
     .fourth-block {
       margin-right: 50px;
+      li {
+        &:before {
+          border-width: 0 6px 12px;
+        }
+
+        &:after {
+          top: 18px;
+          width: 4px;
+          height: 4px;
+        }
+      }
     }
   }
 
@@ -153,10 +194,16 @@
     margin-right: 24px;
   }
 
+  .main-nav li.custom-menu-link a {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .main-slide {
     background: url('../images/white-shape.png') 0 bottom/100% 300px no-repeat,
     url('../images/hero-blue.png') right bottom/auto 95% no-repeat,
     url('../images/hero-wallpaper.jpg') 0 bottom/cover no-repeat;
+    height: calc(100vh - 50px);
     section {
       width: 1500px;
     }
@@ -176,10 +223,20 @@
         margin: 40px 0 25px;
       }
     }
-  }
 
-  .bottom-info {
-    font-size: 15px;
+    p {
+      margin: 30px 0;
+    }
+
+    .scroll-down {
+      width: 56px;
+      height: 56px;
+      bottom: 100px;
+      i {
+        font-size: 1.8rem;
+        line-height: 56px;
+      }
+    }
   }
 
   .demo-footer {
