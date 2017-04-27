@@ -89,3 +89,12 @@
   background: -ms-linear-gradient($value1, $value2, $value3);
   background: linear-gradient($value1, $value2, $value3);
 }
+
+@mixin hover-color($list1, $list2) {
+  @each $current in $list1 {
+    $i: index($list1, $current);
+    .#{$current}:hover i {
+      color: nth($list2, $i);
+    }
+  }
+}

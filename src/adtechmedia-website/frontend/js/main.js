@@ -11,6 +11,13 @@ $('.scroll-down').on('click', function(){
   $('body,html').animate({'scrollTop': $slideHeight}, 1000);
 });
 
+$(window).on('scroll', function(){
+  if($(window).scrollTop() >= $slideHeight) {
+    $('header').addClass('with-shadow');
+  } else {
+    $('header').removeClass('with-shadow');
+  }
+});
 
 //function _initGoogleMaps() {
 //  var mapContainer = document.getElementById('googleMap');
