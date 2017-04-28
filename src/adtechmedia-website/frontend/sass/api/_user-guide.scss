@@ -11,13 +11,24 @@
     .content-root {
       min-height: 90%;
       position: relative;
+      padding-bottom: 120px;
     }
 
     .content {
       @extend .clearfix;
       padding: 40px;
       zoom: 1;
-      border-left: solid 1px $border-color;
+      position: relative;
+      &:before {
+        position: absolute;
+        content: '';
+        width: 1px;
+        height: calc(100% + 100px);
+        background: $border-color;
+        top: 0;
+        left: 0;
+        display: block;
+      }
       & > *:first-child {
         padding-left: 85px;
       }
@@ -288,5 +299,10 @@
         }
       }
     }
+  }
+
+  & ~ .demo-footer {
+    position: relative;
+    margin-top: -150px;
   }
 }

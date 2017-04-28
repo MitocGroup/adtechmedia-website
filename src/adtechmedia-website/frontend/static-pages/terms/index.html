@@ -46,12 +46,12 @@ FB.AppEvents.logPageView()},function(a,b,c){var d,e=a.getElementsByTagName(b)[0]
 a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",
 e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
 <!-- End Facebook SDK for JavaScript -->
-<header class="cd-secondary-nav">
+<header class="cd-secondary-nav with-shadow">
     <section class="scroll-nav clearfix">
         <div class="logo-cont">
             <ul>
-                <li itemscope itemtype="http://schema.org/Organization">
-                    <a itemprop="url" class="logo" href="/">
+                <li itemscope itemtype="https://schema.org/Organization">
+                    <a itemprop="url" class="logo page-scroll" href="/">
                         <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
                         <meta itemprop="name" content="AdTechMedia">
                     </a>
@@ -73,9 +73,6 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
                     <a href="/solutions/">solutions</a>
                 </li>
                 <li>
-                    <a href="/demo/">demo</a>
-                </li>
-                <li>
                     <a href="/api/">api</a>
                 </li>
                 <li>
@@ -85,10 +82,10 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
                     <a href="/contact/">contact</a>
                 </li>
                 <li>
-                    <a href="/admin/">admin</a>
+                    <a href="https://blog.adtechmedia.io">blog</a>
                 </li>
                 <li class="custom-menu-link">
-                    <a href="https://blog.adtechmedia.io">blog</a>
+                    <a href="" data-modal="#modal" class="modal__trigger">request a demo</a>
                 </li>
             </ul>
         </nav>
@@ -98,7 +95,7 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
 <main class="cb-container legal-pages">
     <section id="terms" class="cd-section">
         <h1>Terms of Use</h1>
-        <h2>Last updated: 2017-01-17.</h2>
+        <p>Last updated: 2017-01-17.</p>
 
         <div class="text-block">
             Welcome to AdTechMedia.io, a website operated by Mitoc Group Inc (the "Company").
@@ -410,104 +407,127 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
     </section>
 </main>
 
+<div class="demo-footer">
+    <h3>Do you still have any questions?</h3>
+    <button class="btn secondary-btn alpha-bg modal__trigger" data-modal="#modal">
+        request a demo
+    </button>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
+    <div class="modal__dialog">
+        <div class="modal__content">
+            <img src="/adtechmedia-website/images/popup-image.svg" alt="Adtechemdia Demo"/>
+
+            <div class="modal-inner">
+                <h3>Schedule a demo presentation</h3>
+
+                <div class="custom-input">
+                    <input type="text" name="email" id="email" required />
+                    <span class="bar"></span>
+                    <label class="text-field__label">Email</label>
+                </div>
+
+                <button class="btn close-btn">Later</button>
+                <button class="btn">Get Started</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
     <section>
-        <div class="footer-blocks">
-            <div class="footer-logo"></div>
-            <div class="about-us" itemscope itemtype="http://schema.org/Audience">
-                <h3>About Us</h3>
-                <p itemprop="audienceType">AdTechMedia is an advertising platform with micropayments capabilities for media content
-                    monetization. We help publishers and content providers to generate complementary revenue streams
-                    that are immune to ad blocking software (e.g. native advertising or native micropayments).
-                    Our solutions are white labeled, data driven and realtime.</p>
+        <div class="footer-blocks flex-row">
+            <div class="footer-logo flex-item-2">
+                <img src="/adtechmedia-website/images/footer-logo.svg" alt="AdTechMedia"/>
             </div>
-            <div class="footer-links scroll-nav">
-                <div class="social-links">
-                    <h3>Social</h3>
-                    <ul class="clearfix">
-                        <li>
-                            <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
-                                <i class="fa fa-linkedin"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a itemprop="url" href="https://twitter.com/adtechmediapro">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a itemprop="url" href="https://facebook.com/adtechmediapro">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a itemprop="url" href="https://github.com/adtechmedia">
-                                <i class="fa fa-github"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="quick-links cd-secondary-nav">
-                    <h3>Quick links</h3>
-                    <ul class="clearfix">
-                        <li>
-                            <a href="/challenges/">
-                                <i class="fa fa-newspaper-o"></i>
-                                <span>Challenges</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/solutions/">
-                                <i class="fa fa-flask"></i>
-                                <span>Solutions</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/demo/">
-                                <i class="fa fa-laptop"></i>
-                                <span>Demo</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/api/">
-                                <i class="fa fa-key"></i>
-                                <span>Api</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/team/">
-                                <i class="fa fa-users"></i>
-                                <span>Team</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact/">
-                                <i class="fa fa-map-marker"></i>
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/admin/">
-                                <i class="fa fa-lightbulb-o"></i>
-                                <span>Try It</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="social-links flex-item-7">
+                <ul class="clearfix">
+                    <li class="wordpress">
+                        <a itemprop="url" href="https://wordpress.org/plugins-wp/adtechmedia/">
+                            <i class="fa fa-wordpress" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="drupal">
+                        <a itemprop="url" href="https://www.drupal.org/project/adtechmedia/">
+                            <i class="fa fa-drupal" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="github">
+                        <a itemprop="url" href="https://github.com/adtechmedia">
+                            <i class="fa fa-github" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="linkedin">
+                        <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="twitter">
+                        <a itemprop="url" href="https://twitter.com/adtechmediapro">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="facebook">
+                        <a itemprop="url" href="https://facebook.com/adtechmediapro">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="youtube">
+                        <a itemprop="url" href="https://www.youtube.com/channel/UCyLr_SKBBsA9pNxouO9VB0Q">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="quick-links flex-item-3">
+                <h3>Quick links</h3>
+                <ul class="clearfix">
+                    <li>
+                        <a href="/challenges/">
+                            Challenges
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/team/">
+                            Team
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/solutions/">
+                            Solutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact/">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/api/">
+                            Api
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://blog.adtechmedia.io">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 </footer>
 <div class="bottom-info">
-    <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
-    <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
+    <section>
+        <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
+        <span>By using this site, you agree to <a class="active" href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
+    </section>
 </div>
 
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/nav.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/jquery.vide.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/jquery.noty.packaged.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/input-mask.js"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/modal.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/main.js"></script>
 </body>
 </html>

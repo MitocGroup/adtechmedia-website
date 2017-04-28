@@ -1,5 +1,4 @@
 section {
-  width: 1000px;
   .steps & {
     width: 800px;
   }
@@ -83,7 +82,6 @@ section {
   .step-block {
     position: relative;
     &:hover {
-      cursor: pointer;
       div {
         opacity: 1;
       }
@@ -163,7 +161,7 @@ section {
   padding: 22px 0;
   a {
     color: $base-color;
-    &:hover {
+    &:hover, &.active {
       color: $link-color;
     }
   }
@@ -355,9 +353,13 @@ section {
 .demo-footer {
   background: url('../images/gray-footer.png') 0 bottom/100% auto no-repeat;
   height: 200px;
-  margin-top: -100px;
   padding: 100px 0 0;
   line-height: 100px;
+  text-align: center;
+  .main-page ~ & {
+    margin-top: -100px;
+  }
+
   h3 {
     display: inline-block;
     vertical-align: top;
@@ -440,7 +442,7 @@ section {
 .modal__trigger {
   position: relative;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-useh-select: none;
+  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;

@@ -106,6 +106,8 @@ a {
     color: #fff; }
   a.more-link {
     white-space: nowrap; }
+  a:hover, a.active {
+    color: #000; }
 
 p {
   margin: 20px 0; }
@@ -698,7 +700,6 @@ header {
   padding: 0 0 10px; }
 
 #solutions {
-  background: #fafafa;
   padding: 0 0 25px; }
   #solutions section {
     padding-top: 50px;
@@ -828,8 +829,6 @@ header {
   font-size: 14px; }
   .bottom-info section {
     border-top: 1px solid #F2F2F2; }
-  .bottom-info a:hover {
-    color: #000; }
 
 #api .custom-headline-block {
   background: url("../images/api/api.jpg") center center/100% auto no-repeat;
@@ -937,7 +936,6 @@ header {
   margin: 0 0 50px; }
 
 .legal-pages {
-  background: #fafafa;
   text-align: justify;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -994,10 +992,8 @@ header {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
-section {
-  width: 1000px; }
-  .steps section {
-    width: 800px; }
+.steps section {
+  width: 800px; }
 
 .main-page h1 {
   text-transform: capitalize;
@@ -1054,12 +1050,10 @@ section {
     margin: 0 0 50px; }
   .steps .step-block {
     position: relative; }
-    .steps .step-block:hover {
-      cursor: pointer; }
-      .steps .step-block:hover div {
-        opacity: 1; }
-      .steps .step-block:hover img {
-        opacity: 0; }
+    .steps .step-block:hover div {
+      opacity: 1; }
+    .steps .step-block:hover img {
+      opacity: 0; }
     .steps .step-block img {
       height: 152px;
       width: 152px; }
@@ -1113,7 +1107,7 @@ section {
   padding: 22px 0; }
   .footer-blocks a {
     color: #000; }
-    .footer-blocks a:hover {
+    .footer-blocks a:hover, .footer-blocks a.active {
       color: #01ADFD; }
   .footer-blocks .social-links {
     align-self: center;
@@ -1274,9 +1268,11 @@ section {
 .demo-footer {
   background: url("../images/gray-footer.png") 0 bottom/100% auto no-repeat;
   height: 200px;
-  margin-top: -100px;
   padding: 100px 0 0;
-  line-height: 100px; }
+  line-height: 100px;
+  text-align: center; }
+  .main-page ~ .demo-footer {
+    margin-top: -100px; }
   .demo-footer h3 {
     display: inline-block;
     vertical-align: top; }
@@ -1345,7 +1341,7 @@ section {
 .modal__trigger {
   position: relative;
   -webkit-tap-highlight-color: transparent;
-  -webkit-useh-select: none;
+  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -1399,17 +1395,6 @@ section {
     border-width: 1px 0 0;
     border-style: solid;
     border-color: #eaeaea; }
-  .landing-page .install-btn {
-    display: inline-block;
-    text-transform: uppercase;
-    height: 46px;
-    background: #1b93f2;
-    color: #fff;
-    font-size: 17px;
-    line-height: 46px;
-    padding: 0 15px; }
-    .landing-page .install-btn:hover {
-      background: #0c78ce; }
   .landing-page .heading-desc {
     font-size: 15px;
     margin: 25px 0; }
@@ -1452,7 +1437,7 @@ section {
   margin: 70px 0 0; }
   .dev-docs section {
     padding-top: 40px;
-    padding-bottom: 50px; }
+    padding-bottom: 150px; }
     .dev-docs section.home-blocks {
       padding-top: 50px; }
   .dev-docs h1 {
@@ -1556,11 +1541,21 @@ section {
     left: 270px; }
   .dev-docs .user-guide .content-root {
     min-height: 90%;
-    position: relative; }
+    position: relative;
+    padding-bottom: 120px; }
   .dev-docs .user-guide .content {
     padding: 40px;
     zoom: 1;
-    border-left: solid 1px #dfe2e7; }
+    position: relative; }
+    .dev-docs .user-guide .content:before {
+      position: absolute;
+      content: '';
+      width: 1px;
+      height: calc(100% + 100px);
+      background: #dfe2e7;
+      top: 0;
+      left: 0;
+      display: block; }
     .dev-docs .user-guide .content > *:first-child {
       padding-left: 85px; }
     .dev-docs .user-guide .content p, .dev-docs .user-guide .content ul, .dev-docs .user-guide .content ol, .dev-docs .user-guide .content pre, .dev-docs .user-guide .content blockquote, .dev-docs .user-guide .content h1, .dev-docs .user-guide .content h2, .dev-docs .user-guide .content h3, .dev-docs .user-guide .content h4, .dev-docs .user-guide .content h5, .dev-docs .user-guide .content h6 {
@@ -1737,18 +1732,24 @@ section {
         height: 3px;
         border-radius: 2px;
         background: #01ADFD; }
+.dev-docs ~ .demo-footer {
+  position: relative;
+  margin-top: -150px; }
 
 .api-action {
   float: right; }
   .api-action label {
     display: block; }
   .api-action .custom-input {
-    width: calc(100% - 100px); }
+    width: calc(100% - 150px); }
   .api-action .btn {
     margin: 20px 0 0; }
 
 .api-docs h1 {
   float: left; }
+.api-docs p {
+  margin: 0;
+  font-size: inherit; }
 
 .swagger-section .swagger-ui-wrap #api_info .info_title {
   display: none; }
@@ -1761,6 +1762,18 @@ section {
   .swagger-section .swagger-ui-wrap ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operation div.content {
     overflow: scroll; }
 
+@media (min-width: 1700px) {
+  .dev-docs .user-guide {
+    margin-left: calc((100% - 1296px) / 2); }
+    .dev-docs .user-guide p {
+      font-size: 16px;
+      margin: 0; } }
+@media (min-width: 1300px) {
+  .dev-docs {
+    margin: 88px 0 0; }
+
+  .cb-container {
+    margin-top: 88px; } }
 @media (min-width: 1231px) {
   .dev-docs .user-guide .content-root {
     background-color: #f3f6fb;
@@ -1981,6 +1994,9 @@ section {
 
   .main-pic {
     height: 250px; } }
+@media (min-width: 1700px) {
+  .landing-page section {
+    width: 1296px; } }
 @media (min-width: 1171px) {
   #solutions section .solution-cont .solution-text {
     flex: 0 0 65%;
@@ -2663,7 +2679,7 @@ section {
       width: 1150px; }
     .main-slide .info-block {
       position: relative;
-      left: 75px; }
+      left: 25px; }
       .main-slide .info-block p {
         width: 90%; }
 
@@ -2695,12 +2711,14 @@ section {
     .modal__content .modal-inner h3 {
       font-size: 22px; }
 
-  .footer-blocks .social-links li a {
-    width: 72px;
-    height: 72px; }
-    .footer-blocks .social-links li a i {
-      font-size: 40px;
-      line-height: 72px; }
+  .footer-blocks .social-links li {
+    margin: 0 10px; }
+    .footer-blocks .social-links li a {
+      width: 72px;
+      height: 72px; }
+      .footer-blocks .social-links li a i {
+        font-size: 40px;
+        line-height: 72px; }
 
   .footer-logo img {
     height: 104px; }
@@ -2718,10 +2736,10 @@ section {
       width: 1.3rem;
       height: 1.3rem;
       border-width: 3px; }
-  .steps h1 {
-    margin: 80px 0; }
   .steps .flex-row {
-    margin: 0 0 80px; }
+    margin: 0 0 80px;
+    justify-content: space-around;
+    -webkit-justify-content: space-around; }
 
   .solutions-block {
     width: 100%;
@@ -2752,7 +2770,8 @@ section {
         width: 6px;
         height: 6px; }
     .solutions-block .fourth-block {
-      margin-right: 50px; }
+      margin-right: 50px;
+      margin-top: 25%; }
       .solutions-block .fourth-block li:before {
         border-width: 0 6px 12px; }
       .solutions-block .fourth-block li:after {
@@ -2761,10 +2780,7 @@ section {
         height: 4px; }
 
   .btn {
-    font: 16px/40px FuturaICG, sans-serif;
-    padding: 0 24px;
-    height: 40px;
-    margin-right: 24px; }
+    padding: 8px 24px; }
 
   .main-nav li.custom-menu-link a {
     padding-left: 24px;
@@ -2798,15 +2814,12 @@ section {
     height: 250px;
     line-height: 150px; }
 
-  .footer-blocks .social-links li {
-    margin: 0 10px; }
-
-  .custom-input {
+  .modal .custom-input {
     padding-top: 28px; }
-    .custom-input input {
+    .modal .custom-input input {
       font-size: 22px;
       height: 40px; }
-    .custom-input label {
+    .modal .custom-input label {
       line-height: 44px; } }
 
 /*# sourceMappingURL=main.css.map */
