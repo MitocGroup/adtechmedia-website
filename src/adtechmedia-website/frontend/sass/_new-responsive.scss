@@ -8,7 +8,7 @@
 
     .info-block {
       position: relative;
-      left: 75px;
+      left: 25px;
       p {
         width: 90%;
       }
@@ -38,8 +38,10 @@
     }
   }
 
-  .main-page h1 {
-    font: 75px/1 FuturaICG, sans-serif;
+  .main-page {
+    h1 {
+      font: 75px/1 FuturaICG, sans-serif;
+    }
   }
 
   p {
@@ -60,6 +62,7 @@
   .footer-blocks {
     .social-links {
       li {
+        margin: 0 10px;
         a {
           width: 72px;
           height: 72px;
@@ -99,12 +102,10 @@
       }
     }
 
-    h1 {
-      margin: 80px 0;
-    }
-
     .flex-row {
       margin: 0 0 80px;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
     }
   }
 
@@ -173,6 +174,7 @@
 
     .fourth-block {
       margin-right: 50px;
+      margin-top: 25%;
       li {
         &:before {
           border-width: 0 6px 12px;
@@ -188,15 +190,18 @@
   }
 
   .btn {
-    font: 16px/40px FuturaICG, sans-serif;
-    padding: 0 24px;
-    height: 40px;
-    margin-right: 24px;
+    padding: 8px 24px;
   }
 
-  .main-nav li.custom-menu-link a {
-    padding-left: 24px;
-    padding-right: 24px;
+  .main-nav {
+    li {
+      &.custom-menu-link {
+        a {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+    }
   }
 
   .main-slide {
@@ -244,23 +249,17 @@
     line-height: 150px;
   }
 
-  .footer-blocks {
-    .social-links {
-      li {
-        margin: 0 10px;
+  .modal {
+    .custom-input {
+      padding-top: 28px;
+      input {
+        font-size: 22px;
+        height: 40px;
       }
-    }
-  }
 
-  .custom-input {
-    padding-top: 28px;
-    input {
-      font-size: 22px;
-      height: 40px;
-    }
-
-    label {
-      line-height: 44px;
+      label {
+        line-height: 44px;
+      }
     }
   }
 }

@@ -5,7 +5,7 @@
   }
 
   .custom-input {
-    width: calc(100% - 100px);
+    width: calc(100% - 150px);
   }
 
   .btn {
@@ -16,6 +16,11 @@
 .api-docs {
   h1 {
     float: left;
+  }
+
+  p {
+    margin: 0;
+    font-size: inherit;
   }
 }
 

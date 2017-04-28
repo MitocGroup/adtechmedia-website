@@ -5,41 +5,7 @@
 var $menu = $('.main-nav ul');
 var headerHeight = $('header').height();
 var $menuIcon = $('#navTrigger');
-var $slideHeight = $('.main-slide').height();
 
-$('.scroll-down').on('click', function(){
-  $('body,html').animate({'scrollTop': $slideHeight}, 1000);
-});
-
-$(window).on('scroll', function(){
-  if($(window).scrollTop() >= $slideHeight) {
-    $('header').addClass('with-shadow');
-  } else {
-    $('header').removeClass('with-shadow');
-  }
-});
-
-//function _initGoogleMaps() {
-//  var mapContainer = document.getElementById('googleMap');
-//
-//  if (mapContainer) {
-//    var myCenter = new google.maps.LatLng(41.043671, -74.0764);
-//
-//    google.maps.event.addDomListener(window, 'load', function initialize() {
-//      var map = new google.maps.Map(mapContainer, {
-//        center: myCenter,
-//        zoom: 15,
-//        mapTypeId: google.maps.MapTypeId.ROADMAP
-//      });
-//
-//      var marker = new google.maps.Marker({
-//        position: myCenter,
-//      });
-//
-//      marker.setMap(map);
-//    });
-//  }
-//}
 
 //show spinner while page loads
 $(window).load(function() {
@@ -72,19 +38,4 @@ $menuIcon.on('click', function(){
 $(window).on('orientationchange', function(){
   _clearNav()
 });
-
-//$(':required').on('blur keydown', function() {
-//  $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
-//});
-//
-//$('form').on('reset', function () {
-//  $(':required').removeClass('touched');
-//});
-//
-//new InputMask().Initialize(
-//  document.querySelectorAll('#phone-field'),
-//  {mask: InputMaskDefaultMask.Phone}
-//);
-//
-//_initGoogleMaps();
 
