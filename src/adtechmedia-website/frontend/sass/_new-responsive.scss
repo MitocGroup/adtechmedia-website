@@ -219,6 +219,28 @@
 
     .laptop {
       background-size: auto 450px;
+      #laptop-anim,
+      #laptop-actions {
+        position: absolute;
+        width: 646px;
+        height: 383px;
+        top: 21px;
+        right: 112px;
+      }
+
+      #laptop-actions {
+        right: 116px;
+        width: 638px;
+        .play {
+          width: 58px;
+          height: 58px;
+          i {
+            font-size: 1.8rem;
+            line-height: 54px;
+            margin-left: 10%;
+          }
+        }
+      }
     }
 
     .info-block {
