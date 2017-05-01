@@ -28,6 +28,17 @@ var payStepData = {
 };
 var payStep = bodymovin.loadAnimation(payStepData);
 
+var laptopData = {
+  container: document.getElementById('laptop-anim'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: false,
+  path: '/adtechmedia-website/data/laptop.json'
+
+};
+var laptopAnim = bodymovin.loadAnimation(laptopData);
+
+
 $('#install-block').on({
   mouseenter: function() {
     installStep.play();
@@ -50,4 +61,18 @@ $('#pay-block').on({
   }, mouseleave: function() {
     payStep.stop();
   }
+});
+
+$(window).on('load', function(){
+  laptopAnim.play();
+});
+
+laptopAnim.addEventListener('loopComplete', function(){
+  laptopAnim.pause();
+  $('#laptop-actions').addClass('shown');
+});
+
+$('.laptop').on('click', '.play', function(){
+  $('#laptop-actions').removeClass('shown');
+  laptopAnim.play();
 });

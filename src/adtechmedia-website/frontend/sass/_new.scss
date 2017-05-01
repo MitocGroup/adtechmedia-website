@@ -49,6 +49,48 @@ section {
     background: url('../images/laptop.svg') right center no-repeat;
     position: relative;
     right: -50px;
+    #laptop-anim,
+    #laptop-actions {
+      position: absolute;
+      width: 468px;
+      height: 278px;
+      right: 82px;
+      top: 15px;
+    }
+
+    #laptop-actions {
+      width: 464px;
+      right: 84px;
+      background: rgba(0, 0, 0, 0.33);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease-in-out;
+      &.shown {
+        opacity: 1;
+        visibility: visible;
+      }
+      .play {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        line-height: 38px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: all .3s ease-in-out;
+        &:hover {
+          transform: translateX(-50%) translateY(-50%) scale(1.2);
+          cursor: pointer;
+        }
+        i {
+          color: #fff;
+          margin-left: 5%;
+        }
+      }
+    }
   }
 
   .scroll-down {
