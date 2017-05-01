@@ -8,7 +8,7 @@ tmp/**/*
 **.min.css
 **.css
 docs/
-src/**/frontend/js/app/angular2/components/shared/
+src/**/frontend/js/app/angular/components/shared/
 
 # third party css files
 **/font-awesome.css
