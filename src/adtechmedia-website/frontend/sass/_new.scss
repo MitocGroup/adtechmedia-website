@@ -483,6 +483,24 @@ section {
     h3 {
       margin-bottom: 20px;
     }
+
+    #mc_embed_signup {
+      div.mce_inline_error {
+        background: transparent;
+        position: absolute;
+        color: #FF0031;
+        font-weight: normal;
+        margin: 5px 0 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        font-size: small;
+      }
+    }
+
+    .custom-input {
+      padding-bottom: 20px;
+    }
   }
 }
 
