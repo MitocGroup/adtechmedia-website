@@ -261,7 +261,7 @@ small {
     }
   }
 
-  &.close-btn {
+  &.cancel-btn {
     background: #BFBFBF;
     &:hover {
       background: transparent;
@@ -314,7 +314,8 @@ small {
         @include transform(scale(.85) translateY(0));
       }
     }
-    &:valid {
+    &:valid:not(.non-required),
+    &.touched.non-required {
       & ~ label {
         color: $link-color;
         @include transform(scale(.85) translateY(0));

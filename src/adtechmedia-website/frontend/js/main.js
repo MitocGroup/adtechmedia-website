@@ -39,3 +39,15 @@ $(window).on('orientationchange', function(){
   _clearNav()
 });
 
+$(':required, .non-required').on('blur keydown', function() {
+  $(this)[ $(this).val() ? 'addClass' : 'removeClass' ]('touched');
+});
+
+$('form').on('reset', function () {
+  $(':required').removeClass('touched');
+});
+
+$('#mc-embedded-subscribe').on('click', function() {
+  $('#mc-embedded-subscribe-form').submit();
+});
+
