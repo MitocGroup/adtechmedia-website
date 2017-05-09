@@ -37,15 +37,16 @@ header {
   }
 
   nav {
-    @include transition(all 0.2s 0.2s ease-out);
+    //@include transition(all 0.2s 0.2s ease-out);
     input#navTrigger {
       display: none;
       &:checked + .navTrigger-label {
         span {
           &:nth-child(1) {
             @include rotate(45deg);
-            top: -3px;
+            top: -2px;
             left: 5px;
+            width: 100%;
           }
 
           &:nth-child(2) {
@@ -55,7 +56,7 @@ header {
 
           &:nth-child(3) {
             @include rotate(-45deg);
-            top: 25px;
+            top: 21px;
             left: 5px;
           }
         }
@@ -106,6 +107,11 @@ header {
 .logo {
   display: block;
   height: 70px;
+  picture {
+    height: 100%;
+    display: block;
+  }
+
   img {
     height: 35px;
     position: relative;
@@ -717,5 +723,14 @@ header {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
   }
 }
