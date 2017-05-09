@@ -8,7 +8,7 @@ section {
   h1 {
     text-transform: capitalize;
     background: transparent;
-    -webkit-text-fill-color: inherit;
+    -webkit-text-fill-color: initial;
     font: 50px/1.2 FuturaICG, sans-serif;
     color: $link-color;
     &:after {
@@ -31,15 +31,11 @@ section {
   .flex-row {
     position: relative;
     top: 30%;
-    transform: translateY(-30%);
+    @include transform(translateY(-30%));
   }
 
   .info-block {
     text-align: left;
-    p {
-      width: 95%;
-    }
-
     .btn {
       margin-right: 24px;
     }
@@ -61,33 +57,34 @@ section {
     #laptop-actions {
       width: 464px;
       right: 84px;
-      background: rgba(0, 0, 0, 0.33);
+      background: rgba(254, 254, 254, 0.5);
       opacity: 0;
       visibility: hidden;
-      transition: all .3s ease-in-out;
+      @include transition(opacity .3s ease-in-out);
       &.shown {
         opacity: 1;
         visibility: visible;
       }
       .play {
         position: absolute;
-        width: 40px;
-        height: 40px;
-        border: 2px solid #fff;
+        width: 46px;
+        height: 46px;
+        background: $link-color;
         border-radius: 50%;
-        line-height: 38px;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
         left: 50%;
         top: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        transition: all .3s ease-in-out;
+        @include transform(translateX(-50%) translateY(-50%));
+        @include transition(all .3s ease-in-out);
         &:hover {
-          transform: translateX(-50%) translateY(-50%) scale(1.2);
+          @include transform(translateX(-50%) translateY(-50%) scale(1.2));
           cursor: pointer;
         }
         i {
           color: #fff;
-          margin-left: 5%;
+          margin-left: 10%;
+          line-height: 46px;
+          font-size: 1.2rem;
         }
       }
     }
@@ -101,7 +98,7 @@ section {
     height: 50px;
     background: #fff;
     border-radius: 50%;
-    transition: box-shadow .2s linear;
+    @include transition(box-shadow .2s linear);
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
     &:hover {
       cursor: pointer;
@@ -111,13 +108,13 @@ section {
       color: $link-color;
       font-size: 1.6rem;
       line-height: 50px;
-      transform: rotate(0deg);
-      transition: transform .8s ease-in-out;
+      @include transform(rotate(0deg));
+      @include transition(transform .8s ease-in-out);
     }
 
     &.rotate {
       i {
-        transform: rotate(180deg);
+        @include transform(rotate(180deg));
       }
     }
   }
@@ -181,7 +178,7 @@ section {
         height: .4rem;
         border-left: 2px solid $purple-accent;
         border-bottom: 2px solid $purple-accent;
-        transform: rotate(-45deg) translateY(-30%);
+        @include transform(rotate(-45deg) translateY(-30%));
         z-index: 1;
       }
 
@@ -194,7 +191,7 @@ section {
         border-radius: 50%;
         width: 1rem;
         height: 1rem;
-        transform: translateY(-50%);
+        @include transform(translateY(-50%));
       }
     }
   }
@@ -265,7 +262,7 @@ section {
         height: 4px;
         border: 3px solid $link-color;
         border-radius: 50%;
-        transform: translateY(-50%);
+        @include transform(translateY(-50%));
       }
     }
   }
@@ -273,10 +270,6 @@ section {
 
 .solutions-block {
   width: 100%;
-  height: 900px;
-  background: url("../images/devices.svg") center bottom 50px/600px auto no-repeat,
-  url("../images/tree.svg") center bottom 400px/300px auto no-repeat,
-  url("../images/wallpaper-prefooter.jpg") 0 bottom/auto 440px no-repeat;
   text-align: left;
 
   .solutions-cont {
@@ -332,7 +325,7 @@ section {
         width: 3px;
         height: 3px;
         border: 3px solid #FFCC2F;
-        transform: rotate(-45deg);
+        @include transform(rotate(-45deg));
       }
       ul {
         margin: 0 0 0 15px;
@@ -401,27 +394,6 @@ section {
   }
 }
 
-.demo-footer {
-  background: url('../images/gray-footer.png') 0 bottom/100% auto no-repeat;
-  height: 200px;
-  padding: 100px 0 0;
-  line-height: 100px;
-  text-align: center;
-  .main-page ~ & {
-    margin-top: -100px;
-  }
-
-  h3 {
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .btn {
-    margin: 0 0 0 40px;
-    vertical-align: middle;
-  }
-}
-
 /**
  * Material Modal CSS
  */
@@ -446,8 +418,7 @@ section {
   z-index: 1000;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  @include transition(all 0.5s cubic-bezier(0.23, 1, 0.32, 1));
 }
 
 .modal--active {
@@ -472,8 +443,7 @@ section {
   background-clip: padding-box;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
   opacity: 0;
-  -webkit-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  @include transition(all 0.25s cubic-bezier(0.23, 1, 0.32, 1));
   .btn {
     margin: 10px;
   }
@@ -515,8 +485,7 @@ section {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  @include transition(all 0.5s cubic-bezier(0.23, 1, 0.32, 1));
 }
 
 .modal__trigger--active {
@@ -531,10 +500,10 @@ section {
   right: 0;
   bottom: 0;
   background: $link-color;
-  -webkit-transform: none;
-  transform: none;
+  @include transform(none);
   opacity: 1;
   transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .modal-open > *:not(.modal) {
