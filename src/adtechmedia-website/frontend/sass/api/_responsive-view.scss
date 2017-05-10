@@ -132,6 +132,19 @@
       .content {
         float: left;
       }
+
+      .content-root {
+        padding-bottom: 120px;
+      }
+    }
+
+    & ~ .demo-footer {
+      position: relative;
+      margin-top: -150px;
+    }
+
+    section {
+      padding-bottom: 150px;
     }
   }
 }

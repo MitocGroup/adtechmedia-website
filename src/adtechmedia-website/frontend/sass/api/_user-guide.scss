@@ -11,7 +11,6 @@
     .content-root {
       min-height: 90%;
       position: relative;
-      padding-bottom: 120px;
     }
 
     .content {
@@ -299,10 +298,5 @@
         }
       }
     }
-  }
-
-  & ~ .demo-footer {
-    position: relative;
-    margin-top: -150px;
   }
 }

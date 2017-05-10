@@ -343,6 +343,10 @@ header {
     padding: 20px;
     overflow: auto;
   }
+
+  p {
+    margin: 20px 0 0;
+  }
 }
 
 .login {
@@ -510,7 +514,7 @@ header {
     z-index: 1;
     padding: 30px;
     font-family: FuturaICG, sans-serif;
-    color: #595959;
+    color: $base-color;
     h3 {
       text-transform: uppercase;
       font-size: 16px;
