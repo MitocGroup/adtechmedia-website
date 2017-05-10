@@ -147,6 +147,37 @@
   .cb-container {
     min-height: calc(100vh - 360px);
   }
+
+  .challenges {
+    font-size: 16px;
+  }
+
+  main {
+    &:not(.main-page) ~ .demo-footer {
+      padding: 0;
+      .btn.secondary-btn {
+        position: fixed;
+        top: 14px;
+        right: 50px;
+        margin: 0;
+        z-index: 12;
+        color: #fff;
+        border-color: transparent;
+        left: auto;
+        &.alpha-bg {
+          &:not(:hover) {
+            background-color: #01ADFD;
+          }
+
+          &:hover {
+            background: #fff;
+            border-color: #01ADFD;
+            color: #01ADFD;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -157,7 +188,7 @@
 
 @media (max-width: 991px) {
   .cb-container {
-    min-height: calc(100vh - 390px);
+    min-height: calc(100vh - 255px);
   }
 
   h1 {
@@ -380,7 +411,7 @@
   }
 
   .cb-container {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 235px);
     & > section {
       padding-bottom: 20px;
     }
