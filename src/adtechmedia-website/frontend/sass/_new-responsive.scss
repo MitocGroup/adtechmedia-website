@@ -910,6 +910,16 @@
     }
   }
 
+  main {
+    &:not(.main-page) {
+      & ~ .demo-footer {
+        .btn.secondary-btn {
+          right: 20px;
+        }
+      }
+    }
+  }
+
   .solutions-block {
     background: url("../images/devices.svg") center bottom/85% auto no-repeat,
     url("../images/wallpaper-prefooter.jpg") 0 bottom/auto 250px no-repeat;
