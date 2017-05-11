@@ -27,21 +27,26 @@ header {
   top: 0;
   background: #fff;
   z-index: 10;
-  @include box-shadow(1px 0 5px rgba(0, 0, 0, 0.3));
+  transition: all .3s ease;
+  &.with-shadow {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
   section {
     position: relative;
   }
 
   nav {
-    @include transition(all 0.2s 0.2s ease-out);
+    //@include transition(all 0.2s 0.2s ease-out);
     input#navTrigger {
       display: none;
       &:checked + .navTrigger-label {
         span {
           &:nth-child(1) {
             @include rotate(45deg);
-            top: -3px;
+            top: -2px;
             left: 5px;
+            width: 100%;
           }
 
           &:nth-child(2) {
@@ -51,7 +56,7 @@ header {
 
           &:nth-child(3) {
             @include rotate(-45deg);
-            top: 25px;
+            top: 21px;
             left: 5px;
           }
         }
@@ -102,6 +107,11 @@ header {
 .logo {
   display: block;
   height: 70px;
+  picture {
+    height: 100%;
+    display: block;
+  }
+
   img {
     height: 35px;
     position: relative;
@@ -180,16 +190,15 @@ header {
     height: 70px;
     &.custom-menu-link {
       a {
-        background: rgba(27, 147, 242, 0.8);
-        border: 1px solid transparent;
-        color: #fff;
-        font-size: 12px;
-        padding: 4px 10px;
+        border: 2px solid $link-color;
+        color: $link-color;
+        padding: 8px 20px;
         transition: 0.4s ease-in-out;
-        &.active, &:hover {
-          background: transparent;
-          color: $link-color;
-          border-color: rgba(27, 147, 242, 0.67);
+        border-radius: 20px;
+        &:hover {
+          border-color: transparent;
+          background: $link-color;
+          color: #fff;
         }
       }
     }
@@ -197,49 +206,14 @@ header {
 
   a {
     display: inline-block;
-    margin-left: 25px;
+    margin-left: 23px;
     text-transform: uppercase;
     line-height: normal;
-    font-family: 'Futura', sans-serif;
+    color: #BFBFBF;
     &.active, &:hover {
-      color: #000;
+      color: $link-color;
     }
   }
-}
-
-h1 {
-  font-size: 36px;
-  line-height: 80px;
-  text-transform: uppercase;
-  position: relative;
-  @include text-gradient(-webkit-linear-gradient(left, black, white 80%));
-  color: #666666;
-  font-family: 'Futura', sans-serif;
-  &.custom-headline {
-    color: #fff;
-    @include text-gradient(-webkit-linear-gradient(left, white, #add5f4 80%));
-    height: 115px;
-    line-height: 115px;
-    &:after {
-      display: none;
-    }
-  }
-
-  &:after {
-    content: '';
-    height: 1px;
-    width: 100px;
-    background: $base-color;
-    bottom: 0;
-    position: absolute;
-    left: 50%;
-    @include transform(translateX(-50%));
-  }
-}
-
-h2 {
-  font-size: 16px;
-  margin: 20px 0;
 }
 
 .cb-container {
@@ -369,6 +343,10 @@ h2 {
     padding: 20px;
     overflow: auto;
   }
+
+  p {
+    margin: 20px 0 0;
+  }
 }
 
 .login {
@@ -394,7 +372,6 @@ h2 {
 }
 
 #solutions {
-  background: #fafafa;
   padding: 0 0 25px;
   section {
     padding-top: 50px;
@@ -537,7 +514,7 @@ h2 {
     z-index: 1;
     padding: 30px;
     font-family: FuturaICG, sans-serif;
-    color: #595959;
+    color: $base-color;
     h3 {
       text-transform: uppercase;
       font-size: 16px;
@@ -559,81 +536,12 @@ h2 {
   }
 }
 
-footer {
-  background: #1c8bf0;
-  min-height: 210px;
-  text-align: left;
-  color: #fff;
-  .footer-blocks {
-    @include flex-container;
-  }
-
-  .footer-logo {
-    background: url(../images/logo-footer.png) left center no-repeat;
-    height: 210px;
-    width: 200px;
-  }
-
-  .about-us {
-    width: calc(100% - 500px);
-    padding: 30px 30px 20px;
-  }
-
-  .footer-links {
-    padding: 25px 0 0;
-  }
-
-  h3 {
-    text-transform: uppercase;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    margin: 0 0 15px;
-    li {
-      float: left;
-      margin: 0 10px 0 0;
-      a {
-        display: block;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
-        background: #fff;
-        opacity: .8;
-        text-align: center;
-        position: relative;
-        @include transition(.2s linear);
-        @include transform(translateZ(0));
-        span {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          font-size: 12px;
-          color: #fff;
-          line-height: normal;
-          padding: 5px 0 0;
-          white-space: nowrap;
-        }
-        &:hover {
-          opacity: 1;
-          span {
-            display: block;
-          }
-        }
-
-        .fa {
-          font-size: 16px;
-        }
-      }
-    }
-  }
-}
-
 .bottom-info {
-  line-height: 50px;
-  font-size: 12px;
+  line-height: 48px;
+  font-size: 14px;
+  section {
+    border-top: 1px solid #F2F2F2;
+  }
 }
 
 #api {
@@ -751,7 +659,6 @@ footer {
 }
 
 .legal-pages {
-  background: #fafafa;
   text-align: justify;
   @include font-smoothing;
   padding: 30px 0;
@@ -820,5 +727,14 @@ footer {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
   }
 }

@@ -1,3 +1,25 @@
+@media (min-width: 1700px) {
+  .dev-docs {
+    .user-guide {
+      margin-left: calc((100% - 1296px) / 2);
+      p {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .dev-docs {
+    margin: 88px 0 0;
+  }
+
+  .cb-container {
+    margin-top: 88px;
+  }
+}
+
 @media (min-width: 1231px) {
   .dev-docs {
     .user-guide {
@@ -110,6 +132,19 @@
       .content {
         float: left;
       }
+
+      .content-root {
+        padding-bottom: 120px;
+      }
+    }
+
+    & ~ .demo-footer {
+      position: relative;
+      margin-top: -150px;
+    }
+
+    section {
+      padding-bottom: 150px;
     }
   }
 }

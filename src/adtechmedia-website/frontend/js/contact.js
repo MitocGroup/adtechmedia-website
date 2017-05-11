@@ -1,3 +1,34 @@
+function _initGoogleMaps() {
+  var mapContainer = document.getElementById('googleMap');
+
+  if (mapContainer) {
+    var myCenter = new google.maps.LatLng(41.043671, -74.0764);
+
+    google.maps.event.addDomListener(window, 'load', function initialize() {
+      var map = new google.maps.Map(mapContainer, {
+        center: myCenter,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+      var marker = new google.maps.Marker({
+        position: myCenter,
+      });
+
+      marker.setMap(map);
+    });
+  }
+}
+
+new InputMask().Initialize(
+  document.querySelectorAll('#phone-field'),
+  {mask: InputMaskDefaultMask.Phone}
+);
+
+_initGoogleMaps();
+
+
+
 var contactUsCaptcha;
 
 /**

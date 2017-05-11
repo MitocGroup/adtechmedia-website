@@ -16,12 +16,12 @@
 <meta property="og:description" content="AdTechMedia offers white labeled and data driven solutions to help publishers generate complementary revenue streams that are immune to ad blocking software" />
 <meta property="og:url" content="https://www.adtechmedia.io/" />
 <meta property="og:site_name" content="AdTechMedia" />
-<meta property="og:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
+<meta property="og:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-image.jpg" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:url" content="https://www.adtechmedia.io/" />
 <meta name="twitter:title" content="Advertising Platform with Micropayments Capabilities for Media Content" />
 <meta name="twitter:description" content="AdTechMedia offers white labeled and data driven solutions to help publishers generate complementary revenue streams that are immune to ad blocking software" />
-<meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-logo.jpg" />
+<meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-image.jpg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
@@ -51,7 +51,7 @@
 <deep-deploy-id/>
 </head>
 
-<body itemscope itemtype="http://schema.org/Webpage">
+<body class="body-main" itemscope itemtype="http://schema.org/Webpage">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF8XT7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -61,13 +61,17 @@ FB.AppEvents.logPageView()},function(a,b,c){var d,e=a.getElementsByTagName(b)[0]
 a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",
 e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
 <!-- End Facebook SDK for JavaScript -->
+<div class="loader"></div>
 <header class="cd-secondary-nav">
     <section class="scroll-nav clearfix">
         <div class="logo-cont">
             <ul>
-                <li itemscope itemtype="http://schema.org/Organization">
+                <li itemscope itemtype="https://schema.org/Organization">
                     <a itemprop="url" class="logo page-scroll" href="/">
-                        <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                        <picture>
+                            <source media="(max-width: 560px)" srcset="/adtechmedia-website/images/logo-sm.svg">
+                            <img itemprop="logo" src="/adtechmedia-website/images/logo.svg" alt="AdTechMedia" />
+                        </picture>
                         <meta itemprop="name" content="AdTechMedia">
                     </a>
                 </li>
@@ -82,572 +86,214 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
             </label>
             <ul class="clearfix">
                 <li>
-                    <a href="/challenges/" class="page-scroll">challenges</a>
+                    <a href="/challenges/">challenges</a>
                 </li>
                 <li>
-                    <a href="/solutions/" class="page-scroll">solutions</a>
+                    <a href="/solutions/">solutions</a>
                 </li>
                 <li>
-                    <a href="/demo/" class="page-scroll">demo</a>
+                    <a href="/api/">api</a>
                 </li>
                 <li>
-                    <a href="/api/" class="page-scroll">api</a>
+                    <a href="/team/">team</a>
                 </li>
                 <li>
-                    <a href="/team/" class="page-scroll">team</a>
+                    <a href="/contact/">contact</a>
                 </li>
                 <li>
-                    <a href="/contact/" class="page-scroll">contact</a>
-                </li>
-                <li>
-                    <a href="/admin/">admin</a>
+                    <a href="https://blog.adtechmedia.io">blog</a>
                 </li>
                 <li class="custom-menu-link">
-                    <a href="https://blog.adtechmedia.io">blog</a>
+                    <a href="" data-modal="#modal" class="modal__trigger">request a demo</a>
                 </li>
             </ul>
         </nav>
     </section>
 </header>
 
-<main id="mainContent" class="cb-container">
-    <div id="home" class="cd-section">
-        <ul id="home-slides" class="slides">
-            <li class="slide showing">
-                <div class="carousel" itemscope itemtype="http://schema.org/MediaObject"
-                     data-vide-bg="mp4: /adtechmedia-website/video.mp4, webm: /adtechmedia-website/video.webm, ogv: /adtechmedia-website/video.ogv, poster: /adtechmedia-website/images/video.png"
-                     data-vide-options="loop: true, muted: true, position: 0% 0%, posterType: png">
-
-                    <button class="video-show"><i class="fa fa-play"></i></button>
-
-                    <div class="carousel-overlay youtube-overlay hidden" data-video-id="i-5EHXFp29w" data-src="https://www.youtube.com/embed/i-5EHXFp29w?rel=0&showinfo=0&autoplay=1&modestbranding=1">
-                        <div id="youtubeVideo1" class="youtube-video"></div>
-                    </div>
-
-
-                    <div class="carousel-overlay with-headline">
-                        <div class="carousel-heading" itemprop="description">
-                            Let's create complementary <br/> revenue streams together
-                        </div>
-                    </div>
-
-                    <i data-video-id="i-5EHXFp29w" class="fa fa-times video-close hidden"></i>
-                </div>
-            </li>
-            <li class="slide">
-                <div class="carousel" itemscope itemtype="http://schema.org/MediaObject"
-                     data-vide-bg="mp4: /adtechmedia-website/video2.mp4, webm: /adtechmedia-website/video2.webm, ogv: /adtechmedia-website/video2.ogv, poster: /adtechmedia-website/images/video.png"
-                     data-vide-options="loop: true, muted: true, autoplay: true, position: 0% 0%, posterType: png">
-
-                    <button class="video-show"><i class="fa fa-play"></i></button>
-
-                    <div class="carousel-overlay youtube-overlay hidden" data-video-id="DiBh8r3lPpM" data-src="https://www.youtube.com/embed/DiBh8r3lPpM?rel=0&showinfo=0&autoplay=1&modestbranding=1">
-                        <div id="youtubeVideo2" class="youtube-video"></div>
-                    </div>
-
-                    <div class="carousel-overlay with-headline">
-                        <div class="carousel-heading" itemprop="description">
-                            Our technology is white labeled and data driven
-                        </div>
-                    </div>
-
-                    <i data-video-id="DiBh8r3lPpM" class="fa fa-times video-close hidden"></i>
-                </div>
-            </li>
-        </ul>
-        <div id="home-pagination" class="pagination"></div>
-    </div>
-
-    <section id="challenges" class="white-section cd-section">
-        <h1>challenges</h1>
-        <h2>According to <a href="https://pagefair.com/blog/2015/ad-blocking-report">a recent study</a>
-            ad blocking grew by 41% globally to over 200M active users in the last 12 months, costing publishers
-            an estimated $22B during 2015.
-            <a href="https://pagefair.com/blog/2016/mobile-adblocking-report">Another study</a> concludes that
-            at least 419M active users (22% of the world's 1.9B smartphone users) are blocking ads on the mobile
-            web. <a class="more-link" href="/challenges/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </h2>
-        <div class="challenges">
-            <div class="challenges-block">
-                <div class="challenges-block-inner">
-                    <div class="img-block">
-                        <img src="/adtechmedia-website/images/challenges/adage.png" alt="Advertising Age" />
-                    </div>
-                    <div class="cont-block">
-                        <blockquote>
-                            This is a manifestly unsavoury business practice. Adblockers often
-                            portray themselves as an answer to unsatisfactory digital advertising experiences.
-                            But Eyeo wasn't founded by concerned citizens. It was founded by a digital ad veteran
-                            and represents the most cynical, most money-grasping end of the old unreformed digital
-                            ad business.
-                        </blockquote>
-                        <label>
-                            <a href="http://adage.com/article/media/york-times-exploring-ad-free-digital-subscription/304322/">
-                                Mark Thompson, President & CEO of New York Times Co
-                            </a>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="challenges-block">
-                <div class="challenges-block-inner">
-                    <div class="img-block">
-                        <img src="/adtechmedia-website/images/challenges/hpost.png" alt="The Huffington Post" />
-                    </div>
-                    <div class="cont-block">
-                        <blockquote>
-                            Many people already receive our journalism for free online, with digital
-                            advertising paying only a portion of the cost. Without income via subscriptions or
-                            advertising, we are unable to deliver the journalism that people coming to our site
-                            expect from us.
-                        </blockquote>
-                        <label>
-                            <a href="http://www.huffingtonpost.com/dan-kennedy/the-real-battle-over-ad-b_b_8189186.html">
-                                Spokesperson at Washington Post
-                            </a>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="challenges-block">
-                <div class="challenges-block-inner">
-                    <div class="img-block">
-                        <img src="/adtechmedia-website/images/challenges/naa.png" alt="Newspaper Association of America" />
-                    </div>
-                    <div class="cont-block">
-                        <blockquote>
-                            Newspapers recognize that ad blocking technology is responding to a
-                            consumer demand, and publishers are working diligently to improve the
-                            ad experience for consumers. However, some ad blocking firms have
-                            implemented ad blocking business models that deceive consumers.
-                            These practices undercut our members’ ability to provide a satisfying
-                            customer experience because the consumer is not receiving the whole truth.
-                        </blockquote>
-                        <label>
-                            <a href="https://www.newsmediaalliance.org/naa-asks-ftc-investigate-unlawful-ad-blocking-practices/">
-                                David Chavern, President & CEO of NAA
-                            </a>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="try-btn cd-secondary-nav">
-            <ul>
-                <li>
-                    <a href="/admin/">
-                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                        try it
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <div id="solutions" class="cd-section">
-        <div class="custom-headline-block">
-            <h1 class="custom-headline">solutions</h1>
-        </div>
+<main id="mainContent" class="cb-container main-page">
+    <div class="main-slide">
         <section>
-            <div class="solution">
-                <h1>Native Micropayments</h1>
-                <div class="solution-inner clearfix">
-                    <div class="solution-img pull-left">
-                        <img src="/adtechmedia-website/images/solutions/solution-1.png" alt="Native Micropayments" />
-                    </div>
-                    <div class="solution-cont">
-                        <div class="solution-cont-inner" itemscope itemtype="http://schema.org/mainContentOfPage">
-                            <div class="solution-text" itemprop="WebPageElement">
-                                Complementary revenue model that monetizes natively specific audiences
-                                (e.g. ad blocking users). Similar to online retailers, AdTechMedia
-                                empowers publishers and content providers with just-in-time payment
-                                solutions, offering payment choices to their end users without taking
-                                them away from the reading experience.
-                                <a class="more-link" href="/solutions/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="solution-benefits">
-                                <h3>Benefits</h3>
-                                <ul>
-                                    <li>
-                                        <span>Native seamless experience</span>
-                                    </li>
-                                    <li>
-                                        <span>Low barrier of entry</span>
-                                    </li>
-                                    <li>
-                                        <span>Frictionless charges</span>
-                                    </li>
-                                    <li>
-                                        <span>No questions asked refunds</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="solution">
-                <h1>White-Label Technology</h1>
-                <div class="solution-inner clearfix">
-                    <div class="solution-img pull-left">
-                        <img src="/adtechmedia-website/images/solutions/solution-2.png" alt="White-Label Technology" />
-                    </div>
-                    <div class="solution-cont">
-                        <div class="solution-cont-inner">
-                            <div class="solution-text">
-                                Publishers and content providers are empowered to own and drive
-                                their customers' experience. Every step in our Business-to-Business solution
-                                is customizable and optimizable through business rules that can be turned on and off.
-                                <a class="more-link" href="/solutions/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="solution-benefits">
-                                <h3>Benefits</h3>
-                                <ul>
-                                    <li>
-                                        <span>Customizable look and feel</span>
-                                    </li>
-                                    <li>
-                                        <span>Reduced operational complexity</span>
-                                    </li>
-                                    <li>
-                                        <span>Compliant with security standards</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="solution">
-                <h1>Data-Driven Decisions</h1>
-                <div class="solution-inner clearfix">
-                    <div class="solution-img pull-left">
-                        <img src="/adtechmedia-website/images/solutions/solution-3.png" alt="Data-Driven Decisions" />
-                    </div>
-                    <div class="solution-cont">
-                        <div class="solution-cont-inner">
-                            <div class="solution-text" itemprop="specialty">
-                                W. Edwards Deming says that "without data you are just another person
-                                with an opinion". AdTechMedia helps publishers and content providers
-                                to focus on what really works for them. We constantly evolve through
-                                data analytics centered solutions to reach realtime capabilities in
-                                everything we do.
-                                <a class="more-link" href="/solutions/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="solution-benefits">
-                                <h3>Benefits</h3>
-                                <ul>
-                                    <li>
-                                        <span>Define key success business metrics</span>
-                                    </li>
-                                    <li>
-                                        <span>Highly performing business rules</span>
-                                    </li>
-                                    <li>
-                                        <span>A/B test ideas quickly &amp; take actions</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <div class="try-btn cd-secondary-nav">
-            <ul>
-                <li>
-                    <a href="/admin/">
-                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                        try it
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="demo" class="cd-section">
-        <div class="custom-headline-block">
-            <section>
-                <h1>demo</h1>
-                <h2>User Interface and User eXperience is like a joke. If you have to explain it,
-                    it's not that good. Here below are couple of demos that we believe doesn't
-                    need any explanations.
-                    <a class="banner-link more-link" href="/demo/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                </h2>
-            </section>
-        </div>
-        <div id="demo-slides" class="demo-container">
-            <section>
-                <div class="demo-row">
-                    <div class="demo-block">
-                        <img src="/adtechmedia-website/images/demo/default.jpg" />
-                    </div>
-                    <div class="demo-block">
-                        <img src="/adtechmedia-website/images/demo/pledge-closed.jpg" />
-                    </div>
-                    <div class="demo-block" itemscope itemtype="http://schema.org/primaryImageOfPage">
-                        <img itemprop="ImageObject" src="/adtechmedia-website/images/demo/pledge-opened.jpg" />
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <div id="api" class="cd-section">
-        <div class="custom-headline-block">
-            <section>
-                <h1>api</h1>
-                <h2>
-                    Want to learn about what you can achieve by integrating with our APIs?
-                    The possibilities are endless, but you can find just a few examples.
-                    <a class="banner-link more-link" href="/api/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                </h2>
-            </section>
-        </div>
-
-        <section class="home-blocks">
-            <div class="flex-row flex-gutter">
-                <div class="flex-item-4">
-                    <img src="/adtechmedia-website/images/api/case-img.png" alt="Case Studies Image"/>
+            <div class="flex-row">
+                <div class="info-block flex-item-5">
+                    <h1>Complementary <br /> revenue streams</h1>
                     <p>
-                        Want to learn about what you can achieve by integrating with our APIs?
-                        The possibilities are endless, but you can find just a few examples
+                        Empower your readers. Monetize your content. Unlock complementary revenue streams through user friendly advertising,
+                        customer friendly subscriptions or privacy friendly micropayments.
                     </p>
-                    <div class="action">
-                        <a href="/case-studies/" class="btn" role="button">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i> More
-                        </a>
-                    </div>
+                    <button class="btn modal__trigger" data-modal="#modal">Request a demo</button>
+                    <button class="btn secondary-btn">Watch now</button>
                 </div>
-                <div class="flex-item-4">
-                    <img src="/adtechmedia-website/images/api/api-img.png" alt="Case Studies Image"/>
-                    <p>
-                        See what APIs we have on offer, including extensive documentation. Sign in to manage your
-                        subscriptions, see your current usage, get your API Key, and test against our live API.
-                    </p>
-                    <div class="action">
-                        <a href="/api-docs/" class="btn" role="button">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i> More
-                        </a>
-                    </div>
-                </div>
-                <div class="flex-item-4">
-                    <img src="/adtechmedia-website/images/api/guide-img.png" alt="User Guide Image"/>
-                    <p>
-                        Ready to get started? This is the place that answers all your questions.
-                        We'll have you up and running in no time. Let's get started!
-                    </p>
-                    <div class="action">
-                        <a href="/user-guide/" class="btn" role="button">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i> More
-                        </a>
+                <div class="laptop flex-item-7">
+                    <div id="laptop-anim"></div>
+                    <div id="laptop-actions">
+                        <div class="play">
+                            <i class="fa fa-play"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="scroll-down">
+            <i class="fa fa-angle-down"></i>
+        </div>
     </div>
 
-    <div id="team" class="cd-section">
-        <div class="custom-headline-block">
-            <section>
-                <h1>team</h1>
-                <h2>We are a team of highly skilled and very passioned product engineers
-                    who dedicated years of building high quality technical solutions
-                    that solve large scale business problems.
-                    <a class="banner-link more-link" href="/team/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                </h2>
-            </section>
-        </div>
+    <div class="steps">
         <section>
-            <div class="team-block">
-                <div class="team-member" itemscope itemtype="http://schema.org/Person">
-                    <div class="info-top">
-                        <div class="member-pic">
-                            <img itemprop="image" src="/adtechmedia-website/images/team/eugen.jpg" alt="Eugene Istrati" />
-                        </div>
-                    </div>
-                    <div class="info-bottom">
-                        <div class="member-name" itemprop="name">Eugene Istrati</div>
-                        <div class="member-position" itemprop="jobTitle">Co-Founder, CEO</div>
-                        <div class="member-social">
-                            <ul>
-                                <li>
-                                    <a itemprop="url" href="https://www.linkedin.com/in/eistrati" target="_blank">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://twitter.com/eistrati" target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://github.com/eistrati" target="_blank">
-                                        <i class="fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <p>
+                Whether you are affected by loss of revenue to ad blocking software or not,
+                AdTechMedia offers sustainable solutions that empower users to decide who pays for content consumption.
+            </p>
+
+            <h2 class="accent-blue">3 Simple steps:</h2>
+
+            <div class="flex-row">
+                <div id="install-block" class="step-block">
+                    <img src="/adtechmedia-website/images/steps/install.svg" alt="install"/>
+                    <div id="install-step"></div>
+                    <h3 class="uppercase">install</h3>
                 </div>
-                <div class="team-member" itemscope itemtype="http://schema.org/Person">
-                    <div class="info-top">
-                        <div class="member-pic">
-                            <img itemprop="image" src="/adtechmedia-website/images/team/irina.jpg" alt="Irina Covali" />
-                        </div>
-                    </div>
-                    <div class="info-bottom">
-                        <div class="member-name" itemprop="name">Irina Covali</div>
-                        <div class="member-position" itemprop="jobTitle">Technical Lead, Front End</div>
-                        <div class="member-social">
-                            <ul>
-                                <li>
-                                    <a itemprop="url" href="https://www.linkedin.com/in/irina-covali-08455057" target="_blank">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://twitter.com/IrinaCovali" target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://github.com/icovali" target="_blank">
-                                        <i class="fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div id="customize-block" class="step-block">
+                    <img src="/adtechmedia-website/images/steps/customization.svg" alt="customize"/>
+                    <div id="customize-step"></div>
+                    <h3 class="uppercase">customize</h3>
                 </div>
-                <div class="team-member" itemscope itemtype="http://schema.org/Person">
-                    <div class="info-top">
-                        <div class="member-pic">
-                            <img itemprop="image" src="/adtechmedia-website/images/team/alex.jpg" alt="Alexander Cucer" />
-                        </div>
-                    </div>
-                    <div class="info-bottom">
-                        <div class="member-name" itemprop="name">Alexander Cucer</div>
-                        <div class="member-position" itemprop="jobTitle">Technical Lead, Back End</div>
-                        <div class="member-social">
-                            <ul>
-                                <li>
-                                    <a itemprop="url" href="https://www.linkedin.com/in/alexandrc" target="_blank">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://twitter.com/alexanderc_89" target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://github.com/AlexanderC" target="_blank">
-                                        <i class="fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div id="pay-block" class="step-block">
+                    <img src="/adtechmedia-website/images/steps/payment.svg" alt="payment"/>
+                    <div id="pay-step"></div>
+                    <h3 class="uppercase">get paid</h3>
                 </div>
-                <div class="team-member" itemscope itemtype="http://schema.org/Person">
-                    <div class="info-top">
-                        <div class="member-pic">
-                            <img itemprop="image" src="/adtechmedia-website/images/team/marcel.jpg" alt="Marcel Goria" />
-                        </div>
-                    </div>
-                    <div class="info-bottom">
-                        <div class="member-name" itemprop="name">Marcel Goria</div>
-                        <div class="member-position" itemprop="jobTitle">Technical Lead, Full Stack</div>
-                        <div class="member-social">
-                            <ul>
-                                <li>
-                                    <a itemprop="url" href="https://www.linkedin.com/in/mgoria" target="_blank">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url" href="https://twitter.com/goriam" target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a itemprop="url"  href="https://github.com/mgoria" target="_blank">
-                                        <i class="fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            </div>
+
+            <p>Our solutions are built to restore trust between content providers and content consumers.</p>
+
+            <div class="checks">
+                <h3 class="uppercase">user friendly</h3>
+                <h3 class="uppercase">frictionless</h3>
+                <h3 class="uppercase">customizable</h3>
             </div>
         </section>
     </div>
 
-    <section id="contact" class="white-section cd-section">
-        <form onsubmit="return executeCaptcha()" id="contactus-form">
-            <h1>contact</h1>
-            <div class="contact-inner">
-                <div id="googleMap"></div>
-                <div class="contact-form">
-                    <h3>get in touch</h3>
+    <div class="solutions-block">
+        <div class="solutions-cont flex-row">
+            <div class="solutions-inner flex-item-6">
+                <div class="first-block">
+                    <h3 class="accent-blue uppercase">
+                        native micropayments
+                    </h3>
+                    <ul>
+                        <li>frictionless charges</li>
+                        <li>no question asked refunds</li>
+                        <li>
+                            seamless integration
+                            <ul>
+                                <li>Apple Pay</li>
+                                <li>PayPal</li>
+                                <li>Amazon Pay</li>
+                                <li>and more</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
-                    <div class="custom-input">
-                        <input type="text" name="name" id="name-field" required />
-                        <span class="bar"></span>
-                        <label class="text-field__label">Name</label>
-                        <small>e.g. John Smith</small>
-                    </div>
-
-                    <div class="custom-input">
-                        <input type="text" name="phone" id="phone-field" required />
-                        <span class="bar"></span>
-                        <label class="text-field__label">Phone</label>
-                        <small>e.g. (999) 999-9999</small>
-                    </div>
-
-                    <div class="custom-input">
-                        <input type="email" name="email" id="email-field" required />
-                        <span class="bar"></span>
-                        <label class="text-field__label">Email</label>
-                        <small>e.g. john.smith@email.com</small>
-                    </div>
-
-                    <div class="custom-input">
-                        <textarea name="message" id="message-field" required></textarea>
-                        <span class="bar"></span>
-                        <label class="text-field__label">Message</label>
-                    </div>
-                    <div class="captcha-block">
-                        <div class="g-recaptcha" id="contact-us-re-captcha"></div>
-                    </div>
-                    <div>
-                        <button class="btn" id="contact-button" type="submit">
-                            <i class="fa fa-check"></i> submit
-                        </button>
-                    </div>
-                    <div class="company-info" itemscope itemtype="http://schema.org/Place">
-                        Address:
-                        <a itemprop="url" href="https://goo.gl/maps/XJev9bE4QxC2">
-                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                <span itemprop="streetAddress">50 Tice Blvd</span>
-                                <span itemprop="addressLocality">Woodcliff Lake</span>
-                                <span itemprop="addressRegion"> NJ </span>
-                                <span itemprop="postalCode">07677</span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class="company-info">
-                        Tel: <a href="tel:+18018108186">801.810.8186</a> |
-                        Email: <a href="mailto:hello@adtechmedia.io?Subject=Website%20contact%20link">hello@adtechmedia.io</a> |
-                        <a class="more-link" href="/contact/">Learn more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </div>
+                <div class="second-block">
+                    <h3 class="accent-blue uppercase">
+                        native advertising
+                    </h3>
+                    <ul>
+                        <li>content aware ads</li>
+                        <li>high value and maximum viewability</li>
+                        <li>
+                            seamless integration
+                            <ul>
+                                <li>Google DFP</li>
+                                <li>ReviveAd Server</li>
+                                <li>VAST / VPAID</li>
+                                <li>and more</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </form>
-    </section>
+
+            <div class="solutions-inner flex-item-6">
+                <div class="third-block">
+                    <h3 class="accent-blue uppercase">
+                        customizable look & feel
+                    </h3>
+                    <ul>
+                        <li>white label solution</li>
+                        <li>user friendly interfaces</li>
+                        <li>business driven workflow</li>
+                    </ul>
+                </div>
+
+                <div class="fourth-block">
+                    <h3 class="accent-blue uppercase ">
+                        seamless integration
+                    </h3>
+                    <ul>
+                        <li>WordPress</li>
+                        <li>Drupal</li>
+                        <li>JS SDK (API)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
+
+<div class="demo-footer">
+    <h3>Do you still have any questions?</h3>
+    <button class="btn secondary-btn alpha-bg modal__trigger" data-modal="#modal">
+        request a demo
+    </button>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
+    <div class="modal__dialog">
+        <div class="modal__content">
+            <img src="/adtechmedia-website/images/popup-image.svg" alt="Adtechemdia Demo"/>
+
+            <div class="modal-inner">
+                <!-- Begin MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                    <form action="//mitocgroup.us11.list-manage.com/subscribe/post?u=13a7a5fca813b378c24ec9fe3&amp;id=84c8a84bc7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <h3>Let's schedule your demo</h3>
+
+                            <div class="custom-input mc-field-group">
+                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                                <span class="bar"></span>
+                                <label for="mce-EMAIL" class="text-field__label">Email Address</label>
+                            </div>
+
+                            <div class="custom-input mc-field-group">
+                                <input type="text" value="" name="FNAME" class="non-required" id="mce-FNAME">
+                                <span class="bar"></span>
+                                <label for="mce-FNAME" class="text-field__label">First Name</label>
+                            </div>
+
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_13a7a5fca813b378c24ec9fe3_84c8a84bc7" tabindex="-1" value=""></div>
+
+                            <button class="btn cancel-btn close-btn">Later</button>
+                            <button class="btn" type="submit" name="subscribe" id="mc-embedded-subscribe">Get Started</button>
+                        </div>
+                    </form>
+                </div>
+                <!--End mc_embed_signup-->
+            </div>
+        </div>
+    </div>
+</div>
 
 <main id="404Content" style="display: none" class="cb-container not-found">
     <section>
@@ -657,113 +303,108 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
 
 <footer>
     <section>
-        <div class="footer-blocks">
-            <div class="footer-logo"></div>
-            <div class="about-us" itemscope itemtype="http://schema.org/Audience">
-                <h3>About Us</h3>
-                <p itemprop="audienceType">AdTechMedia is an advertising platform with micropayments capabilities for media content
-                monetization. We help publishers and content providers to generate complementary revenue streams
-                that are immune to ad blocking software (e.g. native advertising or native micropayments).
-                Our solutions are white labeled, data driven and realtime.</p>
+        <div class="footer-blocks flex-row">
+            <div class="footer-logo flex-item-2">
+                <img src="/adtechmedia-website/images/footer-logo.svg" alt="AdTechMedia"/>
             </div>
-            <div class="footer-links scroll-nav">
-                <div class="social-links">
-                    <h3>Social</h3>
-                    <ul class="clearfix">
-                        <li>
-                            <a itemprop="url" href="https://linkedin.com/company/adtechmediapro">
-                                <i class="fa fa-linkedin"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a itemprop="url" href="https://twitter.com/adtechmediapro">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a itemprop="url" href="https://facebook.com/adtechmediapro">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a itemprop="url" href="https://github.com/adtechmedia">
-                                <i class="fa fa-github"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="quick-links cd-secondary-nav">
-                    <h3>Quick links</h3>
-                    <ul class="clearfix">
-                        <li>
-                            <a href="/challenges/">
-                                <i class="fa fa-newspaper-o"></i>
-                                <span>Challenges</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/solutions/">
-                                <i class="fa fa-flask"></i>
-                                <span>Solutions</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/demo/">
-                                <i class="fa fa-laptop"></i>
-                                <span>Demo</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/api/">
-                                <i class="fa fa-key"></i>
-                                <span>Api</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/team/">
-                                <i class="fa fa-users"></i>
-                                <span>Team</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact/">
-                                <i class="fa fa-map-marker"></i>
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/admin/">
-                                <i class="fa fa-lightbulb-o"></i>
-                                <span>Try It</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="social-links flex-item-7">
+                <ul class="clearfix">
+                    <li class="wordpress">
+                        <a itemprop="url" target="_blank" href="https://wordpress.org/plugins-wp/adtechmedia/">
+                            <i class="fa fa-wordpress" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="drupal">
+                        <a itemprop="url" target="_blank" href="https://www.drupal.org/project/adtechmedia/">
+                            <i class="fa fa-drupal" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="github">
+                        <a itemprop="url" target="_blank" href="https://github.com/adtechmedia">
+                            <i class="fa fa-github" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="linkedin">
+                        <a itemprop="url" target="_blank" href="https://linkedin.com/company/adtechmediapro">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="twitter">
+                        <a itemprop="url" target="_blank" href="https://twitter.com/adtechmediapro">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="facebook">
+                        <a itemprop="url" target="_blank" href="https://facebook.com/adtechmediapro">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="youtube">
+                        <a itemprop="url" target="_blank" href="https://www.youtube.com/channel/UCyLr_SKBBsA9pNxouO9VB0Q">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="quick-links flex-item-3">
+                <h3>Quick links</h3>
+                <ul class="clearfix">
+                    <li>
+                        <a href="/challenges/">
+                            Challenges
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/team/">
+                            Team
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/solutions/">
+                            Solutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact/">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/api/">
+                            Api
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://blog.adtechmedia.io">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 </footer>
 <div class="bottom-info">
-    <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
-    <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
+    <section>
+        <span>Copyright &copy; <a href="https://www.mitocgroup.com"><span itemprop="copyrightHolder">Mitoc Group</span></a> <span itemprop="copyrightYear">2016-2017</span>. All rights reserved.</span>
+        <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
+    </section>
 </div>
 
 <script type="application/javascript">
     !function(){var n=location.hash||location.pathname,t=document.getElementById("mainContent"),e=document.getElementById("404Content"),o=["/","/index.html"];t&&-1===o.indexOf(n)&&(t.style.display="none",e.style.display="flex")}();
 </script>
 
-<script type="text/javascript" src="/js/lib/deep-framework.js"></script>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/nav.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/jquery.vide.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ILEj6leGokPnvmh4YhDES7je21MvvCE"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/jquery.noty.packaged.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/input-mask.js"></script>
-<script type="text/javascript" async src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/bodymovin.min.js"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/animations.js"></script>
 
+<!--<script type="text/javascript" async src="https://www.youtube.com/iframe_api"></script>-->
+
+<script type="text/javascript" src="/adtechmedia-website/js/main-page.js"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/modal.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/main.js"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/contact.js"></script>
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=setCaptchaKey&render=explicit&hl=en"></script>
-<script type="text/javascript" src="/adtechmedia-website/js/carousel.js"></script>
 </body>
 </html>
