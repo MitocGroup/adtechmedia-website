@@ -3206,10 +3206,12 @@ header {
     font-size: 60px;
     line-height: 1.2; } }
 @media (max-width: 767px) {
-  .main-slide .flex-row > *.info-block .modal__trigger {
-    right: 20px; }
-  .main-slide .scroll-down {
-    z-index: 1; }
+  .main-slide {
+    height: calc(100vh - 70px); }
+    .main-slide .flex-row > *.info-block .modal__trigger {
+      right: 20px; }
+    .main-slide .scroll-down {
+      z-index: 1; }
 
   main:not(.main-page) ~ .demo-footer .btn.secondary-btn {
     right: 20px; }
@@ -3396,6 +3398,25 @@ header {
 
   .main-nav {
     margin-right: 10px; }
+
+  .main-slide .flex-row {
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    padding: 15px 0 0; }
+    .main-slide .flex-row > *.info-block p {
+      font-size: 14px;
+      margin-top: 10px; }
+    .main-slide .flex-row > *.info-block .btn:not(.modal__trigger) {
+      margin: 5px 0; }
+    .main-slide .flex-row > *.info-block .modal__trigger {
+      top: 16px; }
+
+  .main-page h1 {
+    font-size: 30px; }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 16px; }
 
   .steps .step-block img, .steps .step-block div {
     height: 80px;
