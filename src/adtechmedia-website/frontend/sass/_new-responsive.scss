@@ -897,6 +897,7 @@
 
 @media (max-width: 767px) {
   .main-slide {
+    height: calc(100vh - 70px);
     .flex-row {
       & > *.info-block {
         .modal__trigger {
@@ -1258,6 +1259,38 @@
   .main-nav {
     margin-right: 10px;
   }
+
+  .main-slide {
+    .flex-row {
+      justify-content: flex-start;
+      -webkit-justify-content: flex-start;
+      padding: 15px 0 0;
+      & > *.info-block {
+        p {
+          font-size: 14px;
+          margin-top: 10px
+        }
+
+        .btn:not(.modal__trigger) {
+          margin: 5px 0;
+        }
+
+        .modal__trigger {
+          top: 16px;
+        }
+      }
+    }
+  }
+
+  .main-page h1 {
+    font-size: 30px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
 
   .steps {
     .step-block {
