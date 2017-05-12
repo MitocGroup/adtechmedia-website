@@ -400,7 +400,7 @@ header {
   top: 0;
   background: #fff;
   z-index: 10;
-  transition: all .3s ease; }
+  transition: box-shadow .3s ease; }
   header.with-shadow {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }
   header section {
