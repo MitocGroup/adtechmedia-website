@@ -15,17 +15,17 @@ $(window).load(function() {
 // Main nav on mobile
 function _clearNav(){
   $menuIcon.removeAttr('checked');
-  $('body').removeClass('menu-shown');
+  $('body').removeClass('overflow');
 }
 
 $menuIcon.on('click', function(){
   if($menuIcon.prop('checked')) {
-    $('body').addClass('menu-shown');
+    $('body').addClass('overflow');
     $menu.on('click', 'a', function() {
       _clearNav();
     });
   } else {
-    $('body').removeClass('menu-shown');
+    $('body').removeClass('overflow');
   }
 });
 
