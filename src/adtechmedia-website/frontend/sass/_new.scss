@@ -515,13 +515,104 @@ section {
   z-index: 11;
 }
 
+.btn.video-show {
+  position: relative;
+  &:hover {
+    padding-right: 45px;
+    .fa-play {
+      opacity: 1;
+      visibility: visible;
+      right: 5px;
+      @include transform(translateY(-50%) rotate(0deg));
+    }
+  }
+  .fa-play {
+    background: #fff;
+    border-radius: 50%;
+    color: #01ADFD;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    position: absolute;
+    z-index: -1;
+    right: 10px;
+    top: 50%;
+    @include transform(translateY(-50%) rotate(-180deg));
+    opacity: 0;
+    visibility: hidden;
+   @include transition(all 0.4s ease-in-out);
+    &:before {
+      display: inline-block;
+      margin-left: 3px;
+    }
+  }
+}
+
+.video-close {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 14;
+  @include transition(transform .4s ease-in-out);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #fff;
+  }
+
+  &:before {
+    @include transform(rotate(45deg));
+  }
+  &:after {
+    @include transform(rotate(-45deg));
+  }
+
+  &:hover {
+    @include transform(scale(1.2));
+  }
+}
+
 .youtube-overlay {
-  background: #000;
-  z-index: 2;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  @include transition(all 0.4s cubic-bezier(0.4, 0, 0.2, 1));
+  width: 100%;
+  z-index: 11;
+  opacity: 1;
+  @include transform(scale(1));
+  visibility: visible;
+  &.hidden {
+    opacity: 0;
+    @include transform(scale(1.15));
+    visibility: hidden;
+  }
+}
+
+.youtube-video {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 13;
+}
+
+.youtubemodal-mask {
+  background: #fff;
+  height: 100%;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 97%;
+  width: 100%;
+  z-index: 12;
 }
