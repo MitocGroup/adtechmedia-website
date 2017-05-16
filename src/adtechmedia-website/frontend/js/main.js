@@ -45,3 +45,6 @@ $('#mc-embedded-subscribe').on('click', function() {
   $('#mc-embedded-subscribe-form').submit();
 });
 
+if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+  $('body').addClass('mobile');
+}

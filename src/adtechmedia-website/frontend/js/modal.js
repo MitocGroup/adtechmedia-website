@@ -2,6 +2,7 @@ var Modal = (function() {
 
   var trigger = $('.modal__trigger'); // what you click to activate the modal
   var modals = $('.modal'); // the entire modal (takes up entire window)
+  var dialog = $('.modal__dialog'); // the entire modal (takes up entire window)
   var modalsbg = $('.modal__bg'); // the entire modal (takes up entire window)
   var content = $('.modal__content'); // the inner content of the modal
   var closers = $('.close-btn'); // an element used to close the modal
@@ -101,6 +102,16 @@ var Modal = (function() {
       m.classList.add('modal--active');
       // reveal the modal content
       content.classList.add('modal__content--active');
+
+      if($('body').hasClass('mobile')) {
+        modals
+          .on('focus', 'input', function(){
+            dialog.addClass('key-on');
+          })
+          .on('blur', 'input', function(){
+            dialog.removeClass('key-on');
+          });
+      }
 
       /**
        * when the modal content is finished transitioning, fadeout the temporary

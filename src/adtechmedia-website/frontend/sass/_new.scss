@@ -421,6 +421,13 @@ section {
   @include transition(all 0.5s cubic-bezier(0.23, 1, 0.32, 1));
 }
 
+.key-on {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translateY(-25%) translateX(-50%));
+}
+
 .modal--active {
   visibility: visible;
   opacity: 1;
@@ -556,7 +563,7 @@ section {
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 14;
+  z-index: 17;
   @include transition(transform .4s ease-in-out);
   &:before, &:after {
     content: '';
@@ -589,7 +596,7 @@ section {
   top: 0;
   @include transition(all 0.4s cubic-bezier(0.4, 0, 0.2, 1));
   width: 100%;
-  z-index: 11;
+  z-index: 14;
   opacity: 1;
   @include transform(scale(1));
   visibility: visible;
@@ -604,7 +611,7 @@ section {
   height: 100%;
   position: relative;
   width: 100%;
-  z-index: 13;
+  z-index: 16;
 }
 
 .youtubemodal-mask {
@@ -614,5 +621,5 @@ section {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 12;
+  z-index: 15;
 }
