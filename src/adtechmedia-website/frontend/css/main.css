@@ -1427,6 +1427,39 @@ header {
       font-size: small; }
     .modal__content .modal-inner .custom-input {
       padding-bottom: 20px; }
+  .modal__content .close-btn {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px; }
+    .modal__content .close-btn:before, .modal__content .close-btn:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      background: #BFBFBF;
+      -webkit-transition: background 0.4s ease-in-out;
+      -moz-transition: background 0.4s ease-in-out;
+      -o-transition: background 0.4s ease-in-out;
+      transition: background 0.4s ease-in-out; }
+    .modal__content .close-btn:before {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg); }
+    .modal__content .close-btn:after {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg); }
+    .modal__content .close-btn:hover {
+      cursor: pointer; }
+      .modal__content .close-btn:hover:before, .modal__content .close-btn:hover:after {
+        background: #01ADFD; }
 
 .modal__content--active {
   opacity: 1; }
@@ -3640,7 +3673,16 @@ header {
     -webkit-align-items: center; }
     .modal__content > * {
       flex: 1;
-      -webkit-flex: 1; } }
+      -webkit-flex: 1; }
+    .modal__content .close-btn {
+      height: 20px;
+      width: 20px;
+      top: 10px;
+      right: 10px; }
+
+  .demo-confirm {
+    height: auto;
+    padding: 50px 0; } }
 @media (max-height: 350px) {
   .modal__content img {
     max-width: 40%; }

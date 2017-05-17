@@ -1427,6 +1427,18 @@
       flex: 1;
       -webkit-flex: 1;
     }
+
+    .close-btn {
+      height: 20px;
+      width: 20px;
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  .demo-confirm {
+    height: auto;
+    padding: 50px 0;
   }
 }
 
