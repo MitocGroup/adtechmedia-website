@@ -479,6 +479,39 @@ section {
       padding-bottom: 20px;
     }
   }
+
+  .close-btn {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      background: #BFBFBF;
+      @include transition(background .4s ease-in-out);
+    }
+
+    &:before {
+      @include transform(rotate(45deg));
+    }
+    &:after {
+      @include transform(rotate(-45deg));
+    }
+
+    &:hover {
+      cursor: pointer;
+      &:before, &:after {
+        background: $link-color;
+      }
+    }
+  }
 }
 
 .modal__content--active {
@@ -622,4 +655,18 @@ section {
   top: 0;
   width: 100%;
   z-index: 15;
+}
+
+.demo-confirm {
+  margin: 70px 0 0;
+  background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
+  height: calc(100vh - 282px);
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  img {
+    max-height: 152px;
+    margin: 0 0 20px;
+  }
 }
