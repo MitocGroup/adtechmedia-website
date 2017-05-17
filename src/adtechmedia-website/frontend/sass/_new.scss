@@ -623,3 +623,17 @@ section {
   width: 100%;
   z-index: 15;
 }
+
+.demo-confirm {
+  margin: 70px 0 0;
+  background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
+  height: calc(100vh - 282px);
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  img {
+    max-height: 152px;
+    margin: 0 0 20px;
+  }
+}

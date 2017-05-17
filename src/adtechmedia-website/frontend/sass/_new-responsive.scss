@@ -40,6 +40,12 @@
       padding: 0;
     }
   }
+
+  footer {
+    section {
+      width: 100%;
+    }
+  }
 }
 
 @media (min-width: 1025px) and (min-height: 800px) {
@@ -86,7 +92,8 @@
   }
 
   .body-main,
-  .body-main p {
+  .body-main p,
+  .demo-confirm p {
     font-size: 18px;
   }
 
@@ -121,7 +128,8 @@
     font: 60px/1.2 FuturaICG, sans-serif;
   }
 
-  .body-main p {
+  .body-main p,
+  .demo-confirm p {
     font-size: 20px;
   }
 
@@ -167,19 +175,21 @@
       vertical-align: middle;
     }
   }
+
+  .demo-confirm {
+    & ~ .demo-footer {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: 1300px) {
   .main-slide {
     margin: 88px 0 0;
     height: calc(100vh - 65px);
-    section {
-      //width: 1150px;
-    }
 
     .info-block {
       position: relative;
-      //left: 25px;
       p {
         width: 90%;
       }
@@ -198,6 +208,11 @@
       line-height: 88px;
       height: 88px;
     }
+  }
+
+  .demo-confirm {
+    margin: 88px 0 0;
+    height: calc(100vh - 300px);
   }
 }
 
@@ -278,7 +293,8 @@
     }
   }
 
-  .body-main p {
+  .body-main p,
+  .demo-confirm p {
     font-size: 22px;
   }
 
@@ -503,7 +519,8 @@
 }
 
 @media (max-width: 1024px) {
-  body.body-main {
+  body.body-main,
+  .demo-confirm p {
     font-size: 22px;
   }
 
@@ -812,6 +829,13 @@
       }
     }
   }
+
+  .demo-confirm {
+    height: calc(100vh - 253px);
+    img {
+      max-height: 135px;
+    }
+  }
 }
 
 @media (max-width: 1024px) and (min-height: 800px) {
@@ -968,6 +992,10 @@
       padding: 16px 0;
     }
   }
+
+  .demo-confirm {
+    height: calc(100vh - 232px);
+  }
 }
 
 @media (max-width: 767px) and (min-height: 800px) {
@@ -1051,7 +1079,8 @@
 }
 
 @media (max-width: 560px) {
-  body.body-main {
+  body.body-main,
+  .demo-confirm p {
     font-size: 18px;
   }
 
@@ -1143,6 +1172,13 @@
           }
         }
       }
+    }
+  }
+
+  .demo-confirm {
+    height: calc(100vh - 222px);
+    img {
+      max-height: 100px;
     }
   }
 }
@@ -1261,7 +1297,8 @@
 }
 
 @media (max-width: 360px) {
-  body.body-main {
+  body.body-main,
+  .demo-confirm p {
     font-size: 16px;
   }
 
