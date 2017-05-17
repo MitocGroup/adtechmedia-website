@@ -111,11 +111,11 @@ function sendEmail(payload, callback) {
 function sendContactUsEmail(token) {
   var formElement = document.getElementById('contactus-form');
   var form = {
-    nameElement : document.getElementById('name-field'),
-    phoneElement : document.getElementById('phone-field'),
-    emailElement : document.getElementById('email-field'),
-    messageElement : document.getElementById('message-field'),
-    submitElement : document.getElementById('contact-button')
+    nameElement: document.getElementById('name-field'),
+    phoneElement: document.getElementById('phone-field'),
+    emailElement: document.getElementById('email-field'),
+    messageElement: document.getElementById('message-field'),
+    submitElement: document.getElementById('contact-button')
   };
 
   var payload = {
