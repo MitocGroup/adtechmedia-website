@@ -122,6 +122,10 @@ var Modal = (function() {
       content.addEventListener('transitionend', hideDiv, false);
 
       isOpen = true;
+
+      window.setTimeout(function () {
+        modals.siblings('div, header, footer, main').addClass('blurred');
+      }, 50);
     }
 
     function hideDiv() {
@@ -138,6 +142,8 @@ var Modal = (function() {
 
     var target = event.target;
     var div = document.getElementById('modal__temp');
+
+    modals.siblings().removeClass('blurred');
 
     /**
      * make sure the modal__bg or modal__close was clicked, we don't want to be able to click

@@ -1513,7 +1513,9 @@ header {
       -webkit-transform: translateY(-50%) rotate(0deg);
       -moz-transform: translateY(-50%) rotate(0deg);
       -o-transform: translateY(-50%) rotate(0deg);
-      transform: translateY(-50%) rotate(0deg); }
+      transform: translateY(-50%) rotate(0deg);
+      animation: play 2s infinite ease-in-out;
+      -webkit-animation: play 2s infinite ease-in-out; }
   .btn.video-show .fa-play {
     background: #fff;
     border-radius: 50%;
@@ -1629,6 +1631,15 @@ header {
   .demo-confirm img {
     max-height: 152px;
     margin: 0 0 20px; }
+
+@keyframes play {
+  60%, 80% {
+    color: white; } }
+@-webkit-keyframes play {
+  60%, 80% {
+    color: white; } }
+.blurred {
+  filter: blur(5px); }
 
 .landing-page {
   margin-top: 100px;
