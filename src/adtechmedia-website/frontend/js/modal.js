@@ -10,7 +10,6 @@ var Modal = (function() {
   var isOpen = false;
   var contentDelay = 400; // duration after you click the button and wait for the content to show
   var len = trigger.length;
-  var body = $('body');
 
   // make it easier for yourself by not having to type as much to select an element
   //function $qsa(el) {
