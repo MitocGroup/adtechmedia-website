@@ -2907,9 +2907,6 @@ header {
   .main-slide .info-block p {
     width: 95%; }
 
-  .scroll-down {
-    display: block !important; }
-
   .solutions-block {
     height: 900px;
     background: url("../images/devices.svg") center bottom 50px/600px auto no-repeat, url("../images/tree.svg") center bottom 400px/300px auto no-repeat, url("../images/wallpaper-prefooter.jpg") 0 bottom/auto 440px no-repeat; }

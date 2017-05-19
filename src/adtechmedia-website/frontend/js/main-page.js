@@ -44,6 +44,8 @@ function mobileAnim(){
     } else {
       scrollBtn.fadeOut();
     }
+  } else {
+    scrollBtn.removeAttr('style');
   }
 }
 
