@@ -1,27 +1,69 @@
-var headerHeight = $('header').height();
+var header = $('header');
+var headerHeight = header.height();
 var $slideHeight = $('.main-slide').height();
+var scrollBtn = $('.scroll-down');
 var players = {};
 
 
-$('.scroll-down').on('click', function(){
-  if($(window).scrollTop() >= $slideHeight) {
-    $('body,html').animate({'scrollTop': 0}, 1000);
-    $('.scroll-down').removeClass('rotate');
+scrollBtn.on('click', function(){
+  scrollBtn.addClass('no-click');
+  if (window.matchMedia('(min-width: 1025px)').matches) {
+    if($(window).scrollTop() >= ($slideHeight / 3)) {
+      $(window).off();
+      onScrollUp();
+      $('body,html').animate({'scrollTop': 0}, 1000, function(){
+        $(window).on('scroll', scrollDir);
+        $(window).on('scroll resize', mobileAnim);
+        scrollBtn.removeClass('no-click');
+      });
+    } else {
+      $(window).off();
+      onScrollDown();
+      $('body,html').animate({'scrollTop': $slideHeight}, 1000, function(){
+        $(window).on('scroll', scrollDir);
+        $(window).on('scroll resize', mobileAnim);
+        scrollBtn.removeClass('no-click');
+      });
+    }
   } else {
-    $('body,html').animate({'scrollTop': $slideHeight}, 1000);
-    $('.scroll-down').addClass('rotate');
+    $('body,html').animate({'scrollTop': 0}, 1000, function(){
+      header.removeClass('with-shadow');
+      scrollBtn.removeClass('no-click');
+    });
   }
 });
 
-$(window).on('scroll', function(){
-  if($(window).scrollTop() >= $slideHeight) {
-    $('header').addClass('with-shadow');
-    $('.scroll-down').addClass('rotate');
-  } else {
-    $('header').removeClass('with-shadow');
-    $('.scroll-down').removeClass('rotate');
+$(window).on('scroll', scrollDir);
+
+$(window).on('scroll resize', mobileAnim);
+
+function mobileAnim(){
+  if (window.matchMedia('(max-width: 1024px)').matches) {
+    if($(window).scrollTop() >= $slideHeight) {
+      scrollBtn.fadeIn();
+    } else {
+      scrollBtn.fadeOut();
+    }
   }
-});
+}
+
+function scrollDir(){
+  if($(window).scrollTop() >= ($slideHeight / 3)) {
+    onScrollDown();
+  } else {
+    onScrollUp();
+  }
+}
+
+function onScrollUp() {
+  header.removeClass('with-shadow');
+  scrollBtn.removeClass('rotate');
+}
+
+function onScrollDown() {
+  header.addClass('with-shadow');
+  scrollBtn.addClass('rotate');
+}
 
 function closeVideo() {
   window.setTimeout(function () {
