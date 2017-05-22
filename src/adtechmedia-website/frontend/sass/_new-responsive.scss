@@ -40,6 +40,12 @@
       padding: 0;
     }
   }
+
+  footer {
+    section {
+      width: 100%;
+    }
+  }
 }
 
 @media (min-width: 1025px) and (min-height: 800px) {
@@ -86,7 +92,8 @@
   }
 
   .body-main,
-  .body-main p {
+  .body-main p,
+  .demo-confirm p {
     font-size: 18px;
   }
 
@@ -121,7 +128,8 @@
     font: 60px/1.2 FuturaICG, sans-serif;
   }
 
-  .body-main p {
+  .body-main p,
+  .demo-confirm p {
     font-size: 20px;
   }
 
@@ -167,19 +175,21 @@
       vertical-align: middle;
     }
   }
+
+  .demo-confirm {
+    & ~ .demo-footer {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: 1300px) {
   .main-slide {
     margin: 88px 0 0;
     height: calc(100vh - 65px);
-    section {
-      //width: 1150px;
-    }
 
     .info-block {
       position: relative;
-      //left: 25px;
       p {
         width: 90%;
       }
@@ -198,6 +208,11 @@
       line-height: 88px;
       height: 88px;
     }
+  }
+
+  .demo-confirm {
+    margin: 88px 0 0;
+    height: calc(100vh - 300px);
   }
 }
 
@@ -266,19 +281,20 @@
     p {
       margin: 30px 0;
     }
+  }
 
-    .scroll-down {
-      width: 56px;
-      height: 56px;
-      bottom: 63px;
-      i {
-        font-size: 1.8rem;
-        line-height: 56px;
-      }
+  .scroll-down {
+    width: 56px;
+    height: 56px;
+    bottom: 63px;
+    i {
+      font-size: 1.8rem;
+      line-height: 56px;
     }
   }
 
-  .body-main p {
+  .body-main p,
+  .demo-confirm p {
     font-size: 22px;
   }
 
@@ -503,7 +519,8 @@
 }
 
 @media (max-width: 1024px) {
-  body.body-main {
+  body.body-main,
+  .demo-confirm p {
     font-size: 22px;
   }
 
@@ -653,9 +670,13 @@
         }
       }
     }
+  }
 
-    .scroll-down {
-      z-index: 1;
+  .scroll-down {
+    display: none;
+    z-index: 1;
+    i {
+      @include transform(rotate(180deg));
     }
   }
 
@@ -812,6 +833,13 @@
       }
     }
   }
+
+  .demo-confirm {
+    height: calc(100vh - 253px);
+    img {
+      max-height: 135px;
+    }
+  }
 }
 
 @media (max-width: 1024px) and (min-height: 800px) {
@@ -897,6 +925,7 @@
 
 @media (max-width: 767px) {
   .main-slide {
+    height: calc(100vh - 70px);
     .flex-row {
       & > *.info-block {
         .modal__trigger {
@@ -904,10 +933,10 @@
         }
       }
     }
+  }
 
-    .scroll-down {
-      z-index: 1;
-    }
+  .scroll-down {
+    z-index: 1;
   }
 
   main {
@@ -966,6 +995,10 @@
       margin: 0 20px;
       padding: 16px 0;
     }
+  }
+
+  .demo-confirm {
+    height: calc(100vh - 232px);
   }
 }
 
@@ -1050,7 +1083,8 @@
 }
 
 @media (max-width: 560px) {
-  body.body-main {
+  body.body-main,
+  .demo-confirm p {
     font-size: 18px;
   }
 
@@ -1144,6 +1178,13 @@
       }
     }
   }
+
+  .demo-confirm {
+    height: calc(100vh - 222px);
+    img {
+      max-height: 100px;
+    }
+  }
 }
 
 @media (max-width: 560px) and (min-height: 800px) {
@@ -1219,6 +1260,15 @@
     }
   }
 
+  .modal__content {
+    .modal-inner {
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   h3 {
     font-size: 16px;
   }
@@ -1251,13 +1301,46 @@
 }
 
 @media (max-width: 360px) {
-  body.body-main {
+  body.body-main,
+  .demo-confirm p {
     font-size: 16px;
   }
 
   .main-nav {
     margin-right: 10px;
   }
+
+  .main-slide {
+    .flex-row {
+      justify-content: flex-start;
+      -webkit-justify-content: flex-start;
+      padding: 15px 0 0;
+      & > *.info-block {
+        p {
+          font-size: 14px;
+          margin-top: 10px
+        }
+
+        .btn:not(.modal__trigger) {
+          margin: 5px 0;
+        }
+
+        .modal__trigger {
+          top: 16px;
+        }
+      }
+    }
+  }
+
+  .main-page h1 {
+    font-size: 30px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
 
   .steps {
     .step-block {
@@ -1348,11 +1431,27 @@
       flex: 1;
       -webkit-flex: 1;
     }
+
+    .close-btn {
+      height: 20px;
+      width: 20px;
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  .demo-confirm {
+    height: auto;
+    padding: 50px 0;
   }
 }
 
 @media (max-height: 350px) {
   .modal__content {
+    img {
+      max-width: 40%;
+    }
+
     .modal-inner {
       padding: 1.5rem;
       flex: 2;

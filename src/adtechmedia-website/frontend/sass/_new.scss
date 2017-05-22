@@ -89,35 +89,39 @@ section {
       }
     }
   }
+}
 
-  .scroll-down {
-    position: fixed;
-    bottom: 42px;
-    right: 3%;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50%;
-    @include transition(box-shadow .2s linear);
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
-    }
+.scroll-down {
+  position: fixed;
+  bottom: 42px;
+  right: 3%;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  @include transition(box-shadow .2s linear);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+  }
+  i {
+    color: $link-color;
+    font-size: 1.6rem;
+    line-height: 50px;
+    @include transform(rotate(0deg));
+    @include transition(transform .8s ease-in-out);
+  }
+
+  &.rotate {
     i {
-      color: $link-color;
-      font-size: 1.6rem;
-      line-height: 50px;
-      @include transform(rotate(0deg));
-      @include transition(transform .8s ease-in-out);
-    }
-
-    &.rotate {
-      i {
-        @include transform(rotate(180deg));
-      }
+      @include transform(rotate(180deg));
     }
   }
+}
+
+.no-click {
+  pointer-events: none;
 }
 
 .steps {
@@ -421,6 +425,13 @@ section {
   @include transition(all 0.5s cubic-bezier(0.23, 1, 0.32, 1));
 }
 
+.key-on {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translateY(-25%) translateX(-50%));
+}
+
 .modal--active {
   visibility: visible;
   opacity: 1;
@@ -472,6 +483,39 @@ section {
       padding-bottom: 20px;
     }
   }
+
+  .close-btn {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      background: #BFBFBF;
+      @include transition(background .4s ease-in-out);
+    }
+
+    &:before {
+      @include transform(rotate(45deg));
+    }
+    &:after {
+      @include transform(rotate(-45deg));
+    }
+
+    &:hover {
+      cursor: pointer;
+      &:before, &:after {
+        background: $link-color;
+      }
+    }
+  }
 }
 
 .modal__content--active {
@@ -513,4 +557,138 @@ section {
 .modal-transition {
   position: relative;
   z-index: 11;
+}
+
+.btn.video-show {
+  position: relative;
+  &:hover {
+    padding-right: 45px;
+    .fa-play {
+      opacity: 1;
+      visibility: visible;
+      right: 5px;
+      @include transform(translateY(-50%) rotate(0deg));
+      animation: play 2s infinite ease-in-out;
+      -webkit-animation: play 2s infinite ease-in-out;
+    }
+  }
+  .fa-play {
+    background: #fff;
+    border-radius: 50%;
+    color: #01ADFD;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    position: absolute;
+    z-index: -1;
+    right: 10px;
+    top: 50%;
+    @include transform(translateY(-50%) rotate(-180deg));
+    opacity: 0;
+    visibility: hidden;
+   @include transition(all 0.4s ease-in-out);
+    &:before {
+      display: inline-block;
+      margin-left: 3px;
+    }
+  }
+}
+
+.video-close {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 17;
+  @include transition(transform .4s ease-in-out);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #fff;
+  }
+
+  &:before {
+    @include transform(rotate(45deg));
+  }
+  &:after {
+    @include transform(rotate(-45deg));
+  }
+
+  &:hover {
+    @include transform(scale(1.2));
+  }
+}
+
+.youtube-overlay {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  @include transition(all 0.4s cubic-bezier(0.4, 0, 0.2, 1));
+  width: 100%;
+  z-index: 14;
+  opacity: 1;
+  @include transform(scale(1));
+  visibility: visible;
+  &.hidden {
+    opacity: 0;
+    @include transform(scale(1.15));
+    visibility: hidden;
+  }
+}
+
+.youtube-video {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  z-index: 16;
+}
+
+.youtubemodal-mask {
+  background: #fff;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 15;
+}
+
+.demo-confirm {
+  margin: 70px 0 0;
+  background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
+  height: calc(100vh - 282px);
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  img {
+    max-height: 152px;
+    margin: 0 0 20px;
+  }
+}
+
+@keyframes play {
+  60%, 80% {
+    color: white;
+  }
+}
+
+@-webkit-keyframes play {
+  60%, 80% {
+    color: white;
+  }
+}
+
+.blurred {
+  filter: blur(5px);
 }

@@ -1,11 +1,9 @@
 /*eslint no-undef:0, no-unused-vars:0 */
 
-// @todo: split this file into related functionality (video, maps, etc)
-
 var $menu = $('.main-nav ul');
-var headerHeight = $('header').height();
 var $menuIcon = $('#navTrigger');
-
+var $demoForm = $('#mc-embedded-subscribe-form');
+var $demoFormSubmit = $('#mc-embedded-subscribe');
 
 //show spinner while page loads
 $(window).load(function() {
@@ -15,17 +13,17 @@ $(window).load(function() {
 // Main nav on mobile
 function _clearNav(){
   $menuIcon.removeAttr('checked');
-  $('body').removeClass('menu-shown');
+  $('body').removeClass('overflow');
 }
 
 $menuIcon.on('click', function(){
   if($menuIcon.prop('checked')) {
-    $('body').addClass('menu-shown');
+    $('body').addClass('overflow');
     $menu.on('click', 'a', function() {
       _clearNav();
     });
   } else {
-    $('body').removeClass('menu-shown');
+    $('body').removeClass('overflow');
   }
 });
 
@@ -41,7 +39,24 @@ $('form').on('reset', function () {
   $(':required').removeClass('touched');
 });
 
-$('#mc-embedded-subscribe').on('click', function() {
-  $('#mc-embedded-subscribe-form').submit();
+/**
+ * Programmatically Chimp form submit
+ */
+$demoFormSubmit.on('click', function() {
+  $demoForm.submit();
 });
 
+/**
+ * Assign a callback to the Chimp form
+ */
+$demoForm.ajaxChimp({
+  callback: function (data) {
+    if (data.result === 'success') {
+      window.location = '/demo-confirmation'
+    }
+  }
+});
+
+if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+  $('body').addClass('mobile');
+}
