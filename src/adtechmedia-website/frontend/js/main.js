@@ -52,7 +52,7 @@ $demoFormSubmit.on('click', function() {
 $demoForm.ajaxChimp({
   callback: function (data) {
     if (data.result === 'success') {
-      // window.location = '/demo-confirmation'
+      window.location = '/demo-confirmation'
     }
   }
 });
