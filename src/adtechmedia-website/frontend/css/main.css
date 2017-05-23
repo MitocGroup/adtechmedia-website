@@ -3715,4 +3715,26 @@ header {
     flex: 2;
     -webkit-flex: 2; } }
 
+/*text-field__label valid*/
+
+.text-field__label {
+  max-width: 225px;
+}
+
+.text-field__label.valid {
+  position: relative !important;
+  line-height: 22px;
+}
+
+.text-field__label.error {
+  position: relative !important;
+  line-height: 22px;
+  color: red !important;
+}
+
+.text-field__label.error > a {
+  text-decoration: underline;
+  pointer-events: auto;
+}
+
 /*# sourceMappingURL=main.css.map */
