@@ -2,6 +2,7 @@ var Modal = (function() {
 
   var trigger = $('.modal__trigger'); // what you click to activate the modal
   var modals = $('.modal'); // the entire modal (takes up entire window)
+  var dialog = $('.modal__dialog'); // the entire modal (takes up entire window)
   var modalsbg = $('.modal__bg'); // the entire modal (takes up entire window)
   var content = $('.modal__content'); // the inner content of the modal
   var closers = $('.close-btn'); // an element used to close the modal
@@ -102,6 +103,16 @@ var Modal = (function() {
       // reveal the modal content
       content.classList.add('modal__content--active');
 
+      if($('body').hasClass('mobile')) {
+        modals
+          .on('focus', 'input', function(){
+            dialog.addClass('key-on');
+          })
+          .on('blur', 'input', function(){
+            dialog.removeClass('key-on');
+          });
+      }
+
       /**
        * when the modal content is finished transitioning, fadeout the temporary
        * expanding div so when the window resizes it isn't visible ( it doesn't
@@ -111,6 +122,10 @@ var Modal = (function() {
       content.addEventListener('transitionend', hideDiv, false);
 
       isOpen = true;
+
+      window.setTimeout(function () {
+        modals.siblings('div, header, footer, main').addClass('blurred');
+      }, 50);
     }
 
     function hideDiv() {
@@ -127,6 +142,8 @@ var Modal = (function() {
 
     var target = event.target;
     var div = document.getElementById('modal__temp');
+
+    modals.siblings().removeClass('blurred');
 
     /**
      * make sure the modal__bg or modal__close was clicked, we don't want to be able to click
