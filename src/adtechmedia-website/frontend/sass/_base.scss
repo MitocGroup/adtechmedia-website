@@ -276,7 +276,7 @@ small {
   padding-top: 20px;
   padding-bottom: 8px;
   position: relative;
-  label {
+  label.text-field__label {
     display: block;
     color: rgba(0, 0, 0, .38);
     line-height: 28px;
@@ -309,20 +309,20 @@ small {
       & + .bar:after {
         @include transform(scale(1));
       }
-      & ~ label {
+      & ~ label.text-field__label {
         color: $link-color;
         @include transform(scale(.85) translateY(0));
       }
     }
     &:valid:not(.non-required),
     &.touched.non-required {
-      & ~ label {
+      & ~ label.text-field__label {
         color: $link-color;
         @include transform(scale(.85) translateY(0));
       }
     }
     &.touched:invalid {
-      & ~ label {
+      & ~ label.text-field__label {
         color: red;
         @include transform(scale(.85) translateY(0));
       }
