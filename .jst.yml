@@ -16,13 +16,10 @@ $:
         accessKeyId: 'process.env.JST_AWS_ACCESS_KEY_ID'
         secretAccessKey: 'process.env.JST_AWS_SECRET_ACCESS_KEY'
   npm:
-    scripts:                                                              # Scripts to run after installing dependencies
-      - 'compile-travis'
     dependencies:                                                           # Dependencies to add/overwrite
       chai: 'latest'
   emit:
     pattern:                                                                # Files to include
-      - /^lib.es6\/.+\.js$/i
       - /^test\/.+\.js$/i
     ignore:                                                                 # Files to exclude
       - /^(.*\/)?node_modules(\/?$)?/i

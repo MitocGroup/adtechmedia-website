@@ -18,9 +18,6 @@
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
   },
   "scripts": {
-    "compile-travis": "bash ../../bin/compile-lib.sh .",
-    "compile": "bash node-bin/compile.sh",
-    "prepublish": "npm run compile"
   },
   "devDependencies": {
     "yamljs": "^0.2.8"
