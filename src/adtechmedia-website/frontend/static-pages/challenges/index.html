@@ -23,7 +23,9 @@
 <meta name="twitter:description" content="AdTechMedia platform solves most challenging problems (e.g. ad blocking, complementary revenue) on behalf of publishers and content providers" />
 <meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-image.jpg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!--[if IE]>
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.min.css" />
+<![endif]-->
 <link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.min.css" />
 <link rel="icon" href="/adtechmedia-website/images/favicon.png" type="image/x-icon" />
 <!-- Google Tag Manager -->
@@ -310,6 +312,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span>By using this site, you agree to <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>.</span>
     </section>
 </div>
+
+<!--[if !IE]> -->
+<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.min.css" lazyload="1"/>
+<!-- <![endif]-->
 
 <script type='text/javascript' src='/adtechmedia-website/js/mc-validate.js'></script>
 <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
