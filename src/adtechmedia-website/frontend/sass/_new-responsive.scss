@@ -469,7 +469,7 @@
         height: 40px;
       }
 
-      label {
+      label.text-field__label {
         line-height: 44px;
       }
     }
@@ -1393,6 +1393,13 @@
         }
       }
     }
+  }
+}
+
+@media (min-height: 500px) {
+  .modal__content {
+    max-height: 95vh;
+    overflow: auto;
   }
 }
 

@@ -455,6 +455,7 @@ section {
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
   opacity: 0;
   @include transition(all 0.25s cubic-bezier(0.23, 1, 0.32, 1));
+  width: 330px;
   .btn {
     margin: 10px;
   }
@@ -466,21 +467,26 @@ section {
     }
 
     #mc_embed_signup {
-      div.mce_inline_error {
-        background: transparent;
-        position: absolute;
-        color: #FF0031;
+      label.mc-response-label {
         font-weight: normal;
         margin: 5px 0 0;
         padding: 0;
         width: 100%;
         text-align: center;
-        font-size: small;
-      }
-    }
+        font-size: 12px;
+        display: block;
+        &.error {
+          color: #FF0031;
+        }
 
-    .custom-input {
-      padding-bottom: 20px;
+        &.valid {
+          color: $link-color;
+        }
+      }
+
+      div.mce_inline_error {
+        display: none !important;
+      }
     }
   }
 
@@ -677,6 +683,10 @@ section {
   }
 }
 
+.blurred {
+  filter: blur(5px);
+}
+
 @keyframes play {
   60%, 80% {
     color: white;
@@ -687,8 +697,4 @@ section {
   60%, 80% {
     color: white;
   }
-}
-
-.blurred {
-  filter: blur(5px);
 }
