@@ -1,0 +1,67 @@
+Advocacy:
+    CPC: 0.2176
+    CTR: 0.52
+
+Auto:
+    CPC: 0.2652
+    CTR: 0.41
+
+B2B:
+    CPC: 0.2516
+    CTR: 0.22
+
+"Consumer Services":
+    CPC: 0.4692
+    CTR: 0.20
+
+Dating&Personals:
+    CPC: 0.1224
+    CTR: 0.52
+
+E-Commerce:
+    CPC: 0.1972
+    CTR: 0.45
+
+Education:
+    CPC: 0.272
+    CTR: 0.22
+
+Employment Services:
+    CPC: 1.1288
+    CTR: 0.14
+
+Finance&Insurance:
+    CPC: 0.4896
+    CTR: 0.33
+
+Health&Medical:
+    CPC: 0.2516
+    CTR: 0.31
+
+"Home Goods":
+    CPC: 0.476
+    CTR: 0.37
+
+"Industrial Services":
+    CPC: 0.408
+    CTR: 0.35
+
+Legal:
+    CPC: 0.408
+    CTR: 0.45
+
+"Real Estate":
+    CPC: 0.5984
+    CTR: 0.24
+
+Technology:
+    CPC: 0.136
+    CTR: 0.84
+
+Travel&Hospitality:
+    CPC: 0.1632
+    CTR: 0.47
+
+Default:
+    CPC: 0.3944
+    CTR: 0.35
