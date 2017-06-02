@@ -669,18 +669,208 @@ section {
   z-index: 15;
 }
 
+.default-bg {
+  background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
+}
+
+.calculator-block {
+  margin: 70px 0 0;
+  & > section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  h2 {
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  &.calculator-results {
+    height: calc(100vh - 70px);
+    & > section {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+    }
+
+    .form-heading {
+      font-size: 22px;
+    }
+
+    .heading {
+      margin-bottom: 40px;
+    }
+  }
+
+  &.calculator-confirm {
+    .blog-sections {
+      h3 {
+        margin: 40px 0 15px;
+        font-size: 24px;
+      }
+
+      & > .flex-row {
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        margin: 0 -12px;
+        & > * {
+          padding: 12px;
+        }
+      }
+
+      .post-content {
+        color: #fff;
+        background: url(../images/post-bg.jpg) center center/cover no-repeat;
+        border-radius: 4px;
+        padding: 24px;
+        text-align: left;
+        height: 224px;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        &:hover {
+          &:after {
+            background-color: rgba(78, 75, 247, 0.4);
+          }
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background-color: rgba(0 ,0 , 0, .4);
+          display: block;
+          border-radius: 4px;
+          @include transition(.4s ease-in-out);
+        }
+        & > * {
+          display: block;
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      .post-tag {
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+
+      .post-title {
+        font-size: 20px;
+        overflow: hidden;
+      }
+
+      .post-link {
+        a {
+          background: #fff;
+          border-radius: 20px;
+          padding: 8px 24px;
+          color: $base-color;
+          display: inline-block;
+          position: relative;
+          @include transition(.4s ease-in-out);
+          &:hover {
+            color: $link-color;
+            padding-right: 36px;
+            i {
+              opacity: 1;
+              visibility: visible;
+              right: 5px;
+              color: $link-color;
+            }
+          }
+
+          i {
+            color: $base-color;
+            font-size: 20px;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            @include transform(translateY(-50%));
+            opacity: 0;
+            visibility: hidden;
+            @include transition(.4s ease-in-out);
+          }
+        }
+      }
+    }
+  }
+
+  .info-blocks {
+    color: #fff;
+    font-size: 14px;
+    margin: 40px -12px;
+    .flex-item {
+      background: $link-color;
+      flex: 1;
+      -webkit-flex: 1;
+      margin: 12px;
+      padding: 12px;
+      &:nth-last-child(2),
+      &:last-child {
+        background: $purple-accent;
+      }
+      .flex-row {
+        margin: 0 0 12px;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: space-around;
+        -webkit-justify-content: space-around;
+      }
+    }
+
+    label {
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    span {
+      display: block;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+.calculator-form {
+  width: 340px;
+  margin: 0 auto;
+  &.send-report-form {
+    margin-top: 30px;
+  }
+}
+
+.calculator-confirm,
+.demo-confirm {
+  img {
+    height: 152px;
+    margin: 0 auto 20px;
+  }
+}
+
 .demo-confirm {
   margin: 70px 0 0;
-  background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
   height: calc(100vh - 282px);
   display: flex;
   display: -webkit-flex;
   align-items: center;
   -webkit-align-items: center;
-  img {
-    max-height: 152px;
-    margin: 0 0 20px;
-  }
 }
 
 .blurred {
