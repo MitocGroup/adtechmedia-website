@@ -2,8 +2,8 @@
 {
   'use strict';
 
-  var elSelector	= 'header',
-    element		= document.querySelector( elSelector );
+  var elSelector = 'header',
+    element	= document.querySelector( elSelector );
 
   if( !element ) return true;
 
@@ -17,12 +17,12 @@
 
   window.addEventListener( 'scroll', function()
   {
-    elHeight		= element.offsetHeight;
-    dHeight			= document.body.offsetHeight;
-    wHeight			= window.innerHeight;
-    wScrollCurrent	= window.pageYOffset;
-    wScrollDiff		= wScrollBefore - wScrollCurrent;
-    elTop			= parseInt( window.getComputedStyle( element ).getPropertyValue( 'top' ) ) + wScrollDiff;
+    elHeight = element.offsetHeight;
+    dHeight = document.body.offsetHeight;
+    wHeight	= window.innerHeight;
+    wScrollCurrent = window.pageYOffset;
+    wScrollDiff	= wScrollBefore - wScrollCurrent;
+    elTop	= parseInt( window.getComputedStyle( element ).getPropertyValue( 'top' ) ) + wScrollDiff;
 
     if( wScrollCurrent <= 0 ) {
       element.style.top = '0px'
