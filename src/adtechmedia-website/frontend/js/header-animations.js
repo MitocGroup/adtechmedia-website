@@ -19,10 +19,10 @@
   {
     elHeight = element.offsetHeight;
     dHeight = document.body.offsetHeight;
-    wHeight	= window.innerHeight;
+    wHeight = window.innerHeight;
     wScrollCurrent = window.pageYOffset;
-    wScrollDiff	= wScrollBefore - wScrollCurrent;
-    elTop	= parseInt( window.getComputedStyle( element ).getPropertyValue( 'top' ) ) + wScrollDiff;
+    wScrollDiff = wScrollBefore - wScrollCurrent;
+    elTop = parseInt( window.getComputedStyle( element ).getPropertyValue( 'top' ) ) + wScrollDiff;
 
     if( wScrollCurrent <= 0 ) {
       element.style.top = '0px'
