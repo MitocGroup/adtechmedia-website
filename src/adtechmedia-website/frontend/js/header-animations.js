@@ -3,7 +3,7 @@
   'use strict';
 
   var elSelector = 'header',
-    element	= document.querySelector( elSelector );
+    element = document.querySelector( elSelector );
 
   if( !element ) return true;
 
