@@ -717,29 +717,50 @@ section {
         margin: 0 -12px;
         & > * {
           padding: 12px;
+          text-align: left;
+          line-height: 1.3;
+          color: $base-color;
+          &:hover {
+            cursor: pointer;
+            .post-content {
+              &:after {
+                background-color: rgba(78, 75, 247, 0.4);
+              }
+
+              i {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+
+            .post-title {
+              color: $link-color;
+            }
+          }
+        }
+      }
+
+      @for $i from 0 through 3 {
+        *[class^="flex-item"]:nth-child(#{$i}) {
+          .post-content {
+            background: url(../images/calculator/blog-images/#{$i}-post.jpg) center center/cover no-repeat;
+          }
         }
       }
 
       .post-content {
         color: #fff;
-        background: url(../images/post-bg.jpg) center center/cover no-repeat;
         border-radius: 4px;
-        padding: 24px;
-        text-align: left;
+        padding: 20px;
         height: 224px;
         box-sizing: border-box;
         position: relative;
         display: flex;
         display: -webkit-flex;
-        flex-direction: column;
-        -webkit-flex-direction: column;
-        justify-content: space-between;
-        -webkit-justify-content: space-between;
-        &:hover {
-          &:after {
-            background-color: rgba(78, 75, 247, 0.4);
-          }
-        }
+        justify-content: flex-end;
+        -webkit-justify-content: flex-end;
+        align-items: flex-end;
+        -webkit-align-items: flex-end;
         &:after {
           content: '';
           position: absolute;
@@ -747,64 +768,32 @@ section {
           left: 0;
           bottom: 0;
           right: 0;
-          background-color: rgba(0 ,0 , 0, .4);
+          background-color: transparent;
           display: block;
           border-radius: 4px;
           @include transition(.4s ease-in-out);
         }
-        & > * {
-          display: block;
+        i {
           position: relative;
           z-index: 1;
+          font-size: 18px;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(.4s ease-in-out);
         }
-      }
-
-      .post-tag {
-        text-transform: uppercase;
-        font-size: 12px;
       }
 
       .post-title {
         font-size: 20px;
         overflow: hidden;
+        margin: 10px 0;
+        display: block;
+        @include transition(.4s ease-in-out);
       }
 
-      .post-link {
-        a {
-          background: #fff;
-          border-radius: 20px;
-          padding: 8px 24px;
-          color: $base-color;
-          display: inline-block;
-          position: relative;
-          @include transition(.4s ease-in-out);
-          &:hover {
-            color: $link-color;
-            padding-right: 36px;
-            i {
-              opacity: 1;
-              visibility: visible;
-              right: 5px;
-              color: $link-color;
-            }
-          }
-
-          i {
-            color: $base-color;
-            font-size: 20px;
-            width: 28px;
-            height: 28px;
-            line-height: 28px;
-            text-align: center;
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            @include transform(translateY(-50%));
-            opacity: 0;
-            visibility: hidden;
-            @include transition(.4s ease-in-out);
-          }
-        }
+      .post-intro {
+        font-size: 16px;
+        display: block;
       }
     }
   }
