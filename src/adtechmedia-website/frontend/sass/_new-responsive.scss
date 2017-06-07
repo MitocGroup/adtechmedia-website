@@ -267,7 +267,8 @@
   }
 
   .demo-confirm,
-  .calculator-block.calculator-result {
+  .calculator-block.calculator-result,
+  .cb-container.not-found {
     margin: 88px 0 0;
     height: calc(100vh - 300px);
   }
@@ -935,7 +936,8 @@
     }
   }
 
-  .demo-confirm {
+  .demo-confirm,
+  .cb-container.not-found {
     height: calc(100vh - 253px);
   }
 
@@ -1178,7 +1180,8 @@
     }
   }
 
-  .demo-confirm {
+  .demo-confirm,
+  .cb-container.not-found {
     height: calc(100vh - 232px);
   }
 
@@ -1399,7 +1402,8 @@
     }
   }
 
-  .demo-confirm {
+  .demo-confirm,
+  .cb-container.not-found {
     height: calc(100vh - 222px);
   }
 
