@@ -93,24 +93,24 @@
 
 <main class="calculator-block calculator-results default-bg">
     <section>
-        <h2 class="heading">You are losing <span class="accent-blue">1169.94 $</span><br />
+        <h2 class="heading">You are losing <span class="accent-blue"><span id="calculator-result">%!2</span> $</span><br />
         every month due to ad blocks.</h2>
         <p class="form-heading">Receive the full report</p>
 
-        <form class="calculator-form send-report-form">
+        <form id="calculator-form-report" class="calculator-form send-report-form">
             <div class="custom-input">
-                <input type="email" required />
+                <input type="email" name="email" required />
                 <span class="bar"></span>
                 <label class="text-field__label">Email address</label>
             </div>
 
             <div class="custom-input">
-                <input type="text" class="non-required" />
+                <input type="text" name="full_name" class="non-required" />
                 <span class="bar"></span>
                 <label class="text-field__label">My name is..</label>
             </div>
 
-            <button type="submit" class="btn">get report</button>
+            <button id="calculator-report-submit" type="button" class="btn">get report</button>
         </form>
     </section>
 </main>
@@ -271,5 +271,6 @@
 <script type="text/javascript" src="/adtechmedia-website/js/modal.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/header-animations.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/main.js"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/calculator.js"></script>
 </body>
 </html>

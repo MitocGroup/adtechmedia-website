@@ -136,35 +136,34 @@
         </div>
         <h3>Calculate how much ad revenue you might be losing:</h3>
 
-        <form class="calculator-form">
+        <form id="calculator-form" class="calculator-form">
             <div class="custom-input">
-                <input type="text" required />
+                <input type="text" name="website" min="3" required />
                 <span class="bar"></span>
                 <label class="text-field__label">My website link</label>
             </div>
 
             <div class="custom-input select-box">
-                <select>
-                    <option value="technology">technology</option>
+                <select id="niche" name="niche">
                 </select>
                 <span class="bar"></span>
                 <label class="text-field__label">Website type</label>
             </div>
 
             <div class="custom-input">
-                <input type="text" required />
+                <input type="number" name="page_views" min="0" required />
                 <span class="bar"></span>
                 <label class="text-field__label">Average page views per month</label>
             </div>
 
             <div class="custom-input">
-                <input type="text" required />
+                <input type="number" name="ads_sections" min="0" required />
                 <span class="bar"></span>
                 <label class="text-field__label">Number of ad banners on a page</label>
             </div>
 
-            <button type="submit" class="btn">calculate losses</button>
-        </form>
+            <button id="calculator-form-submit" type="button" class="btn">calculate losses</button>
+        </form id="calculator-form">
     </section>
 </main>
 
@@ -324,5 +323,6 @@
 <script type="text/javascript" src="/adtechmedia-website/js/modal.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/header-animations.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/main.js"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/calculator.js"></script>
 </body>
 </html>
