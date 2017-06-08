@@ -12,12 +12,20 @@ $social-colors: #09aada, #0678BE, #000, #0077B5, #64b2f8, #3b5998, #e52d27;
 
 @font-face {
   font-family: Futura-Light;
-  src: url(../fonts/Futura-Light.ttf);
+  src: url(../fonts/Futura-Light/Futura-Light.eot);
+  src: url(../fonts/Futura-Light/Futura-Light.eot?#iefix) format('embedded-opentype'),
+  url(../fonts/Futura-Light/Futura-Light.woff) format('woff'),
+  url(../fonts/Futura-Light/Futura-Light.ttf) format('truetype'),
+  url(../fonts/Futura-Light/Futura-Light.svg) format('svg');
 }
 
 @font-face {
   font-family: FuturaICG;
-  src: url(../fonts/FuturaICG.ttf);
+  src: url(../fonts/FuturaICG/FuturaICG.eot);
+  src: url(../fonts/FuturaICG/FuturaICG.eot?#iefix) format('embedded-opentype'),
+  url(../fonts/FuturaICG/FuturaICG.woff) format('woff'),
+  url(../fonts/FuturaICG/FuturaICG.ttf) format('truetype'),
+  url(../fonts/FuturaICG/FuturaICG.svg) format('svg');
 }
 
 .flex-row {
