@@ -1,0 +1,2 @@
+parameters:
+  mailer.send_from: no-reply@adtechmedia.io
