@@ -1,9 +1,10 @@
-const CALCULATOR_ENDPOINT = 'https://o9988bjzjh.execute-api.us-east-1.amazonaws.com/prod';
-
 $(document).ready(function () {
+    var calculatorEndpoint = DeepFramework.Kernel.config
+      .microservices['adtechmedia-website'].parameters.calculatorEndpoint;
+
     function loadNichesList($selector) {
         $.ajax({
-            url: CALCULATOR_ENDPOINT + '/niches',
+            url: calculatorEndpoint + '/niches',
             success: function (data) {
                 var niches = data['niches'];
                 for (var key in niches) {
@@ -19,9 +20,6 @@ $(document).ready(function () {
     var $calculator = $('#calculator-form');
     if ($calculator) {
         var $nicheSelect = $('#niche');
-        $nicheSelect.on('load', function () {
-
-        });
         loadNichesList($nicheSelect);
 
         var $calculatorSubmit = $('#calculator-form-submit');
@@ -33,7 +31,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: CALCULATOR_ENDPOINT + '/calculator',
+                url: calculatorEndpoint + '/calculator',
                 data: data,
                 success: function (responseContent) {
                     var confirmTokenQuery = 'confirm=' + responseContent.id;
@@ -55,12 +53,12 @@ $(document).ready(function () {
                 return null;
             }
         })();
-;
+
     if ($calculatorReport && resultToken) {
         var $calculatorResult = $('#calculator-result');
         $.ajax({
             type: 'POST',
-            url: CALCULATOR_ENDPOINT + '/calculator',
+            url: calculatorEndpoint + '/calculator',
             data: {
                 id: resultToken
             },
@@ -81,7 +79,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: CALCULATOR_ENDPOINT + '/calculator',
+                url: calculatorEndpoint + '/calculator',
                 data: data,
                 success: function (responseContent) {
                     window.location.href = '/calculator-confirmation'
