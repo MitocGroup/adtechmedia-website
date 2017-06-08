@@ -19,7 +19,6 @@ EMAIL_NONE = 'none'
 
 def losses_calculator(event, context):
     """
-    AWS Lambda handler
     :param event:
     :param context:
     :return:
@@ -50,6 +49,8 @@ def losses_calculator(event, context):
                 }
 
             table_item['email'] = email
+            if parameters.get('full_name'):
+                table_item['full_name'] = parameters['full_name']
             table.update_item(
                 Key={
                     'id': id,
@@ -138,10 +139,9 @@ def losses_calculator(event, context):
     # Email sending
     if table_item.get('email') and table_item['email'] != EMAIL_NONE:
         mailer_lambda = os.environ['MAILER_LAMBDA']
-        __lambda_client.invoke(
+        __lambda_client.invoke_async(
             FunctionName=mailer_lambda,
-            InvocationType='Event',
-            Payload=json.dumps(table_item, cls=DecimalEncoder),
+            InvokeArgs=json.dumps(table_item, cls=DecimalEncoder),
         )
 
     return {
@@ -158,7 +158,6 @@ def losses_calculator(event, context):
 
 def send_email_report(event, context):
     """
-    AWS Lambda Handler
     :param event: Twitter table item
     :param context:
     :return:
@@ -205,7 +204,6 @@ def send_email_report(event, context):
 
 def niches_list(event, context):
     """
-    AWS Lambda handler
     :param event:
     :param context:
     :return:

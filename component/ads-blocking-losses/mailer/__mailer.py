@@ -106,30 +106,38 @@ def mailchimp_send(conf, email_from, email_to, merge_fields={}):
     })
 
     retries = 5
+    sended = False
     while True:
         try:
             client.campaigns.actions.send(campaign['id'])
             retries = 0
-            break
+            sended = True
         except Exception as e:
             if not retries:
                 raise e
 
             retries -= 1
-            sleep(5)
+            sleep(2)
+
+        if sended:
+            break
 
     retries = 5
+    deleted = False
     while True:
         try:
             client.campaigns.delete(campaign['id'])
             retries = 0
-            break
+            deleted = True
         except Exception as e:
             if not retries:
                 raise e
 
             retries -= 1
-            sleep(5)
+            sleep(2)
+
+        if deleted:
+            break
 
     client.lists.segments.delete(list_id=list['id'], segment_id=str(segment['id']))
 

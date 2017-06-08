@@ -39,7 +39,7 @@ functions:
 
   send_email_report:
     handler: handler.send_email_report
-    timemout: 30
+    timeout: 30
 
   niches_list:
     handler: handler.niches_list
