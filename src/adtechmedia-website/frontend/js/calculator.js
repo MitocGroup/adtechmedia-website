@@ -36,7 +36,7 @@ $(document).ready(function () {
                 url: CALCULATOR_ENDPOINT + '/calculator',
                 data: data,
                 success: function (responseContent) {
-                    var confirmTokenQuery = CONFIRMATION_TOKEN + '=' + responseContent.id;
+                    var confirmTokenQuery = 'confirm=' + responseContent.id;
                     window.location.href = '/calculator-result?' + confirmTokenQuery;
                 }
             });

@@ -7,6 +7,7 @@ provider:
   versionFunctions: false
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    MAILER_LAMBDA: ${self:service}-${opt:stage, self:provider.stage}-send_email_report
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -21,16 +22,24 @@ provider:
       Action:
         - ses:SendEmail
       Resource: "*"
+    - Effect: "Allow"
+      Sid: "InvokePermission"
+      Action:
+        - "lambda:InvokeFunction"
+      Resource: "arn:aws:lambda:${opt:region, self:provider.region}:*:function:${self:service}-${opt:stage, self:provider.stage}-send_email_report"
 
 functions:
   losses_calculator:
     handler: handler.losses_calculator
-    timeout: 60
     events:
       - http:
           path: calculator
           method: post
           cors: true
+
+  send_email_report:
+    handler: handler.send_email_report
+    timemout: 30
 
   niches_list:
     handler: handler.niches_list

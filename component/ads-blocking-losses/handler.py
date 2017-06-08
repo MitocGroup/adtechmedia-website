@@ -6,17 +6,20 @@ import boto3
 import validators
 import uuid
 import mailer
+import decimal
 from urlparse import urlparse, parse_qs
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 __config = yaml.load(open(os.path.join(__location__, 'config.yml'), 'r'))
 __dynamodb = boto3.resource('dynamodb')
+__lambda_client = boto3.client('lambda')
 
 EMAIL_NONE = 'none'
 
 
 def losses_calculator(event, context):
     """
+    AWS Lambda handler
     :param event:
     :param context:
     :return:
@@ -133,40 +136,13 @@ def losses_calculator(event, context):
         )
 
     # Email sending
-    email = table_item.get('email')
-
-    if table_item and email and email != EMAIL_NONE:
-        if __config['parameters']['mailer.service'] == 'mailchimp':
-            merge_fields = {
-                'WEBSITE': table_item['website'],
-                'LOSSES': table_item['losses'],
-                'INDUSTRY': table_item['niche'],
-                'PAGE_VIEWS': str(table_item['page_views']),
-                'AD_SLOTS': str(table_item['ads_sections']),
-            }
-
-            # Fix mailchimp empty field exception
-            if table_item.get('full_name', '').strip():
-                merge_fields['FULL_NAME'] = table_item['full_name'],
-
-            mailer.mailchimp_send(
-                conf=__config['parameters'],
-                email_from=__config['parameters']['mailer.send_from'],
-                email_to=email,
-                merge_fields=merge_fields
-            )
-        elif __config['parameters']['mailer.service'] == 'ses':
-            mailer.ses_send(
-                email_from=__config['parameters']['mailer.send_from'],
-                email_to=email,
-                subject_params={
-                    'website': table_item['website']
-                },
-                body_params={
-                    'full_name': table_item['full_name'],
-                    'losses': "{0:.2f}".format(table_item['losses']),
-                }
-            )
+    if table_item.get('email') and table_item['email'] != EMAIL_NONE:
+        mailer_lambda = os.environ['MAILER_LAMBDA']
+        __lambda_client.invoke(
+            FunctionName=mailer_lambda,
+            InvocationType='Event',
+            Payload=json.dumps(table_item, cls=DecimalEncoder),
+        )
 
     return {
         "statusCode": 200,
@@ -180,8 +156,56 @@ def losses_calculator(event, context):
     }
 
 
+def send_email_report(event, context):
+    """
+    AWS Lambda Handler
+    :param event: Twitter table item
+    :param context:
+    :return:
+    """
+
+    email = event.get('email')
+    if not email or not validators.email(email):
+        raise ValueError('Email validation error')
+
+    if __config['parameters']['mailer.service'] == 'mailchimp':
+        merge_fields = {
+            'WEBSITE': event['website'],
+            'LOSSES': event['losses'],
+            'INDUSTRY': event['niche'],
+            'PAGE_VIEWS': str(event['page_views']),
+            'AD_SLOTS': str(event['ads_sections']),
+        }
+
+        # Fix mailchimp empty field exception
+        if event.get('full_name', '').strip():
+            merge_fields['FULL_NAME'] = event['full_name'],
+
+        mailer.mailchimp_send(
+            conf=__config['parameters'],
+            email_from=__config['parameters']['mailer.send_from'],
+            email_to=email,
+            merge_fields=merge_fields
+        )
+    elif __config['parameters']['mailer.service'] == 'ses':
+        mailer.ses_send(
+            email_from=__config['parameters']['mailer.send_from'],
+            email_to=email,
+            subject_params={
+                'website': event['website']
+            },
+            body_params={
+                'full_name': event['full_name'],
+                'losses': "{0:.2f}".format(event['losses']),
+            }
+        )
+
+    return 0
+
+
 def niches_list(event, context):
     """
+    AWS Lambda handler
     :param event:
     :param context:
     :return:
@@ -253,4 +277,15 @@ def __get_niche_list():
     del list
 
     return lower_case
+
+
+# Helper class to convert a DynamoDB item to JSON.
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, decimal.Decimal):
+            if o % 1 > 0:
+                return float(o)
+            else:
+                return int(o)
+        return super(DecimalEncoder, self).default(o)
 
