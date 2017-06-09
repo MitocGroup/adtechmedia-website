@@ -2,6 +2,9 @@ $(document).ready(function () {
     var calculatorEndpoint = DeepFramework.Kernel.config
       .microservices['adtechmedia-website'].parameters.calculatorEndpoint;
 
+    /**
+     * Load, from endpoint, available niches and append to selector
+     */
     function loadNichesList($selector) {
         $.ajax({
             url: calculatorEndpoint + '/niches',
@@ -17,12 +20,14 @@ $(document).ready(function () {
         })
     }
 
+    // Calculator page
     var $calculator = $('#calculator-form');
     if ($calculator) {
         var $nicheSelect = $('#niche');
         loadNichesList($nicheSelect);
 
         var $calculatorSubmit = $('#calculator-form-submit');
+        // Send form data to endpoint and redirect to confirm page with result token
         $calculatorSubmit.on('click', function () {
             var data = {};
             $calculator.serializeArray().forEach(function (input) {
@@ -41,6 +46,7 @@ $(document).ready(function () {
         })
     }
 
+    // Calculator report & email
     var $calculatorReport = $('#calculator-form-report'),
         resultToken = (function () {
             try {
@@ -55,6 +61,7 @@ $(document).ready(function () {
         })();
 
     if ($calculatorReport && resultToken) {
+        // Set losses result from endpoint
         var $calculatorResult = $('#calculator-result');
         $.ajax({
             type: 'POST',
@@ -68,6 +75,7 @@ $(document).ready(function () {
         });
 
         var $calculatorReportSubmit = $('#calculator-report-submit');
+        // Send email report
         $calculatorReportSubmit.on('click', function () {
             var data = {
                 'id': resultToken
