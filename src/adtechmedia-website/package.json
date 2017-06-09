@@ -2,11 +2,27 @@
   "name": "adtechmedia-website",
   "description": "Adtechmedia website static pages.",
   "version": "1.0.0",
-  "homepage": "https://adtechmedia.io",
-  "private": true,
+  "homepage": "https://github.com/AdTechMedia/adtechmedia-website",
+  "bugs": {
+    "url": "https://github.com/AdTechMedia/adtechmedia-website/issues"
+  },
   "license": "MIT",
-  "scripts": {},
+  "author": {
+    "name": "AdTechMedia Team",
+    "email": "hello@adtechmedia.io",
+    "url": "https://www.adtechmedia.io"
+  },
+  "main": "lib.compiled/bootstrap.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
+  },
+  "scripts": {
+  },
   "devDependencies": {
     "yamljs": "^0.2.8"
-  }
+  },
+  "private": true,
+  "preferGlobal": false,
+  "analyze": true
 }

@@ -23,15 +23,13 @@
 <meta name="twitter:description" content="AdTechMedia team is highly skilled and very passioned. We have years of experience in building successful technical solutions to large scale business problems" />
 <meta name="twitter:image" content="https://www.adtechmedia.io/adtechmedia-website/images/social-image.jpg" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.css" />
-<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.css" />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.min.css" />
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/main.min.css" />
 <link rel="icon" href="/adtechmedia-website/images/favicon.png" type="image/x-icon" />
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KF8XT7');</script>
+<script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-KF8XT7",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer");</script>
 <!-- End Google Tag Manager -->
 </head>
 
@@ -41,10 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Facebook SDK for JavaScript -->
-<script>window.fbAsyncInit=function(){FB.init({appId:"228016877602327",xfbml:!0,version:"v2.8"}),
-FB.AppEvents.logPageView()},function(a,b,c){var d,e=a.getElementsByTagName(b)[0];
-a.getElementById(c)||(d=a.createElement(b),d.id=c,d.src="//connect.facebook.net/en_US/sdk.js",
-e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
+<script>window.fbAsyncInit=function(){FB.init({appId:"228016877602327",xfbml:!0,version:"v2.8"}),FB.AppEvents.logPageView()},function(e,n,t){var o,c=e.getElementsByTagName(n)[0];e.getElementById(t)||(o=e.createElement(n),o.id=t,o.src="//connect.facebook.net/en_US/sdk.js",c.parentNode.insertBefore(o,c))}(document,"script","facebook-jssdk");</script>
 <!-- End Facebook SDK for JavaScript -->
 <div class="loader"></div>
 <header class="cd-secondary-nav with-shadow">
@@ -93,6 +88,7 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
                 </li>
             </ul>
         </nav>
+        <button class="btn modal__trigger" data-modal="#modal">Request a demo</button>
     </section>
 </header>
 
@@ -259,7 +255,8 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
                             <div class="custom-input mc-field-group">
                                 <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
                                 <span class="bar"></span>
-                                <label for="mce-EMAIL" class="text-field__label">Email Address</label>
+                                <label class="text-field__label">Email Address</label>
+                                <label for="mce-EMAIL" class="mc-response-label"></label>
                             </div>
 
                             <div class="custom-input mc-field-group">
@@ -378,12 +375,17 @@ e.parentNode.insertBefore(d,e))}(document,"script","facebook-jssdk");</script>
     </section>
 </div>
 
+<!--[if !IE]> -->
+<link rel="stylesheet" type="text/css" href="/adtechmedia-website/css/font-awesome.min.css" lazyload="1"/>
+<!-- <![endif]-->
+
 <script type='text/javascript' src='/adtechmedia-website/js/mc-validate.js'></script>
 <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/jquery.ajaxchimp.min.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/modal.js"></script>
+<script type="text/javascript" src="/adtechmedia-website/js/header-animations.js"></script>
 <script type="text/javascript" src="/adtechmedia-website/js/main.js"></script>
 </body>
 </html>

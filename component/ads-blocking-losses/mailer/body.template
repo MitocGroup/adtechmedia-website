@@ -1,0 +1,10 @@
+Hi {{full_name}},
+
+So you are losing {{losses}} $ every month due to ad blocks?
+This is how we come up with this sum:
+    “Nr of PV/month” * Rate = “Blocked page views”
+    “Blocked page views” * “Ads Sections on page” = “Total ad Impressions”
+    “Total ad Impressions” * “CTR” = “Ad Clicks”
+    “Ad Clicks” * “Avg CPC” = “Ad Revenue losses”
+
+Learn how Ad Tech Media can help you to increase your revenue, schedule a demo and claim your earnings back.

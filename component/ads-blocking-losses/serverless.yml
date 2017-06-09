@@ -1,0 +1,67 @@
+service: atm-website-adblocking-loss
+
+provider:
+  name: aws
+  runtime: python2.7
+  stage: prod
+  versionFunctions: false
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+      Resource: "*"
+
+functions:
+  losses_calculator:
+    handler: handler.losses_calculator
+    events:
+      - http:
+          path: calculator
+          method: post
+          cors: true
+
+  niches_list:
+    handler: handler.niches_list
+    events:
+      - http:
+          path: niches
+          method: get
+
+resources:
+  Resources:
+    AdblockingLossTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: website
+            AttributeType: S
+          -
+            AttributeName: email
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: website
+            KeyType: HASH
+          -
+            AttributeName: email
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+
+plugins:
+  - serverless-python-requirements

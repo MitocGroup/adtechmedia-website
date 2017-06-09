@@ -1,6 +1,6 @@
 var header = $('header');
 var headerHeight = header.height();
-var $slideHeight = $('.main-slide').height();
+var $slideHeight = $('.main-slide').outerHeight(true);
 var scrollBtn = $('.scroll-down');
 var players = {};
 

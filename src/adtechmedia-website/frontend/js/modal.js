@@ -11,11 +11,6 @@ var Modal = (function() {
   var contentDelay = 400; // duration after you click the button and wait for the content to show
   var len = trigger.length;
 
-  // make it easier for yourself by not having to type as much to select an element
-  //function $qsa(el) {
-  //  return document.querySelectorAll(el);
-  //}
-
   var getId = function(event) {
 
     event.preventDefault();
@@ -103,16 +98,6 @@ var Modal = (function() {
       // reveal the modal content
       content.classList.add('modal__content--active');
 
-      if($('body').hasClass('mobile')) {
-        modals
-          .on('focus', 'input', function(){
-            dialog.addClass('key-on');
-          })
-          .on('blur', 'input', function(){
-            dialog.removeClass('key-on');
-          });
-      }
-
       /**
        * when the modal content is finished transitioning, fadeout the temporary
        * expanding div so when the window resizes it isn't visible ( it doesn't
@@ -143,8 +128,6 @@ var Modal = (function() {
     var target = event.target;
     var div = document.getElementById('modal__temp');
 
-    modals.siblings().removeClass('blurred');
-
     /**
      * make sure the modal__bg or modal__close was clicked, we don't want to be able to click
      * inside the modal and have it close.
@@ -165,16 +148,10 @@ var Modal = (function() {
       content.removeClass('modal__content--active');
       trigger.css('transform', 'none').removeClass('modal__trigger--active');
 
-      //for (var i = 0; i < len; i++) {
-      //
-      //
-      //  trigger[i].style.transform = 'none';
-      //  trigger[i].style.webkitTransform = 'none';
-      //  trigger[i].classList.remove('modal__trigger--active');
-      //}
-
       // when the temporary div is opacity:1 again, we want to remove it from the dom
       div.addEventListener('transitionend', removeDiv, false);
+
+      modals.siblings().removeClass('blurred');
 
       isOpen = false;
 

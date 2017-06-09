@@ -12,12 +12,20 @@ $social-colors: #09aada, #0678BE, #000, #0077B5, #64b2f8, #3b5998, #e52d27;
 
 @font-face {
   font-family: Futura-Light;
-  src: url(../fonts/Futura-Light.ttf);
+  src: url(../fonts/Futura-Light/Futura-Light.eot);
+  src: url(../fonts/Futura-Light/Futura-Light.eot?#iefix) format('embedded-opentype'),
+  url(../fonts/Futura-Light/Futura-Light.woff) format('woff'),
+  url(../fonts/Futura-Light/Futura-Light.ttf) format('truetype'),
+  url(../fonts/Futura-Light/Futura-Light.svg) format('svg');
 }
 
 @font-face {
   font-family: FuturaICG;
-  src: url(../fonts/FuturaICG.ttf);
+  src: url(../fonts/FuturaICG/FuturaICG.eot);
+  src: url(../fonts/FuturaICG/FuturaICG.eot?#iefix) format('embedded-opentype'),
+  url(../fonts/FuturaICG/FuturaICG.woff) format('woff'),
+  url(../fonts/FuturaICG/FuturaICG.ttf) format('truetype'),
+  url(../fonts/FuturaICG/FuturaICG.svg) format('svg');
 }
 
 .flex-row {
@@ -276,7 +284,44 @@ small {
   padding-top: 20px;
   padding-bottom: 8px;
   position: relative;
-  label {
+  &.select-box {
+    &:after {
+      content: '\f0d7';
+      font: normal normal normal 14px/1 FontAwesome;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 1;
+      color: #bbbbbb;
+      font-size: 14px;
+      line-height: 32px;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+    }
+
+    label.text-field__label {
+      color: $link-color;
+      @include transform(scale(.85) translateY(0));
+    }
+
+    select {
+      position: relative;
+      background: transparent;
+      display: block;
+      width: 100%;
+      outline: none;
+      color: rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      z-index: 2;
+      border: none;
+      height: 32px;
+      font-size: 13px;
+      font-family: 'FuturaICG', sans-serif;
+      -webkit-appearance: none;
+    }
+  }
+
+  label.text-field__label {
     display: block;
     color: rgba(0, 0, 0, .38);
     line-height: 28px;
@@ -309,20 +354,20 @@ small {
       & + .bar:after {
         @include transform(scale(1));
       }
-      & ~ label {
+      & ~ label.text-field__label {
         color: $link-color;
         @include transform(scale(.85) translateY(0));
       }
     }
     &:valid:not(.non-required),
     &.touched.non-required {
-      & ~ label {
+      & ~ label.text-field__label {
         color: $link-color;
         @include transform(scale(.85) translateY(0));
       }
     }
     &.touched:invalid {
-      & ~ label {
+      & ~ label.text-field__label {
         color: red;
         @include transform(scale(.85) translateY(0));
       }
