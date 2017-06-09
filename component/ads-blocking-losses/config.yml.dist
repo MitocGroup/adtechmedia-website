@@ -1,2 +1,7 @@
 parameters:
+  mailer.service: ses # or mailchimp
   mailer.send_from: no-reply@adtechmedia.io
+  mailchimp.username: secret
+  mailchimp.secret_key: secret
+  mailchimp.list: secret
+  mailchimp.template: secret
