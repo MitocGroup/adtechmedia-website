@@ -27,8 +27,6 @@ new InputMask().Initialize(
 
 _initGoogleMaps();
 
-
-
 var contactUsCaptcha;
 
 /**
@@ -115,7 +113,6 @@ function sendContactUsEmail(token) {
     phoneElement: document.getElementById('phone-field'),
     emailElement: document.getElementById('email-field'),
     messageElement: document.getElementById('message-field'),
-    submitElement: document.getElementById('contact-button')
   };
 
   var payload = {
@@ -126,31 +123,34 @@ function sendContactUsEmail(token) {
     captchaResponse: token,
   };
 
-  disableForm(form);
-  sendEmail(payload, function(error) {
-    handleCallback(error);
-    enableForm(form);
+  if (payload.name && payload.phone && payload.email && payload.message) {
+    disableForm(form);
+    sendEmail(payload, function(error) {
+      handleCallback(error);
+      enableForm(form);
 
-    if (!error) {
-      formElement.reset();
-    }
+      if (!error) {
+        formElement.reset();
+      }
+    });
+  } else {
+    noty({
+      text: 'Please fill all required fields',
+      type: 'warning',
+      timeout: 3000
+    });
+  }
 
-    grecaptcha.reset(contactUsCaptcha);
+  grecaptcha.reset(contactUsCaptcha);
+}
+
+jQuery(function($) {
+  'use strict';
+
+  var $submitElement = $('#contact-button');
+
+  $submitElement.on('click', function() {
+    executeCaptcha();
   });
 
-  return false;
-}
-
-function initGetStartedForm() {
-  $('input[type=radio][name=customer-type]').change(function() {
-    $('#get-started-code')
-      .prop('disabled', this.value === 'new')
-      .parent().toggleClass('disabled');
-  });
-}
-
-function init() {
-  initGetStartedForm();
-}
-
-init();
+});
