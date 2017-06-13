@@ -93,7 +93,7 @@
 
 <main class="cb-container">
     <section id="contact" class="white-section cd-section">
-        <form onsubmit="return executeCaptcha()" id="contactus-form">
+        <form method="post" id="contactus-form">
             <h1>contact</h1>
             <div class="contact-inner">
                 <div id="googleMap"></div>
@@ -130,7 +130,7 @@
                         <div class="g-recaptcha" id="contact-us-re-captcha"></div>
                     </div>
                     <div>
-                        <button class="btn" id="contact-button" type="submit">
+                        <button class="btn" id="contact-button" type="button">
                             <i class="fa fa-check"></i> submit
                         </button>
                     </div>
