@@ -1,4 +1,7 @@
-function _initGoogleMaps() {
+/**
+ * Init Google Maps
+ */
+(function () {
   var mapContainer = document.getElementById('googleMap');
 
   if (mapContainer) {
@@ -18,14 +21,14 @@ function _initGoogleMaps() {
       marker.setMap(map);
     });
   }
-}
+}())
 
-new InputMask().Initialize(
-  document.querySelectorAll('#phone-field'),
-  {mask: InputMaskDefaultMask.Phone}
+/**
+ * Init phone mask
+ */
+Inputmask({mask: "(999) 999-9999"}).mask(
+  document.getElementById('phone-field')
 );
-
-_initGoogleMaps();
 
 var contactUsCaptcha;
 
