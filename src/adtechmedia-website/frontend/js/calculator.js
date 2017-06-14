@@ -46,7 +46,7 @@ jQuery(function($) {
           data: data,
           success: function (responseContent) {
             var confirmTokenQuery = 'confirm=' + responseContent.id;
-            window.location.href = '/calculator-result?' + confirmTokenQuery;
+            window.location.href = '/calculator-result/?' + confirmTokenQuery;
           }
         });
       })
