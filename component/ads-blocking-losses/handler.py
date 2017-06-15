@@ -178,7 +178,7 @@ def send_email_report(event, context):
 
         # Fix mailchimp empty field exception
         if event.get('full_name', '').strip():
-            merge_fields['FULL_NAME'] = event['full_name'],
+            merge_fields['FULL_NAME'] = event['full_name']
 
         mailer.mailchimp_send(
             conf=__config['parameters'],
