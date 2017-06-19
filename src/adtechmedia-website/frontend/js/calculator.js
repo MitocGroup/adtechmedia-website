@@ -16,12 +16,19 @@ jQuery(function($) {
         url: calculatorEndpoint + '/niches',
         success: function (data) {
           var niches = data['niches'];
-          for (var key in niches) {
-            var niche = niches[key];
-            $selector.append(
-              '<option value="' + niche + '">' + niche + '</option>'
-            );
-          }
+          Object.values(niches)
+            .sort()
+            .forEach(function(v) {
+              if(v === 'default') {
+                $selector.prepend(
+                  '<option value="' + v + '" selected>' + v + '</option>'
+                );
+                return;
+              }
+              $selector.append(
+                '<option value="' + v + '">' + v + '</option>'
+              );
+            });
         }
       })
     }
