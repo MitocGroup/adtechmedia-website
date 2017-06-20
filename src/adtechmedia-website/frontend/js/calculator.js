@@ -16,7 +16,8 @@ jQuery(function($) {
         url: calculatorEndpoint + '/niches',
         success: function (data) {
           var niches = data['niches'];
-          Object.values(niches)
+
+          niches
             .sort()
             .forEach(function(v) {
               if(v === 'default') {
