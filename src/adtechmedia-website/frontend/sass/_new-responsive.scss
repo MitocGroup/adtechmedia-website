@@ -145,7 +145,6 @@
 
   .calculator-block {
     &.calculator-results {
-      height: calc(100vh - 282px);
       & > section {
         position: relative;
         top: 50%;
@@ -237,6 +236,22 @@
       }
     }
   }
+
+  .medium-btn-block {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+  }
+
+  .blog-post {
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
 }
 
 @media (min-width: 1300px) {
@@ -270,7 +285,7 @@
   .calculator-block.calculator-result,
   .cb-container.not-found {
     margin: 88px 0 0;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 88px);
   }
 
   .calculator-block {
@@ -379,9 +394,15 @@
 
   h3 {
     font-size: 28px;
-    .modal__content .modal-inner & {
+    .modal__content .modal-inner &,
+    .posts-info & {
       font-size: 22px;
     }
+  }
+
+  .blog-post .blog-title {
+    font-size: 22px;
+    max-height: 85px;
   }
 
   .footer-blocks {
@@ -578,6 +599,11 @@
         }
       }
     }
+  }
+
+  .medium-btn {
+    font-size: 16px;
+    padding: 4px 20px;
   }
 }
 
@@ -937,11 +963,6 @@
   }
 
   .demo-confirm,
-  .cb-container.not-found {
-    height: calc(100vh - 253px);
-  }
-
-  .demo-confirm,
   .calculator-confirm {
     img {
       height: 135px;
@@ -985,6 +1006,37 @@
       & ~ .demo-footer {
         display: none;
       }
+
+      & ~ section {
+        .medium-content {
+          border-top: 1px solid #F2F2F2;
+        }
+      }
+    }
+  }
+
+  .medium-content {
+    &.flex-row {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      & > * {
+        flex: 1;
+        -webkit-flex: 1;
+        max-width: none;
+      }
+    }
+
+    .posts-info {
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      margin: 0 0 30px;
+      & > * {
+        margin: 0 10px;
+      }
     }
   }
 }
@@ -1021,20 +1073,6 @@
   .main-page h1 {
     font-size: 60px;
     line-height: 1.2;
-  }
-
-  .calculator-block {
-    &.calculator-results {
-      height: calc(100vh - 253px);
-    }
-  }
-}
-
-@media (max-device-width: 1024px) {
-  .calculator-block {
-    &.calculator-results {
-      height: calc(100vh - 253px);
-    }
   }
 }
 
@@ -1106,6 +1144,14 @@
         max-width: 25%;
       }
     }
+  }
+
+  #mediumPosts {
+    margin: 0 -5px;
+  }
+
+  .blog-post {
+    padding: 0 5px;
   }
 }
 
@@ -1180,16 +1226,31 @@
     }
   }
 
-  .demo-confirm,
-  .cb-container.not-found {
-    height: calc(100vh - 232px);
-  }
-
   .calculator-block {
     &.calculator-main {
       h2 {
         margin-bottom: 20px;
       }
+    }
+  }
+  
+  .medium-content {
+    border-top: 1px solid #F2F2F2;
+  }
+
+  #mediumPosts {
+    margin: 0 -12px;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+  }
+
+  .blog-post {
+    flex: 0 0 50%;
+    -webkit-flex: 0 0 50%;
+    padding: 0 12px;
+    max-width: 50%;
+    &:not(:last-child) {
+      margin: 0 0 36px;
     }
   }
 }
@@ -1227,20 +1288,6 @@
           right: 28.8%;
           top: 5%;
         }
-      }
-    }
-  }
-
-  .calculator-block {
-    &.calculator-results {
-      height: auto;
-      & > section {
-        position: static;
-        top: 50%;
-        transform: translateY(0%);
-        -webkit-transform: translateY(0%);
-        padding-top: 50px;
-        padding-bottom: 50px;
       }
     }
   }
@@ -1403,11 +1450,6 @@
   }
 
   .demo-confirm,
-  .cb-container.not-found {
-    height: calc(100vh - 222px);
-  }
-
-  .demo-confirm,
   .calculator-confirm {
     img {
       height: 100px;
@@ -1427,6 +1469,27 @@
         }
       }
     }
+  }
+
+  .medium-content {
+    .posts-info {
+      h3 {
+        font-size: 22px;
+      }
+    }
+  }
+
+  #mediumPosts {
+    margin: 0;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+
+  .blog-post {
+    flex: 1;
+    -webkit-flex: 1;
+    padding: 0;
+    max-width: none;
   }
 }
 
@@ -1557,6 +1620,16 @@
   .calculator-form {
     width: 100%;
     margin: 0;
+  }
+
+  .medium-content {
+    .posts-info {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      & > * {
+        margin: 10px;
+      }
+    }
   }
 }
 
