@@ -1,7 +1,7 @@
 @media (min-width: 1025px) {
   .medium-btn-block {
     position: relative;
-    top: 40%;
+    top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
   }
@@ -13,6 +13,10 @@
     display: -webkit-flex;
     flex-direction: column;
     -webkit-flex-direction: column;
+  }
+
+  .posts-info {
+    height: 150px;
   }
 }
 
