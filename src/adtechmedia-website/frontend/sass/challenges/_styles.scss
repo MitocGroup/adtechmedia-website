@@ -1,0 +1,55 @@
+.challenges {
+  @include flex-container;
+  margin: 0 -35px;
+  padding: 70px 0 0;
+  .challenges-block {
+    @include flex-container;
+    @include flex-width(0 0 33.33333%, 33.33333%);
+    padding: 0 35px;
+    .challenges-block-inner {
+      border: 1px solid $link-color;
+      padding: 0 20px 20px;
+      .img-block {
+        margin: -70px auto 0;
+        padding: 10px;
+        background: #fff;
+        display: inline-block;
+      }
+
+      .cont-block {
+        padding: 20px 0 0;
+      }
+
+      label {
+        display: block;
+        margin: 15px 0 0;
+        a {
+          display: inline-block;
+          color: inherit;
+          font-size: 12px;
+          line-height: normal;
+          opacity: .5;
+        }
+      }
+
+      blockquote {
+        quotes: "\201c" "\201e";
+        &:before {
+          content: open-quote;
+          vertical-align: middle;
+        }
+        &:after {
+          content: close-quote;
+        }
+
+        &:before,
+        &:after {
+          font-family: Georgia, serif;
+          font-size: 40px;
+          line-height: .1;
+          color: rgba(0, 0, 0, .5);
+        }
+      }
+    }
+  }
+}

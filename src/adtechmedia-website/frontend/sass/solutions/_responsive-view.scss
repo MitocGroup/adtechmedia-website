@@ -1,0 +1,159 @@
+@media (min-width: 1171px) {
+  #solutions {
+    section {
+      .solution-cont {
+        .solution-text {
+          @include flex-width(0 0 65%, 65%);
+        }
+
+        .solution-benefits {
+          @include flex-width(0 0 35%, 35%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1170px) {
+  #solutions {
+    section {
+      padding-top: 25px;
+    }
+  }
+}
+
+@media (max-width: 1170px) and (min-width: 1025px) {
+  #solutions {
+    section {
+      .solution-cont {
+        .solution-text {
+          @include flex-width(0 0 60%, 60%);
+        }
+
+        .solution-benefits {
+          @include flex-width(0 0 40%, 40%);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  #solutions {
+    section {
+      .solution-cont {
+        .solution-cont-inner {
+          @include flex-container;
+          margin: 0 -25px;
+        }
+
+        .solution-text,
+        .solution-benefits {
+          padding: 0 25px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  #solutions {
+    section {
+      .solution-cont {
+        h3 {
+          margin: 25px 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #solutions {
+    section {
+      h1 {
+        font-size: 28px;
+      }
+
+      .solution:not(:last-child) {
+        margin: 0 0 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #solutions {
+    section {
+      padding: 10px 20px 0;
+      h1 {
+        font-size: 24px;
+      }
+
+      .solution:not(:last-child) {
+        margin: 0 0 15px;
+      }
+
+      .solution-cont {
+        font-size: 15px;
+        width: calc(100% - 130px);
+        text-align: justify;
+        h3 {
+          font-size: 16px;
+          margin: 15px 0 0;
+        }
+      }
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  #solutions {
+    section {
+      .solution-cont {
+        float: right;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #solutions {
+    section {
+      .solution:not(:last-child) {
+        margin: 0 0 10px;
+      }
+
+      .solution-img {
+        margin: 0 10px 10px 0;
+        img {
+          width: 80px;
+        }
+      }
+
+      .solution-cont {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  #solutions {
+    section {
+      h1 {
+        font-size: 20px;
+        line-height: 55px;
+      }
+    }
+  }
+}

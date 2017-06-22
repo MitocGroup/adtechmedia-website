@@ -1,0 +1,271 @@
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .calculator-block {
+    .info-blocks {
+      margin-left: -8px;
+      margin-right: -8px;
+      font-size: 13px;
+      .flex-item {
+        margin: 8px;
+        padding: 12px 8px;
+      }
+
+      img {
+        width: 42px;
+        height: 42px;
+      }
+
+      label {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) and (min-height: 800px) {
+  .calculator-block {
+    &.calculator-results {
+      & > section {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        padding: 0;
+      }
+    }
+
+    &.calculator-confirm {
+      & > section {
+        padding: 80px 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) and (min-height: 800px) {
+  .calculator-confirm p {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .calculator-block {
+    & ~ .demo-footer {
+      display: none;
+    }
+  }
+
+  .calculator-block {
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .calculator-block {
+    margin: 88px 0 0;
+    &.calculator-main {
+      height: calc(100vh - 88px);
+      & > section {
+        padding: 0;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+      }
+    }
+
+    &.calculator-result {
+      margin: 88px 0 0;
+      height: calc(100vh - 88px);
+    }
+  }
+}
+
+@media (min-width: 1700px) {
+  .calculator-block {
+    h3 {
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 22px;
+    }
+
+    .info-blocks {
+      font-size: 16px;
+      .flex-item {
+        padding: 24px 24px 12px;
+      }
+
+      label {
+        font-size: 40px;
+      }
+    }
+
+    &.calculator-results {
+      .heading {
+        margin-bottom: 80px;
+      }
+    }
+
+    &.calculator-confirm {
+      .blog-sections {
+        h3 {
+          margin: 80px 0 30px;
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .calculator-block {
+    p {
+      font-size: 22px;
+    }
+
+    &.calculator-confirm {
+      .blog-sections {
+        .post-title {
+          line-height: 1.3;
+        }
+      }
+
+      img {
+        height: 135px;
+      }
+    }
+
+    .info-blocks {
+      font-size: 12px;
+      img {
+        width: 36px;
+        height: 36px;
+      }
+
+      label {
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .calculator-block {
+    &.default-bg {
+      background-position: center bottom;
+    }
+
+    &.calculator-confirm {
+      .blog-sections {
+        & > .flex-row {
+          & > * {
+            flex: 0 0 50%;
+            -webkit-flex: 0 0 50%;
+            max-width: 50%;
+          }
+        }
+      }
+    }
+
+    .info-blocks {
+      flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      justify-content: center;
+      -webkit-justify-content: center;
+      .flex-item {
+        flex: 0 0 25%;
+        -webkit-flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .calculator-block {
+    &.calculator-main {
+      h2 {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .calculator-block {
+    .info-blocks {
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      .flex-item {
+        flex: 0 0 30%;
+        -webkit-flex: 0 0 30%;
+        max-width: 30%;
+        margin: 10px 0;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .calculator-block p {
+    font-size: 18px;
+  }
+
+  .calculator-block {
+    &.calculator-confirm {
+      .blog-sections {
+        & > .flex-row {
+          & > * {
+            flex: 0 0 100%;
+            -webkit-flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 24px;
+          }
+        }
+      }
+
+      img {
+        height: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .calculator-block {
+    .info-blocks {
+      .flex-item {
+        flex: 0 0 45%;
+        -webkit-flex: 0 0 45%;
+        max-width: 45%;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .calculator-form {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .calculator-block {
+    p {
+      font-size: 16px;
+    }
+
+    .info-blocks {
+      .flex-item {
+        flex: 0 0 55%;
+        -webkit-flex: 0 0 55%;
+        max-width: 55%;
+      }
+    }
+  }
+}

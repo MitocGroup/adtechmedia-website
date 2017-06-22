@@ -14,7 +14,7 @@
     }
 
     .content {
-      @extend .clearfix;
+      @extend %clearfix;
       padding: 40px;
       zoom: 1;
       position: relative;
@@ -122,7 +122,7 @@
           border-radius: 4px;
           box-sizing: border-box;
           background: #fff;
-          border: solid 1px $gray;
+          border: solid 1px $gray-color;
         }
 
         & > :first-child {
@@ -142,7 +142,7 @@
 
       i, em {
         font-style: italic;
-        color: $gray;
+        color: $gray-color;
       }
 
       code {
@@ -170,7 +170,7 @@
       }
 
       blockquote {
-        color: $gray;
+        color: $gray-color;
         text-shadow: 0 1px 0 rgba(255,255,255,0.5);
         :first-child {
           padding-top: 0;
@@ -260,7 +260,7 @@
         display: block;
         padding-top: 1px;
         padding-bottom: 1px;
-        color: $gray;
+        color: $gray-color;
         &:hover {
           color: $link-color;
         }
