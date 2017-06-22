@@ -28,9 +28,7 @@
   }
 
   hr {
-    border-width: 1px 0 0;
-    border-style: solid;
-    border-color: #eaeaea;
+    border: 1px solid #eaeaea;
   }
 
   .heading-desc {
@@ -48,7 +46,7 @@
       width: 35px;
       height: 35px;
       line-height: 35px;
-      background: #1b93f2;
+      background: $link-color;
       color: #fff;
       border-radius: 50%;
       text-align: center;

@@ -1,3 +1,18 @@
+#api {
+  .custom-headline-block {
+    @include custom-headline(url('../images/api/api.jpg'));
+  }
+
+  .home-blocks {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: left;
+    .btn {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .dev-docs {
   text-align: left;
   margin: 70px 0 0;
