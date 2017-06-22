@@ -109,7 +109,7 @@ var Modal = (function() {
       isOpen = true;
 
       window.setTimeout(function () {
-        modals.siblings('div, header, footer, main').addClass('blurred');
+        modals.siblings('div, header, footer, main, section').addClass('blurred');
       }, 50);
     }
 

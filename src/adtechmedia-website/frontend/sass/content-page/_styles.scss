@@ -1,0 +1,25 @@
+.content-page {
+  text-align: justify;
+  padding: 30px 0;
+  h1 {
+    background: transparent;
+    -webkit-text-fill-color: inherit;
+    font: 30px/70px Futura-Light, sans-serif;
+    color: #595959;
+    &:after {
+      display: none;
+    }
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-size: 17px;
+    margin: 0 0 3px;
+  }
+
+  .text-block {
+    &:not(:last-child) {
+      margin: 0 0 20px;
+    }
+  }
+}

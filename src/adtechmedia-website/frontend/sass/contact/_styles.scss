@@ -1,0 +1,44 @@
+#contact {
+  .contact-inner {
+    margin: 50px 0 0;
+    position: relative;
+    height: 500px;
+    z-index: 3;
+  }
+
+  #googleMap {
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-form {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 360px;
+    height: 100%;
+    background: rgba(255, 255, 255, .9);
+    z-index: 1;
+    padding: 30px;
+    font-family: FuturaICG, sans-serif;
+    color: $base-color;
+    h3 {
+      text-transform: uppercase;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .custom-input {
+      text-align: left;
+    }
+
+    .company-info {
+      text-align: left;
+      font-size: 12px;
+      margin: 0 0 2px;
+      a {
+        color: $base-color;
+      }
+    }
+  }
+}

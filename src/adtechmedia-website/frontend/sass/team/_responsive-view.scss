@@ -1,0 +1,64 @@
+@media (min-width: 768px) and (max-width: 991px) {
+  .team-block {
+    .member-pic {
+      width: 130px;
+      height: 130px;
+    }
+
+    .member-name,
+    .member-social li .fa {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .team-block {
+    flex-flow: wrap;
+    -webkit-flex-flow: wrap;
+    padding: 0;
+    .team-member {
+      flex: 0 0 50%;
+      -webkit-flex: 0 0 50%;
+      max-width: 50%;
+      margin: 50px 0 0;
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 640px) {
+  .team-block {
+    .member-pic {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 15px;
+    }
+
+    .member-name {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .team-block {
+    display: block;
+    padding: 30px 0 0;
+    .team-member {
+      max-width: none;
+      &:not(:last-child) {
+        margin: 0 0 50px;
+      }
+    }
+
+    .member-pic {
+      margin-bottom: 10px;
+    }
+
+    .member-social {
+      &:before {
+        width: 130px;
+      }
+    }
+  }
+}
