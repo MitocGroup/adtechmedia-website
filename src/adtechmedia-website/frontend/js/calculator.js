@@ -22,12 +22,12 @@ jQuery(function($) {
             .forEach(function(v) {
               if(v === 'default') {
                 $selector.prepend(
-                  '<option value="' + v + '" selected>' + v + '</option>'
+                  '<option value="' + v + '" selected>' + v.replace(/\b\w/g, function(l){ return l.toUpperCase() }) + '</option>'
                 );
                 return;
               }
               $selector.append(
-                '<option value="' + v + '">' + v + '</option>'
+                '<option value="' + v + '">' + v.replace(/\b\w/g, function(l){ return l.toUpperCase() }) + '</option>'
               );
             });
         }
