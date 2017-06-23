@@ -1,0 +1,131 @@
+@media (min-width: 1025px) {
+  .medium-btn-block {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+  }
+
+  .blog-post {
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+
+  .posts-info {
+    height: 150px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .posts-info h3 {
+    font-size: 22px;
+  }
+
+  .blog-post .blog-title {
+    font-size: 22px;
+    max-height: 85px;
+  }
+
+  .medium-btn {
+    font-size: 16px;
+    padding: 4px 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .medium-content {
+    &.flex-row {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      & > * {
+        flex: 1;
+        -webkit-flex: 1;
+        max-width: none;
+      }
+    }
+
+    .posts-info {
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      margin: 0 0 30px;
+      & > * {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #mediumPosts {
+    margin: 0 -5px;
+  }
+
+  .blog-post {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 767px) {
+  .medium-content {
+    border-top: 1px solid #F2F2F2;
+  }
+
+  #mediumPosts {
+    margin: 0 -12px;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+  }
+
+  .blog-post {
+    flex: 0 0 50%;
+    -webkit-flex: 0 0 50%;
+    padding: 0 12px;
+    max-width: 50%;
+    &:not(:last-child) {
+      margin: 0 0 36px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .medium-content {
+    .posts-info {
+      h3 {
+        font-size: 22px;
+      }
+    }
+  }
+
+  #mediumPosts {
+    margin: 0;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+
+  .blog-post {
+    flex: 1;
+    -webkit-flex: 1;
+    padding: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .medium-content {
+    .posts-info {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      & > * {
+        margin: 10px;
+      }
+    }
+  }
+}

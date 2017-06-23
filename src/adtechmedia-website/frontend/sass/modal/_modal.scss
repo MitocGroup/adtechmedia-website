@@ -1,0 +1,159 @@
+/**
+ * Material Modal CSS
+ */
+.modal {
+  will-change: visibility, opacity;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  @include transition(all 0.5s cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.modal--active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal--align-top {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.modal__bg {
+  background: rgba(0, 0, 0, .7);
+}
+
+.modal__content {
+  will-change: transform, opacity;
+  position: relative;
+  background: #fff;
+  background-clip: padding-box;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  @include transition(all 0.25s cubic-bezier(0.23, 1, 0.32, 1));
+  width: 330px;
+  .btn {
+    margin: 10px;
+  }
+
+  .modal-inner {
+    padding: 2.4rem 2.4rem 1rem;
+    h3 {
+      margin-bottom: 20px;
+    }
+
+    #mc_embed_signup {
+      label.mc-response-label {
+        font-weight: normal;
+        margin: 5px 0 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        display: block;
+        &.error {
+          color: #FF0031;
+        }
+
+        &.valid {
+          color: $link-color;
+        }
+      }
+
+      div.mce_inline_error {
+        display: none !important;
+      }
+    }
+  }
+
+  .close-btn {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      background: $gray-color;
+      @include transition(background .4s ease-in-out);
+    }
+
+    &:before {
+      @include transform(rotate(45deg));
+    }
+    &:after {
+      @include transform(rotate(-45deg));
+    }
+
+    &:hover {
+      cursor: pointer;
+      &:before, &:after {
+        background: $link-color;
+      }
+    }
+  }
+}
+
+.modal__content--active {
+  opacity: 1;
+}
+
+.modal__trigger {
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @include transition(all 0.5s cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.modal__trigger--active {
+  z-index: 10;
+}
+
+#modal__temp {
+  will-change: transform, opacity;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $link-color;
+  @include transform(none);
+  opacity: 1;
+  transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.modal-open > *:not(.modal) {
+  filter: blur(10px);
+}
+
+.modal-transition {
+  position: relative;
+  z-index: 11;
+}

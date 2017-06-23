@@ -1,0 +1,28 @@
+$base-color: #000;
+$link-color: #01ADFD;
+$green-accent: #2EF6A5;
+$purple-accent: #4E4BF7;
+$gray-color: #BFBFBF;
+$border-color: #dfe2e7;
+$base-font-size: 16px;
+$section-width: 1100px;
+$section-based-calc: calc((100% - #{$section-width}) / 2);
+$social-icons: wordpress, drupal, github, linkedin, twitter, facebook, youtube;
+$social-colors: #09aada, #0678BE, #000, #0077B5, #64b2f8, #3b5998, #e52d27;
+
+@function headings($from, $to) {
+  @if $from == $to {
+    @return 'h#{$from}';
+  } @else {
+    @return 'h#{$from},' + headings($from+1, $to);
+  }
+}
+
+%clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

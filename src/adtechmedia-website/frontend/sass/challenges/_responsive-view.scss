@@ -1,0 +1,133 @@
+@media (max-width: 1170px) {
+  .challenges {
+    margin: 0 -25px;
+    .challenges-block {
+      padding: 0 25px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .challenges {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 991px) {
+  .challenges {
+    display: block;
+    text-align: left;
+    padding: 30px 0 0;
+    margin: 0;
+    .challenges-block {
+      display: block;
+      max-width: 100%;
+      padding: 0;
+      &:not(:last-child) {
+        margin: 0 0 50px;
+      }
+      .challenges-block-inner {
+        padding: 20px 20px 20px 0;
+        @include flex-container;
+        @include clearfix;
+
+        .img-block {
+          margin: 0;
+          padding: 0;
+          background: transparent;
+          @include flex-align-self(center);
+          @include flex-width(0 0 180px, 180px);
+          text-align: center;
+          img {
+            max-width: 120px;
+            display: inline-block;
+          }
+        }
+
+        .cont-block {
+          padding: 0;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .challenges {
+    padding: 0;
+    .challenges-block {
+      &:not(:last-child) {
+        margin: 0 0 20px;
+      }
+
+      .challenges-block-inner {
+        .img-block {
+          @include flex-width(0 0 130px, 130px);
+          img {
+            max-width: 100px;
+          }
+        }
+
+        .cont-block {
+          font-size: 14px;
+          text-align: justify;
+        }
+
+        blockquote {
+          &:before,
+          &:after {
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .challenges {
+    .challenges-block {
+      .challenges-block-inner {
+        padding: 0;
+        border: 0;
+      }
+
+      &:not(:last-child) {
+        .challenges-block-inner {
+          padding: 0 0 20px;
+          position: relative;
+          &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 90%;
+            height: 1px;
+            background: #1b93f2;
+            @include transform(translateX(-50%));
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .challenges {
+    .challenges-block {
+      .challenges-block-inner {
+        display: block;
+        .img-block {
+          text-align: center;
+          display: block;
+          padding: 0 0 20px;
+          max-width: none;
+          img {
+            max-width: 120px;
+          }
+        }
+      }
+    }
+  }
+}

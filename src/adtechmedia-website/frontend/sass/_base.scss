@@ -1,15 +1,3 @@
-$base-color: #000;
-$link-color: #01ADFD;
-$green-accent: #2EF6A5;
-$purple-accent: #4E4BF7;
-$gray: #9090aa;
-$border-color: #dfe2e7;
-$base-font-size: 16px;
-$section-width: 1100px;
-$section-based-calc: calc((100% - #{$section-width}) / 2);
-$social-icons: wordpress, drupal, github, linkedin, twitter, facebook, youtube;
-$social-colors: #09aada, #0678BE, #000, #0077B5, #64b2f8, #3b5998, #e52d27;
-
 @font-face {
   font-family: Futura-Light;
   src: url(../fonts/Futura-Light/Futura-Light.eot);
@@ -77,11 +65,8 @@ $social-colors: #09aada, #0678BE, #000, #0077B5, #64b2f8, #3b5998, #e52d27;
 a {
   text-decoration: none;
   color: $link-color;
-  &.banner-link {
-    color: #fff;
-  }
 
-  &.more-link {
+  &.nowrap {
     white-space: nowrap;
   }
 
@@ -90,7 +75,8 @@ a {
   }
 }
 
-.body-main p, .with-space {
+.body-main p,
+.with-space {
   margin: 20px 0;
 }
 
@@ -112,6 +98,14 @@ a {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.blurred {
+  filter: blur(5px);
+}
+
+.no-click {
+  pointer-events: none;
 }
 
 h1 {
@@ -171,67 +165,6 @@ small {
   cursor: default;
 }
 
-//custom radio input
-.radio {
-  display: block;
-  padding: 10px 20px 0 0;
-  cursor: pointer;
-  font-size: 13px;
-  &:hover {
-    .inner {
-      @include transform(scale(0.5));
-      opacity: .5;
-    }
-  }
-
-  input {
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    &:checked,
-    &:focus {
-      & + .outer {
-        .inner {
-          @include transform(scale(1));
-          opacity: 1;
-        }
-      }
-    }
-
-    &:checked + .outer {
-      border: 2px solid #1b93f2;
-    }
-
-    &:focus + .outer {
-      .inner {
-        background-color: #1b93f2;
-      }
-    }
-  }
-
-  .outer {
-    width: 18px;
-    height: 18px;
-    display: block;
-    float: left;
-    border: 2px solid #e6e6e6;
-    border-radius: 50%;
-    background-color: #fff;
-  }
-
-  .inner {
-    @include transition(all 0.25s ease-in-out);
-    width: 10px;
-    height: 10px;
-    @include transform(scale(0));
-    display: block;
-    margin: 2px;
-    border-radius: 50%;
-    background-color: #1b93f2;
-    opacity: 0;
-  }
-}
-
 //custom button
 .btn {
   z-index: 2;
@@ -270,11 +203,11 @@ small {
   }
 
   &.cancel-btn {
-    background: #BFBFBF;
+    background: $gray-color;
     &:hover {
       background: transparent;
-      border-color: #BFBFBF;
-      color: #BFBFBF;
+      border-color: $gray-color;
+      color: $gray-color;
     }
   }
 }
@@ -318,6 +251,10 @@ small {
       font-size: 13px;
       font-family: 'FuturaICG', sans-serif;
       -webkit-appearance: none;
+      -moz-appearance: none;
+      &:-moz-focusring { color: transparent;
+        text-shadow: 0 0 0 #000;
+      }
     }
   }
 
