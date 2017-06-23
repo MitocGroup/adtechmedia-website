@@ -11,10 +11,6 @@
     }
   }
 
-  #niche {
-    text-transform: capitalize;
-  }
-
   &.calculator-results {
     height: calc(100vh - 70px);
     & > section {
