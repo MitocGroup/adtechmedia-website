@@ -1,15 +1,15 @@
-Test case ID | Status | Test case ID | Status | Test case ID | Status | Test case ID | Status |  
---- | --- | --- | --- | --- | --- | --- | --- |
-[ATM_01][1] | Passed |[ATM_11][11] | Passed |[ATM_21][21] | Passed |
-[ATM_02][2] | `Failed` |[ATM_12][12] | Passed |[ATM_22][22] | Passed |
-[ATM_03][3] | Passed |[ATM_13][13] | Passed |[ATM_23][23] | Passed |
-[ATM_04][4] | Passed |[ATM_14][14] | Passed |[ATM_24][24] | Passed |
-[ATM_05][5] | Passed |[ATM_15][15] | Passed |[ATM_25][25] | Passed |
-[ATM_06][6] | Passed |[ATM_16][16] | Passed |[ATM_26][26] | Passed |
-[ATM_07][7] | Passed |[ATM_17][17] | Passed |[ATM_27][27] | Passed |
-[ATM_08][8] | Passed |[ATM_18][18] | Passed |[ATM_28][28] | Passed |
-[ATM_09][9] | Passed |[ATM_19][19] | Passed |[ATM_29][29] | Passed |
-[ATM_10][10] | Passed |[ATM_20][20] | Passed |[ATM_30][30] | Passed |
+Test case ID | Status | Test case ID | Status | Test case ID | Status |  
+--- | --- | --- | --- | --- | --- |
+[ATM_01][1] | Passed |[ATM_11][11] | Passed |[ATM_21][21] | Passed
+[ATM_02][2] | `Failed` |[ATM_12][12] | Passed |[ATM_22][22] | Passed
+[ATM_03][3] | Passed |[ATM_13][13] | Passed |[ATM_23][23] | Passed
+[ATM_04][4] | Passed |[ATM_14][14] | Passed |[ATM_24][24] | Passed
+[ATM_05][5] | Passed |[ATM_15][15] | Passed |[ATM_25][25] | Passed
+[ATM_06][6] | Passed |[ATM_16][16] | Passed |[ATM_26][26] | Passed
+[ATM_07][7] | Passed |[ATM_17][17] | Passed |[ATM_27][27] | Passed
+[ATM_08][8] | Passed |[ATM_18][18] | Passed |[ATM_28][28] | Passed
+[ATM_09][9] | Passed |[ATM_19][19] | Passed |[ATM_29][29] | Passed
+[ATM_10][10] | Passed |[ATM_20][20] | Passed |[ATM_30][30] | Passed 
 
 
 
