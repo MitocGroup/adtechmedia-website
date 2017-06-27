@@ -1,4 +1,4 @@
-| ID | Component \ <br> Description  | Designed Steps       |Expected Result     |	Created By \<br> Last Updated |
+| ID | Component \ <br> Description  | Designed Steps       |Expected Result     |	Created By \ <br> Last Updated |
 | -- | -- | -- | -- | -- |
 | ATM_3 | ATM Home page \ Landing page <br> <br> - Verifies functionality of AdTechMedia home page on normal state (not mobile) | 1. Navigate to https://www-dev.adtechmedia.io/ <br> <br> 2. Click on adtehmedia logo | 1. Page is opened. Animation is displayed on the right <br> <br> 2. Page should be refreshed. Video starts playing from the beginning at the right | Alexandr Urita \ <br> 15.06.2017 |
 |       |       | 3. Click on Challenges at the header of the page <br> <br> 4. Scroll the page and locate under Quick links -> Challenges. Click on it  | 3. User should be navigated to: <br> <br> adtehmedia.io/challenges/. CHALLENGES should be highlighted at the top of the page <br> <br> 4. Challenges is highlighted. After click page refreshes, and top of the page is displayed |    |  
