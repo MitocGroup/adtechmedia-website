@@ -21,24 +21,31 @@
       marker.setMap(map);
     });
   }
-}())
+}());
+
+var contactUsCaptcha;
+var phoneMask = "(999) 999-9999";
+var emailMask = "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]";
+var phoneInput = document.getElementById('phone-field');
+var contactForm = {
+  phoneElement: phoneInput,
+  nameElement: document.getElementById('name-field'),
+  emailElement: document.getElementById('email-field'),
+  messageElement: document.getElementById('message-field'),
+  submitElement: document.getElementById('contact-button')
+};
 
 /**
  * Init phone mask
  */
-Inputmask({mask: "(999) 999-9999"}).mask(
-  document.getElementById('phone-field')
-);
-
-var contactUsCaptcha;
+Inputmask({mask: phoneMask}).mask(phoneInput);
 
 /**
  * Init google captcha widget
  */
 function setCaptchaKey() {
   DeepFramework.Kernel.bootstrap(function (kernel) {
-    var captchaSiteKey = DeepFramework.Kernel.config
-      .microservices['adtechmedia-website'].parameters.captchaSiteKey;
+    var captchaSiteKey = DeepFramework.Kernel.config.microservices['adtechmedia-website'].parameters.captchaSiteKey;
 
     contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
       sitekey: captchaSiteKey,
@@ -95,6 +102,11 @@ function enableForm(form) {
   }
 }
 
+/**
+ * Send email from payload
+ * @param payload
+ * @param callback
+ */
 function sendEmail(payload, callback) {
   var emailResource = DeepFramework.Kernel.get('resource').get('@adtechmedia-website:email');
 
@@ -109,40 +121,26 @@ function sendEmail(payload, callback) {
   });
 }
 
+/**
+ * Handle contact us form
+ * @param token
+ */
 function sendContactUsEmail(token) {
-  var formElement = document.getElementById('contactus-form');
-  var form = {
-    nameElement: document.getElementById('name-field'),
-    phoneElement: document.getElementById('phone-field'),
-    emailElement: document.getElementById('email-field'),
-    messageElement: document.getElementById('message-field'),
-  };
-
-  var payload = {
-    name: form.nameElement.value,
-    phone: form.phoneElement.value,
-    email: form.emailElement.value,
-    message: form.messageElement.value,
+  disableForm(contactForm);
+  sendEmail({
+    name: contactForm.nameElement.value,
+    phone: contactForm.phoneElement.value,
+    email: contactForm.emailElement.value,
+    message: contactForm.messageElement.value,
     captchaResponse: token,
-  };
+  }, function(error) {
+    handleCallback(error);
+    enableForm(contactForm);
 
-  if (payload.name && payload.phone && payload.email && payload.message) {
-    disableForm(form);
-    sendEmail(payload, function(error) {
-      handleCallback(error);
-      enableForm(form);
-
-      if (!error) {
-        formElement.reset();
-      }
-    });
-  } else {
-    noty({
-      text: 'Please fill all required fields',
-      type: 'warning',
-      timeout: 3000
-    });
-  }
+    if (!error) {
+      contactForm.messageElement.value = '';
+    }
+  });
 
   grecaptcha.reset(contactUsCaptcha);
 }
@@ -150,10 +148,19 @@ function sendContactUsEmail(token) {
 jQuery(function($) {
   'use strict';
 
-  var $submitElement = $('#contact-button');
+  $('#contact-button').on('click', function() {
+    var isPhoneValid = Inputmask.isValid(contactForm.phoneElement.value, {alias: phoneMask});
+    var isEmailValid = Inputmask.isValid(contactForm.emailElement.value, {alias: emailMask});
 
-  $submitElement.on('click', function() {
-    executeCaptcha();
+    if (contactForm.nameElement.value.trim() && contactForm.messageElement.value.trim() && isPhoneValid && isEmailValid) {
+      executeCaptcha();
+    } else {
+      noty({
+        text: 'Please fill all required fields',
+        type: 'warning',
+        timeout: 3000
+      });
+    }
   });
 
 });
