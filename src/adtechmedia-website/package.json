@@ -17,9 +17,8 @@
     "type": "git",
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
   },
-  "scripts": {
-  },
-  "devDependencies": {
+  "scripts": {},
+  "dependencies": {
     "yamljs": "^0.2.8"
   },
   "private": true,
