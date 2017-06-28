@@ -15,7 +15,7 @@ if (!fs.existsSync('node_modules')) {
   child.execSync(`cd ${__dirname} && npm install`);
 }
 
-var yaml = require('yamljs');
+var yaml = require('js-yaml');
 
 function walkDir(dir, filter, callback) {
   if (!fs.existsSync(dir)) {
@@ -139,7 +139,7 @@ module.exports = function(callback) {
       throw err;
     }
 
-    var json = yaml.parse(res);
+    var json = yaml.load(res);
     if (env !== 'prod') {
       json.host = 'api-dev.adtechmedia.io'
     }
