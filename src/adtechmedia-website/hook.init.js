@@ -2,20 +2,20 @@
 
 /* eslint  max-len: 0, no-catch-shadow: 0, no-use-before-define: 0 */
 
-var path = require('path');
-var fs = require('fs');
-var https = require('https');
-var zlib = require('zlib');
-var child = require('child_process');
+const path = require('path');
+const fs = require('fs');
+const https = require('https');
+const zlib = require('zlib');
+const { execSync } = require('child_process');
 
 /**
  * Install required npm modules
  */
-if (!fs.existsSync('node_modules')) {
-  child.execSync(`cd ${__dirname} && npm install`);
+if (!fs.existsSync(path.join(__dirname, 'node_modules'))) {
+  execSync('npm install', {cwd: __dirname});
 }
 
-var yaml = require('js-yaml');
+const yaml = require('js-yaml');
 
 function walkDir(dir, filter, callback) {
   if (!fs.existsSync(dir)) {
