@@ -19,7 +19,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "yamljs": "^0.2.8"
+    "js-yaml": "^3.8.4"
   },
   "private": true,
   "preferGlobal": false,
