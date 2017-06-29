@@ -1,0 +1,10 @@
+| ID | Component \ <br> Description  | Designed Steps       |Expected Result     |	Created By \ <br> Last Updated |
+| -- | -- | -- | -- | -- |
+| ATM_19 | ATM API page <br> <br>  Verifies API page subsections (APIs) -> content of email-template : Manage email template | 1. Navigate to https://www-dev.adtechmedia.io/api <br> 2. Click on the More button link that is located on the CENTER | 1. Page is opened on API  <br> 2. User is navigated to the page with Guide <br> https://www-dev.adtechmedia.io/api-docs/           | Alexandr Urita \ <br> 15.06.2017 |
+|       |       | 3. Check the first section -> property : Manage property |     3. Contains from six lines: <br> PUT <br> DELETE <br> PET <br> GET <br> POST |    |  
+|       |       | 4. Check controllers of the section that is located on the right |     4. Controllers of the sections are: <br> Show/Hide <br> List Operations <br> Expand Operations |    |  
+|       |       | 5. Click on Show/Hide link twice |     5. All subsection should be collapsed and then expanded. Order of expand/collapse depends from initial state |    |  
+|       |       | 6. Click on Expand Operations |     6. All Operations should be expanded. Details of each operation are located within one section |    |  
+|       |       | 7. Click on Show/Hide link |     7. List of Operations should be shown in expandable mode |    |  
+|       |       | 8. Click on List Operations |     8. List of Operations should be collapsed |    |  
+|       |       | 9. Check the copy of each operator: <br> PUT <br> DELETE <br> PUT <br> GET <br> POST |     9. Copy of each Operator is: <br> - PUT /atm-admin/email-template/create <br> Create Email Template <br> - DELETE /atm-admin/email-template/delete <br> Delete existing Email Template <br> - PUT /atm-admin/email-template/render <br> Render existing Email Template <br> - GET /atm-admin/email-template/retrieve <br> Retrieve existing Email Template <br> - POST /atm-admin/email-template/update <br> Update existing Email Template |    |  
