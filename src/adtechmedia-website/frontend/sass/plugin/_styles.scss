@@ -1,5 +1,10 @@
 .main-slide {
-  background:  url(../images/wordpress/wp-bg.jpg) 0 bottom/cover no-repeat;
+  &.wordpress {
+    background:  url(../images/plugin/wp-bg.jpg) 0 bottom/cover no-repeat;
+  }
+  &.drupal {
+    background:  url(../images/plugin/dp-bg.jpg) 0 bottom/cover no-repeat;
+  }
   height: calc(100vh - 70px);
   margin: 70px 0 0;
   padding: 30px 0;
@@ -106,7 +111,7 @@
   }
 
   .customer-pic {
-    background: url('../images/wordpress/customer.png') right bottom/auto 250px no-repeat;
+    background: url('../images/plugin/customer.png') right bottom/auto 250px no-repeat;
   }
 }
 
