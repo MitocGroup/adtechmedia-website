@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 212.48928">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3b1ffa;
+      }
+
+      .cls-2 {
+        fill: #2ef6a5;
+      }
+    </style>
+  </defs>
+  <title>bars</title>
+  <g id="Слой_2" data-name="Слой 2">
+    <g id="Layer_1" data-name="Layer 1">
+      <g>
+        <rect class="cls-1" x="554.62185" width="45.37815" height="212.48928"/>
+        <rect class="cls-2" x="504.20168" y="21.24893" width="45.37815" height="191.24035"/>
+        <rect class="cls-2" x="453.78151" y="42.49786" width="45.37815" height="169.99142"/>
+        <rect class="cls-2" x="403.36134" y="70.82976" width="45.37815" height="141.65952"/>
+        <rect class="cls-2" x="352.94118" y="92.07869" width="45.37815" height="120.41059"/>
+        <rect class="cls-2" x="302.52101" y="106.24464" width="45.37815" height="106.24464"/>
+        <rect class="cls-2" x="252.10084" y="127.49357" width="45.37815" height="84.99571"/>
+        <rect class="cls-2" x="201.68067" y="141.65952" width="45.37815" height="70.82976"/>
+        <rect class="cls-2" x="151.2605" y="162.90844" width="45.37815" height="49.58083"/>
+        <rect class="cls-2" x="100.84034" y="177.0744" width="45.37815" height="35.41488"/>
+        <rect class="cls-2" x="50.42017" y="191.24035" width="45.37815" height="21.24893"/>
+        <rect class="cls-2" y="205.4063" width="45.37815" height="7.08298"/>
+      </g>
+    </g>
+  </g>
+</svg>
