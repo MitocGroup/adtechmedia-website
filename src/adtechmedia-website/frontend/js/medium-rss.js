@@ -9,6 +9,11 @@ $(function () {
       $.each(response.items, function (k, item) {
         var description = $(item.description);
         var trimmedString = description[0].innerText;
+        if(!trimmedString) {
+          var innerText = item.description.replace(/<[^>]+>/g,"");
+          var maxLength = 100;
+          trimmedString = innerText.substr(0, maxLength) + '...';
+        }
 
         output += '<div class="blog-post">';
         output += '<h3 class="blog-title"><a href="'+ item.link + '" target="_blank">' + item.title + '</a></h3>';
