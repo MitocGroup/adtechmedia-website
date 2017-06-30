@@ -155,6 +155,10 @@ small {
   cursor: default;
 }
 
+.flex-column {
+  @include flex-direction(column);
+}
+
 //custom button
 .btn {
   z-index: 2;

@@ -77,6 +77,11 @@
   -webkit-align-self: $value;
 }
 
+@mixin flex-align-items($value) {
+  align-items: $value;
+  -webkit-align-items: $value;
+}
+
 @mixin flex-justify-content($value) {
   justify-content: $value;
   -webkit-justify-content: $value;

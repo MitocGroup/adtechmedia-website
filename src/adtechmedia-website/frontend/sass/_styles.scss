@@ -219,6 +219,16 @@ header {
   background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
 }
 
+.gray-block {
+  background: #EDEDED;
+}
+
+.full-height {
+  margin: 70px 0 0;
+  height: calc(100vh - 70px);
+  padding: 30px 0;
+}
+
 .footer-logo {
   align-self: center;
   -webkit-align-self: center;

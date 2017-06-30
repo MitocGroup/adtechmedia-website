@@ -1,55 +1,92 @@
-.challenges {
-  @include flex-container;
-  margin: 0 -35px;
-  padding: 70px 0 0;
-  .challenges-block {
-    @include flex-container;
-    @include flex-width(0 0 33.33333%, 33.33333%);
-    padding: 0 35px;
-    .challenges-block-inner {
-      border: 1px solid $link-color;
-      padding: 0 20px 20px;
-      .img-block {
-        margin: -70px auto 0;
-        padding: 10px;
-        background: #fff;
-        display: inline-block;
+.main-slide {
+  section {
+    height: 100%;
+    & > .flex-row {
+      height: calc(100% - 60px);
+      & > *:first-child {
+        padding-right: 50px;
       }
 
-      .cont-block {
-        padding: 20px 0 0;
-      }
-
-      label {
-        display: block;
-        margin: 15px 0 0;
-        a {
-          display: inline-block;
-          color: inherit;
-          font-size: 12px;
-          line-height: normal;
-          opacity: .5;
-        }
-      }
-
-      blockquote {
-        quotes: "\201c" "\201e";
-        &:before {
-          content: open-quote;
-          vertical-align: middle;
-        }
-        &:after {
-          content: close-quote;
-        }
-
-        &:before,
-        &:after {
-          font-family: Georgia, serif;
-          font-size: 40px;
-          line-height: .1;
-          color: rgba(0, 0, 0, .5);
-        }
+      & > *:last-child {
+        padding-left: 50px;
       }
     }
+  }
+
+  .flex-row {
+    @include flex-align-items(center);
+    text-align: left;
+    &.flex-column {
+      @include flex-justify-content(space-around);
+      @include flex-align-items(flex-start);
+      height: 100%;
+      padding: 30px 0 0;
+    }
+
+    .info-block {
+      @include flex-align-self(stretch);
+      img {
+        margin-bottom: 5px;
+      }
+    }
+
+    .bars {
+      p {
+        margin-bottom: -50px;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.emphasize {
+  font-size: 24px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.info-more {
+  padding-top: 15px;
+}
+
+.fake-news {
+  background: url(../images/wallpaper-prefooter.jpg) 0 bottom/auto 440px no-repeat;
+}
+
+.quote-author {
+  font-size: .9rem;
+  color: rgba(0, 0, 0, .56);
+  display: inline-block;
+  margin-top: 10px
+}
+
+.challenge-block {
+  padding: 50px 0;
+  &.clickbait {
+    padding-top: 0;
+    .info-block {
+      padding-top: 50px;
+    }
+  }
+  text-align: left;
+  .flex-row {
+    @include flex-align-items(center);
+    & > *:first-child {
+      padding-right: 50px;
+    }
+
+    & > *:last-child {
+      padding-left: 50px;
+    }
+  }
+
+  img {
+    height: 435px;
+  }
+
+  .image-block {
+    @include flex-justify-content(center);
   }
 }

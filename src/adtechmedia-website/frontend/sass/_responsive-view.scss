@@ -36,8 +36,7 @@
 }
 
 @media (min-width: 1500px) and (min-height: 800px) {
-  section,
-  .main-slide section {
+  section {
     width: 80%;
   }
 
@@ -94,6 +93,11 @@
 
   .cb-container {
     margin-top: 88px;
+  }
+
+  .full-height {
+    margin-top: 88px;
+    height: calc(100vh - 88px);
   }
 }
 
