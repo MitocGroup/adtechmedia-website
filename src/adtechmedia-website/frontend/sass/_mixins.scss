@@ -61,6 +61,11 @@
   display: -webkit-flex;
 }
 
+@mixin flex-direction($value) {
+  flex-direction: $value;
+  -webkit-flex-direction: $value;
+}
+
 @mixin flex-width($value, $value2) {
   flex: $value;
   -webkit-flex: $value;
@@ -70,6 +75,11 @@
 @mixin flex-align-self($value) {
   align-self: $value;
   -webkit-align-self: $value;
+}
+
+@mixin flex-align-items($value) {
+  align-items: $value;
+  -webkit-align-items: $value;
 }
 
 @mixin flex-justify-content($value) {

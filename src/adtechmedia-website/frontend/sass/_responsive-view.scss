@@ -1,47 +1,8 @@
-//@media (min-width: 1700px) {
-//  .landing-page {
-//    section {
-//      width: 1296px;
-//    }
-//  }
-//}
-
-//@media (min-width: 1171px) {
-//  #solutions {
-//    section {
-//      .solution-cont {
-//        .solution-text {
-//          @include flex-width(0 0 65%, 65%);
-//        }
-//
-//        .solution-benefits {
-//          @include flex-width(0 0 35%, 35%);
-//        }
-//      }
-//    }
-//  }
-//
-//  .carousel {
-//    .carousel-overlay {
-//      .carousel-heading {
-//        width: 1100px;
-//        margin: 0 auto;
-//      }
-//    }
-//  }
-//
-//  #home {
-//    .pagination {
-//      button {
-//        width: 35px;
-//        height: 10px;
-//        margin: 0 5px;
-//      }
-//    }
-//  }
-//}
-
 @media (min-width: 1025px) and (max-width: 1200px) {
+  h1 {
+    font-size: 45px;
+  }
+
   .btn {
     padding: 8px 16px;
   }
@@ -75,9 +36,12 @@
 }
 
 @media (min-width: 1500px) and (min-height: 800px) {
-  section,
-  .main-slide section {
+  section {
     width: 80%;
+  }
+
+  h1 {
+    font: 60px/1.2 FuturaICG, sans-serif;
   }
 }
 
@@ -130,11 +94,20 @@
   .cb-container {
     margin-top: 88px;
   }
+
+  .full-height {
+    margin-top: 88px;
+    height: calc(100vh - 88px);
+  }
 }
 
 @media (min-width: 1700px) {
   section {
     width: 1296px;
+  }
+
+  h1 {
+    font: 75px/1 FuturaICG, sans-serif;
   }
 
   h3 {
@@ -197,6 +170,13 @@
 @media (min-width: 1025px) {
   header nav .navTrigger-label {
     display: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+  h1 {
+    font-size: 45px;
+    line-height: 1;
   }
 }
 
@@ -368,212 +348,34 @@
   }
 }
 
+@media (max-width: 1024px) and (min-height: 800px) {
+  h1 {
+    font-size: 60px;
+    line-height: 1.2;
+  }
+}
+
 @media (max-width: 991px) {
   .cb-container {
     min-height: calc(100vh - 255px);
   }
 
   h1 {
-    font-size: 34px;
-    line-height: 70px;
+    font-size: 45px;
     &.custom-headline {
       height: 80px;
       line-height: 80px;
+      font-size: 34px;
     }
   }
-
-  //#solutions {
-  //  section {
-  //    h1 {
-  //      font-size: 28px;
-  //    }
-  //
-  //    .solution:not(:last-child) {
-  //      margin: 0 0 25px;
-  //    }
-  //  }
-  //}
-  //
-  //.challenges {
-  //  display: block;
-  //  text-align: left;
-  //  padding: 30px 0 0;
-  //  margin: 0;
-  //  .challenges-block {
-  //    display: block;
-  //    max-width: 100%;
-  //    padding: 0;
-  //    &:not(:last-child) {
-  //      margin: 0 0 50px;
-  //    }
-  //    .challenges-block-inner {
-  //      padding: 20px 20px 20px 0;
-  //      @include flex-container;
-  //      @include clearfix;
-  //
-  //      .img-block {
-  //        margin: 0;
-  //        padding: 0;
-  //        background: transparent;
-  //        @include flex-align-self(center);
-  //        @include flex-width(0 0 180px, 180px);
-  //        text-align: center;
-  //        img {
-  //          max-width: 120px;
-  //          display: inline-block;
-  //        }
-  //      }
-  //
-  //      .cont-block {
-  //        padding: 0;
-  //        font-size: 16px;
-  //      }
-  //    }
-  //  }
-  //}
-  //
-  //
-  //.demo-container {
-  //  .block-logo {
-  //    img {
-  //      height: 40px;
-  //    }
-  //  }
-  //}
-  //
-  //.demo-container {
-  //  .demo-row {
-  //    margin: 0 -15px;
-  //    .demo-block {
-  //      padding: 0 15px;
-  //    }
-  //  }
-  //}
-  //
-  //#contact {
-  //  .contact-inner {
-  //    height: 460px;
-  //  }
-  //
-  //  .contact-form {
-  //    padding: 20px 30px 0;
-  //  }
-  //
-  //  .custom-input {
-  //    padding-bottom: 0;
-  //  }
-  //
-  //  .btn {
-  //    margin: 15px 0;
-  //  }
-  //
-  //  .captcha-block {
-  //    padding: 10px 0 0;
-  //  }
-  //}
-  //
-  //.login {
-  //  .register-blocks {
-  //    .register-pic,
-  //    .register-fields {
-  //      @include flex-width(0 0 50%, 50%);
-  //    }
-  //
-  //    .register-pic {
-  //      img {
-  //        max-width: 90%;
-  //      }
-  //    }
-  //  }
-  //}
-  //
-  //.landing-page {
-  //  margin-top: 70px;
-  //  section {
-  //    width: 90%;
-  //  }
-  //
-  //  h1 {
-  //    font-size: 26px;
-  //  }
-  //}
 }
 
-//@media (max-width: 890px) {
-//  .carousel {
-//    .carousel-overlay.with-headline {
-//      .carousel-heading {
-//        font-size: 46px;
-//      }
-//    }
-//  }
-//
-//  .demo-container {
-//    .demo-row {
-//      margin: 0 -5px;
-//      .demo-block {
-//        padding: 0 5px;
-//      }
-//    }
-//  }
-//}
-
-//@media (min-width: 768px) and (max-width: 991px) {
-//  .team-block {
-//    .member-pic {
-//      width: 130px;
-//      height: 130px;
-//    }
-//
-//    .member-name,
-//    .member-social li .fa {
-//      font-size: 18px;
-//    }
-//  }
-//}
-
-//@media (max-width: 768px) {
-//  h1 {
-//    @include text-gradient(-webkit-linear-gradient(left, black, white 100%));
-//  }
-//
-//  .landing-page {
-//    section {
-//      padding: 25px 0;
-//    }
-//
-//    .flex-row {
-//      display: block;
-//      &.flex-gutter {
-//        margin: 0;
-//      }
-//      & > [class^="flex-item-"] {
-//        max-width: 100%;
-//        padding: 0;
-//        &:not(:last-child) {
-//          margin-bottom: 25px;
-//        }
-//      }
-//    }
-//
-//    .install-btn {
-//      display: block;
-//      width: 300px;
-//      margin: 0 auto;
-//      text-align: center;
-//    }
-//
-//    .video-cont {
-//      height: 300px;
-//    }
-//
-//    .customer-reviews {
-//      blockquote {
-//        font-size: 18px;
-//      }
-//    }
-//  }
-//}
+@media (max-width: 991px) and (min-height: 800px) {
+  h1 {
+    font-size: 60px;
+    line-height: 1.2;
+  }
+}
 
 @media (max-width: 767px) {
   body {
@@ -598,132 +400,6 @@
       padding-bottom: 20px;
     }
   }
-
-  //#video-block {
-  //  width: 500px;
-  //}
-  //
-  //.slides {
-  //  height: 300px;
-  //}
-  //
-  //.carousel {
-  //  height: 300px;
-  //  .carousel-overlay.with-headline {
-  //    .carousel-heading {
-  //      font-size: 36px;
-  //      line-height: 1.5;
-  //    }
-  //  }
-  //}
-  //
-  //.challenges {
-  //  padding: 0;
-  //  .challenges-block {
-  //    &:not(:last-child) {
-  //      margin: 0 0 20px;
-  //    }
-  //
-  //    .challenges-block-inner {
-  //      .img-block {
-  //        @include flex-width(0 0 130px, 130px);
-  //        img {
-  //          max-width: 100px;
-  //        }
-  //      }
-  //
-  //      .cont-block {
-  //        font-size: 14px;
-  //        text-align: justify;
-  //      }
-  //
-  //      blockquote {
-  //        &:before,
-  //        &:after {
-  //          font-size: 26px;
-  //        }
-  //      }
-  //    }
-  //  }
-  //}
-  //
-  //#solutions {
-  //  section {
-  //    padding: 10px 20px 0;
-  //    h1 {
-  //      font-size: 24px;
-  //    }
-  //
-  //    .solution:not(:last-child) {
-  //      margin: 0 0 15px;
-  //    }
-  //
-  //    .solution-cont {
-  //      font-size: 15px;
-  //      width: calc(100% - 130px);
-  //      text-align: justify;
-  //      h3 {
-  //        font-size: 16px;
-  //        margin: 15px 0 0;
-  //      }
-  //    }
-  //
-  //    img {
-  //      width: 100px;
-  //    }
-  //  }
-  //}
-  //
-  //
-  //.team-block {
-  //  flex-flow: wrap;
-  //  -webkit-flex-flow: wrap;
-  //  padding: 0;
-  //  .team-member {
-  //    flex: 0 0 50%;
-  //    -webkit-flex: 0 0 50%;
-  //    max-width: 50%;
-  //    margin: 50px 0 0;
-  //  }
-  //}
-  //
-  //#contact {
-  //  .contact-inner {
-  //    margin: 30px 0 0;
-  //  }
-  //}
-  //
-  //#demo {
-  //  .demos-block {
-  //    margin: 0;
-  //    .demo-block {
-  //      padding: 0 15px;
-  //      .demo-block-inner {
-  //        &:after {
-  //          background-size: auto 50%;
-  //        }
-  //      }
-  //    }
-  //  }
-  //}
-  //
-  //.demo-container {
-  //  .demo-row {
-  //    flex-direction: column;
-  //    -webkit-flex-direction: column;
-  //    margin: 0;
-  //    padding: 0;
-  //    .demo-block {
-  //      @include flex-width(0 0 auto, 70%);
-  //      padding: 0;
-  //      align-self: center;
-  //      -webkit-align-self: center;
-  //      &:not(:last-child) {
-  //        margin: 0 0 50px;
-  //      }
-  //    }
-  //  }
-  //}
 
   #home {
     margin: 0 0 20px;
@@ -775,13 +451,12 @@
       }
     }
   }
+}
 
-  //#api {
-  //  .home-blocks {
-  //    padding-top: 25px;
-  //    padding-bottom: 25px;
-  //  }
-  //}
+@media (max-width: 767px) and (min-height: 800px) {
+  h1 {
+    font: 50px/1.2 FuturaICG, sans-serif;
+  }
 }
 
 @media (max-width: 680px) {
@@ -807,103 +482,6 @@
 }
 
 @media (max-width: 640px) {
-  //#video-block {
-  //  width: 70%;
-  //  height: 80%;
-  //  top: 30px;
-  //}
-  //
-  //.carousel {
-  //  .carousel-overlay.with-headline {
-  //    .carousel-heading {
-  //      font-size: 32px;
-  //    }
-  //  }
-  //}
-
-  h1 {
-    font-size: 30px;
-    line-height: 60px;
-  }
-
-  //.challenges {
-  //  .challenges-block {
-  //    .challenges-block-inner {
-  //      padding: 0;
-  //      border: 0;
-  //    }
-  //
-  //    &:not(:last-child) {
-  //      .challenges-block-inner {
-  //        padding: 0 0 20px;
-  //        position: relative;
-  //        &:after {
-  //          content: '';
-  //          position: absolute;
-  //          left: 50%;
-  //          bottom: 0;
-  //          width: 90%;
-  //          height: 1px;
-  //          background: #1b93f2;
-  //          @include transform(translateX(-50%));
-  //        }
-  //      }
-  //    }
-  //  }
-  //}
-  //
-  //#contact {
-  //  .contact-inner {
-  //    height: auto;
-  //  }
-  //
-  //  #googleMap {
-  //    height: 300px;
-  //  }
-  //
-  //  .contact-form {
-  //    position: static;
-  //    background: transparent;
-  //    padding: 30px 0 0;
-  //    width: 100%;
-  //    .company-info {
-  //      text-align: center;
-  //    }
-  //  }
-  //
-  //  .captcha-block {
-  //    img {
-  //      margin: 0 auto;
-  //      max-width: 300px;
-  //    }
-  //  }
-  //}
-  //
-  //.login {
-  //  .register-blocks {
-  //    padding-bottom: 5px;
-  //    position: relative;
-  //    .register-pic {
-  //      position: absolute;
-  //      opacity: .1;
-  //      right: 0;
-  //      top: 30%;
-  //      @include transform(translateY(-30%) scaleX(-1));
-  //      img {
-  //        max-width: 80%;
-  //      }
-  //    }
-  //
-  //    .register-fields {
-  //      @include flex-width(0 0 100%, 100%);
-  //    }
-  //
-  //    .form-btn {
-  //      text-align: center;
-  //    }
-  //  }
-  //}
-
   .custom-headline-block {
     section {
       padding-top: 10px;
@@ -913,51 +491,6 @@
     }
   }
 }
-
-//@media (min-width: 480px) and (max-width: 640px) {
-//  .team-block {
-//    .member-pic {
-//      width: 160px;
-//      height: 160px;
-//      margin-bottom: 15px;
-//    }
-//
-//    .member-name {
-//      font-size: 20px;
-//    }
-//  }
-//}
-
-//@media (max-width: 560px) {
-//  .slides {
-//    height: 250px;
-//  }
-//
-//  .carousel {
-//    height: 250px;
-//    .carousel-overlay.with-headline {
-//      .carousel-heading {
-//        font-size: 28px;
-//      }
-//    }
-//  }
-//
-//  .landing-page {
-//    h1 {
-//      font-size: 25px;
-//    }
-//  }
-//}
-
-//@media (min-width: 481px) {
-//  #solutions {
-//    section {
-//      .solution-cont {
-//        float: right;
-//      }
-//    }
-//  }
-//}
 
 @media (max-width: 560px) {
   footer {
@@ -981,129 +514,18 @@
   }
 }
 
-@media (max-width: 480px) {
-  //#video-block {
-  //  top: 20px;
-  //}
-  //
-  //.slides {
-  //  height: 200px;
-  //}
-  //
-  //.carousel {
-  //  height: 200px;
-  //  .carousel-overlay.with-headline {
-  //    .carousel-heading {
-  //      font-size: 22px;
-  //    }
-  //  }
-  //}
-  //
-  //.challenges {
-  //  .challenges-block {
-  //    .challenges-block-inner {
-  //      display: block;
-  //      .img-block {
-  //        text-align: center;
-  //        display: block;
-  //        padding: 0 0 20px;
-  //        max-width: none;
-  //        img {
-  //          max-width: 120px;
-  //        }
-  //      }
-  //    }
-  //  }
-  //}
-
+@media (max-width: 560px) and (min-height: 800px) {
   h1 {
-    font-size: 28px;
-    line-height: 55px;
+    font-size: 40px;
   }
-
-  //#solutions {
-  //  section {
-  //    .solution:not(:last-child) {
-  //      margin: 0 0 10px;
-  //    }
-  //
-  //    .solution-img {
-  //      margin: 0 10px 10px 0;
-  //      img {
-  //        width: 80px;
-  //      }
-  //    }
-  //
-  //    .solution-cont {
-  //      width: 100%;
-  //      font-size: 14px;
-  //    }
-  //
-  //    h1 {
-  //      font-size: 22px;
-  //    }
-  //  }
-  //}
-  //
-  //.demo-container {
-  //  .demo-row {
-  //    .demo-block {
-  //      @include flex-width(0 0 auto, 90%);
-  //    }
-  //  }
-  //}
 }
 
-//@media (max-width: 479px) {
-//  .team-block {
-//    display: block;
-//    padding: 30px 0 0;
-//    .team-member {
-//      max-width: none;
-//      &:not(:last-child) {
-//        margin: 0 0 50px;
-//      }
-//    }
-//
-//    .member-pic {
-//      margin-bottom: 10px;
-//    }
-//
-//    .member-social {
-//      &:before {
-//        width: 130px;
-//      }
-//    }
-//  }
-//
-//  .landing-page {
-//    .social-links {
-//      label {
-//        display: none;
-//      }
-//    }
-//
-//    .heading-desc {
-//      margin: 15px 0;
-//    }
-//
-//    .customer-reviews {
-//      blockquote {
-//        font-size: 15px;
-//      }
-//    }
-//
-//    .install-btn {
-//      width: 280px;
-//      height: 40px;
-//      line-height: 38px;
-//    }
-//
-//    h1 {
-//      font-size: 23px;
-//    }
-//  }
-//}
+@media (max-width: 560px) and (max-height: 799px) {
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+  }
+}
 
 @media (max-width: 400px) {
   .logo {
@@ -1169,32 +591,13 @@
       }
     }
   }
-
-  //#solutions {
-  //  section {
-  //    h1 {
-  //      font-size: 20px;
-  //      line-height: 55px;
-  //    }
-  //  }
-  //}
-  //
-  //#contact {
-  //  #googleMap {
-  //    height: 250px;
-  //  }
-  //}
-  //
-  //.login {
-  //  .register-blocks {
-  //    .register-pic img {
-  //      max-width: 90%;
-  //    }
-  //  }
-  //}
 }
 
 @media (max-width: 360px) {
+  h1 {
+    font-size: 30px;
+  }
+
   .main-nav {
     margin-right: 10px;
   }
@@ -1250,24 +653,3 @@
     }
   }
 }
-
-//@media (max-width: 360px) {
-//  #contact {
-//    .captcha-block {
-//      img {
-//        margin: 0 auto;
-//        max-width: 100%;
-//      }
-//    }
-//  }
-//}
-
-//@media (max-width: 340px) {
-//  .carousel {
-//    .carousel-overlay.with-headline {
-//      .carousel-heading {
-//        font-size: 22px;
-//      }
-//    }
-//  }
-//}

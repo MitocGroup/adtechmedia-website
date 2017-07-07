@@ -18,9 +18,10 @@
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
   },
   "scripts": {
+    "compile-travis": "bash ../../bin/compile-lib.sh ."
   },
-  "devDependencies": {
-    "yamljs": "^0.2.8"
+  "dependencies": {
+    "js-yaml": "^3.8.4"
   },
   "private": true,
   "preferGlobal": false,

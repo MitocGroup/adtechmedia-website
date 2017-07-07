@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: python2.7
   stage: prod
+  memorySize: 256
   versionFunctions: false
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}

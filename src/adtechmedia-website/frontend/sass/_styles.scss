@@ -165,6 +165,7 @@ header {
 .custom-headline-block {
   @include custom-headline(url('../images/solution.jpg'));
   h1 {
+    text-transform: uppercase;
     color: #fff;
     @include text-gradient( -webkit-linear-gradient(left, white, #add5f4 80%));
     &:after {
@@ -207,9 +208,7 @@ header {
     margin: -50px 0 0 -50px;
     content: '';
     display: block;
-    border-width: 0 3px 0 0;
-    border-style: solid;
-    border-color: #6CB8F5;
+    border-right: 3px solid #6CB8F5;
     border-radius: 50%;
     animation: spin 1s infinite linear;
     -webkit-animation: spin 1s infinite linear;
@@ -218,6 +217,16 @@ header {
 
 .default-bg {
   background: url(../images/hero-wallpaper.png) 0 bottom/cover no-repeat;
+}
+
+.gray-block {
+  background: #EDEDED;
+}
+
+.full-height {
+  margin: 70px 0 0;
+  height: calc(100vh - 70px);
+  padding: 30px 0;
 }
 
 .footer-logo {
