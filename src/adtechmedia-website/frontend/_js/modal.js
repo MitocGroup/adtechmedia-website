@@ -10,6 +10,9 @@ var Modal = (function() {
   var contentDelay = 400; // duration after you click the button and wait for the content to show
 
   var open = function(m, div) {
+    // select the content inside the modal
+    var content = m.querySelector('.modal__content');
+
     function hideDiv() {
       // fadeout div so that it can't be seen when the window is resized
       div.style.opacity = '0';
@@ -17,8 +20,6 @@ var Modal = (function() {
     }
 
     if (!isOpen) {
-      // select the content inside the modal
-      var content = m.querySelector('.modal__content');
       // reveal the modal
       m.classList.add('modal--active');
       // reveal the modal content

@@ -1,4 +1,5 @@
 /* global google, noty, Inputmask, grecaptcha */
+/* eslint-disable no-unused-vars */
 
 /**
  * Init Google Maps

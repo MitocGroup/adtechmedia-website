@@ -83,6 +83,8 @@ config.test.js
 **/src/**/backend/vendor
 **/aws-262
 **/_build/
+**/_js/flatdoc/
+**/_js/swagger/
 
 #####=== DEEP ===#####
 **/src/deep-root-*
