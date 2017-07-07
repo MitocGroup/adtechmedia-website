@@ -1,12 +1,6 @@
 jQuery(function($) {
   'use strict';
 
-  DeepFramework.Kernel.bootstrap(function (kernel) {
-    calculatorActions(
-      DeepFramework.Kernel.config.microservices['adtechmedia-website'].parameters.calculatorEndpoint
-    );
-  });
-
   function calculatorActions(calculatorEndpoint) {
     /**
      * Load, from endpoint, available niches and append to selector
@@ -22,7 +16,9 @@ jQuery(function($) {
             .forEach(function(v) {
               if(v === 'default') {
                 $selector.prepend(
-                  '<option value="' + v + '" selected>' + v.replace(/\b\w/g, function(l){ return l.toUpperCase() }) + '</option>'
+                  '<option value="' + v + '" selected>'
+                    + v.replace(/\b\w/g, function(l){ return l.toUpperCase() })
+                    + '</option>'
                 );
                 return;
               }
@@ -110,5 +106,11 @@ jQuery(function($) {
       });
     }
   }
+
+  DeepFramework.Kernel.bootstrap(function (kernel) {
+    calculatorActions(
+      DeepFramework.Kernel.config.microservices['adtechmedia-website'].parameters.calculatorEndpoint
+    );
+  });
 
 });
