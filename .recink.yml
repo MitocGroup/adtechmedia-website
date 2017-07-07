@@ -61,9 +61,6 @@ $:
     token: 'process.env.CODECLIMATE_REPO_TOKEN'
   snyk:
     token: 'process.env.SNYK_API_TOKEN'
-plugin:                                                                       # Main module definition
-  root: 'plugin/'                                                             # Root package directory (containing package.json and tests)
-  dependencies: ~                                                           # Dependencies to add/overwrite (over $.npm.dependencies config)
 
 ### Add other modules here...
 adtechmedia-website:
