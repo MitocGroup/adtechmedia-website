@@ -9,7 +9,6 @@ var Modal = (function() {
   var w = window;
   var isOpen = false;
   var contentDelay = 400; // duration after you click the button and wait for the content to show
-  var len = trigger.length;
 
   var getId = function(event) {
 
@@ -17,9 +16,8 @@ var Modal = (function() {
     var self = this;
     // get the value of the data-modal attribute from the button
     var modalId = self.dataset.modal;
-    var len = modalId.length;
     // remove the '#' from the string
-    var modalIdTrimmed = modalId.substring(1, len);
+    var modalIdTrimmed = modalId.substring(1, modalId.length);
     // select the modal we want to activate
     var modal = document.getElementById(modalIdTrimmed);
     // execute function that creates the temporary expanding div
@@ -34,7 +32,6 @@ var Modal = (function() {
      * if there isn't a 'fakediv', create one and append it to the button that was
      * clicked. after that execute the function 'moveTrig' which handles the animations.
      */
-
     if (fakediv === null) {
       var div = document.createElement('div');
       div.id = 'modal__temp';

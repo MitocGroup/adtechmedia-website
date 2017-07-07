@@ -1,10 +1,13 @@
-$(function () {
+jQuery(function($) {
+  'use strict';
+
   var $content = $('#mediumPosts');
   var data = {
     rss_url: 'https://blog.adtechmedia.io/feed/'
   };
+
   $.get('https://api.rss2json.com/v1/api.json', data, function (response) {
-    if (response.status == 'ok') {
+    if (response.status === 'ok') {
       var output = '';
       $.each(response.items, function (k, item) {
         var description = $(item.description);
