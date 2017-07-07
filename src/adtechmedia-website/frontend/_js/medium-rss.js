@@ -23,7 +23,7 @@ jQuery(function($) {
         output += '<div class="blog-post">';
         output += '<h3 class="blog-title"><a href="'+ item.link + '" target="_blank">' + item.title + '</a></h3>';
         output += '<p class="post-description">' + trimmedString + '</p>';
-        output += '<div class="post-meta"><span class="post-author"> + url + </span>';
+        output += '<div class="post-meta"><span class="post-author">' + url + '</span>';
         output += '<span class="post-date">' + $.format.date(item.pubDate, 'MMM dd') + '</span></div>';
         output += '</div>';
         return k < 2;

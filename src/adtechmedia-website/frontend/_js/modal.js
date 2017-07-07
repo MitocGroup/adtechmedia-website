@@ -1,5 +1,3 @@
-/* global bodymovin */
-
 var Modal = (function() {
 
   var trigger = $('.modal__trigger'); // what you click to activate the modal

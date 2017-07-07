@@ -4,7 +4,9 @@
   var elSelector = 'header',
     element = document.querySelector(elSelector);
 
-  if (!element) return true;
+  if (!element) {
+    return true;
+  }
 
   var elHeight = 0,
     elTop = 0,
