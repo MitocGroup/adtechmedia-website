@@ -1,3 +1,5 @@
+/* global YT */
+
 jQuery(function($) {
   'use strict';
 

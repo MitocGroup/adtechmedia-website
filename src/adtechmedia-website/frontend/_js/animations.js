@@ -1,3 +1,5 @@
+/* global bodymovin */
+
 var installStepData = {
   container: document.getElementById('install-step'),
   renderer: 'svg',

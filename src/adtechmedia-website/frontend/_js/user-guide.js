@@ -1,3 +1,5 @@
+/* global Flatdoc */
+
 jQuery(function($) {
   'use strict';
 
