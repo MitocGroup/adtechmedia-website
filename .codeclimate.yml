@@ -35,7 +35,7 @@ exclude_paths:
   - '**/frontend/bloomberg'
   - '**/frontend/wapost'
   - '**/frontend/_build'
-  - '**/frontend/js'
+  - '**/frontend/_js'
   - '**/atm-build'
   - '**.spec.js'
   - '**.min.js'
