@@ -4,19 +4,6 @@ section {
   }
 }
 
-.main-page {
-  h1 {
-    text-transform: capitalize;
-    background: transparent;
-    -webkit-text-fill-color: initial;
-    font: 50px/1.2 FuturaICG, sans-serif;
-    color: $link-color;
-    &:after {
-      display: none;
-    }
-  }
-}
-
 .main-slide {
   margin: 70px 0 0;
   background: url('../images/white-shape.png') 0 bottom/100% 200px no-repeat,
@@ -87,35 +74,6 @@ section {
           font-size: 1.2rem;
         }
       }
-    }
-  }
-}
-
-.scroll-down {
-  position: fixed;
-  bottom: 42px;
-  right: 3%;
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  border-radius: 50%;
-  @include transition(box-shadow .2s linear);
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
-  }
-  i {
-    color: $link-color;
-    font-size: 1.6rem;
-    line-height: 50px;
-    @include transform(rotate(0deg));
-    @include transition(transform .8s ease-in-out);
-  }
-
-  &.rotate {
-    i {
-      @include transform(rotate(180deg));
     }
   }
 }

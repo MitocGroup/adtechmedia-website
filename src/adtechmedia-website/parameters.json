@@ -63,7 +63,7 @@
       "type": "string",
       "required": true,
       "example": "https://xxxx.execute-api.us-east-1.amazonaws.com/prod",
-      "default": "https://o9988bjzjh.execute-api.us-east-1.amazonaws.com/prod"
+      "default": "https://40lu53peh7.execute-api.us-east-1.amazonaws.com/prod"
     }
   }
 }
