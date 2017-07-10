@@ -173,19 +173,13 @@ module.exports = function(callback) {
   }
 
   function minifyJsFiles() {
-    const jsPath = path.join(frontendPath, '_js');
+    const srcPath = path.join(frontendPath, 'js/src');
 
-    walkDir(jsPath, /\.js/, sourcePath => {
-      let resultPath = sourcePath.replace('/_js/', '/js/');
-      let sourceJs = fs.readFileSync(sourcePath, { encoding: 'utf8' });
-      let result = uglifyJs.minify(sourceJs);
-      let targetDir = path.dirname(resultPath);
-
-      if (!fs.existsSync(targetDir)) {
-        fs.mkdirSync(targetDir);
-      }
-
-      fs.writeFileSync(resultPath, result.code);
+    walkDir(srcPath, /\.js/, srcFilePath => {
+      let distFilePath = srcFilePath.replace('/js/src/', '/js/dist/');
+      let sourceJs = fs.readFileSync(srcFilePath, {encoding: 'utf8'});
+      let minResult = uglifyJs.minify(sourceJs);
+      fs.writeFileSync(distFilePath, minResult.code);
     });
 
     copyStaticPages();

@@ -52,7 +52,9 @@ deeploy.json*
 # Frontend dependencies
 **/js/vendor/
 src/adtechmedia-website/frontend/_build/
-src/adtechmedia-website/frontend/js
+src/adtechmedia-website/frontend/js/dist/*
+!src/adtechmedia-website/frontend/js/dist/.gitkeep
+!src/adtechmedia-website/frontend/js/vendor
 
 # Tests resources
 GitDiffWalker.js
