@@ -1,0 +1,67 @@
+--- 
+$:
+  preprocess:
+    '$.coverage.compare.storage.options.1.region': 'eval'
+    '$.coverage.compare.storage.options.1.accessKeyId': 'eval'
+    '$.coverage.compare.storage.options.1.secretAccessKey': 'eval'
+    '$.cache.options.1.region': 'eval'
+    '$.cache.options.1.accessKeyId': 'eval'
+    '$.cache.options.1.secretAccessKey': 'eval'
+    '$.codeclimate.token': 'eval'
+    '$.snyk.token': 'eval'
+  cache:
+    driver: 's3'
+    options:
+      - 's3://travis-metadata/cache/AdTechMedia/adtechmedia-website'
+      -
+        region: 'process.env.AWS_DEFAULT_REGION'
+        accessKeyId: 'process.env.AWS_ACCESS_KEY_ID'
+        secretAccessKey: 'process.env.AWS_SECRET_ACCESS_KEY'
+  npm:
+    scripts:
+      - 'compile-travis'
+    dependencies:
+      chai: 'latest'
+  emit:
+    pattern:
+      - /^src.es6\/lib\/.+\.js$/i
+      - /^test\/.+\.js$/i
+    ignore:
+      - /^(.*\/)?node_modules(\/?$)?/i
+      - /^(.*\/)?vendor(\/?$)?/i
+  test:
+    mocha:
+      options:
+        ui: 'bdd'
+        reporter: 'spec'
+    pattern:
+      - /.+\.spec\.js$/i
+    ignore: ~
+  coverage:
+    pattern:
+      - /.+\.js$/i
+    ignore:
+      - /.+\.spec\.js$/i
+      - /^(.*\/)?node_modules(\/?$)?/i
+    reporters:
+      text-summary: ~
+      lcovonly:
+        file: ./coverage.lcov
+    compare:
+      negative-delta: 1
+      storage:                                              
+        driver: 's3'
+        options:
+          - 's3://travis-metadata/coverage/AdTechMedia/adtechmedia-website'
+          -
+            region: 'process.env.AWS_DEFAULT_REGION'
+            accessKeyId: 'process.env.AWS_ACCESS_KEY_ID'
+            secretAccessKey: 'process.env.AWS_SECRET_ACCESS_KEY'
+  codeclimate:
+    token: 'process.env.CODECLIMATE_REPO_TOKEN'
+  snyk:
+    token: 'process.env.SNYK_API_TOKEN'
+
+### Add other modules here...
+adtechmedia-website:
+  root: src/adtechmedia-website
