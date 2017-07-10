@@ -182,13 +182,13 @@ section {
     li {
       float: left;
       margin: 0 7px;
-      a {
-        display: block;
-        background: #F2F2F2;
-        width: 55px;
-        height: 55px;
-        text-align: center;
-      }
+      //a {
+      //  display: block;
+      //  background: #F2F2F2;
+      //  width: 55px;
+      //  height: 55px;
+      //  text-align: center;
+      //}
       i {
         color: #BFBFBF;
         font-size: 28px;
@@ -381,7 +381,7 @@ section {
     @include transform(translateY(-50%) rotate(-180deg));
     opacity: 0;
     visibility: hidden;
-   @include transition(all 0.4s ease-in-out);
+    @include transition(all 0.4s ease-in-out);
     &:before {
       display: inline-block;
       margin-left: 3px;
