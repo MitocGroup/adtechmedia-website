@@ -29,4 +29,4 @@ done
 
 cd "$_pwd" || (echo "Failed to resume to $_pwd" && exit 1)
 cd "$_lib" || (echo "Failed to pwd to lib path $_pwd" && exit 1)
-babel --no-babelrc "$2" --extensions='.js' --plugins="$NPM_GLOBAL_NM/babel-plugin-add-module-exports" --presets="$NPM_GLOBAL_NM/babel-preset-node6" --out-dir="$2.es6" || (echo "Failed to compile $_pwd" && exit 1)
+babel . --extensions='.es6' --plugins="$NPM_GLOBAL_NM/babel-plugin-add-module-exports" --presets="$NPM_GLOBAL_NM/babel-preset-node6" --out-dir="." || (echo "Failed to compile $_pwd" && exit 1)

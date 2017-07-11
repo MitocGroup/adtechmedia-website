@@ -45,8 +45,6 @@ $:
       - /^(.*\/)?node_modules(\/?$)?/i
     reporters:
       text-summary: ~
-      lcovonly:
-        file: ./coverage.lcov
     compare:
       negative-delta: 1
       storage:                                              
@@ -63,5 +61,5 @@ $:
     token: 'process.env.SNYK_API_TOKEN'
 
 ### Add other modules here...
-adtechmedia-website:
-  root: src/adtechmedia-website
+email-send:
+  root: src/adtechmedia-website/backend/src/email/send
