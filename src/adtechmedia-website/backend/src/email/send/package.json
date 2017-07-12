@@ -8,13 +8,16 @@
   ],
   "scripts": {
     "postinstall": "npm run compile",
-    "compile": "deepify compile es6 `pwd`"
+    "compile": "deepify compile es6 `pwd`",
+    "compile-travis": "bash ../../../../../../bin/compile-lib.sh ."
   },
   "dependencies": {
     "deep-framework": "^1.x.x",
     "request": "^2.75.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "aws-sdk": "^2.82.0"
+  },
   "preferGlobal": false,
   "private": true,
   "analyze": true
