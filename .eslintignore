@@ -59,6 +59,7 @@ deeploy.*.json
 
 # Backend files
 **/backend/src/**/*.js
+**/backend/src/**/*spec.js
 **/backend/src/**/*.zip
 **/backend/src/**/*.sfv
 **/backend/src/**/_config.json

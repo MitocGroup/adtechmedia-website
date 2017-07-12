@@ -17,7 +17,6 @@
     "type": "git",
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
   },
-  "scripts": {},
   "dependencies": {
     "js-yaml": "^3.8.4"
   },
