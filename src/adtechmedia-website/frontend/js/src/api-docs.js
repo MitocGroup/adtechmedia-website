@@ -1,26 +1,10 @@
+/* global SwaggerUi, SwaggerClient, noty */
+
 jQuery(function($) {
   'use strict';
 
   var $apiKey = $('#api-key');
   var $apiKeyBtn = $('#api-key-apply');
-
-  /**
-   * Apply user's api key
-   */
-  $apiKeyBtn.on('click', function() {
-    var token = $apiKey[0].value;
-    if(token && token.trim() !== '') {
-      swaggerUi.api.clientAuthorizations.add(
-        'api_key', new SwaggerClient.ApiKeyAuthorization('X-Api-Key', token, 'header')
-      );
-      window.apiKey = token;
-      noty({
-        text: 'Api-key successfully applied',
-        type: 'success',
-        timeout: 3000
-      });
-    }
-  });
 
   /**
    * Configure swagger-ui
@@ -45,6 +29,24 @@ jQuery(function($) {
   });
 
   swaggerUi.load();
+
+  /**
+   * Apply user's api key
+   */
+  $apiKeyBtn.on('click', function() {
+    var token = $apiKey[0].value;
+    if(token && token.trim() !== '') {
+      swaggerUi.api.clientAuthorizations.add(
+        'api_key', new SwaggerClient.ApiKeyAuthorization('X-Api-Key', token, 'header')
+      );
+      window.apiKey = token;
+      noty({
+        text: 'Api-key successfully applied',
+        type: 'success',
+        timeout: 3000
+      });
+    }
+  });
 
   /**
    * Ajax pre-send listener
