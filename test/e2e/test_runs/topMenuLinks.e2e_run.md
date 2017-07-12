@@ -1,0 +1,3 @@
+|Component|Script Name|Test Description|Check Item|Status|Created by|
+|------------|---------------------------------------|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|
+|Footer|footerLinks.e2e.js|Footer links verification|<br>Check "Terms of Use" footer link is displayed on the page footer</br><br>Check "Privacy Policy" footer link is displayed on the page footer</br>|Passed|Alexandr Vozicov|
