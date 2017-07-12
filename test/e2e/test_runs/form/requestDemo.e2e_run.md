@@ -1,3 +1,3 @@
 |Component|Script Name|Test Description|Check Item|Status|Created by|
 |------------|---------------------------------------|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|
-|Form|contactUs.e2e.js|"Contact" form request submit verification|<br>Check "Contact" form request can be submitted by user with valid data</br>|Passed|Alexandr Vozicov|
+|Form|requestDemo.e2e.js|"Request a Demo" form submit verification|<br>Check if user can submit "Request a demo" form with valid email address</br>|Passed|Alexandr Vozicov|
