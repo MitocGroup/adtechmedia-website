@@ -149,10 +149,20 @@ module.exports = function(callback) {
       throw err;
     }
 
-    let json = yaml.load(res);
-    if (env !== 'prod') {
-      json.host = 'api-dev.adtechmedia.io'
+    let subDomain;
+    switch (env) {
+      case 'prod':
+        subDomain = 'api';
+        break;
+      case 'stage':
+        subDomain = 'api-stage';
+        break;
+      default:
+        subDomain = 'api-test';
     }
+
+    let json = yaml.load(res);
+    json.host = `${subDomain}.adtechmedia.io`;
 
     fs.writeFileSync(path.join(frontendPath, 'files/swagger.json'), JSON.stringify(json));
 
@@ -191,6 +201,9 @@ module.exports = function(callback) {
     if (rootMs) {
       let source = path.join(frontendPath, 'static-pages');
       let target = rootMs.autoload.frontend;
+
+      console.log('Minifying homepage html');
+      copyFileSync(`${source}/homepage.html`, `${frontendPath}/index.html`);
 
       copyFolderRecursiveSync(source, target);
     } else {
