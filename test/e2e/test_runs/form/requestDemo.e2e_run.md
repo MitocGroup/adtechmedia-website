@@ -1,0 +1,3 @@
+|Component|Script Name|Test Description|Check Item|Status|Created by|
+|------------|---------------------------------------|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------|
+|Form|requestDemo.e2e.js|"Request a Demo" form submit verification|<br>Check if user can submit "Request a demo" form with valid email address</br>|Passed|Alexandr Vozicov|

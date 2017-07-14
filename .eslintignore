@@ -59,12 +59,14 @@ deeploy.*.json
 
 # Backend files
 **/backend/src/**/*.js
+**/backend/src/**/*spec.js
 **/backend/src/**/*.zip
 **/backend/src/**/*.sfv
 **/backend/src/**/_config.json
 
 # Frontend dependencies
 **/frontend/_build/
+**/frontend/js/vendor/
 
 # Jspm config file
 config.core.js
