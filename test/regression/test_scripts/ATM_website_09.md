@@ -1,6 +1,6 @@
 | ID | Component \ <br> Description  | Designed Steps       |Expected Result     |	Created By \ <br> Last Updated |
 | -- | -- | -- | -- | -- |
-| ATM_9 | ATM CONTACT page <br> <br>  Verifies functionality of AdTechMedia -> CONTACT page | 1. Navigate to https://www-dev.adtechmedia.io/contact | 1. Page is opened on CONTACT         | Alexandr Urita \ <br> 15.06.2017 |
+| ATM_9 | ATM CONTACT page <br> <br>  Verifies functionality of AdTechMedia -> CONTACT page | 1. Navigate to https://www-test.adtechmedia.io/contact | 1. Page is opened on CONTACT         | Alexandr Urita \ <br> 15.06.2017 |
 |       |       | 2. Enter name in the [Name] field |     2. Only plane text is allowed: <br> UPPER case, lower case, numbers <br> <br> No special symbols are allowed |    |  
 |       |       | 3. Enter phone in [Phone] field |       3. Only numbers are allowed to be entered |    |
 |       |      | 4. Enter email in [Email] filed |    4. Email field should verify international email added form. No special symbols should be allowed. Exceptions: @ . | |
