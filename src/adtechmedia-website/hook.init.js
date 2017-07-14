@@ -151,7 +151,7 @@ module.exports = function(callback) {
 
     let json = yaml.load(res);
     if (env !== 'prod') {
-      json.host = 'api-dev.adtechmedia.io'
+      json.host = `api-${(env === 'dev') ? 'test' : env }.adtechmedia.io`;
     }
 
     fs.writeFileSync(path.join(frontendPath, 'files/swagger.json'), JSON.stringify(json));
@@ -191,6 +191,9 @@ module.exports = function(callback) {
     if (rootMs) {
       let source = path.join(frontendPath, 'static-pages');
       let target = rootMs.autoload.frontend;
+
+      console.log('Minifying homepage html');
+      copyFileSync(`${source}/homepage.html`, `${frontendPath}/index.html`);
 
       copyFolderRecursiveSync(source, target);
     } else {
