@@ -3,9 +3,7 @@ var $menuIcon = $('#navTrigger');
 var $demoForm = $('#mc-embedded-subscribe-form');
 var $demoFormSubmit = $('#mc-embedded-subscribe');
 
-$(window).load(function () {
-  $('.loader').fadeOut('slow');
-});
+$('.loader').fadeOut('slow');
 
 function _clearNav() {
   $menuIcon.removeAttr('checked');
