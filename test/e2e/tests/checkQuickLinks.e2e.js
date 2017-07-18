@@ -1,16 +1,17 @@
 import { Selector } from 'testcafe';
+import QuickLink from '../pages/quick-link.po';
+
+const quickLink = new QuickLink();
 
 fixture`Footer quick-links and content verification`
   .page`https://www-test.adtechmedia.io/`;
 
 test('Check "Challenges" quick-link is clickable and valid information is displayed on the page', async t => {
-  const challengesQuickLink = await Selector('.quick-links .clearfix > li:nth-child(1) > a');
-
   await t
     .resizeWindow(1920, 1080)
-    .expect(challengesQuickLink.exists).ok()
-    .hover(challengesQuickLink)
-    .click(challengesQuickLink)
+    .expect(quickLink.challengesQuickLink.exists).ok()
+    .hover(quickLink.challengesQuickLink)
+    .click(quickLink.challengesQuickLink)
 
   const pageElementChallenges = await Selector('.main-slide > section > h1');
 
