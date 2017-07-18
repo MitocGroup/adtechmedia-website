@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-export default class quickLink {
+export default class quickLinks {
   constructor() {
     this.challengesQuickLink = Selector('.quick-links .clearfix > li:nth-child(1) > a');
     this.solutionsQuickLink = Selector('.quick-links .clearfix > li:nth-child(3) > a');

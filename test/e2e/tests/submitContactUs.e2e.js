@@ -1,17 +1,17 @@
 import { Selector } from 'testcafe';
-import ContactForm from '../pages/contact.po';
+import ContactForm from '../pages/contact-page.po';
 
 const contactForm = new ContactForm();
 
-fixture`"Contact" form request submit verification`
-  .page`https://www-test.adtechmedia.io/contact/`;
+fixture`Check "Contact" form request submit`
+  .page`https://www-stage.adtechmedia.io/contact/`;
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
     .resizeWindow(1920, 1080)
     .expect(contactForm.formModal.exists).ok();
 
-    await t
+  await t
     .expect(contactForm.nameField.exists).ok()
     .expect(contactForm.phoneField.exists).ok()
     .expect(contactForm.emailField.exists).ok()

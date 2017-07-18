@@ -1,16 +1,17 @@
 import { Selector } from 'testcafe';
+import QuickLinks from '../pages/quick-links.po';
 
-fixture`Top-menu links and content verification`
-  .page`https://www-test.adtechmedia.io/`;
+const quickLinks = new QuickLinks();
 
-test('Check "Challenges" top-menu link is clickable and valid information is displayed on the page', async t => {
-  const challengesTopMenuLink = await Selector('.clearfix > li:nth-child(1) > a');
+fixture`Check valid links are displayed on "Quick Links" area`
+  .page`https://www-stage.adtechmedia.io/`;
 
+test('Check "Challenges" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
     .resizeWindow(1920, 1080)
-    .expect(challengesTopMenuLink.exists).ok()
-    .hover(challengesTopMenuLink)
-    .click(challengesTopMenuLink)
+    .expect(quickLinks.challengesQuickLink.exists).ok()
+    .hover(quickLinks.challengesQuickLink)
+    .click(quickLinks.challengesQuickLink)
 
   const pageElementChallenges = await Selector('.main-slide > section > h1');
 
@@ -22,14 +23,12 @@ test('Check "Challenges" top-menu link is clickable and valid information is dis
     .expect(pageElementChallenges.innerText).eql('Challenges');
 });
 
-test('Check "Solutions" top-menu link is clickable and valid information is displayed on the page', async t => {
-  const solutionsTopMenuLink = await Selector('.clearfix > li:nth-child(2) > a');
-
+test('Check "Solutions" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
     .resizeWindow(1920, 1080)
-    .expect(solutionsTopMenuLink.exists).ok()
-    .hover(solutionsTopMenuLink)
-    .click(solutionsTopMenuLink)
+    .expect(quickLinks.solutionsQuickLink.exists).ok()
+    .hover(quickLinks.solutionsQuickLink)
+    .click(quickLinks.solutionsQuickLink)
 
   const pageElementSolutions = await Selector('.custom-headline');
 
@@ -41,14 +40,12 @@ test('Check "Solutions" top-menu link is clickable and valid information is disp
     .expect(pageElementSolutions.innerText).eql('SOLUTIONS');
 });
 
-test('Check "API" top-menu link is clickable and valid information is displayed on the page', async t => {
-  const apiTopMenuLink = await Selector('.clearfix > li:nth-child(3) > a');
-
+test('Check "API" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
     .resizeWindow(1920, 1080)
-    .expect(apiTopMenuLink.exists).ok()
-    .hover(apiTopMenuLink)
-    .click(apiTopMenuLink)
+    .expect(quickLinks.apiQuickLink.exists).ok()
+    .hover(quickLinks.apiQuickLink)
+    .click(quickLinks.apiQuickLink)
 
   const pageElementApiFirst = await Selector('.flex-item-4:nth-child(1)');
 
@@ -66,7 +63,7 @@ test('Check "API" top-menu link is clickable and valid information is displayed 
       selectorTimeout: 5000,
       visibilityCheck: true,
     }).visible).ok()
-    .expect(pageElementApiSecond.innerText).eql('\nSee what APIs we have on offer, including extensive documentation. Sign in to manage your subscriptions, see your current usage, get your API Key, and test against our live API.\n MORE\n');
+    .expect(pageElementApiSecond.innerText).eql('\nSee what APIs we have on offer, including extensive documentation. Sign in to manage your subscriptions, see your current usage, get your API Key, and test against our live API.\n MORE\n')
 
   const pageElementApiThird = await Selector('.flex-item-4:nth-child(3)');
 
@@ -78,14 +75,12 @@ test('Check "API" top-menu link is clickable and valid information is displayed 
     .expect(pageElementApiThird.innerText).eql('\nReady to get started? This is the place that answers all your questions. We\'ll have you up and running in no time. Let\'s get started!\n MORE\n');
 });
 
-test('Check "Team" top-menu link is clickable and valid information is displayed on the page', async t => {
-  const teamTopMenuLink = await Selector('.clearfix > li:nth-child(4) > a');
-
+test('Check "Team" quick-link link is clickable and valid information is displayed on the page', async t => {
   await t
     .resizeWindow(1920, 1080)
-    .expect(teamTopMenuLink.exists).ok()
-    .hover(teamTopMenuLink)
-    .click(teamTopMenuLink)
+    .expect(quickLinks.teamQuickLink.exists).ok()
+    .hover(quickLinks.teamQuickLink)
+    .click(quickLinks.teamQuickLink)
 
   const pageElementTeam = await Selector('.custom-headline-block');
 
@@ -97,14 +92,12 @@ test('Check "Team" top-menu link is clickable and valid information is displayed
     .expect(pageElementTeam.innerText).eql('TEAM\nWe are a team of highly skilled and very passioned product engineers who dedicated years of building high quality technical solutions that solve large scale business problems.\n');
 });
 
-test('Check "Contact" top-menu link is clickable and valid information is displayed on the page', async t => {
-  const contactTopMenuLink = await Selector('.clearfix > li:nth-child(5) > a');
-
+test('Check "Contact" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
     .resizeWindow(1920, 1080)
-    .expect(contactTopMenuLink.exists).ok()
-    .hover(contactTopMenuLink)
-    .click(contactTopMenuLink)
+    .expect(quickLinks.contactQuickLink.exists).ok()
+    .hover(quickLinks.contactQuickLink)
+    .click(quickLinks.contactQuickLink)
 
   const pageElementContact = await Selector('#contact:nth-child(1) > form > h1');
 
@@ -116,14 +109,12 @@ test('Check "Contact" top-menu link is clickable and valid information is displa
     .expect(pageElementContact.innerText).eql('Contact');
 });
 
-test('Check "Blog" top-menu link is clickable and valid information is displayed on the page', async t => {
-  const blogTopMenuLink = await Selector('.clearfix > li:nth-child(6) > a');
-
+test('Check "Blog" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
     .resizeWindow(1920, 1080)
-    .expect(blogTopMenuLink.exists).ok()
-    .hover(blogTopMenuLink)
-    .click(blogTopMenuLink)
+    .expect(quickLinks.blogQuickLink.exists).ok()
+    .hover(quickLinks.blogQuickLink)
+    .click(quickLinks.blogQuickLink)
 
   const pageElementBlog = await Selector('.collectionHeader-blockNav > div > nav > div > li:nth-child(1) > a');
 
