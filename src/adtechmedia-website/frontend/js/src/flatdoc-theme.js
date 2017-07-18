@@ -8,10 +8,10 @@
   $document.on('flatdoc:ready', function() {
     $('.content-root h2, .content-root h3').scrollagent(function(cid, pid, currentElement, previousElement) {
       if (pid) {
-       $("[href='#"+pid+"']").removeClass('active');
+       $('[href="#'+ pid +'"]').removeClass('active');
       }
       if (cid) {
-       $("[href='#"+cid+"']").addClass('active');
+       $('[href="#'+ cid +'"]').addClass('active');
       }
     });
   });
@@ -73,22 +73,7 @@
  * jQuery.scrollagent (c) 2012, Rico Sta. Cruz. MIT License.
  * https://github.com/rstacruz/jquery-stuff/tree/master/scrollagent
  */
-
-// Call $(...).scrollagent() with a callback function.
-//
-// The callback will be called everytime the focus changes.
-//
-// Example:
-//      $("h2").scrollagent(function(cid, pid, currentElement, previousElement) {
-//        if (pid) {
-//          $("[href='#"+pid+"']").removeClass('active');
-//        }
-//        if (cid) {
-//          $("[href='#"+cid+"']").addClass('active');
-//        }
-//      });
 (function($) {
-
   $.fn.scrollagent = function(options, callback) {
     // Account for $.scrollspy(function)
     if (typeof callback === 'undefined') {
@@ -162,20 +147,6 @@
  * Anchorjump (c) 2012, Rico Sta. Cruz. MIT License.
  * http://github.com/rstacruz/jquery-stuff/tree/master/anchorjump
  */
-
-// Makes anchor jumps happen with smooth scrolling.
-//    $("#menu a").anchorjump();
-//    $("#menu a").anchorjump({ offset: -30 });
-//
-//    // Via delegate:
-//    $("#menu").anchorjump({ for: 'a', offset: -30 });
-//
-// You may specify a parent. This makes it scroll down to the parent.
-// Great for tabbed views.
-//     $('#menu a').anchorjump({ parent: '.anchor' });
-//
-// You can jump to a given area.
-//     $.anchorjump('#bank-deposit', options);
 (function($) {
   var defaults = {
     'speed': 500,
@@ -210,7 +181,7 @@
 
     var top = 0;
 
-    if (href != '#') {
+    if (href !== '#') {
       var $area = $(href);
       // Find the parent
       if (options.parent) {
@@ -230,7 +201,7 @@
 
     // Add the location hash via pushState.
     if (window.history.pushState) {
-      window.history.pushState({ href: href }, "", href);
+      window.history.pushState({ href: href }, '', href);
     }
   };
 })(jQuery);

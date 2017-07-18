@@ -1,3 +1,6 @@
+/* global google, noty, Inputmask, grecaptcha */
+/* eslint-disable no-unused-vars */
+
 /**
  * Init Google Maps
  */
@@ -24,8 +27,8 @@
 }());
 
 var contactUsCaptcha;
-var phoneMask = "(999) 999-9999";
-var emailMask = "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]";
+var phoneMask = '(999) 999-9999';
+var emailMask = '*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]';
 var phoneInput = document.getElementById('phone-field');
 var contactForm = {
   phoneElement: phoneInput,
@@ -39,23 +42,6 @@ var contactForm = {
  * Init phone mask
  */
 Inputmask({mask: phoneMask}).mask(phoneInput);
-
-/**
- * Init google captcha widget
- */
-function setCaptchaKey() {
-  DeepFramework.Kernel.bootstrap(function (kernel) {
-    var captchaSiteKey = DeepFramework.Kernel.config.microservices['adtechmedia-website'].parameters.captchaSiteKey;
-
-    contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
-      sitekey: captchaSiteKey,
-      size: 'invisible',
-      callback: function (token) {
-        sendContactUsEmail(token);
-      }
-    });
-  });
-}
 
 /**
  * Execute google captcha
@@ -145,6 +131,23 @@ function sendContactUsEmail(token) {
   grecaptcha.reset(contactUsCaptcha);
 }
 
+/**
+ * Init google captcha widget
+ */
+function setCaptchaKey() {
+  DeepFramework.Kernel.bootstrap(function (kernel) {
+    var captchaSiteKey = DeepFramework.Kernel.config.microservices['adtechmedia-website'].parameters.captchaSiteKey;
+
+    contactUsCaptcha = grecaptcha.render('contact-us-re-captcha', {
+      sitekey: captchaSiteKey,
+      size: 'invisible',
+      callback: function (token) {
+        sendContactUsEmail(token);
+      }
+    });
+  });
+}
+
 jQuery(function($) {
   'use strict';
 
@@ -152,7 +155,8 @@ jQuery(function($) {
     var isPhoneValid = Inputmask.isValid(contactForm.phoneElement.value, {alias: phoneMask});
     var isEmailValid = Inputmask.isValid(contactForm.emailElement.value, {alias: emailMask});
 
-    if (contactForm.nameElement.value.trim() && contactForm.messageElement.value.trim() && isPhoneValid && isEmailValid) {
+    if (contactForm.nameElement.value.trim()
+      && contactForm.messageElement.value.trim() && isPhoneValid && isEmailValid) {
       executeCaptcha();
     } else {
       noty({

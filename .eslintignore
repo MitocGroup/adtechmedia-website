@@ -66,6 +66,7 @@ deeploy.*.json
 
 # Frontend dependencies
 **/frontend/_build/
+**/frontend/js/vendor/
 
 # Jspm config file
 config.core.js
