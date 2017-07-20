@@ -264,12 +264,12 @@ header {
         width: 55px;
         height: 55px;
         text-align: center;
-      }
-      i {
-        color: $gray-color;
-        font-size: 28px;
-        line-height: 55px;
-        @include transition(.3s ease-in-out);
+        &:before {
+          color: $gray-color;
+          font-size: 32px;
+          line-height: 55px;
+          @include transition(.3s ease-in-out);
+        }
       }
     }
 

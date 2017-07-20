@@ -46,7 +46,7 @@
         .play {
           width: 58px;
           height: 58px;
-          i {
+          &:before {
             font-size: 1.8rem;
             line-height: 58px;
           }
@@ -184,7 +184,7 @@
         .play {
           width: 58px;
           height: 58px;
-          i {
+          &:before {
             font-size: 1.8rem;
             line-height: 58px;
           }
@@ -564,7 +564,7 @@
             .play {
               width: 58px;
               height: 58px;
-              i {
+              &:before {
                 font-size: 1.8rem;
                 line-height: 58px;
               }
