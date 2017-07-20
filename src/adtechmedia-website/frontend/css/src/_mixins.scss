@@ -103,7 +103,7 @@
 @mixin hover-color($list1, $list2) {
   @each $current in $list1 {
     $i: index($list1, $current);
-    .#{$current}:hover i {
+    .#{$current}:hover :before {
       color: nth($list2, $i);
     }
   }
