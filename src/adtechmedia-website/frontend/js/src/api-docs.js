@@ -11,7 +11,7 @@ jQuery(function($) {
    * @type {SwaggerUi}
    */
   var swaggerUi = new SwaggerUi({
-    url: '/adtechmedia-website/files/swagger.json',
+    url: '/files/swagger.json',
     dom_id: 'swagger-ui-container',
     supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
     onFailure: function(error) {
