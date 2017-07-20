@@ -1,3 +1,5 @@
+/* eslint-disable radix */
+
 (function($) {
   var $window = $(window);
   var $document = $(document);
@@ -8,10 +10,10 @@
   $document.on('flatdoc:ready', function() {
     $('.content-root h2, .content-root h3').scrollagent(function(cid, pid, currentElement, previousElement) {
       if (pid) {
-       $('[href="#'+ pid +'"]').removeClass('active');
+        $('[href="#'+ pid +'"]').removeClass('active');
       }
       if (cid) {
-       $('[href="#'+ cid +'"]').addClass('active');
+        $('[href="#'+ cid +'"]').addClass('active');
       }
     });
   });
@@ -28,7 +30,9 @@
    */
   $(function() {
     var $card = $('.title-card');
-    if (!$card.length) return;
+    if (!$card.length) {
+      return;
+    }
 
     var $header = $('.header');
     var headerHeight = $header.length ? $header.outerHeight() : 0;
@@ -87,9 +91,9 @@
     // Find the top offsets of each section
     var offsets = [];
     $sections.each(function(i) {
-      var offset = $(this).attr('data-anchor-offset') ?
-        parseInt($(this).attr('data-anchor-offset'), 10) :
-        (options.offset || 0);
+      var offset = $(this).attr('data-anchor-offset')
+        ? parseInt($(this).attr('data-anchor-offset'), 10)
+        : (options.offset || 0);
 
       offsets.push({
         id: $(this).attr('id'),
@@ -121,7 +125,9 @@
       for (var i in offsets) {
         if (offsets.hasOwnProperty(i)) {
           var offset = offsets[i];
-          if ($(offset.el).offset().top + offset.offset < y) latest = offset;
+          if ($(offset.el).offset().top + offset.offset < y) {
+            latest = offset;
+          }
         }
       }
 
@@ -158,20 +164,22 @@
   $.fn.anchorjump = function(options) {
     options = $.extend({}, defaults, options);
 
-    if (options['for']) {
-      this.on('click', options['for'], onClick);
-    } else {
-      this.on('click', onClick);
-    }
-
     function onClick(e) {
       var $a = $(e.target).closest('a');
-      if (e.ctrlKey || e.metaKey || e.altKey || $a.attr('target')) return;
+      if (e.ctrlKey || e.metaKey || e.altKey || $a.attr('target')) {
+        return;
+      }
 
       e.preventDefault();
       var href = $a.attr('href');
 
       $.anchorjump(href, options);
+    }
+
+    if (options['for']) {
+      this.on('click', options['for'], onClick);
+    } else {
+      this.on('click', onClick);
     }
   };
 

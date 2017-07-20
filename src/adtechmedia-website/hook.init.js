@@ -78,27 +78,6 @@ function get(url, cb) {
   });
 }
 
-function copyFileSync(source, target) {
-  let targetFile = target;
-
-  // if target is a directory a new file with the same name will be created
-  if (fs.existsSync(target)) {
-    if (fs.lstatSync(target).isDirectory()) {
-      targetFile = path.join(target, path.basename(source));
-    }
-  }
-
-  // Minify HTML on moving to root-angular
-  let sourceFileContent = fs.readFileSync(source, { encoding: 'utf8' });
-  fs.writeFileSync(targetFile, minify(sourceFileContent, {
-    minifyJS: true,
-    minifyCSS: true,
-    removeComments: true,
-    collapseWhitespace: true,
-    removeStyleLinkTypeAttributes: true
-  }));
-}
-
 const articlesPaths = [
   '/nytimes/www.nytimes.com/2016/07/04/technology',
   '/bloomberg/www.bloomberg.com/news/articles',

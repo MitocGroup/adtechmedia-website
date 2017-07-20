@@ -1,4 +1,5 @@
 /* global DeepFramework */
+/* eslint-disable no-unused-vars */
 
 var url = 'manage.adtechmedia.io';
 
