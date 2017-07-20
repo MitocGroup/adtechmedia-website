@@ -48,15 +48,13 @@ script:
 
 jobs:
   include:
-    - 
-      stage: "Run e2e Tests :clipboard:"
+    - stage: "Run e2e Tests :clipboard:"
       node_js: 8
       script:
         - recink run e2e
       before_install:
         - npm install -g recink
-    - 
-      stage: "Deploy To :cloud:"
+    - stage: "Deploy To :cloud:"
       node_js: 6
       script:
         - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy/deploy.js ${DEPLOY_ENV}; else echo "Skip deploy"; fi
