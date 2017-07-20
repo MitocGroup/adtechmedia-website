@@ -45,6 +45,7 @@ $:
     pattern:
       - /.+\.js$/i
     ignore:
+      - /.+\.e2e\.js$/i
       - /.+\.spec\.js$/i
       - /^(.*\/)?node_modules(\/?$)?/i
     reporters:
