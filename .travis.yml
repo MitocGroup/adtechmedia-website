@@ -35,16 +35,26 @@ env:
     - secure: "ltg/XZzpf8CStzaQ2m+I6dv97AuqjJZsPZbhuDTpGMnk9vJfRU5m+tqJ7YWGQbqpftZeEQR030H8ZivZra34bklsJ3v1wEC79H9GVv5QPA04UT30u0fQBE2rO6+VFae0Pu4EEwh+OF+Ti2cB3DyrDFqV5VZ2xeQvT3AayUd/jWWk6W71ZBmOgeSi52sfa/WtBN5ZpbVAWXI3VdmLhJa8rvZgdDMnP/fvRJrelI5VtkyDDM3CDwAEFOHGDp0pNfuVQyNHV4UHg9txMC4qaLuGfhbULdqfN7F1Wst3OBZG+03o3T9gTK3ElwToVVqwiUeC0sxg412zc1wz48XJfyGZ8pYK7MjsngaxHaqtR51LEjwwyTpuMP3wz1oxNAIuvLO7Jp6hxGtvfRF9AU3XeJgbeY+PboGTEcHtDIN3LrZbREHJd1PKceu2URg5vCpnBB6iM/yEvfiIugo6QZm9xId+eN0Bo6KjLXWaJi3wjPuGFzBpO0YK3gmSdro2Kq3A2v44FXv/0Kn27gFEqAudxINlloDtQF46uwRrOJDuWBG6YxZodbTmn6NKmmWcG6E7+pVglGrGgxdkKfXlmZ+WdxTTPGhAK0+KevS3gYs4lZ6exnGjahSI9W6ekDaPNKPxblQSzeT6JNXwM4jixtzGoLT4DpBTsx4nDVNGXe9Ybw42+1c="
 
 stage: "Run Unit Tests :clipboard:"
-node_js:
-  - 6
-  - 8
-before_install:
-  - npm install -g recink
-  - npm install -g recink-codeclimate
-  - npm install -g recink-snyk
-  - source bin/deploy/init.sh
-script:
-  - recink run unit -c recink-codeclimate -c recink-snyk
+matrix:
+  include:
+    -
+      node_js:
+        - 8
+      before_install:
+        - npm install -g recink
+      script:
+        - recink run e2e
+    -
+      node_js:
+        - 6
+        - 8
+      before_install:
+        - npm install -g recink
+        - npm install -g recink-codeclimate
+        - npm install -g recink-snyk
+        - source bin/deploy/init.sh
+      script:
+        - recink run unit -c recink-codeclimate -c recink-snyk
 
 jobs:
   include:
