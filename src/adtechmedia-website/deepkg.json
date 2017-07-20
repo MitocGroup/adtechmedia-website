@@ -3,7 +3,6 @@
   "name": "adtechmedia-website",
   "description": "This microservice stores the data and code for www.adtechmedia.io",
   "version": "0.0.1",
-  "propertyRoot": false,
-  "frontendEngine": ["angular", "angular1", "vanilla"],
+  "propertyRoot": true,
   "dependencies": {}
 }

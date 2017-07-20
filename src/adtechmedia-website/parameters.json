@@ -58,6 +58,13 @@
       "example": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv",
       "default": "lbcLXanZS2QHLrxmz0jaVipyM5JSHt0wpXxMO8uv"
     },
+    "dashboardUrl": {
+      "displayName": "ATM dashboard URL",
+      "type": "string",
+      "required": true,
+      "example": "https://manage-test.adtechmedia.io",
+      "default": "https://manage-test.adtechmedia.io"
+    },
     "calculatorEndpoint": {
       "displayName": "Losses Calculator endpoint",
       "type": "string",
@@ -65,5 +72,6 @@
       "example": "https://xxxx.execute-api.us-east-1.amazonaws.com/prod",
       "default": "https://40lu53peh7.execute-api.us-east-1.amazonaws.com/prod"
     }
-  }
+  },
+  "globals": {}
 }

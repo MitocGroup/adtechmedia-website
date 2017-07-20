@@ -5,7 +5,7 @@ var installStepData = {
   renderer: 'svg',
   loop: false,
   autoplay: false,
-  path: '/adtechmedia-website/data/install.json'
+  path: '/data/install.json'
 
 };
 var installStep = bodymovin.loadAnimation(installStepData);
@@ -15,7 +15,7 @@ var customizeStepData = {
   renderer: 'svg',
   loop: false,
   autoplay: false,
-  path: '/adtechmedia-website/data/customize.json'
+  path: '/data/customize.json'
 
 };
 var customizeStep = bodymovin.loadAnimation(customizeStepData);
@@ -25,7 +25,7 @@ var payStepData = {
   renderer: 'svg',
   loop: false,
   autoplay: false,
-  path: '/adtechmedia-website/data/pay.json'
+  path: '/data/pay.json'
 
 };
 var payStep = bodymovin.loadAnimation(payStepData);
@@ -35,7 +35,7 @@ var laptopData = {
   renderer: 'svg',
   loop: true,
   autoplay: false,
-  path: '/adtechmedia-website/data/laptop.json'
+  path: '/data/laptop.json'
 
 };
 var laptopAnim = bodymovin.loadAnimation(laptopData);
