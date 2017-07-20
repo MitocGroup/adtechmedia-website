@@ -1,14 +1,19 @@
 import { Selector } from 'testcafe';
+import config from '../config';
+import libs from '../libs';
 import ContactForm from '../pages/contact-page.po';
 
 const contactForm = new ContactForm();
 
 fixture`Check "Contact" form request submit`
-  .page`https://www-stage.adtechmedia.io/contact/`;
+  .page`${config.www_base_host}/contact`
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1920, 1080);
+  });
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
-    .resizeWindow(1920, 1080)
     .expect(contactForm.formModal.exists).ok();
 
   await t
@@ -18,10 +23,10 @@ test('Check "Contact" form request can be submitted by user with valid data', as
     .expect(contactForm.messageField.exists).ok();
 
   await t
-    .typeText(contactForm.nameField, 'Alexandr Vozicov')
-    .typeText(contactForm.phoneField, '999 999 9999')
-    .typeText(contactForm.emailField, 'avozicov@mitocgroup.com')
-    .typeText(contactForm.messageField, 'Automation Testing Contact Form submit');
+    .typeText(contactForm.nameField, libs.chance.name())
+    .typeText(contactForm.phoneField, libs.chance.phone())
+    .typeText(contactForm.emailField, libs.chance.email())
+    .typeText(contactForm.messageField, libs.chance.sentence());
 
   await t
     .hover(contactForm.submitButton)
