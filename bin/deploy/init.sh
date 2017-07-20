@@ -15,13 +15,14 @@ setup_git() {
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 }
 
-setup_aws_sdk() {
+setup_npm() {
+    npm config set depth 0
     npm link aws-sdk
 }
 
-echo "Setup variables"
+echo "Setting up travis variables"
 setup_variables
-echo "Setup git client"
+echo "Setting up git client"
 setup_git
-echo "Setup AWS-SDK"
-setup_aws_sdk
+echo "Setting up NPM config"
+setup_npm
