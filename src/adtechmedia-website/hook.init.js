@@ -225,15 +225,16 @@ module.exports = function(callback) {
   }
 
   function prepareDemoPages() {
+    console.log('Injecting ATM base, SW and ribbon');
 
     articlesPaths.forEach(articlesPath => {
       const demoPagesPath = `${buildPath}/demo-pages`;
       const fullArticlesPath = path.join(demoPagesPath, articlesPath);
-      const ribbonContent = fs.readFileSync(`${__dirname}/assets/nyt-ribbon.html`).toString();
+      const ribbonContent = fs.readFileSync(`${frontendPath}/files/nyt-ribbon.html`).toString();
       const manageBaseUrl = frontendParams.dashboardUrl;
 
       walkDir(fullArticlesPath, /\.html$/, filename => {
-        console.log('Injecting ATM base, SW and ribbon');
+        console.log(`Injecting into article: ${path.basename(filename)}`);
 
         try {
           replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, ribbonContent);
