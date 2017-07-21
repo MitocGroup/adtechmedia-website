@@ -355,8 +355,7 @@
 
   .solutions-block {
     background: url(../images/devices.svg) right -300px bottom/1000px auto no-repeat,
-    url(../images/tree-sm.svg) right 150px bottom bottom/auto 900px no-repeat,
-    //url(../images/tree-sm.svg) right 150px bottom 600px/auto 900px no-repeat,
+    url(../images/tree-sm.svg) right 150px bottom 600px /auto 900px no-repeat,
     url(../images/wallpaper-prefooter.jpg) 0 bottom/auto 400px no-repeat;
     padding: 100px 0 600px;
     .solutions-cont {
@@ -579,8 +578,7 @@
 @media (max-width: 991px) {
   .solutions-block {
     background: url("../images/devices.svg") right -240px bottom/800px auto no-repeat,
-    url("../images/tree-sm.svg") right 50px bottom bottom/auto 1000px no-repeat,
-    //url("../images/tree-sm.svg") right 50px bottom 450px/auto 1000px no-repeat,
+    url("../images/tree-sm.svg") right 50px bottom 450px /auto 1000px no-repeat,
     url("../images/wallpaper-prefooter.jpg") 0 bottom/auto 350px no-repeat;
     height: auto;
     padding: 100px 0 500px;
