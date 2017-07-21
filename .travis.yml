@@ -54,6 +54,13 @@ jobs:
         - recink run e2e
       before_install:
         - npm install -g recink
+      addons:
+        apt:
+          packages:
+            - xvfb
+      install:
+        - 'export DISPLAY='':99.0'''
+        - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
     - stage: "Deploy To :cloud:"
       node_js: 6
       script:
