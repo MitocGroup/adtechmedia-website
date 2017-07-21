@@ -17,6 +17,8 @@ ensure_required_deps() {
         recink-codeclimate
         recink-snyk
         aws-sdk
+        uglifyjs-webpack-plugin
+        mishoo/UglifyJS2#harmony-v2.8.22
         webpack
     );
 
