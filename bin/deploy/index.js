@@ -75,7 +75,7 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 }).then(() => {
 
   console.log('Repointing Route53 to freshly deployed CloudFront');
-  return awsh.getResourceRecordByName('www-test.adtechmedia.io').then(recordSet => {
+  return awsh.getResourceRecordByName(getDomain()).then(recordSet => {
     recordSet.ResourceRecords[0].Value = newAppInfo.cloudfrontDomain;
     return awsh.updateResourceRecord(recordSet);
   });
