@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
+    <title>Title</title>
+
+    <style>
+        .loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:translateX(-50%) translateY(-50%);
+            -webkit-transform:translateX(-50%) translateY(-50%);
+        }
+
+        .loading img {
+            max-width: none
+        }
+    </style>
+    
+    <deep-favicon/>
+    <deep-version/>
+    <deep-deploy-id/>
+    <deep-root-assets/>
+</head>
+<body>
+    <deep-gtm/>
+    <deep-config/>
+    
+    <div class="loading">
+        <deep-loader/>
+    </div>
+    
+    <script src="/lib/deep-framework.js"></script>
+    <script src="/bootstrap.js"></script>
+</body>
+</html>
