@@ -40,7 +40,15 @@ $:
     ignore: ~
   e2e:
     pattern:                                                                # Files to include
-       - /.+\.e2e\.js$/i
+      #  - /.+\.e2e\.js$/i
+       - assertApiPage.e2e.js
+       - assertFooter.e2e.js
+       - assertHeader.e2e.js
+       - assertHomePage.e2e.js
+       - assertQuickLinks.e2e.js
+       - assertSocialLinks.e2e.js
+       - submitContactUs.e2e.js
+       - submitDemoRequests.e2e.js
   coverage:
     pattern:
       - /.+\.js$/i
