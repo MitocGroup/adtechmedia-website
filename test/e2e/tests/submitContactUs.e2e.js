@@ -26,7 +26,7 @@ test('Check "Contact" form request can be submitted by user with valid data', as
     .typeText(contactForm.nameField, libs.chance.name())
     .typeText(contactForm.phoneField, libs.chance.phone())
     .typeText(contactForm.emailField, libs.chance.email())
-    .typeText(contactForm.messageField, libs.chance.sentence());
+    .typeText(contactForm.messageField, libs.chance.word());
 
   await t
     .hover(contactForm.submitButton)

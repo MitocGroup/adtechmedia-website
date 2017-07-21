@@ -39,10 +39,10 @@ $:
       - /.+\.spec\.js$/i
     ignore: ~
   e2e:
-    pattern:                                                                # Files to include
-      - /.+\.e2e\.js$/i
+    pattern:  
+      - /.+\.e2e\.js$/i                                                              # Files to include
     ignore:
-      - assertQuickLinks.e2e.js
+      # - assertQuickLinks.e2e.js                                                    # Fixining it 
   coverage:
     pattern:
       - /.+\.js$/i
