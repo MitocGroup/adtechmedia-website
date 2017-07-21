@@ -39,9 +39,6 @@ node_js:
   - 6
   - 8
 before_install:
-  - npm install -g recink
-  - npm install -g recink-codeclimate
-  - npm install -g recink-snyk
   - source bin/deploy/init.sh
 script:
   - recink run unit -c recink-codeclimate -c recink-snyk

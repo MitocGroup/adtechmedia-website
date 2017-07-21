@@ -9,6 +9,24 @@ setup_variables() {
     esac
 }
 
+ensure_required_deps() {
+    NPM_BIN=`which npm`
+    REQUIRED_DEPS=(
+        deepify
+        recink
+        recink-codeclimate
+        recink-snyk
+        aws-sdk
+    );
+
+    for DEP in ${REQUIRED_DEPS[@]}; do
+        if [ ! -d "$(${NPM_BIN} root -g)/${DEP}" ]; then
+            echo "Installing missing ${DEP}"
+            ${NPM_BIN} install -g ${DEP} || (echo "Failed to install ${DEP}" && exit 1)
+        fi
+    done
+}
+
 setup_git() {
     git config user.name "Travis CI"
     git config user.email "travis@adtechmedia.io"
@@ -22,6 +40,8 @@ setup_npm() {
 
 echo "Setting up travis variables"
 setup_variables
+echo "Installing required dependencies"
+ensure_required_deps
 echo "Setting up git client"
 setup_git
 echo "Setting up NPM config"
