@@ -17,6 +17,7 @@ ensure_required_deps() {
         recink-codeclimate
         recink-snyk
         aws-sdk
+        webpack
     );
 
     for DEP in ${REQUIRED_DEPS[@]}; do
