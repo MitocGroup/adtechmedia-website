@@ -51,8 +51,8 @@ jobs:
     - stage: "Deploy To :cloud:"
       node_js: 6
       script:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy/deploy.js ${DEPLOY_ENV}; else echo "Skip deploy"; fi
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skip deploy"; fi
       after_success:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then echo "App deplyed"; fi
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then bash bin/deploy/commit.sh; fi
       after_failure:
         - deepify undeploy src --loglevel=debug

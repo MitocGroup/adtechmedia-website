@@ -23,28 +23,14 @@
     }
   },
   "frontend": {
-    "atm|host": {
-      "displayName": "ATM host",
-      "type": "string",
-      "required": true,
-      "example": "https://api-test.adtechmedia.io",
-      "default": "https://api-test.adtechmedia.io"
-    },
-    "atm|swSource": {
+    "swSource": {
       "displayName": "Service Worker source url",
       "type": "string",
       "required": true,
       "example": "https://api-test.adtechmedia.io/atm-core/atm-build/sw.js",
       "default": "https://api-test.adtechmedia.io/atm-core/atm-build/sw.js"
     },
-    "atm|swPath": {
-      "displayName": "Service Worker destination path",
-      "type": "string",
-      "required": true,
-      "example": "sw.js",
-      "default": "sw.js"
-    },
-    "atm|swaggerUrl": {
+    "swaggerUrl": {
       "displayName": "Swagger Specification file url",
       "type": "string",
       "required": true,
