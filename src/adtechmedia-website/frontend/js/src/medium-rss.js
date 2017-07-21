@@ -10,12 +10,14 @@ jQuery(function($) {
     if (response.status === 'ok') {
       var output = '';
       $.each(response.items, function (k, item) {
+        var maxLength = 95;
+        var dots = '...';
         var description = $(item.description);
-        var trimmedString = description[0].innerText;
-        if(!trimmedString) {
-          var innerText = item.description.replace(/<[^>]+>/g, '');
-          var maxLength = 100;
-          trimmedString = innerText.substr(0, maxLength) + '...';
+        var mainCont = description[0].innerText;
+        var trimmedString = mainCont ? mainCont : item.description.replace(/<[^>]+>/g, '');
+
+        if(trimmedString.length > maxLength) {
+          trimmedString = trimmedString.substr(0, maxLength) + dots;
         }
 
         var url = '<a href="https://blog.adtechmedia.io/@MitocGroup" target="_blank">' + item.author + '</a>';
