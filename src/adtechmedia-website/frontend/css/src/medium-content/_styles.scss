@@ -10,8 +10,6 @@
   padding: 0 10px;
   .blog-title {
     font-size: 18px;
-    max-height: 70px;
-    overflow: hidden;
     a {
       color: $base-color;
       transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -26,8 +24,6 @@
     font-size: 16px;
     margin: 10px 0 15px;
     color: rgba(0, 0, 0, 0.65);
-    max-height: 65px;
-    overflow: hidden;
   }
 
   .post-meta {
