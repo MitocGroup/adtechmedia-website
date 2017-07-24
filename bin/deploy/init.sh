@@ -10,6 +10,8 @@ setup_variables() {
 }
 
 ensure_required_deps() {
+    pip install --user awscli > /dev/null
+
     NPM_BIN=`which npm`
     REQUIRED_DEPS=(
         deepify
