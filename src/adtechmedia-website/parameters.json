@@ -27,8 +27,15 @@
       "displayName": "Service Worker source url",
       "type": "string",
       "required": true,
-      "example": "https://api-test.adtechmedia.io/atm-core/atm-build/sw.js",
-      "default": "https://api-test.adtechmedia.io/atm-core/atm-build/sw.js"
+      "example": "https://manage-test.adtechmedia.io/atm-core/atm-build/sw.js",
+      "default": "https://manage-test.adtechmedia.io/atm-core/atm-build/sw.js"
+    },
+    "atmSource": {
+      "displayName": "atm.js source url",
+      "type": "string",
+      "required": true,
+      "example": "https://manage-test.adtechmedia.io/atm-core/atm-build/atm.js",
+      "default": "https://manage-test.adtechmedia.io/atm-core/atm-build/atm.js"
     },
     "swaggerUrl": {
       "displayName": "Swagger Specification file url",

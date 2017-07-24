@@ -229,6 +229,7 @@ module.exports = function(callback) {
 
     articlesPaths.forEach(articlesPath => {
       const swSource = frontendParams.swSource;
+      const atmSource = frontendParams.atmSource;
       const manageBaseUrl = frontendParams.dashboardUrl;
       const fullArticlesPath = path.join(buildPath, 'demo-pages', articlesPath);
       const ribbonContent = fs.readFileSync(`${frontendPath}/files/nyt-ribbon.html`).toString();
@@ -240,6 +241,7 @@ module.exports = function(callback) {
           replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, ribbonContent);
           replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, manageBaseUrl);
           replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, swSource);
+          replaceInFile(filename, /%_ATM_URL_PLACEHOLDER_%/g, atmSource);
         } catch (error) {
           console.error(error);
         }
