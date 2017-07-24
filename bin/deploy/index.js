@@ -89,9 +89,10 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
   updateDeployLog();
   console.log('Deploy finished.');
   clearInterval(timerId);
+  process.exit(0);
 
 }).catch(error => {
-  console.error('Continuous deployment failed: ', error);
+  console.error(`Continuous deployment failed: ${error}`);
   clearInterval(timerId);
   process.exit(1);
 });
@@ -243,7 +244,13 @@ function runChildCmd(cmd) {
     const childCmd = spawn(cmd, { shell: true });
 
     childCmd.stdout.on('data', data => {
-      console.log(data.toString());
+      let regexp = new RegExp('^([1-9]{2}:[1-9]{2}:[1-9]{2}.GMT)', 'g');
+      let log = data.toString();
+
+      // Filter stdout
+      if (regexp.test(log)) {
+        console.log(log);
+      }
     });
 
     childCmd.stderr.on('data', error => {

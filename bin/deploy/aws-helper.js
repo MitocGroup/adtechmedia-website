@@ -34,19 +34,13 @@ class AwsHelper {
     this.cloudfront = new AWS.CloudFront();
   }
 
+  /**
+   * Get s3 object
+   * @param objectKey
+   * @returns {Promise}
+   */
   getS3Object(objectKey) {
-    return new Promise((resolve, reject) => {
-      this.s3.getObject({
-        Bucket: AwsHelper.assetsBucket(),
-        Key: objectKey
-      }, (err, data) => {
-        if (err) {
-          return reject(err.stack);
-        }
-
-        resolve(data);
-      });
-    })
+    return this.s3.getObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
   }
 
   /**
@@ -55,15 +49,7 @@ class AwsHelper {
    * @returns {Promise}
    */
   getDistributionById(id) {
-    return new Promise((resolve, reject) => {
-      this.cloudfront.getDistribution({ Id: id }, (err, data) => {
-        if (err) {
-          return reject(err.stack);
-        }
-
-        resolve(data);
-      });
-    });
+    return this.cloudfront.getDistribution({ Id: id }).promise();
   }
 
   /**
@@ -74,23 +60,17 @@ class AwsHelper {
    * @returns {Promise}
    */
   updateDistributionConfig(distId, distConfig, etag = null) {
-    return new Promise((resolve, reject) => {
-      let params = {
-        Id: distId,
-        DistributionConfig: distConfig
-      };
+    let params = {
+      Id: distId,
+      DistributionConfig: distConfig
+    };
 
-      if (etag) {
-        params['IfMatch'] = etag;
-      }
+    if (etag) {
+      params['IfMatch'] = etag;
+    }
 
-      this.cloudfront.updateDistribution(params, (err, data) => {
-        if (err) {
-          return reject(err.stack);
-        }
-
-        return this.waitForDistributionIsDeployed(distId);
-      });
+    return this.cloudfront.updateDistribution(params).promise().then(() => {
+      return this.waitForDistributionIsDeployed(distId);
     });
   }
 
@@ -126,15 +106,15 @@ class AwsHelper {
    */
   waitForDistributionIsDeployed(distId) {
     return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(`Stop waiting deployed status for: ${distId}`);
+        resolve();
+      }, 600000); // do not wait more than 10 min
+
       this.cloudfront.waitFor('distributionDeployed', {Id: distId}, (err, res) => {
         if (err) {
           return reject(err.stack);
         }
-
-        setTimeout(() => {
-          console.log('Forced waiter resolve', distId);
-          resolve('Forced waiter resolve');
-        }, 15000);
 
         resolve(res);
       });
