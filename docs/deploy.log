@@ -1,3 +1,4 @@
+[2017-07-24T20:30:00.000Z] Env: test, Id: EC2YXXZO19CFJ, Domain: d3lx6v4fwjgj2v.cloudfront.net, Hash: 4a30948f
 [2017-07-24T19:02:00.000Z] Env: prod, Id: E3BUSUUD7GUN08, Domain: dtj8rvvs2jgsz.cloudfront.net, Hash: e3d8ecd7
 [2017-07-24T16:25:00.000Z] Env: test, Id: E19LMA0Z1XUCDG, Domain: d1bf2nn9l0lioz.cloudfront.net, Hash: 758533aa
 [2017-07-21T17:30:00.000Z] Env: stage, Id: E1KC00GL4J56US, Domain: dwtlc2ytx764f.cloudfront.net, Hash: 86f71f28
