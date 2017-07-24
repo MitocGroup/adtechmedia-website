@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APP_PATH=$(dirname $(cd $(dirname $0); pwd -P))
+APP_PATH=$(dirname $(cd $(dirname $0)/../; pwd -P))
 DEPLOY_LOG=${APP_PATH}/docs/deploy.log
 
 ok_msg() {

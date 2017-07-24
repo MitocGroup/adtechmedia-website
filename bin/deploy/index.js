@@ -243,24 +243,25 @@ function runChildCmd(cmd) {
   return new Promise((resolve, reject) => {
     const childCmd = spawn(cmd, { shell: true });
 
-    childCmd.stdout.on('data', data => {
-      let regexp = new RegExp('^([1-9]{2}:[1-9]{2}:[1-9]{2}.GMT)', 'g');
-      let log = data.toString();
-
-      // Filter stdout
-      if (regexp.test(log)) {
-        console.log(log);
-      }
-    });
-
-    childCmd.stderr.on('data', error => {
-      console.error(error.toString());
-    });
+    childCmd.stdout.on('data', data => { logOutput(data.toString()); });
+    childCmd.stderr.on('data', error => { logOutput(error.toString()); });
 
     childCmd.on('exit', code => {
       return (code === 1) ? reject(code) : resolve(code);
     });
   });
+}
+
+/**
+ * Print output (filtered)
+ * @param str
+ */
+function logOutput(str) {
+  const regExp = new RegExp('^([1-9]{2}:[1-9]{2}:[1-9]{2}.GMT)', 'g');
+
+  if (regExp.test(str)) {
+    console.log(str);
+  }
 }
 
 /**

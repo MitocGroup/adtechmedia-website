@@ -22,6 +22,14 @@ class AwsHelper {
   }
 
   /**
+   * Wait timeout
+   * @returns {number}
+   */
+  static waitTimeout() {
+    return 600000; // 10 min
+  }
+
+  /**
    * Constructor
    */
   constructor() {
@@ -105,20 +113,15 @@ class AwsHelper {
    * @returns {Promise}
    */
   waitForDistributionIsDeployed(distId) {
-    return new Promise((resolve, reject) => {
+    let waitFor = this.cloudfront.waitFor('distributionDeployed', {Id: distId}).promise();
+    let forceResolver = new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log(`Stop waiting deployed status for: ${distId}`);
         resolve();
-      }, 600000); // do not wait more than 10 min
-
-      this.cloudfront.waitFor('distributionDeployed', {Id: distId}, (err, res) => {
-        if (err) {
-          return reject(err.stack);
-        }
-
-        resolve(res);
-      });
+      }, AwsHelper.waitTimeout());
     });
+
+    return Promise.race([forceResolver, waitFor]);
   }
 
   /**
