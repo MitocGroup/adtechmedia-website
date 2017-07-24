@@ -1,7 +1,8 @@
-[2017-07-24T19:32:26.055Z] Env: test, Id: E1AN32Q96BR48C, Domain: d28zv8465fxgj5.cloudfront.net, Hash: 7765e4f2
-[2017-07-24T22:20:00.000Z] Env: test, Id: E2GLLE7BX8Z12P, Domain: d27fs66xatnuoj.cloudfront.net, Hash: fdccc091
-[2017-07-24T20:30:00.000Z] Env: test, Id: EC2YXXZO19CFJ, Domain: d3lx6v4fwjgj2v.cloudfront.net, Hash: 4a30948f
-[2017-07-24T19:02:00.000Z] Env: prod, Id: E3BUSUUD7GUN08, Domain: dtj8rvvs2jgsz.cloudfront.net, Hash: e3d8ecd7
-[2017-07-24T16:25:00.000Z] Env: test, Id: E19LMA0Z1XUCDG, Domain: d1bf2nn9l0lioz.cloudfront.net, Hash: 758533aa
+[2017-07-24T20:25:40.000Z] Env: test, Id: E3KDA98IYBSTFH, Domain: d42y4x1qfemi2.cloudfront.net, Hash: 54a7e92f
+[2017-07-24T19:32:26.000Z] Env: test, Id: E1AN32Q96BR48C, Domain: d28zv8465fxgj5.cloudfront.net, Hash: 7765e4f2
+[2017-07-24T19:20:00.000Z] Env: test, Id: E2GLLE7BX8Z12P, Domain: d27fs66xatnuoj.cloudfront.net, Hash: fdccc091
+[2017-07-24T17:30:00.000Z] Env: test, Id: EC2YXXZO19CFJ, Domain: d3lx6v4fwjgj2v.cloudfront.net, Hash: 4a30948f
+[2017-07-24T16:02:00.000Z] Env: prod, Id: E3BUSUUD7GUN08, Domain: dtj8rvvs2jgsz.cloudfront.net, Hash: e3d8ecd7
+[2017-07-24T15:25:00.000Z] Env: test, Id: E19LMA0Z1XUCDG, Domain: d1bf2nn9l0lioz.cloudfront.net, Hash: 758533aa
 [2017-07-21T17:30:00.000Z] Env: stage, Id: E1KC00GL4J56US, Domain: dwtlc2ytx764f.cloudfront.net, Hash: 86f71f28
 [2017-07-18T09:31:00.000Z] Env: test, Id: E35CVDA57SYKSS, Domain: dc0leigc9qphh.cloudfront.net, Hash: 7765e4f2
