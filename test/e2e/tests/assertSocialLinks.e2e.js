@@ -53,7 +53,7 @@ test('Check "Facebook" clickable link is displayed on the page', async t => {
     .click(socialLinks.facebookLink);
 });
 
-test('Check "Facebook" clickable link is displayed on the page', async t => {
+test('Check "YouTube" clickable link is displayed on the page', async t => {
   await t
     .expect(socialLinks.youtubeLink.exists).ok()
     .hover(socialLinks.youtubeLink)

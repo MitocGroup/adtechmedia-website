@@ -30,3 +30,8 @@ test('Check "Watch now" modal is displayed on "Home" page and can be opened by t
     .click(homePage.homeWatchNowModal, { speed: 0.5 })
     .click(homePage.homeWatchNowModalClose, { speed: 0.5 });
 });
+
+
+
+
+

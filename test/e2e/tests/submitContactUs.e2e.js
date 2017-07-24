@@ -1,9 +1,9 @@
 import { Selector } from 'testcafe';
 import config from '../config';
 import libs from '../libs';
-import ContactForm from '../pages/contact-page.po';
+import Contact from '../pages/contact-page.po';
 
-const contactForm = new ContactForm();
+const contact = new Contact();
 
 fixture`Check "Contact" form request submit`
   .page`${config.www_base_host}/contact`
@@ -14,21 +14,21 @@ fixture`Check "Contact" form request submit`
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
-    .expect(contactForm.formModal.exists).ok();
+    .expect(contact.formModal.exists).ok();
 
   await t
-    .expect(contactForm.nameField.exists).ok()
-    .expect(contactForm.phoneField.exists).ok()
-    .expect(contactForm.emailField.exists).ok()
-    .expect(contactForm.messageField.exists).ok();
+    .expect(contact.nameField.exists).ok()
+    .expect(contact.phoneField.exists).ok()
+    .expect(contact.emailField.exists).ok()
+    .expect(contact.messageField.exists).ok();
 
   await t
-    .typeText(contactForm.nameField, libs.chance.name())
-    .typeText(contactForm.phoneField, libs.chance.phone())
-    .typeText(contactForm.emailField, libs.chance.email())
-    .typeText(contactForm.messageField, libs.chance.word());
+    .typeText(contact.nameField, libs.chance.name())
+    .typeText(contact.phoneField, libs.chance.phone())
+    .typeText(contact.emailField, libs.chance.email())
+    .typeText(contact.messageField, libs.chance.word());
 
   await t
-    .hover(contactForm.submitButton)
-    .click(contactForm.submitButton, { speed: 0.5 });
+    .hover(contact.submitButton)
+    .click(contact.submitButton, { speed: 0.5 });
 });

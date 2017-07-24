@@ -41,8 +41,7 @@ $:
     ignore: ~
   e2e:
     pattern:  
-      # - /.+\.e2e\.js$/i   
-    - assertQuickLinks.e2e                                    # Files to include
+      - /.+\.e2e\.js$/i                                     # Files to include
     ignore:
       # - assertQuickLinks.e2e.js                             # Fixining it 
     wait:

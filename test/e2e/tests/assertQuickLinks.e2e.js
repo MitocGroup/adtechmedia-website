@@ -15,7 +15,7 @@ test('Check "Challenges" quick-link is clickable and valid information is displa
   await t
     .expect(quickLinks.challengesQuickLink.exists).ok()
     .hover(quickLinks.challengesQuickLink)
-    .click(quickLinks.challengesQuickLink)
+    .click(quickLinks.challengesQuickLink), { speed: 0.5 }
 
   const pageElementChallenges = await Selector('.main-slide > section > h1');
 
@@ -31,7 +31,7 @@ test('Check "Solutions" quick-link is clickable and valid information is display
   await t
     .expect(quickLinks.solutionsQuickLink.exists).ok()
     .hover(quickLinks.solutionsQuickLink)
-    .click(quickLinks.solutionsQuickLink)
+    .click(quickLinks.solutionsQuickLink), { speed: 0.5 }
 
   const pageElementSolutions = await Selector('.custom-headline');
 
@@ -47,7 +47,7 @@ test('Check "API" quick-link is clickable and valid information is displayed on 
   await t
     .expect(quickLinks.apiQuickLink.exists).ok()
     .hover(quickLinks.apiQuickLink)
-    .click(quickLinks.apiQuickLink)
+    .click(quickLinks.apiQuickLink), { speed: 0.5 }
 
   const pageElementApiFirst = await Selector('.flex-item-4:nth-child(1)');
 
@@ -81,7 +81,7 @@ test('Check "Team" quick-link link is clickable and valid information is display
   await t
     .expect(quickLinks.teamQuickLink.exists).ok()
     .hover(quickLinks.teamQuickLink)
-    .click(quickLinks.teamQuickLink)
+    .click(quickLinks.teamQuickLink), { speed: 0.5 }
 
   const pageElementTeam = await Selector('.custom-headline-block');
 
@@ -97,7 +97,7 @@ test('Check "Contact" quick-link is clickable and valid information is displayed
   await t
     .expect(quickLinks.contactQuickLink.exists).ok()
     .hover(quickLinks.contactQuickLink)
-    .click(quickLinks.contactQuickLink)
+    .click(quickLinks.contactQuickLink), { speed: 0.5 }
 
   const pageElementContact = await Selector('#contact:nth-child(1) > form > h1');
 
@@ -113,7 +113,7 @@ test('Check "Blog" quick-link is clickable and valid information is displayed on
   await t
     .expect(quickLinks.blogQuickLink.exists).ok()
     .hover(quickLinks.blogQuickLink)
-    .click(quickLinks.blogQuickLink)
+    .click(quickLinks.blogQuickLink), { speed: 0.5 }
 
   const pageElementBlog = await Selector('.collectionHeader-blockNav > div > nav > div > li:nth-child(1) > a');
 
