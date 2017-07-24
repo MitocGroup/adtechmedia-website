@@ -15,6 +15,10 @@ let newAppInfo = {};
 
 /* Start continuous deployment script */
 
+const timerId = setInterval(() => {
+  console.log('.');
+}, 60000);
+
 console.log('Installing DEEP microservice');
 runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
@@ -85,9 +89,11 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
   console.log('Updating deploy.log');
   updateDeployLog();
   console.log('Deploy finished.');
+  clearInterval(timerId);
 
 }).catch(error => {
   console.error('Continuous deployment failed: ', error);
+  clearInterval(timerId);
   process.exit(1);
 });
 
