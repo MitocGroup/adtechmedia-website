@@ -131,6 +131,11 @@ class AwsHelper {
           return reject(err.stack);
         }
 
+        setTimeout(() => {
+          console.log('Forced waiter resolve', distId);
+          resolve('Forced waiter resolve');
+        }, 15000);
+
         resolve(res);
       });
     });

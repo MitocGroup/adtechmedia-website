@@ -10,14 +10,13 @@ const AwsHelper = require('./aws-helper');
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
 const awsh = new AwsHelper();
+const timerId = setInterval(() => {
+  console.log('.');
+}, 60000);
 
 let newAppInfo = {};
 
 /* Start continuous deployment script */
-
-const timerId = setInterval(() => {
-  console.log('.');
-}, 60000);
 
 console.log('Installing DEEP microservice');
 runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
