@@ -3,10 +3,14 @@
 setup_variables() {
     export ALLOW_DEPLOY=0
     export DEPLOY_ENV=${TRAVIS_BRANCH}
-    export PAGE_SPEED_URL='https://www-test.adtechmedia.io'
+    export PAGE_SPEED_URL="www.adtechmedia.io"
 
     case ${DEPLOY_ENV} in
-        test | stage | master ) ALLOW_DEPLOY=1 ;;
+        test | stage )
+            ALLOW_DEPLOY=1
+            PAGE_SPEED_URL="www-${DEPLOY_ENV}.adtechmedia.io"
+        ;;
+        master ) ALLOW_DEPLOY=1 ;;
     esac
 }
 

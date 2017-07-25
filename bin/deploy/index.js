@@ -87,7 +87,7 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
   console.log('Updating deploy.log');
   updateDeployLog();
-  console.log('Deploy finished.');
+  console.log('Deploy finished');
   clearInterval(timerId);
   process.exit(0);
 
@@ -257,7 +257,7 @@ function runChildCmd(cmd) {
  * @param str
  */
 function logOutput(str) {
-  const regExp = new RegExp('\d{2}:\d{2}:\d{2}\sGMT');
+  const regExp = new RegExp('\d{2}:\d{2}:\d{2}\s*GMT');
 
   if (regExp.test(str)) {
     console.log(str.trim());
