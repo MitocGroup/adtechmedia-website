@@ -12,11 +12,6 @@ setup_variables() {
         ;;
         master ) ALLOW_DEPLOY=1 ;;
     esac
-
-    echo "~~~~~~"
-    echo ${TRAVIS_EVENT_TYPE}
-    echo "~~~~~~"
-
 }
 
 ensure_required_deps() {
@@ -46,7 +41,7 @@ ensure_required_deps() {
 setup_git() {
     git config user.name "Travis CI"
     git config user.email "travis@adtechmedia.io"
-    git config github.token "${GITHUB_ACCESS_TOKEN}"
+    git remote set-url origin "https://${GITHUB_ACCESS_TOKEN}@github.com/AdTechMedia/adtechmedia-website.git"
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 }
 
@@ -63,3 +58,8 @@ echo "Setting up git client"
 setup_git
 echo "Setting up NPM config"
 setup_npm
+
+git checkout dev
+touch index.html
+git commit -am "Test token"
+git push origin dev
