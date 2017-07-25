@@ -12,6 +12,8 @@ setup_variables() {
         ;;
         master ) ALLOW_DEPLOY=1 ;;
     esac
+
+    if [ ${TRAVIS_PULL_REQUEST} == 'false' ]; then ALLOW_DEPLOY=0; fi
 }
 
 ensure_required_deps() {
@@ -52,13 +54,9 @@ setup_npm() {
 
 echo "Setting up travis variables"
 setup_variables
-#echo "Installing required dependencies"
-#ensure_required_deps
-#echo "Setting up git client"
-#setup_git
-#echo "Setting up NPM config"
-#setup_npm
-
-echo ${TRAVIS_BRANCH}
-echo ${ALLOW_DEPLOY}
-echo ${DEPLOY_HOST}
+echo "Installing required dependencies"
+ensure_required_deps
+echo "Setting up git client"
+setup_git
+echo "Setting up NPM config"
+setup_npm
