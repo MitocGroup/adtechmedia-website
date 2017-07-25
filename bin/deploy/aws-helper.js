@@ -26,7 +26,7 @@ class AwsHelper {
    * @returns {number}
    */
   static waitTimeout() {
-    return 600000; // 10 min
+    return 480000; // 8 min
   }
 
   /**

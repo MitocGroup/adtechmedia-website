@@ -3,12 +3,12 @@
 setup_variables() {
     export ALLOW_DEPLOY=0
     export DEPLOY_ENV=${TRAVIS_BRANCH}
-    export DEPLOY_HOST="www.adtechmedia.io"
+    export DEPLOY_HOST="https://www.adtechmedia.io"
 
     case ${DEPLOY_ENV} in
         test | stage )
             ALLOW_DEPLOY=1
-            DEPLOY_HOST="www-${DEPLOY_ENV}.adtechmedia.io"
+            DEPLOY_HOST="https://www-${DEPLOY_ENV}.adtechmedia.io"
         ;;
         master ) ALLOW_DEPLOY=1 ;;
     esac
@@ -52,9 +52,13 @@ setup_npm() {
 
 echo "Setting up travis variables"
 setup_variables
-echo "Installing required dependencies"
-ensure_required_deps
-echo "Setting up git client"
-setup_git
-echo "Setting up NPM config"
-setup_npm
+#echo "Installing required dependencies"
+#ensure_required_deps
+#echo "Setting up git client"
+#setup_git
+#echo "Setting up NPM config"
+#setup_npm
+
+echo ${TRAVIS_BRANCH}
+echo ${ALLOW_DEPLOY}
+echo ${DEPLOY_HOST}

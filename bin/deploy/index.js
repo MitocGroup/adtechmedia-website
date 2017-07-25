@@ -259,14 +259,15 @@ function updateDeployLog() {
  */
 function runChildCmd(cmd, verbose = false) {
   return new Promise((resolve, reject) => {
+    const isVerbose = verbose;
     const childCmd = spawn(cmd, { shell: true });
 
     childCmd.stdout.on('data', data => {
-      verbose ? data.toString() : logOutput(data.toString());
+      isVerbose ? console.log(data.toString()) : logOutput(data.toString());
     });
 
     childCmd.stderr.on('data', error => {
-      verbose ? error.toString() : logOutput(error.toString());
+      isVerbose ? console.error(error.toString()) : logOutput(error.toString());
     });
 
     childCmd.on('exit', code => {
