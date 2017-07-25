@@ -121,7 +121,7 @@
         a {
           width: 72px;
           height: 72px;
-          i {
+          &:before {
             font-size: 40px;
             line-height: 72px;
           }
@@ -319,7 +319,7 @@
             a {
               width: 70px;
               height: 70px;
-              i {
+              &:before {
                 font-size: 40px;
                 line-height: 70px;
               }
@@ -425,7 +425,7 @@
             a {
               width: 55px;
               height: 55px;
-              i {
+              &:before {
                 font-size: 28px;
                 line-height: 55px;
               }
@@ -469,7 +469,7 @@
             a {
               width: 50px;
               height: 50px;
-              i {
+              &:before {
                 font-size: 26px;
                 line-height: 50px;
               }
@@ -502,7 +502,7 @@
             a {
               width: 45px;
               height: 45px;
-              i {
+              &:before {
                 font-size: 24px;
                 line-height: 45px;
               }
@@ -581,7 +581,7 @@
             a {
               width: 40px;
               height: 40px;
-              i {
+              &:before {
                 font-size: 22px;
                 line-height: 40px;
               }
@@ -625,7 +625,7 @@
             a {
               width: 35px;
               height: 35px;
-              i {
+              &:before {
                 font-size: 20px;
                 line-height: 35px;
               }

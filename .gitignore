@@ -43,7 +43,8 @@ deeploy.json*
 
 # Frontend dependencies
 **/js/vendor/
-src/adtechmedia-website/frontend/_build/
+src/adtechmedia-website/frontend/_build/*
+!src/adtechmedia-website/frontend/_build/.gitkeep
 !src/adtechmedia-website/frontend/js/vendor
 !src/adtechmedia-website/frontend/css/vendor
 

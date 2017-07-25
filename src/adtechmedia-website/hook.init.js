@@ -93,7 +93,7 @@ module.exports = function(callback) {
   const frontendParams = mService.parameters.frontend;
 
   console.log('Downloading latest Swagger Specification file');
-  get(frontendParams.atm.swaggerUrl, (err, res) => {
+  get(frontendParams.swaggerUrl, (err, res) => {
     if (err) {
       throw err;
     }
@@ -225,20 +225,23 @@ module.exports = function(callback) {
   }
 
   function prepareDemoPages() {
+    console.log('Injecting ATM base, SW and ribbon');
 
     articlesPaths.forEach(articlesPath => {
-      const demoPagesPath = `${buildPath}/demo-pages`;
-      const fullArticlesPath = path.join(demoPagesPath, articlesPath);
-      const ribbonContent = fs.readFileSync(`${__dirname}/assets/nyt-ribbon.html`).toString();
+      const swSource = frontendParams.swSource;
+      const atmSource = frontendParams.atmSource;
       const manageBaseUrl = frontendParams.dashboardUrl;
+      const fullArticlesPath = path.join(buildPath, 'demo-pages', articlesPath);
+      const ribbonContent = fs.readFileSync(`${frontendPath}/files/nyt-ribbon.html`).toString();
 
       walkDir(fullArticlesPath, /\.html$/, filename => {
-        console.log('Injecting ATM base, SW and ribbon');
+        console.log(`Injecting into article: ${path.basename(filename)}`);
 
         try {
           replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, ribbonContent);
           replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, manageBaseUrl);
-          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, `${manageBaseUrl}/atm-core/atm-build/sw.js`);
+          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, swSource);
+          replaceInFile(filename, /%_ATM_URL_PLACEHOLDER_%/g, atmSource);
         } catch (error) {
           console.error(error);
         }

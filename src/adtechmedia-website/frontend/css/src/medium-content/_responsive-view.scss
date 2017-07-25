@@ -1,15 +1,3 @@
-@media (min-width: 768px) {
-  .blog-post {
-    .blog-title {
-      height: 70px;
-    }
-
-    .post-description  {
-      height: 65px;
-    }
-  }
-}
-
 @media (min-width: 1025px) {
   .medium-btn-block {
     position: relative;
@@ -39,8 +27,6 @@
 
   .blog-post .blog-title {
     font-size: 22px;
-    height: 85px;
-    max-height: none;
   }
 
   .medium-btn {

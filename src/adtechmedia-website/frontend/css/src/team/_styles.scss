@@ -55,19 +55,13 @@
       @include transform(translateX(-50%));
     }
 
-    li {
-      display: inline-block;
-      a {
-        color: #595959;
-        @include transition(.2s linear);
-        &:hover {
-          color: $link-color;
-        }
-      }
-
-      .fa {
-        font-size: 20px;
-        margin: 15px 10px 0;
+    a {
+      color: #595959;
+      @include transition(.2s linear);
+      font-size: 20px;
+      margin: 15px 10px 0;
+      &:hover {
+        color: $link-color;
       }
     }
   }

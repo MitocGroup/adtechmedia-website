@@ -1,7 +1,8 @@
 import { Selector } from 'testcafe';
 
-export default class topMenu {
+export default class header {
   constructor() {
+    this.logoImage = Selector('.logo-cont');
     this.challengesTopMenuLink = Selector('.clearfix > li:nth-child(1) > a');
     this.solutionsTopMenuLink = Selector('.clearfix > li:nth-child(2) > a');
     this.apiTopMenuLink = Selector('.clearfix > li:nth-child(3) > a');
@@ -9,5 +10,6 @@ export default class topMenu {
     this.contactTopMenuLink = Selector('.clearfix > li:nth-child(5) > a');
     this.blogTopMenuLink = Selector('.clearfix > li:nth-child(6) > a');
     this.requestDemoTopMenuItem = Selector('.custom-menu-link > a');
+    this.topMenuRequestDemoModal = Selector('.modal__trigger');
   }
 };
