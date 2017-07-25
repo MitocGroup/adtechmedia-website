@@ -13,11 +13,6 @@ setup_variables() {
         master ) ALLOW_DEPLOY=1 ;;
     esac
 
-    echo '~~~~~~'
-    echo ${TRAVIS_PULL_REQUEST};
-    echo '~~~~~~'
-
-    if [ ${TRAVIS_PULL_REQUEST} == 'false' ]; then ALLOW_DEPLOY=0; fi
 }
 
 ensure_required_deps() {
@@ -64,3 +59,8 @@ echo "Setting up git client"
 setup_git
 echo "Setting up NPM config"
 setup_npm
+
+git fetch origin dev && git checkout . && git checkout dev
+touch index.html
+git commit -m "#ATM test commit"
+git push origin dev
