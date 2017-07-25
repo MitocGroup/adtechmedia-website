@@ -87,7 +87,7 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 }).then(() => {
 
   console.log('Checkout to dev branch');
-  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev');
+  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev', true);
 
 }).then(() => {
 
@@ -95,16 +95,18 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
   updateDeployLog();
 
   console.log('Committing deploy.log changes');
-  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`);
+  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`, true);
 
 }).then(() => {
 
-  runChildCmd('git push --quiet origin dev').then(code => {
-    if (code === 0) {
-      console.log('Deploy finished!');
-      clearInterval(timerId);
-      process.exit(0);
+  runChildCmd('git push --quiet origin dev', true).then(code => {
+    if (code === 1) {
+      throw 'Error during commit';
     }
+
+    console.log('Deploy finished!');
+    clearInterval(timerId);
+    process.exit(0);
   });
 
 }).catch(error => {
@@ -252,14 +254,20 @@ function updateDeployLog() {
 /**
  * Run child shell command
  * @param cmd
+ * @param verbose
  * @returns {Promise}
  */
-function runChildCmd(cmd) {
+function runChildCmd(cmd, verbose = false) {
   return new Promise((resolve, reject) => {
     const childCmd = spawn(cmd, { shell: true });
 
-    childCmd.stdout.on('data', data => { logOutput(data.toString()) });
-    childCmd.stderr.on('data', error => { logOutput(error.toString()); });
+    childCmd.stdout.on('data', data => {
+      verbose ? data.toString() : logOutput(data.toString());
+    });
+
+    childCmd.stderr.on('data', error => {
+      verbose ? error.toString() : logOutput(error.toString());
+    });
 
     childCmd.on('exit', code => {
       return (code === 1) ? reject(code) : resolve(code);
