@@ -59,7 +59,7 @@ setup_git
 echo "Setting up NPM config"
 setup_npm
 
-git checkout dev
+git fetch origin dev && git checkout . && git checkout dev
 touch index.html
 git add .
 git commit -am "Test token"
