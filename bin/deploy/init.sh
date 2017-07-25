@@ -41,6 +41,7 @@ ensure_required_deps() {
 setup_git() {
     git config user.name "Travis CI"
     git config user.email "travis@adtechmedia.io"
+    git config github.token "${GITHUB_ACCESS_TOKEN}"
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 }
 

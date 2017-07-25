@@ -44,16 +44,11 @@ script:
 
 jobs:
   include:
-    - stage: "Deploy To :cloud:"
+    - stage: "Deploy To :cloud: & Page speed :rocket:"
       node_js: 6
       script:
         - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skip deploy"; fi
       after_success:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then bash bin/deploy/commit.sh; fi
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed fi
       after_failure:
         - deepify undeploy src --loglevel=debug
-
-    - stage: "Page speed :rocket:"
-      node_js: 6
-      script:
-        - recink run unit -s emit -c recink-pagespeed

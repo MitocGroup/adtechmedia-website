@@ -9,6 +9,7 @@ const AwsHelper = require('./aws-helper');
 
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
+const logPath = path.join(appPath, 'docs/deploy.log');
 const awsh = new AwsHelper();
 const timerId = setInterval(() => {
   console.log('.');
@@ -85,11 +86,26 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
 }).then(() => {
 
+  console.log('Checkout to dev branch');
+  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev');
+
+}).then(() => {
+
   console.log('Updating deploy.log');
   updateDeployLog();
-  console.log('Deploy finished');
-  clearInterval(timerId);
-  process.exit(0);
+
+  console.log('Committing deploy.log changes');
+  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`);
+
+}).then(() => {
+
+  runChildCmd('git push --quiet origin dev').then(code => {
+    if (code === 0) {
+      console.log('Deploy finished!');
+      clearInterval(timerId);
+      process.exit(0);
+    }
+  });
 
 }).catch(error => {
   console.error(`Continuous deployment failed: ${error}`);
@@ -225,7 +241,6 @@ function updateDeeployJson() {
  */
 function updateDeployLog() {
   const date = new Date().toISOString();
-  const logPath = path.join(appPath, 'docs/deploy.log');
   let logRows = fs.readFileSync(logPath).toString().split('\n');
 
   logRows.unshift(
