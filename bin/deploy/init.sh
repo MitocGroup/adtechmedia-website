@@ -61,5 +61,6 @@ setup_npm
 
 git checkout dev
 touch index.html
+git add .
 git commit -am "Test token"
 git push origin dev
