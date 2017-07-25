@@ -3,6 +3,7 @@
 setup_variables() {
     export ALLOW_DEPLOY=0
     export DEPLOY_ENV=${TRAVIS_BRANCH}
+    export PAGE_SPEED_URL='https://www-test.adtechmedia.io'
 
     case ${DEPLOY_ENV} in
         test | stage | master ) ALLOW_DEPLOY=1 ;;
@@ -16,8 +17,9 @@ ensure_required_deps() {
     REQUIRED_DEPS=(
         deepify
         recink
-        recink-codeclimate
         recink-snyk
+        recink-pagespeed
+        recink-codeclimate
         aws-sdk
         uglifyjs-webpack-plugin
         mishoo/UglifyJS2#harmony-v2.8.22
