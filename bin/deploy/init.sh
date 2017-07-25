@@ -13,6 +13,10 @@ setup_variables() {
         master ) ALLOW_DEPLOY=1 ;;
     esac
 
+    echo '~~~~~~'
+    echo ${TRAVIS_PULL_REQUEST};
+    echo '~~~~~~'
+
     if [ ${TRAVIS_PULL_REQUEST} == 'false' ]; then ALLOW_DEPLOY=0; fi
 }
 
