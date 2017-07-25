@@ -62,5 +62,5 @@ setup_npm
 git fetch origin dev && git checkout . && git checkout dev
 touch index.html
 git add .
-git commit -am "Test token"
+git commit -am "#ATM-WEB Revert token [skip ci]"
 git push origin dev
