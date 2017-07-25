@@ -18,84 +18,94 @@ let newAppInfo = {};
 
 /* Start continuous deployment script */
 
-console.log('Installing DEEP microservice');
-runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
+getOldDistributionIds().then(ids => {
+  // promises.push(ids.map(id => {
+  //   return handleOldDistribution(id);
+  // }));
+  //
+  // return Promise.all(promises)
 
-  console.log('Updating deeploy.json');
-  updateDeeployJson();
-
-  console.log('Updating .parameters.json');
-  return awsh.getS3Object(`adtechmedia-website/${process.env.DEPLOY_ENV}/.parameters.json`).then(data => {
-    fs.writeFileSync(path.join(srcPath, 'adtechmedia-website', '.parameters.json'), data.Body.toString());
-    return Promise.resolve();
-  });
-
-}).then(() => {
-
-  console.log('Deploying application');
-  return runChildCmd(`cd ${srcPath} && deepify deploy --loglevel=debug`).then(() => {
-    newAppInfo = getNewApplicationInfo();
-    return Promise.resolve();
-  });
-
-}).then(() => {
-
-  console.log('Configuring previously deployed CloudFronts');
-  let promises = [];
-  promises.push(awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId));
-
-  return getOldDistributionIds().then(ids => {
-    promises.push(ids.map(id => {
-      return handleOldDistribution(id);
-    }));
-
-    return Promise.all(promises)
-  });
-
-}).then(() => {
-
-  console.log('Configuring freshly deployed CloudFront');
-  return awsh.getDistributionById(newAppInfo.cloudfrontId).then(distInfo => {
-    const id = distInfo.Distribution.Id;
-    const etag = distInfo.ETag;
-    const config = distInfo.Distribution.DistributionConfig;
-
-    config.Aliases = {
-      Quantity: 1,
-      Items: [getDomain()]
-    };
-    config.ViewerCertificate = {
-      SSLSupportMethod: 'sni-only',
-      ACMCertificateArn: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
-      MinimumProtocolVersion: 'TLSv1',
-      Certificate: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
-      CertificateSource: 'acm'
-    };
-
-    return awsh.updateDistributionConfig(id, config, etag);
-  });
-
-}).then(() => {
-
-  console.log('Repointing Route53 to freshly deployed CloudFront');
-  return awsh.getResourceRecordByName(getDomain()).then(recordSet => {
-    recordSet.ResourceRecords[0].Value = newAppInfo.cloudfrontDomain;
-    return awsh.updateResourceRecord(recordSet);
-  });
-
-}).then(() => {
-
-  console.log('Updating deploy.log');
-  updateDeployLog();
-  console.log('Deploy finished.');
-  clearInterval(timerId);
-  process.exit(0);
-
-}).catch(error => {
-  console.error(`Continuous deployment failed: ${error}`);
-  clearInterval(timerId);
-  process.exit(1);
+  console.log(ids);
 });
+
+// console.log('Installing DEEP microservice');
+// runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
+//
+//   console.log('Updating deeploy.json');
+//   updateDeeployJson();
+//
+//   console.log('Updating .parameters.json');
+//   return awsh.getS3Object(`adtechmedia-website/${process.env.DEPLOY_ENV}/.parameters.json`).then(data => {
+//     fs.writeFileSync(path.join(srcPath, 'adtechmedia-website', '.parameters.json'), data.Body.toString());
+//     return Promise.resolve();
+//   });
+//
+// }).then(() => {
+//
+//   console.log('Deploying application');
+//   return runChildCmd(`cd ${srcPath} && deepify deploy --loglevel=debug`).then(() => {
+//     newAppInfo = getNewApplicationInfo();
+//     return Promise.resolve();
+//   });
+//
+// }).then(() => {
+//
+//   console.log('Configuring previously deployed CloudFronts');
+//   let promises = [];
+//   promises.push(awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId));
+//
+//   return getOldDistributionIds().then(ids => {
+//     promises.push(ids.map(id => {
+//       return handleOldDistribution(id);
+//     }));
+//
+//     return Promise.all(promises)
+//   });
+//
+// }).then(() => {
+//
+//   console.log('Configuring freshly deployed CloudFront');
+//   return awsh.getDistributionById(newAppInfo.cloudfrontId).then(distInfo => {
+//     const id = distInfo.Distribution.Id;
+//     const etag = distInfo.ETag;
+//     const config = distInfo.Distribution.DistributionConfig;
+//
+//     config.Aliases = {
+//       Quantity: 1,
+//       Items: [getDomain()]
+//     };
+//     config.ViewerCertificate = {
+//       SSLSupportMethod: 'sni-only',
+//       ACMCertificateArn: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
+//       MinimumProtocolVersion: 'TLSv1',
+//       Certificate: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
+//       CertificateSource: 'acm'
+//     };
+//
+//     return awsh.updateDistributionConfig(id, config, etag);
+//   });
+//
+// }).then(() => {
+//
+//   console.log('Repointing Route53 to freshly deployed CloudFront');
+//   return awsh.getResourceRecordByName(getDomain()).then(recordSet => {
+//     recordSet.ResourceRecords[0].Value = newAppInfo.cloudfrontDomain;
+//     return awsh.updateResourceRecord(recordSet);
+//   });
+//
+// }).then(() => {
+//
+//   console.log('Updating deploy.log');
+//   updateDeployLog();
+//   console.log('Deploy finished.');
+//   clearInterval(timerId);
+//   process.exit(0);
+//
+// }).catch(error => {
+//   console.error(`Continuous deployment failed: ${error}`);
+//   clearInterval(timerId);
+//   process.exit(1);
+// });
 
 /* End continuous deployment script */
 
@@ -130,10 +140,11 @@ function getOldDistributionIds() {
   }).map(item => item.Id);
 
   return awsh.getListOfActiveDistributions().then(result => {
-    let activeDostIds = result.map(item => item.Id);
+    let activeDistIds = result.map(item => item.Id);
+console.log('activeDistIds', activeDistIds);
 
     return Promise.resolve(prevDistrIds.filter(prevId => {
-      return activeDostIds.indexOf(prevId) !== -1;
+      return activeDistIds.indexOf(prevId) !== -1;
     }));
   });
 }
@@ -257,10 +268,10 @@ function runChildCmd(cmd) {
  * @param str
  */
 function logOutput(str) {
-  const regExp = new RegExp('^([1-9]{2}:[1-9]{2}:[1-9]{2}.GMT)', 'g');
+  const regExp = new RegExp('\d{2}:\d{2}:\d{2}\sGMT');
 
   if (regExp.test(str)) {
-    console.log(str);
+    console.log(str.trim());
   }
 }
 

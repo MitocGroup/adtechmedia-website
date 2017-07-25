@@ -94,10 +94,8 @@ class AwsHelper {
         }
 
         let result = [];
-        let regexp = new RegExp('REMOVE', 'gi');
-
         data.Items.forEach(item => {
-          if (!regexp.test(item.Comment)) {
+          if (!item.Comment.startsWith('REMOVE')) {
             result.push(item);
           }
         });
