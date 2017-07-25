@@ -62,7 +62,7 @@ $:
     token: 'process.env.SNYK_API_TOKEN'
   pagespeed:
     uri:
-      - 'process.env.PAGE_SPEED_URL'
+      - 'process.env.DEPLOY_HOST'
 
 ### Add other modules here...
 email-send:
