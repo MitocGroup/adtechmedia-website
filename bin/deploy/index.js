@@ -243,7 +243,16 @@ function runChildCmd(cmd) {
   return new Promise((resolve, reject) => {
     const childCmd = spawn(cmd, { shell: true });
 
-    childCmd.stdout.on('data', data => { logOutput(data.toString()); });
+    let count = 0;
+    childCmd.stdout.on('data', data => {
+      count++;
+      if (count === 1) {
+        console.log('AAAAAAAAA');
+        console.log(data.toString());
+        console.log('BBBBBBBBB');
+      }
+      console.log(data.toString());
+    });
     childCmd.stderr.on('data', error => { logOutput(error.toString()); });
 
     childCmd.on('exit', code => {
