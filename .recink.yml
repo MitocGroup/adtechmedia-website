@@ -10,6 +10,7 @@ $:
     '$.codeclimate.token': 'eval'
     '$.snyk.token': 'eval'
     '$.e2e.wait.uri.0': 'eval'
+    '$.pagespeed.uri.0': 'eval'
   cache:
     driver: 's3'
     options:
@@ -72,6 +73,9 @@ $:
     token: 'process.env.CODECLIMATE_REPO_TOKEN'
   snyk:
     token: 'process.env.SNYK_API_TOKEN'
+  pagespeed:
+    uri:
+      - 'process.env.PAGE_SPEED_URL'
 
 ### Add other modules here...
 # email-send:
