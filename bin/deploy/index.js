@@ -99,7 +99,7 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
 }).then(() => {
 
-  runChildCmd('git push --quiet origin dev', true).then(code => {
+  runChildCmd('git push origin dev', true).then(code => {
     if (code === 1) {
       throw 'Error during commit';
     }

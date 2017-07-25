@@ -49,6 +49,6 @@ jobs:
       script:
         - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skip deploy"; fi
       after_success:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed fi
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed; fi
       after_failure:
         - deepify undeploy src --loglevel=debug
