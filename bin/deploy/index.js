@@ -19,8 +19,21 @@ let newAppInfo = {};
 
 /* Start continuous deployment script */
 
-console.log('Installing DEEP microservice');
-runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
+isEnvironmentLocked().then(isLocked => {
+  if (isLocked) {
+    console.log('Environment is locked, skipping deploy');
+    exit(1);
+  }
+
+  console.log('Locking environment');
+  return awsh.putS3Object(getLockFileKey());
+
+}).then(() => {
+
+  console.log('Installing DEEP microservice');
+  return runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`)
+
+}).then(() => {
 
   console.log('Updating deeploy.json');
   updateDeeployJson();
@@ -99,20 +112,28 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
 }).then(() => {
 
-  runChildCmd('git push origin dev', true).then(code => {
+  console.log('Pushing deploy.log changes');
+  return runChildCmd('git push origin dev', true).then(code => {
     if (code === 1) {
       throw 'Error during commit';
     }
 
-    console.log('Deploy finished!');
-    clearInterval(timerId);
-    process.exit(0);
+
+  });
+
+}).then(() => {
+
+  console.log('Deploy finished, releasing environment');
+  awsh.deleteS3Object(getLockFileKey()).then(() =>{
+    exit(0);
   });
 
 }).catch(error => {
-  console.error(`Continuous deployment failed: ${error}`);
-  clearInterval(timerId);
-  process.exit(1);
+
+  console.error(`Deployment failed: ${error}, releasing environment`);
+  awsh.deleteS3Object(getLockFileKey()).then(() =>{
+    exit(1);
+  });
 });
 
 /* End continuous deployment script */
@@ -252,6 +273,30 @@ function updateDeployLog() {
 }
 
 /**
+ * Check if environment has concurrent deploys
+ * @returns {Promise}
+ */
+function isEnvironmentLocked() {
+  return new Promise((resolve, reject) => {
+    awsh.getS3Object(getLockFileKey()).then(data => {
+      const lastModified = data.LastModified;
+      const diff = (new Date().getTime() - new Date(lastModified).getTime());
+      const hoursDiff = Math.ceil(diff / (1000 * 60 * 60));
+
+      if (hoursDiff < 24) {
+        resolve(true);
+      } else {
+        awsh.deleteS3Object(getLockFileKey()).then(() => {
+          resolve(false);
+        });
+      }
+    }).catch(err => {
+      (err.code === 'NoSuchKey') ? resolve(false) : reject(err);
+    });
+  });
+}
+
+/**
  * Run child shell command
  * @param cmd
  * @param verbose
@@ -296,4 +341,23 @@ function getDomain() {
   const env = process.env.DEPLOY_ENV || 'test';
 
   return (env !== 'master') ? `www-${env}.adtechmedia.io` : 'www.adtechmedia.io';
+}
+
+/**
+ * Get lock file s3 key
+ * @returns {string}
+ */
+function getLockFileKey() {
+  const env = process.env.DEPLOY_ENV || 'test';
+
+  return `adtechmedia-website/${env}/travis.lock`;
+}
+
+/**
+ * Garbage collection
+ * @param code
+ */
+function exit(code) {
+  clearInterval(timerId);
+  process.exit(code);
 }

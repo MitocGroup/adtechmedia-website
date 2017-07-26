@@ -43,12 +43,27 @@ class AwsHelper {
   }
 
   /**
-   * Get s3 object
    * @param objectKey
    * @returns {Promise}
    */
   getS3Object(objectKey) {
     return this.s3.getObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+  }
+
+  /**
+   * @param objectKey
+   * @returns {Promise}
+   */
+  putS3Object(objectKey) {
+    return this.s3.putObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+  }
+
+  /**
+   * @param objectKey
+   * @returns {Promise}
+   */
+  deleteS3Object(objectKey) {
+    return this.s3.deleteObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
   }
 
   /**
