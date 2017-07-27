@@ -47,9 +47,9 @@ $:
       - assertMenu.e2e.js
       - mobileRequestDemo.e2e.js
     browsers:                                                 # Browsers to run the tests against
-    - nightmare
-    # - firefox
-    # - chrome  
+      - nightmare
+      # - firefox
+      # - chrome  
     wait:
       interval: 500                                            # Interval of running uri checks
       timeout: 60000                                           # Timeout to wait for uri's available
@@ -80,7 +80,7 @@ $:
     token: 'process.env.SNYK_API_TOKEN'
   pagespeed:
     uri: |
-      ['challenges', 'solutions', 'api', 'team', 'contact'].map(item => `${process.env.DEPLOY_HOST}/${item}`);
+      ['challenges', 'solutions', 'api', 'team', 'contact'].map(item => `${process.env.DEPLOY_HOST}/${item}`)
 
 ### Add other modules here...
 # email-send:
