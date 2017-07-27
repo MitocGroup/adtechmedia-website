@@ -54,10 +54,11 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
-  console.log('Configuring previously deployed CloudFronts');
+  console.log('Waiting freshly deployed CloudFront will get status deployed');
   let promises = [];
   promises.push(awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId));
 
+  console.log('Mark old distributions with REMOVE mark');
   return getOldDistributionIds().then(ids => {
     promises.push(ids.map(id => {
       return handleOldDistribution(id);
@@ -86,7 +87,7 @@ isEnvironmentLocked().then(isLocked => {
       CertificateSource: 'acm'
     };
 
-    return awsh.updateDistributionConfig(id, config, etag);
+    return awsh.updateDistributionAndWait(id, config, etag);
   });
 
 }).then(() => {

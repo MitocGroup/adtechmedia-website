@@ -92,7 +92,18 @@ class AwsHelper {
       params['IfMatch'] = etag;
     }
 
-    return this.cloudfront.updateDistribution(params).promise().then(() => {
+    return this.cloudfront.updateDistribution(params).promise();
+  }
+
+  /**
+   * Update distribution config and wait deployed status
+   * @param distId
+   * @param distConfig
+   * @param etag
+   * @returns {Promise}
+   */
+  updateDistributionAndWait(distId, distConfig, etag = null) {
+    return this.updateDistributionConfig.apply(null, arguments).then(() => {
       return this.waitForDistributionIsDeployed(distId);
     });
   }

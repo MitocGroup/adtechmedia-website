@@ -2,6 +2,7 @@
 
 setup_variables() {
     export ALLOW_DEPLOY=0
+    export DEPLOY_PASSED=0
     export DEPLOY_ENV=${TRAVIS_BRANCH}
     export DEPLOY_HOST="https://www.adtechmedia.io"
 
