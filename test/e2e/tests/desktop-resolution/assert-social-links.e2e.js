@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import SocialLinks from '../pages/social-links.po';
+import config from '../../config';
+import SocialLinks from '../../poms/components/social-links.po';
 
 const socialLinks = new SocialLinks();
 
@@ -53,7 +53,7 @@ test('Check "Facebook" clickable link is displayed on the page', async t => {
     .click(socialLinks.facebookLink);
 });
 
-test('Check "Facebook" clickable link is displayed on the page', async t => {
+test('Check "YouTube" clickable link is displayed on the page', async t => {
   await t
     .expect(socialLinks.youtubeLink.exists).ok()
     .hover(socialLinks.youtubeLink)

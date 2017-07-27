@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-export default class header {
+export default class Header {
   constructor() {
     this.logoImage = Selector('.logo-cont');
     this.challengesTopMenuLink = Selector('.clearfix > li:nth-child(1) > a');
