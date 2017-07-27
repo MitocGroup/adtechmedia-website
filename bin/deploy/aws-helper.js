@@ -103,7 +103,7 @@ class AwsHelper {
    * @returns {Promise}
    */
   updateDistributionAndWait(distId, distConfig, etag = null) {
-    return this.updateDistributionConfig.apply(null, arguments).then(() => {
+    return this.updateDistributionConfig.apply(this, arguments).then(() => {
       return this.waitForDistributionIsDeployed(distId);
     });
   }

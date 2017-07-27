@@ -54,11 +54,11 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
-  console.log('Waiting freshly deployed CloudFront will get status deployed');
   let promises = [];
   promises.push(awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId));
 
   console.log('Mark old distributions with REMOVE mark');
+  console.log('Waiting freshly deployed CloudFront will get status deployed');
   return getOldDistributionIds().then(ids => {
     promises.push(ids.map(id => {
       return handleOldDistribution(id);
