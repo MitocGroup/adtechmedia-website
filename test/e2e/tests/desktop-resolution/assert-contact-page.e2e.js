@@ -20,8 +20,3 @@ test('Check "Google Map" is displayed on "Contact" page', async t => {
   await t
     .expect(contact.googleMap.exists).ok();
 });
-
-
-
-
-
