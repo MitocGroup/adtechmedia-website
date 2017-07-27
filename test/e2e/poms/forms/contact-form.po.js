@@ -10,12 +10,4 @@ export default class ContactForm {
     this.submitButton = Selector('#contact-button');
   }
 };
-
-
-
-
-
-
-
-
   
