@@ -3,10 +3,14 @@
 setup_variables() {
     export ALLOW_DEPLOY=0
     export DEPLOY_ENV=${TRAVIS_BRANCH}
-    export PAGE_SPEED_URL='https://www-test.adtechmedia.io'
+    export DEPLOY_HOST="https://www.adtechmedia.io"
 
     case ${DEPLOY_ENV} in
-        test | stage | master ) ALLOW_DEPLOY=1 ;;
+        test | stage )
+            ALLOW_DEPLOY=1
+            DEPLOY_HOST="https://www-${DEPLOY_ENV}.adtechmedia.io"
+        ;;
+        master ) ALLOW_DEPLOY=1 ;;
     esac
 }
 
@@ -37,6 +41,7 @@ ensure_required_deps() {
 setup_git() {
     git config user.name "Travis CI"
     git config user.email "travis@adtechmedia.io"
+    git remote set-url origin "https://${GITHUB_ACCESS_TOKEN}@github.com/AdTechMedia/adtechmedia-website.git"
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 }
 

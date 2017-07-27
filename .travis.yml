@@ -27,7 +27,7 @@ env:
     # CODECLIMATE_REPO_TOKEN=[secure]
     - secure: "QONsxWDu0hlTbrTdM2u1ay2tKsIesz56UKjwNanSD3TyBkAvib2w/BZXZL2QuLkNm4nUYrWGrxDNDn4EQbfNKOvo3d3IUI0W+ZDwrKAGKVa8SOXCiXCuh5gXJnbkuLBAS3Mj+EznZ/GCNieWw+4N3iAjXwUJiaAFvyC1hzNsY3Sh+vDJjjmqJZC63kc8rfO+aWb0oRm1m7rnd6weHJBw8F6M2u4DS9N+zCu1UcOufzalcjh3+8isgwkbHVLVDOtNPdGI/Kv6J+kL66K1yhWlKWlV4IfEoOM4iYpo9vYafeLROLOcTnTHFJ7glZM2HU+83mfSu1RvWwUPVz05o0bF6nkM2Fy+Go+qmQHf7AJ2o3/POVNPpQheCDLDOYyc40jmFdGG8vlXs7Yz88j+Z2u3OD+SY9X33lMQooZnWW8ZkTqOsmhhuCOFjAn3Yk33AfTETn/AOyCfyk2zEQQNWS98IiJGFYfN11JV2lvdmLnZYtVSfwl2Ni752oZB7pHUeOaLcCNtxQiJ9aEHKbSJ0DwJYqD0LBasjQg5Qoj2L113GHnZXQd8qCLlmTvyR0fBA18XPsTj28x0Xujtol8QtuCj9ABSeX7KkAjwwI6dgq3X/b/7TBlLdPVvYwv96y4XCm2exgZggU/uX3CAEsCCacwARAc3akK+ALjgYzu5fto3U18="
     # GITHUB_ACCESS_TOKEN=[secure]
-    - secure: "kDHA9Jv4RjV05pXK1r0z0/uvZd/663H7o1xVPSXC1yLTls2XSiSYP3iVgrt6wWfYW6NKximh3fuecLo9pws19husrdZ8G3ibg/mZptYWhPTNlRc+phiYRyWp9DdInsyr/LZgdzj3PDLMXaMLpXgfw4oE33TMlFiagnIKlKm654gPW0DXIylgLsUVOiY6XwjN/2B8uBtHynGCHcKnc5pFGuUjbppKMtf+iMfd9Sp62C+FIs2VAr2yofnlyABBP1coostW8D4kWswt6F5F2NM9uIipfdy1UrM8T6E9YqozB+TyqNEDBmi5ARSFnqGz0xJugz8d3NHFdbqL+fqEA6l9Nq7sSKZQ5oPiSi4VT6hlAgsJW4c3BcrSfUpZoPnvxC+AI3NtDG4Z0xWCWU6oF7pGPRRQh+Fwrc1XCZEGvsIKKQSpb1L/lY6ln3knvVojZwR9pOj3BxgICkG4Q5rCVudr6R35ERepRj01E6bLK7T7qLbaJyghQaj/FzjiUERXDyJ2T10t39SUuZHVjTXjGoF3t13IGrUmPMNt0ta+BxgZjHO16W/w6QnhbSgpiJWVV9sQtuB8Scak0hv/lksXasd2aigPHXFI4zqzZWT7XgZERHLlHUhmkLDyI6qk437VBPjXEd73GhdFORzAWA7OQtZGCfggUaJh8qRoNhvuyXUiWyo="
+    - secure: "srBWAyZIY44XzHSaWqJq4T70KSopqa1sa6fcPQeIp2lQcog9F2PWQX+0bS7q1USDEasvfWy+kwyZ4OAff+BbzBtz4P+jSDsAN7jGOe2C9YFchq1eTaxM9Uty4V6HRe5zZGgFbleM2W5A5jfnWwiwX3PnCDXE2T1xNmaGY4TrVFulQZ2oEJJMHXf6fhqjEa2JudyRpNzle2ijPxOIRXa/g6+HfSjQW/Y0OHybi7wMVJV2mRM+A1B75z1DoowAZfYDHwSgjQs0r3NCQJCffBJ+lJLl+gl47IRnu0E+y7tscgWjxXlLIPX9SQBiwE9nrcErZwL/QJLBhZMtKofDzZAiZ7xW5FtS8qD6Bho0Sc+qG/BzHRen4eVvTDGPGDNCyr98xaAeLgu0ohPzKLjblgXc/gLMoFly3QDdx1q1wjJBVKZezJhbtOxgjFYGYAuH/gtvkBhzpbhhk3MxGl6bP0ksUf4DB5lhjVVHoccRfDFN14ZDoIMUYF+mwqybdE7WIoHp0JVVbHSMB5JwrUutV0/y7YcwnTRaBGpFB9kLaJheNgl5F74CFiHwns+a4Xl54cvawydWrgBCKtJUx4Bz8tY2muh7gGWAyQLJo/8T74k5e05MkpP9MEwejphFh1Ja0jFP1HlZRj8myZPkmqbk3nmZmIysRV0ULPEExSKH3EKVqWM="
     # SNYK_API_TOKEN=[secure]
     - secure: "JVaYl9zH8UhAoWwQ9/fgY9suezRkYutPazkQjaoFS5oZHLn0CucNQdXDNEslyLMfRYpAsjqoXRjFI8bY4md+8/CIdBiBmfMEVX+Zwue7GrpqqovqW6gIlNnmMX4Xzd1R0sgGzr6cZr2SaAv3ryvN/RX/JzHVOSDjlrZIWrj4GznDLehXZieQC1A4H1VjzHazUSJ5PpQ6Vl3F0rW7MqHyaO6O1EMkHv2LwX6Ojp79d3MwyggjUB2VudnXyOYypP6JKGWv0cMV8N8YbyJM+c8nkxr41EV4lM7Z6s7aA+Z0G00A8V8YSsdLOvh045cxOA7ehu0EWIXxl4umR/V5FzN504YyM0a3ILo9/uan6esFRZGBftY1H5Aww0fw6yORkA2oZhB/fClLNhrNzGl2F//BgVY9yjsPI7vCeX3kZNsf8AtMVMeEENnYqfxv334PNVuddkBE3+XmqJQ9Kxz4nsh7AmMwHx/EnIfpi16YI2xJkb/kdnhb8P9BDUpjXd37tIVvNRdVGKPwzvjCkv4Gl7ZfEetsi904io9sj3KNCi3FQSUJrWb/ck7LGSsdgt0thKvjjavOvJC19FWq97YuU2ouV5+MFnQCCbNrF/62RVhmso7MZEdxewQLOnKKJomPuiHcjeQaDvkOepn7L8ost1OLq5jhh51Zv6gpoCkYc8/jlqA="
     # ATM_CERTIFICATE=[secure]
@@ -63,12 +63,10 @@ jobs:
       node_js: 6
       script:
         - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skip deploy"; fi
-      after_success:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then bash bin/deploy/commit.sh; fi
       after_failure:
         - deepify undeploy src --loglevel=debug
 
     - stage: "Page speed :rocket:"
       node_js: 6
       script:
-        - recink run unit -s emit -c recink-pagespeed
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed; else echo "Skipped pagespeed"; fi

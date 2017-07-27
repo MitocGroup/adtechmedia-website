@@ -9,6 +9,7 @@ const AwsHelper = require('./aws-helper');
 
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
+const logPath = path.join(appPath, 'docs/deploy.log');
 const awsh = new AwsHelper();
 const timerId = setInterval(() => {
   console.log('.');
@@ -18,8 +19,21 @@ let newAppInfo = {};
 
 /* Start continuous deployment script */
 
-console.log('Installing DEEP microservice');
-runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
+isEnvironmentLocked().then(isLocked => {
+  if (isLocked) {
+    console.log('Environment is locked, skipping deploy');
+    exit(1);
+  }
+
+  console.log('Locking environment');
+  return awsh.putS3Object(getLockFileKey());
+
+}).then(() => {
+
+  console.log('Installing DEEP microservice');
+  return runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`)
+
+}).then(() => {
 
   console.log('Updating deeploy.json');
   updateDeeployJson();
@@ -40,10 +54,11 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
 }).then(() => {
 
-  console.log('Configuring previously deployed CloudFronts');
   let promises = [];
   promises.push(awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId));
 
+  console.log('Mark old distributions with REMOVE mark');
+  console.log('Waiting freshly deployed CloudFront will get status deployed');
   return getOldDistributionIds().then(ids => {
     promises.push(ids.map(id => {
       return handleOldDistribution(id);
@@ -72,7 +87,7 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
       CertificateSource: 'acm'
     };
 
-    return awsh.updateDistributionConfig(id, config, etag);
+    return awsh.updateDistributionAndWait(id, config, etag);
   });
 
 }).then(() => {
@@ -85,16 +100,41 @@ runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`).then(() => {
 
 }).then(() => {
 
+  console.log('Checkout to dev branch');
+  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev', true);
+
+}).then(() => {
+
   console.log('Updating deploy.log');
   updateDeployLog();
-  console.log('Deploy finished.');
-  clearInterval(timerId);
-  process.exit(0);
+
+  console.log('Committing deploy.log changes');
+  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`, true);
+
+}).then(() => {
+
+  console.log('Pushing deploy.log changes');
+  return runChildCmd('git push origin dev', true).then(code => {
+    if (code === 1) {
+      throw 'Error during commit';
+    }
+
+
+  });
+
+}).then(() => {
+
+  console.log('Deploy finished, releasing environment');
+  awsh.deleteS3Object(getLockFileKey()).then(() =>{
+    exit(0);
+  });
 
 }).catch(error => {
-  console.error(`Continuous deployment failed: ${error}`);
-  clearInterval(timerId);
-  process.exit(1);
+
+  console.error(`Deployment failed: ${error}, releasing environment`);
+  awsh.deleteS3Object(getLockFileKey()).then(() =>{
+    exit(1);
+  });
 });
 
 /* End continuous deployment script */
@@ -225,7 +265,6 @@ function updateDeeployJson() {
  */
 function updateDeployLog() {
   const date = new Date().toISOString();
-  const logPath = path.join(appPath, 'docs/deploy.log');
   let logRows = fs.readFileSync(logPath).toString().split('\n');
 
   logRows.unshift(
@@ -235,16 +274,47 @@ function updateDeployLog() {
 }
 
 /**
- * Run child shell command
- * @param cmd
+ * Check if environment has concurrent deploys
  * @returns {Promise}
  */
-function runChildCmd(cmd) {
+function isEnvironmentLocked() {
   return new Promise((resolve, reject) => {
+    awsh.getS3Object(getLockFileKey()).then(data => {
+      const lastModified = data.LastModified;
+      const diff = (new Date().getTime() - new Date(lastModified).getTime());
+      const hoursDiff = Math.ceil(diff / (1000 * 60 * 60));
+
+      if (hoursDiff < 24) {
+        resolve(true);
+      } else {
+        awsh.deleteS3Object(getLockFileKey()).then(() => {
+          resolve(false);
+        });
+      }
+    }).catch(err => {
+      (err.code === 'NoSuchKey') ? resolve(false) : reject(err);
+    });
+  });
+}
+
+/**
+ * Run child shell command
+ * @param cmd
+ * @param verbose
+ * @returns {Promise}
+ */
+function runChildCmd(cmd, verbose = false) {
+  return new Promise((resolve, reject) => {
+    const isVerbose = verbose;
     const childCmd = spawn(cmd, { shell: true });
 
-    childCmd.stdout.on('data', data => { logOutput(data.toString()); });
-    childCmd.stderr.on('data', error => { logOutput(error.toString()); });
+    childCmd.stdout.on('data', data => {
+      isVerbose ? console.log(data.toString()) : logOutput(data.toString());
+    });
+
+    childCmd.stderr.on('data', error => {
+      isVerbose ? console.error(error.toString()) : logOutput(error.toString());
+    });
 
     childCmd.on('exit', code => {
       return (code === 1) ? reject(code) : resolve(code);
@@ -257,7 +327,7 @@ function runChildCmd(cmd) {
  * @param str
  */
 function logOutput(str) {
-  const regExp = new RegExp('\d{2}:\d{2}:\d{2}\sGMT');
+  const regExp = /\d{2}:\d{2}:\d{2}/;
 
   if (regExp.test(str)) {
     console.log(str.trim());
@@ -272,4 +342,23 @@ function getDomain() {
   const env = process.env.DEPLOY_ENV || 'test';
 
   return (env !== 'master') ? `www-${env}.adtechmedia.io` : 'www.adtechmedia.io';
+}
+
+/**
+ * Get lock file s3 key
+ * @returns {string}
+ */
+function getLockFileKey() {
+  const env = process.env.DEPLOY_ENV || 'test';
+
+  return `adtechmedia-website/${env}/travis.lock`;
+}
+
+/**
+ * Garbage collection
+ * @param code
+ */
+function exit(code) {
+  clearInterval(timerId);
+  process.exit(code);
 }

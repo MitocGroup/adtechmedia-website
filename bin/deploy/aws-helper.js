@@ -26,7 +26,7 @@ class AwsHelper {
    * @returns {number}
    */
   static waitTimeout() {
-    return 600000; // 10 min
+    return 480000; // 8 min
   }
 
   /**
@@ -43,12 +43,27 @@ class AwsHelper {
   }
 
   /**
-   * Get s3 object
    * @param objectKey
    * @returns {Promise}
    */
   getS3Object(objectKey) {
     return this.s3.getObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+  }
+
+  /**
+   * @param objectKey
+   * @returns {Promise}
+   */
+  putS3Object(objectKey) {
+    return this.s3.putObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+  }
+
+  /**
+   * @param objectKey
+   * @returns {Promise}
+   */
+  deleteS3Object(objectKey) {
+    return this.s3.deleteObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
   }
 
   /**
@@ -77,7 +92,18 @@ class AwsHelper {
       params['IfMatch'] = etag;
     }
 
-    return this.cloudfront.updateDistribution(params).promise().then(() => {
+    return this.cloudfront.updateDistribution(params).promise();
+  }
+
+  /**
+   * Update distribution config and wait deployed status
+   * @param distId
+   * @param distConfig
+   * @param etag
+   * @returns {Promise}
+   */
+  updateDistributionAndWait(distId, distConfig, etag = null) {
+    return this.updateDistributionConfig.apply(this, arguments).then(() => {
       return this.waitForDistributionIsDeployed(distId);
     });
   }
