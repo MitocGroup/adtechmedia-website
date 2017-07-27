@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import Footer from '../pages/footer.po';
+import config from '../../config';
+import Footer from '../../poms/components/footer.po';
 
 const footer = new Footer();
 
@@ -13,12 +13,12 @@ fixture`Check valid content and links are displayed on website footer`
 
 test('Check "Request a Demo" modal is displayed on page footer and can be opened by the click', async t => {
   await t
-    .expect(footer.footerRequestDemoModal.exists).ok();
+    .expect(footer.requestDemoModal.exists).ok();
 
   await t
-    .hover(footer.footerRequestDemoModal)
-    .click(footer.footerRequestDemoModal, { speed: 0.5 })
-    .click(footer.footerRequestDemoModalClose, { speed: 0.5 });
+    .hover(footer.requestDemoModal)
+    .click(footer.requestDemoModal, { speed: 0.5 })
+    .click(footer.requestDemoModalClose, { speed: 0.5 });
 });
 
 test('Check "Mitoc Group" link is displayed on the page footer', async t => {

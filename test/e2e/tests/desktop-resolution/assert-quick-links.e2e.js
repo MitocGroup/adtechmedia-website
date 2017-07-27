@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import QuickLinks from '../pages/quick-links.po';
+import config from '../../config';
+import QuickLinks from '../../poms/components/quick-links.po';
 
 const quickLinks = new QuickLinks();
 

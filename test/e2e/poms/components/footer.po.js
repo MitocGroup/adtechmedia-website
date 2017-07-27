@@ -1,9 +1,9 @@
 import { Selector } from 'testcafe';
 
-export default class footer {
+export default class Footer {
   constructor() {
-    this.footerRequestDemoModal = Selector('.demo-footer > button');
-    this.footerRequestDemoModalClose = Selector('.close-btn');
+    this.requestDemoModal = Selector('.demo-footer > button');
+    this.requestDemoModalClose = Selector('.close-btn');
     this.company = Selector('a').withText('Mitoc Group');
     this.termsOfUse = Selector('a').withText('Terms of Use');
     this.privacyPolicy = Selector('a').withText('Privacy Policy');

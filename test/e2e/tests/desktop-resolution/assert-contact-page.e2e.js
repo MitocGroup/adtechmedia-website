@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import Selectors from '../pages/contact-page.po';
+import config from '../../config';
+import Contact from '../../poms/pages/contact.po';
 
-const selectors = new Selectors();
+const contact = new Contact();
 
 fixture`Check valid content is displayed on "Contact" page`
   .page`${config.www_base_host}/contact/`
@@ -13,12 +13,12 @@ fixture`Check valid content is displayed on "Contact" page`
 
 test('Check "Contact" form is displayed on "Contact" page', async t => {
   await t
-    .expect(selectors.contactGoogleMap.exists).ok();
+    .expect(contact.googleMap.exists).ok();
 });  
 
 test('Check "Google Map" is displayed on "Contact" page', async t => {
   await t
-    .expect(selectors.contactGoogleMap.exists).ok();
+    .expect(contact.googleMap.exists).ok();
 });
 
 

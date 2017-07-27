@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import Header from '../pages/header.po';
+import config from '../../config';
+import Header from '../../poms/components/header.po';
 
 const header = new Header();
 

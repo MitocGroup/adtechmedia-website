@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import SocialLinks from '../pages/social-links.po';
+import config from '../../config';
+import SocialLinks from '../../poms/components/social-links.po';
 
 const socialLinks = new SocialLinks();
 

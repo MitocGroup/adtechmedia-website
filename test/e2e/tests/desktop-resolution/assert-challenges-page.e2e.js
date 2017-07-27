@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import Selectors from '../pages/challenges-page.po';
+import config from '../../config';
+import Challenges from '../../poms/pages/challenges.po';
 
-const selectors = new Selectors();
+const challenges = new Challenges();
 
 fixture`Check valid content is displayed on "Challenges" page`
   .page`${config.www_base_host}/challenges/`
@@ -13,12 +13,12 @@ fixture`Check valid content is displayed on "Challenges" page`
 
 test('Check "Request a Demo" modal is displayed on "Challenges" page and can be opened by the click', async t => {
   await t
-    .expect(selectors.challengesRequestDemoModal.exists).ok();
+    .expect(challenges.requestDemoModal.exists).ok();
 
   await t
-    .hover(selectors.challengesRequestDemoModal)
-    .click(selectors.challengesRequestDemoModal, { speed: 0.5 })
-    .click(selectors.challengesRequestDemoModalClose, { speed: 0.5 });
+    .hover(challenges.requestDemoModal)
+    .click(challenges.requestDemoModal, { speed: 0.5 })
+    .click(challenges.requestDemoModalClose, { speed: 0.5 });
 });
 
 

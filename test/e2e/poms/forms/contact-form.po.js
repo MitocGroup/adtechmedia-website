@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-export default class contact {
+export default class ContactForm {
   constructor() {
     this.formModal = Selector('.contact-form');
     this.nameField = Selector('#name-field');
@@ -8,7 +8,14 @@ export default class contact {
     this.emailField = Selector('#email-field');
     this.messageField = Selector('#message-field');
     this.submitButton = Selector('#contact-button');
-    this.contactGoogleMap = Selector('#googleMap');
   }
 };
 
+
+
+
+
+
+
+
+  
