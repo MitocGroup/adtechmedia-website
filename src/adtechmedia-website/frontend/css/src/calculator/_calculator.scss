@@ -101,7 +101,6 @@
         i {
           position: relative;
           z-index: 1;
-          font-size: 18px;
           opacity: 0;
           visibility: hidden;
           @include transition(.4s ease-in-out);

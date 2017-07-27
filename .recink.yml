@@ -9,6 +9,7 @@ $:
     '$.cache.options.1.secretAccessKey': 'eval'
     '$.codeclimate.token': 'eval'
     '$.snyk.token': 'eval'
+    '$.pagespeed.uri': 'eval'
   cache:
     driver: 's3'
     options:
@@ -59,6 +60,9 @@ $:
     token: 'process.env.CODECLIMATE_REPO_TOKEN'
   snyk:
     token: 'process.env.SNYK_API_TOKEN'
+  pagespeed:
+    uri: |
+      ['', 'challenges', 'solutions', 'api', 'team', 'contact'].map(item => `${process.env.DEPLOY_HOST}/${item}`);
 
 ### Add other modules here...
 email-send:

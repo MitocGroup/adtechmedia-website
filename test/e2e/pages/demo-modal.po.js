@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-export default class requestDemoPage {
+export default class requestDemoForm {
   constructor() {
     this.demoFormEmailField = Selector('#mce-EMAIL');
     this.demoFormNamelField = Selector('#mce-FNAME');
