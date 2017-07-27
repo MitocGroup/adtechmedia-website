@@ -31,7 +31,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Installing DEEP microservice');
-  return runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`)
+  return runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`);
 
 }).then(() => {
 
@@ -39,7 +39,7 @@ isEnvironmentLocked().then(isLocked => {
   updateDeeployJson();
 
   console.log('Updating .parameters.json');
-  return awsh.getS3Object(`adtechmedia-website/${process.env.DEPLOY_ENV}/.parameters.json`).then(data => {
+  return awsh.getS3Object(`atm-website/${process.env.DEPLOY_ENV}/.parameters.json`).then(data => {
     fs.writeFileSync(path.join(srcPath, 'adtechmedia-website', '.parameters.json'), data.Body.toString());
     return Promise.resolve();
   });
@@ -64,7 +64,7 @@ isEnvironmentLocked().then(isLocked => {
       return handleOldDistribution(id);
     }));
 
-    return Promise.all(promises)
+    return Promise.all(promises);
   });
 
 }).then(() => {
@@ -114,25 +114,19 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Pushing deploy.log changes');
-  return runChildCmd('git push origin dev', true).then(code => {
-    if (code === 1) {
-      throw 'Error during commit';
-    }
-
-
-  });
+  return runChildCmd('git push origin dev', true);
 
 }).then(() => {
 
   console.log('Deploy finished, releasing environment');
-  awsh.deleteS3Object(getLockFileKey()).then(() =>{
+  awsh.deleteS3Object(getLockFileKey()).then(() => {
     exit(0);
   });
 
 }).catch(error => {
 
   console.error(`Deployment failed: ${error}, releasing environment`);
-  awsh.deleteS3Object(getLockFileKey()).then(() =>{
+  awsh.deleteS3Object(getLockFileKey()).then(() => {
     exit(1);
   });
 });
@@ -351,7 +345,7 @@ function getDomain() {
 function getLockFileKey() {
   const env = process.env.DEPLOY_ENV || 'test';
 
-  return `adtechmedia-website/${env}/travis.lock`;
+  return `atm-website/${env}/travis.lock`;
 }
 
 /**
