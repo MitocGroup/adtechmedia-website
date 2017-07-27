@@ -44,27 +44,26 @@ script:
 
 jobs:
   include:
-    - stage: "Run e2e Tests :clipboard:"
-      node_js: 8
-      script:
-        - recink run e2e
-      before_install:
-        - npm install -g recink
-      addons:
-        firefox: "latest"
-        chrome: "beta"
-        apt:
-          packages:
-            - xvfb
-      install:
-        - 'export DISPLAY='':99.0'''
-        - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
     - stage: "Deploy To :cloud:"
       node_js: 6
       script:
         - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skip deploy"; fi
       after_failure:
         - deepify undeploy src --loglevel=debug
+
+    - stage: "Run e2e Tests :clipboard:"
+      node_js: 8
+      script:
+        - recink run e2e
+      addons:
+        firefox: 'latest'
+        chrome: 'beta'
+        apt:
+          packages:
+            - xvfb
+      install:
+        - 'export DISPLAY='':99.0'''
+        - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
 
     - stage: "Page speed :rocket:"
       node_js: 6
