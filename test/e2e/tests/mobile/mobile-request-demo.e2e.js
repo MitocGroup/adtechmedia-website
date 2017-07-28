@@ -1,31 +1,29 @@
 import { Selector } from 'testcafe';
 import config from '../../config';
 import libs from '../../libs';
-import Home from '../../poms/pages/home.po';
+import Header from '../../poms/components/header.po';
 import RequestDemoModal from '../../poms/forms/demo-modal.po';
 
-fixture`Check "Request a Demo" form submit`
+const header = new Header();
+const requestDemoModal = new RequestDemoModal();
+
+fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
   .beforeEach(async t => {
     await t
-      .resizeWindow(1920, 1080);
+      .resizeWindowToFitDevice('iPhone 6 Plus', {
+        portraitOrientation: true
+      });
   });
 
-test('Check user can submit "Request a demo" form with valid email address', async t => {
-  const home = new Home();
-
+test('Check "Request a demo" form can be submitted on mobile resolution', async t => {
   await t
-    .click(home.requestDemoModal, { speed: 0.5 })
-    .expect(Selector('#modal').with({
-      selectorTimeout: 5000,
-      visibilityCheck: true,
-    }).visible).ok();
-
-  const requestDemoModal = new RequestDemoModal();
+    .expect(header.mobileMenuRequestDemoModal.exists).ok()
+    .click(header.mobileMenuRequestDemoModal);
 
   await t
     .typeText(requestDemoModal.emailField, libs.chance.email())
-    .typeText(requestDemoModal.namelField, libs.chance.name())
+    .typeText(requestDemoModal.nameField, libs.chance.name())
     .click(requestDemoModal.submitButton, { speed: 0.5 });
 
   await t
