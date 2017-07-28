@@ -7,8 +7,3 @@ export default class Challenges {
     this.requestDemoModalClose = Selector('.close-btn');
   }
 };
-
-
-
-
-

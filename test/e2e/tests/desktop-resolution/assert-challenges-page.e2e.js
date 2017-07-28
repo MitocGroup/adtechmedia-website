@@ -20,8 +20,3 @@ test('Check "Request a Demo" modal is displayed on "Challenges" page and can be 
     .click(challenges.requestDemoModal, { speed: 0.5 })
     .click(challenges.requestDemoModalClose, { speed: 0.5 });
 });
-
-
-
-
-

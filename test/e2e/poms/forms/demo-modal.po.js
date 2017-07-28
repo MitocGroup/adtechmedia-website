@@ -8,8 +8,3 @@ export default class RequestDemoModal {
     this.responseText = Selector('.demo-confirm');
   }
 };
-
-
-
-
-
