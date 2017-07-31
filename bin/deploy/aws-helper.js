@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const AWS = require('aws-sdk');
 
 class AwsHelper {
@@ -48,6 +49,24 @@ class AwsHelper {
    */
   getS3Object(objectKey) {
     return this.s3.getObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+  }
+
+  /**
+   * Get S3 object and save it to local path
+   * @param objectKey
+   * @param pathToSave
+   * @returns {Promise}
+   */
+  getAndSaveS3Object(objectKey, pathToSave) {
+    return this.getS3Object(objectKey).then(data => {
+      fs.writeFile(pathToSave, data.Body.toString(), err => {
+        if (err) {
+          return Promise.reject(`Can not save ${objectKey} to ${pathToSave}`);
+        }
+
+        return Promise.resolve();
+      });
+    });
   }
 
   /**

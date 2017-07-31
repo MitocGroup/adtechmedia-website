@@ -31,7 +31,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Installing DEEP microservice');
-  return runChildCmd(`cd ${srcPath} && deepify install --loglevel=debug`);
+  return runChildCmd(`cd ${srcPath} && deepify install`);
 
 }).then(() => {
 
@@ -39,15 +39,15 @@ isEnvironmentLocked().then(isLocked => {
   updateDeeployJson();
 
   console.log('Updating .parameters.json');
-  return awsh.getS3Object(`atm-website/${process.env.DEPLOY_ENV}/.parameters.json`).then(data => {
-    fs.writeFileSync(path.join(srcPath, 'adtechmedia-website', '.parameters.json'), data.Body.toString());
-    return Promise.resolve();
-  });
+  return awsh.getAndSaveS3Object(
+    `atm-website/${process.env.DEPLOY_ENV}/.parameters.json`,
+    `${srcPath}/adtechmedia-website/.parameters.json`
+  );
 
 }).then(() => {
 
   console.log('Deploying application');
-  return runChildCmd(`cd ${srcPath} && deepify deploy --loglevel=debug`).then(() => {
+  return runChildCmd(`cd ${srcPath} && deepify deploy`).then(() => {
     newAppInfo = getNewApplicationInfo();
     return Promise.resolve();
   });
@@ -216,22 +216,16 @@ function parseInfoFromLog() {
  * @returns {*}
  */
 function findProvisioningFile() {
-  let files = fs.readdirSync(srcPath);
+  let files = fs.readdirSync(srcPath).filter(file => {
+    return /^.([a-z0-9]+).([a-z]+).provisioning.json$/.test(file);
+  });
 
-  for (let i = 0; i < files.length; i++) {
-    let filename = path.join(srcPath, files[i]);
-    let stat = fs.lstatSync(filename);
-
-    if (stat.isDirectory()) continue;
-
-    if (/.provisioning.json$/.test(filename)) {
-      return filename;
-    }
+  if (files.length <= 0) {
+    throw 'Provisioning file was not found';
   }
 
-  throw 'Provisioning file was not found';
+  return path.join(srcPath, files[0]);
 }
-
 
 /**
  * Update deeploy.json with aws credentials
