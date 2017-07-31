@@ -31,5 +31,7 @@ test('Check "Request a demo" form can be submitted on mobile resolution', async 
       selectorTimeout: 5000,
       visibilityCheck: true,
     }).visible).ok()
-    .expect(Selector(requestDemoModal.responseText).innerText).contains('\nThank you for the interest in AdTechMedia WordPress Plugin\nPlease check your inbox to schedule your demo.\n');
+    .expect(
+      Selector(requestDemoModal.responseText).innerText)
+      .contains('\nThank you for the interest in AdTechMedia WordPress Plugin\nPlease check your inbox to schedule your demo.\n');
 });
