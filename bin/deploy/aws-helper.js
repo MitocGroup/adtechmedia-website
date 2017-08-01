@@ -62,7 +62,7 @@ class AwsHelper {
       return new Promise((resolve, reject) => {
         fs.writeFile(pathToSave, data.Body.toString(), err => {
           if (err) {
-            return reject(`Can not save ${objectKey} to ${pathToSave}`);
+            return reject(err);
           }
 
           return resolve();
