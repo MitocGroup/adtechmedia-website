@@ -59,12 +59,14 @@ class AwsHelper {
    */
   getAndSaveS3Object(objectKey, pathToSave) {
     return this.getS3Object(objectKey).then(data => {
-      fs.writeFile(pathToSave, data.Body.toString(), err => {
-        if (err) {
-          return Promise.reject(`Can not save ${objectKey} to ${pathToSave}`);
-        }
+      return new Promise((resolve, reject) => {
+        fs.writeFile(pathToSave, data.Body.toString(), err => {
+          if (err) {
+            return reject(`Can not save ${objectKey} to ${pathToSave}`);
+          }
 
-        return Promise.resolve();
+          return resolve();
+        });
       });
     });
   }
