@@ -312,7 +312,7 @@ function warmUpCache(config) {
     forked.send({ name: 'configure' });
     setTimeout(() => { resolve(); }, 500);
   });
-
+console.log('config', config);
   // if (['master', 'stage'].includes(env)) {
   // temporarily for debugging
   if (['master', 'stage', 'test'].includes(env)) {

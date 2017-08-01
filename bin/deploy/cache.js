@@ -47,6 +47,7 @@ function runRegistry() {
  * Configure local registry for environment
  */
 function configure() {
+console.log('cacheDir', cacheDir);
   if (!fs.existsSync(cacheDir)){
     fs.mkdirSync(cacheDir);
   }
