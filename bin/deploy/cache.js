@@ -40,7 +40,11 @@ function runRegistry() {
   const childCmd = spawn(`npm_lazy --config ${configPath}`, { shell: true, cwd: appPath });
 
   childCmd.stdout.on('data', data => {
-    console.log(data.toString());
+    let str = data.toString();
+
+    if (/.*(Request|Reusing).*/.test(str)) {
+      console.log(str.trim());
+    }
   });
 
   childCmd.stderr.on('data', error => {
@@ -63,7 +67,7 @@ function configure() {
         logRequesterIP: true,
         logToConsole: true
       },
-      readOnly: ${(process.env.DEPLOY_ENV === 'test')},
+      readOnly: ${(process.env.DEPLOY_ENV === 'master')},
       cacheDirectory: '${cacheDir}',
       cacheAge: 0,
       httpTimeout: 4000,

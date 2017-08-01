@@ -129,9 +129,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Handle cached modules');
-  // return (env === 'stage') ? runChildCmd(cacheInfo.pushCommand) : Promise.resolve();
-  // temporarily for debugging
-  return (env === 'test') ? runChildCmd(cacheInfo.pushCommand) : Promise.resolve();
+  return (env === 'stage') ? runChildCmd(cacheInfo.pushCommand) : Promise.resolve();
 
 }).then(() => {
 
@@ -313,9 +311,7 @@ function warmUpCache(config) {
     setTimeout(() => { resolve(); }, 500);
   });
 
-  // if (['master', 'stage'].includes(env)) {
-  // temporarily for debugging
-  if (['master', 'stage', 'test'].includes(env)) {
+  if (['master', 'stage'].includes(env)) {
     return configure.then(() => {
       return runChildCmd('npm config set registry http://localhost:8080/');
     }).then(() => {
