@@ -1,6 +1,5 @@
 # Logs
 logs
-npm-debug.log*
 
 # Runtime data
 pids
@@ -23,8 +22,12 @@ build/Release
 node_modules
 jspm_packages
 
-# Optional npm cache directory
+# npm related
 .npm
+.npmrc
+npm-debug.log*
+npm_lazy.log
+npm_lazy.config.js
 
 # Directory-based project format:
 .idea/

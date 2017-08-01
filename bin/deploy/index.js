@@ -4,18 +4,19 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawn } = require('child_process');
+const { spawn, fork } = require('child_process');
 const AwsHelper = require('./aws-helper');
 
+const env = process.env.DEPLOY_ENV || 'test';
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
 const logPath = path.join(appPath, 'docs/deploy.log');
 const awsh = new AwsHelper();
-const timerId = setInterval(() => {
-  console.log('.');
-}, 60000);
+const timerId = setInterval(() => { console.log('.'); }, 60000);
+const forked = fork('bin/deploy/cache.js', { cwd: appPath });
 
 let newAppInfo = {};
+let cacheInfo = {};
 
 /* Start continuous deployment script */
 
@@ -30,6 +31,15 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
+  console.log('Initializing deploy cache');
+  return getCacheConfig().then(cache => {
+    cacheInfo = cache;
+
+    return warmUpCache(cacheInfo);
+  })
+
+}).then(() => {
+
   console.log('Installing DEEP microservice');
   return runChildCmd(`cd ${srcPath} && deepify install`);
 
@@ -40,7 +50,7 @@ isEnvironmentLocked().then(isLocked => {
 
   console.log('Updating .parameters.json');
   return awsh.getAndSaveS3Object(
-    `atm-website/${process.env.DEPLOY_ENV}/.parameters.json`,
+    `atm-website/${env}/.parameters.json`,
     `${srcPath}/adtechmedia-website/.parameters.json`
   );
 
@@ -118,6 +128,13 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
+  console.log('Handle cached modules');
+  // return (env === 'stage') ? runChildCmd(cacheInfo.pushCommand) : Promise.resolve();
+  // temporarily for debugging
+  return (env === 'test') ? runChildCmd(cacheInfo.pushCommand) : Promise.resolve();
+
+}).then(() => {
+
   console.log('Deploy finished, releasing environment');
   awsh.deleteS3Object(getLockFileKey()).then(() => {
     exit(0);
@@ -160,7 +177,7 @@ function handleOldDistribution(distId) {
  */
 function getOldDistributionIds() {
   let prevDistrIds = parseInfoFromLog().filter(row => {
-    return row.Env === process.env.DEPLOY_ENV;
+    return row.Env === env;
   }).map(item => item.Id);
 
   return awsh.getListOfActiveDistributions().then(result => {
@@ -236,7 +253,7 @@ function updateDeeployJson() {
   if (fs.existsSync(deeployPath)) {
     let deeploy = require(deeployPath);
 
-    deeploy.env = process.env.DEPLOY_ENV;
+    deeploy.env = env;
     deeploy.awsAccountId = process.env.AWS_ACCOUNT_ID;
     deeploy.aws = {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -256,7 +273,7 @@ function updateDeployLog() {
   let logRows = fs.readFileSync(logPath).toString().split('\n');
 
   logRows.unshift(
-    `[${date}] Env: ${process.env.DEPLOY_ENV}, Id: ${newAppInfo.cloudfrontId}, Domain: ${newAppInfo.cloudfrontDomain}, Hash: ${newAppInfo.appHash}`
+    `[${date}] Env: ${env}, Id: ${newAppInfo.cloudfrontId}, Domain: ${newAppInfo.cloudfrontDomain}, Hash: ${newAppInfo.appHash}`
   );
   fs.writeFileSync(logPath, logRows.join('\n'));
 }
@@ -281,6 +298,51 @@ function isEnvironmentLocked() {
       }
     }).catch(err => {
       (err.code === 'NoSuchKey') ? resolve(false) : reject(err);
+    });
+  });
+}
+
+/**
+ * Configure and prepare cache
+ * @param config
+ * @returns {*}
+ */
+function warmUpCache(config) {
+  const configure = new Promise((resolve, reject) => {
+    forked.send({ name: 'configure' });
+    setTimeout(() => { resolve(); }, 500);
+  });
+
+  // if (['master', 'stage'].includes(env)) {
+  // temporarily for debugging
+  if (['master', 'stage', 'test'].includes(env)) {
+    return configure.then(() => {
+      if (env === 'master') {
+        return runChildCmd(config.pullCommand);
+      }
+
+      return Promise.resolve();
+    }).then(() => {
+      forked.send({ name: 'run-registry' });
+      return Promise.resolve();
+    });
+  }
+
+  return Promise.resolve();
+}
+
+/**
+ * Get cache config
+ * @returns {Promise}
+ */
+function getCacheConfig() {
+  return new Promise((resolve, reject) => {
+    forked.on('message', data => {
+      return resolve(data);
+    });
+
+    forked.on('exit', error => {
+      return reject(error);
     });
   });
 }
@@ -327,8 +389,6 @@ function logOutput(str) {
  * @returns {string}
  */
 function getDomain() {
-  const env = process.env.DEPLOY_ENV || 'test';
-
   return (env !== 'master') ? `www-${env}.adtechmedia.io` : 'www.adtechmedia.io';
 }
 
@@ -337,8 +397,6 @@ function getDomain() {
  * @returns {string}
  */
 function getLockFileKey() {
-  const env = process.env.DEPLOY_ENV || 'test';
-
   return `atm-website/${env}/travis.lock`;
 }
 
@@ -347,6 +405,8 @@ function getLockFileKey() {
  * @param code
  */
 function exit(code) {
+  forked.send({ name: 'exit' });
+  forked.kill('SIGINT');
   clearInterval(timerId);
   process.exit(code);
 }
