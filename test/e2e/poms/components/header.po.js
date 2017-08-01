@@ -9,7 +9,7 @@ export default class Header {
     this.teamTopMenuLink = Selector('.clearfix > li:nth-child(4) > a');
     this.contactTopMenuLink = Selector('.clearfix > li:nth-child(5) > a');
     this.blogTopMenuLink = Selector('.clearfix > li:nth-child(6) > a');
-    this.requestDemoTopMenuItem = Selector('.custom-menu-link > a');
     this.topMenuRequestDemoModal = Selector('.modal__trigger');
+    this.mobileMenuRequestDemoModal = Selector('button.modal__trigger');
   }
 };
