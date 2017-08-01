@@ -49,10 +49,6 @@ setup_git() {
 setup_npm() {
     npm config set depth 0
     npm link aws-sdk
-
-    case ${DEPLOY_ENV} in
-        test | master | stage ) npm config set registry http://localhost:8080/ ;;
-    esac
 }
 
 echo "Setting up travis variables"

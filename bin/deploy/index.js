@@ -317,6 +317,8 @@ function warmUpCache(config) {
   // temporarily for debugging
   if (['master', 'stage', 'test'].includes(env)) {
     return configure.then(() => {
+      return runChildCmd('npm config set registry http://localhost:8080/');
+    }).then(() => {
       if (env === 'master') {
         return runChildCmd(config.pullCommand);
       }
