@@ -56,12 +56,14 @@ function configure() {
     fs.mkdirSync(cacheDir);
   }
 
-  fs.writeFileSync(`${appPath}/.npmrc`, 'registry=http://localhost:8080/');
   fs.writeFileSync(
     configPath,
     `module.exports = {
-      loggingOpts: { logToConsole: true },
-      readOnly: ${(process.env.DEPLOY_ENV === 'master')},
+      loggingOpts: { 
+        logRequesterIP: true,
+        logToConsole: true
+      },
+      readOnly: ${(process.env.DEPLOY_ENV === 'test')},
       cacheDirectory: '${cacheDir}',
       cacheAge: 0,
       httpTimeout: 4000,

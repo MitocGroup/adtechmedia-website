@@ -24,7 +24,6 @@ jspm_packages
 
 # npm related
 .npm
-.npmrc
 npm-debug.log*
 npm_lazy.log
 npm_lazy.config.js
