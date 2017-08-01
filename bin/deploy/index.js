@@ -35,8 +35,6 @@ isEnvironmentLocked().then(isLocked => {
   return getCacheConfig().then(cache => {
     cacheInfo = cache;
 
-console.log(cacheInfo);
-
     return warmUpCache(cacheInfo);
   })
 
@@ -314,7 +312,7 @@ function warmUpCache(config) {
     forked.send({ name: 'configure' });
     setTimeout(() => { resolve(); }, 500);
   });
-console.log('config', config);
+
   // if (['master', 'stage'].includes(env)) {
   // temporarily for debugging
   if (['master', 'stage', 'test'].includes(env)) {
@@ -339,6 +337,8 @@ console.log('config', config);
  */
 function getCacheConfig() {
   return new Promise((resolve, reject) => {
+    forked.send({ name: 'get-config' });
+
     forked.on('message', data => {
       return resolve(data);
     });
