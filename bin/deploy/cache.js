@@ -69,6 +69,7 @@ function configure() {
       externalUrl: 'http://localhost:8080',
       remoteUrl: 'https://registry.npmjs.com/',
       port: 8080,
+      host: '0.0.0.0',
       proxy: {}
     };`
   );
