@@ -12,6 +12,9 @@ const appPath = path.join(__dirname, '../../');
 const cacheDir = path.join(process.env.HOME, '.npm_lazy');
 const configPath = path.join(appPath, 'npm_lazy.config.js');
 
+console.log('cacheDir', cacheDir);
+console.log('configPath', configPath);
+
 process.send({
   cacheDir: cacheDir,
   configPath: configPath,
@@ -47,7 +50,6 @@ function runRegistry() {
  * Configure local registry for environment
  */
 function configure() {
-console.log('cacheDir', cacheDir);
   if (!fs.existsSync(cacheDir)){
     fs.mkdirSync(cacheDir);
   }
