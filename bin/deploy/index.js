@@ -35,6 +35,8 @@ isEnvironmentLocked().then(isLocked => {
   return getCacheConfig().then(cache => {
     cacheInfo = cache;
 
+console.log(cacheInfo);
+
     return warmUpCache(cacheInfo);
   })
 
