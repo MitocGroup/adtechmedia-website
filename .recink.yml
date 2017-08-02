@@ -40,20 +40,20 @@ $:
     pattern:
       - /.+\.spec\.js$/i
     ignore: ~
-#  e2e:
-#    pattern:
-#      - /.+\.e2e\.js$/i                                       # Files to include
-#    ignore:
-#      - assert-social-links.e2e.js
-#    browsers:                                                  # Browsers to run the tests against
-#    - nightmare
-#    # - firefox
-#    # - chrome
-#    wait:
-#      interval: 500                                            # Interval of running uri checks
-#      timeout: 60000                                           # Timeout to wait for uri's available
-#      uri:                                                     # uri's to wait before start running test cases
-#        - 'process.env.DEPLOY_HOST'
+  e2e:
+    pattern:
+      - /.+\.e2e\.js$/i                                       # Files to include
+    ignore:
+      - assert-social-links.e2e.js
+    browsers:                                                  # Browsers to run the tests against
+    - nightmare
+    # - firefox
+    # - chrome
+    wait:
+      interval: 500                                            # Interval of running uri checks
+      timeout: 60000                                           # Timeout to wait for uri's available
+      uri:                                                     # uri's to wait before start running test cases
+        - 'process.env.DEPLOY_HOST'
   coverage:
     pattern:
       - /.+\.js$/i
@@ -82,7 +82,7 @@ $:
       ['challenges', 'solutions', 'api', 'team', 'contact'].map(item => `${process.env.DEPLOY_HOST}/${item}`)
 
 ### Add other modules here...
-# email-send:
-#   root: src/adtechmedia-website/backend/src/email/send
-website:
-  root: test/e2e
+email-send:
+  root: src/adtechmedia-website/backend/src/email/send
+#website:
+#  root: test/e2e
