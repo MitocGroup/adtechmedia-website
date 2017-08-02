@@ -58,6 +58,8 @@ $:
     pattern:
       - /.+\.js$/i
     ignore:
+      - /.+\.cfg\.js$/i
+      - /.+\.po\.js$/i
       - /.+\.e2e\.js$/i
       - /.+\.spec\.js$/i
       - /^(.*\/)?node_modules(\/?$)?/i
