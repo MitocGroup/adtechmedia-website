@@ -1,13 +1,72 @@
 language: node_js
-git: {depth: 1}
-node_js: [6, 8]
+git:
+  depth: 1
 cache:
   bundler: true
-  directories: [node_modules, $(npm root -g), $(npm config get prefix)/bin]
+  directories:
+    - node_modules
+    - "$(npm root -g)"
+    - "$(npm config get prefix)/bin"
 branches:
-  only: [master, dev, stage, test]
-before_install: [npm install -g run-jst]
-script: jst run unit
+  only:
+    - master
+    - stage
+    - test
+    - dev
 env:
   global:
-  - {secure: tl4M0lbfnOknoCEDlaFrfAYV8vYlUMovGmi/+KuBtVfSkaPglYcuHpQyHDX3LfOwv8hLQ6Na8aezQcwnZGr0XUGOKPIF/pou9Pg64CFqiSwX/GWA37FpUbsFfz+C3aUNbHyKXEwsgsbzr2QONGNEUPRznFfV/shf/r/R803CzYlY+utdPsUzhyiaq/PD0Ve4omJLF/noS01XsSfAqD6cKkiARPRa8zvRrs/ZLlV1IU25kZpOCuEHyrdGpeXspKvGpzl3mXMm32bwOSJE3GXo5Zjc1sjCPfE10d5NPWiSHte+jtrK2YJ2ioBCeHnRciZqaTUVgQ5BC8N3foAaW9X/I66xW0w0jPWF/Q+U5ZMWZ18yvARBCs6nssUE5tOMR64nDBk/AIYa1sIhr32TTvFufrdg5Yclb5TbVj3opi0t8PheKJiLXpR0uet+PYh9nM6C1L5APJd5vOT6fhMIVcUObPIrqICvgIoZ0DSixZQdP+kx0K3R4ZBSkYuFni0nyqz4hmb0CWyVX7regPjdHS6vL1oWImeWVFG00RrFmhOQtXP/UmQHqOw0PlYNvGUThDRbt49cE87lODexxKL/Uwjg/FKP71l/L2hjZHV+KCrJ5plumWWXjOwxqJ6TSDucW4mh15zripc6EsuSZ6NWstVHKXv4rEikYAWF3n0CcjWuqIA=}
+    - DEEP_NO_INTERACTION=1
+    # AWS_ACCOUNT_ID=[secure]
+    - secure: "neCWR2sd07qIJ3PmW99Snp7r/0GdBrkFTnUfUmzCGWbq0FkX6MgbGK8Mnz/EWNpnZ07XiV816+/KGWFddisLYMCsbHoIFklBw5Z1ApWr9ZladEqoYeuCoM5KoDXkilwF6Zg3W66I+lOm0hwj73AyqO6iWtF8qZMZoIeUCYXBYTDLNBTUQTWJQyk34O4Umn8/f6FjCx/K0wJwQnA9NjqHYn2yKUEQR1Pu1ZPX95z90xEqiNEpu4AChohfLyGLeOoSSMiVTqftLXcqhOpK7WJnf5Mx/SWDhftpYtxYzHJ/QRqC9eomThvZoYMy6+yIV+HBvovlQCtOFRH+zkYZn9JmFigiAmr/BJx21eAfY07pPJvGR3uyGoR7NIXwCZZvck6U8mPzzueVLZSQZHqr1LZ+YkL52xc78OmyOMVft++chaBJGvLah4i8zRAf0frQHYPWqBBJyIysdS6/fGa2S0GaSDJugaSTYk4Lg1sGFxMZNQXK7Xos/DqQA6biNdWUPzCX9+YPMZNyv3MQtThDZDac6Feum6U9fylLKIJSrQJswMQoXzKT23GqGQnx0qrrz24l9KEyB+1oJ8byChd/IERnWjB+qrE4fB/acw2rA2iSAu0ZnohZq4W99ZpQYh8GVAMKuFD1t8Ex9M/fFIYkVl2/bEvjrceOQGDCwmQJCPIkCL8="
+    # AWS_ACCESS_KEY_ID=[secure]
+    - secure: "Y+DcVRFbwbhJEeJwotj7bWyn35N9t2JHZdCMo2CMFWqqQHQ7J8Xwa0cFEgJqOpPNRrMHORh1jlvV24JGPyvyhzIySi8NkKXKNDbPXJf0KS2cIAqVNrXC32eTbsNaJz7Q6T6Ds0HoW2nAUFO5xLZxXNdjnpniUBOcnmsKXJoFKANHT+74/vm2uCHJSXXUKqkpFkRO/zlpUuWnnk+DvUitoO+7PaBCOYC79WR+2D4ZJZh5a289soOPejP791KmuQLdsgZD3IX193sWZghA2VzF6abto3BZ3cK0S2ZlRkTme6bgcyG0y6ALVf6eBeqjb9i06CgAa5IBBvwKg9fcR4fvm3qYKkvbJKOIGfn34e0iR/d8kackb99bTXz+Bd8NV4OBRr8Uz94IeNQea5qqewkfx//vg+BdwgsiVC2Oux/6pKF8K3PFQih8SixClfF2i0IEcWwShwr4MaBTubPi1FbU2HSv/4t1HEcDTCTK7+jtXcvEMoQSFylVWhSjavnO6IPWUhxBDANC8hUYJlKZ39JFirwr3GaxgC1cZFMlA/GMNxDOjQSHIvmF6oPSxtAf4LibO9VkYmpg8qmEvtQ9meD8XhepqSvEQh4irqfejmcjcT7dL/2ys4XWXGHtVg5PLyAArowQOIJeqDaY4kMTUzRSwvxjy65hY+1tNoW6W+bbRq4="
+    # AWS_SECRET_ACCESS_KEY=[secure]
+    - secure: "VBmfw4XEN7P9h4lEOvl9VY98GHABVn8DTpVM5NUsPJz3lEWJrgWf7wxNCB5cPy8Fkg4bm3h0B/q1IpNU6YuZyQzH2VeVslCd5XrZk9g6L+XBy/NQDOpR2uCoLr3CwmElGHm3stiD+2ePbXKrsCwvikzQze8nvpuH5REc2TLcvDdbHkf9I29L4zB9BjFEJsRO24oHkM5EoGAWsIBkdvBXUFfqCE7Yoh0C2cxb8Vpc6k+4Ml+/EGLubtoR0/fEDPsY74xUyBscg1LmW4ZXHN5fsIqJJSHHApSBH/R/LrKBkCcfWdqJiixn3vMZDLalzGqTagFJknIvzrBVKu52RgBl2abf35r2NvlNvMXDW/xF8kJ2TRg1j/0JB4nxo4kj3QCF1AoCCbBz9SPLW/RRlRnyPUNEU6PEXCHfT1MF8vsCIvhNwDAClIpNW62gIA4XNo9xFtmnisR/hFldQ3D2MfXDzddkERoEuNGSi5KHxuVDPzapaBjTaTpuzYcGF2K6qpMPHcPsGkHMuEdz8X2PPGFLUn0yGI1PIp9XqYnp8aub4z1ZlyzeuDg0lk5KioLtIBB36w+bcUo+m44SbULAaqZcECcPrk3Z0ECArhxhxEOJJb1HzTVVp+e1OPCKUWF+d1hqxrL36yWPbIIKNlwdRQE08+K8aPpGwY7JBxI4RJozUYY="
+    # AWS_DEFAULT_REGION=[secure]
+    - secure: "gWJrmDW/p0y9KHcFulgiHXayZQluRZMducNhRLMn6yT0oc8pOPDQSULg/N02PTXycyNCAJxRAWlH6DD6y5rJjfvSqVU5e8b3fn/sGSL1uZQniWN7zt/yoaiYnTXDEtlKl2bhJw78WdQpWmS69TrlNWkIsmCod9c/gVpMm03AcE8isfqmeEqgV8ENQQjPHiXqgc/TFcMb5XC3nKKCg+0SdAXtV56qfE7fR1b+EOsLzHB8xUSHtEceZDV6G+ufmrts+o7j6vGfmonGv3kXgtd3/Nzyortr+yatx6DNhj/3xRX2N1xqSJ6XUJ0Ac6UyJfnaMCi/mZJV9i23nVsymV6GWIIVw7I6bEJLgh9rHfe1mCIDRDEO0BoR2K2v/GAAIrYbI0iKxxgVJesO/a10t33t2fnif905794KVM1ZcP46e0R6kD2qiF04b86sPtXGkXa5HQSRZ3rSDJQqAb1r+Ls/jWK4xm7Xt/3p267dKnBc1KGMZD4CjMJHw8wO3lKX3whS/zC4OvYlgjobetKoKfT4VNHGQ/RWxCLYLWIKh6tLXVkKbFbis1IlXIiCfwQFTfZaJ1co/I2HXbLfAJ3LE6PNCDD5u8b8+0K0nYuLvpoAPjcw/W+RkHP8CQtRNBgCGup1nWtoYBTQ+mb57YbO1R5F6iZjNuB4RVy01LQ3jqpXeT4="
+    # CODECLIMATE_REPO_TOKEN=[secure]
+    - secure: "QONsxWDu0hlTbrTdM2u1ay2tKsIesz56UKjwNanSD3TyBkAvib2w/BZXZL2QuLkNm4nUYrWGrxDNDn4EQbfNKOvo3d3IUI0W+ZDwrKAGKVa8SOXCiXCuh5gXJnbkuLBAS3Mj+EznZ/GCNieWw+4N3iAjXwUJiaAFvyC1hzNsY3Sh+vDJjjmqJZC63kc8rfO+aWb0oRm1m7rnd6weHJBw8F6M2u4DS9N+zCu1UcOufzalcjh3+8isgwkbHVLVDOtNPdGI/Kv6J+kL66K1yhWlKWlV4IfEoOM4iYpo9vYafeLROLOcTnTHFJ7glZM2HU+83mfSu1RvWwUPVz05o0bF6nkM2Fy+Go+qmQHf7AJ2o3/POVNPpQheCDLDOYyc40jmFdGG8vlXs7Yz88j+Z2u3OD+SY9X33lMQooZnWW8ZkTqOsmhhuCOFjAn3Yk33AfTETn/AOyCfyk2zEQQNWS98IiJGFYfN11JV2lvdmLnZYtVSfwl2Ni752oZB7pHUeOaLcCNtxQiJ9aEHKbSJ0DwJYqD0LBasjQg5Qoj2L113GHnZXQd8qCLlmTvyR0fBA18XPsTj28x0Xujtol8QtuCj9ABSeX7KkAjwwI6dgq3X/b/7TBlLdPVvYwv96y4XCm2exgZggU/uX3CAEsCCacwARAc3akK+ALjgYzu5fto3U18="
+    # GITHUB_ACCESS_TOKEN=[secure]
+    - secure: "srBWAyZIY44XzHSaWqJq4T70KSopqa1sa6fcPQeIp2lQcog9F2PWQX+0bS7q1USDEasvfWy+kwyZ4OAff+BbzBtz4P+jSDsAN7jGOe2C9YFchq1eTaxM9Uty4V6HRe5zZGgFbleM2W5A5jfnWwiwX3PnCDXE2T1xNmaGY4TrVFulQZ2oEJJMHXf6fhqjEa2JudyRpNzle2ijPxOIRXa/g6+HfSjQW/Y0OHybi7wMVJV2mRM+A1B75z1DoowAZfYDHwSgjQs0r3NCQJCffBJ+lJLl+gl47IRnu0E+y7tscgWjxXlLIPX9SQBiwE9nrcErZwL/QJLBhZMtKofDzZAiZ7xW5FtS8qD6Bho0Sc+qG/BzHRen4eVvTDGPGDNCyr98xaAeLgu0ohPzKLjblgXc/gLMoFly3QDdx1q1wjJBVKZezJhbtOxgjFYGYAuH/gtvkBhzpbhhk3MxGl6bP0ksUf4DB5lhjVVHoccRfDFN14ZDoIMUYF+mwqybdE7WIoHp0JVVbHSMB5JwrUutV0/y7YcwnTRaBGpFB9kLaJheNgl5F74CFiHwns+a4Xl54cvawydWrgBCKtJUx4Bz8tY2muh7gGWAyQLJo/8T74k5e05MkpP9MEwejphFh1Ja0jFP1HlZRj8myZPkmqbk3nmZmIysRV0ULPEExSKH3EKVqWM="
+    # SNYK_API_TOKEN=[secure]
+    - secure: "JVaYl9zH8UhAoWwQ9/fgY9suezRkYutPazkQjaoFS5oZHLn0CucNQdXDNEslyLMfRYpAsjqoXRjFI8bY4md+8/CIdBiBmfMEVX+Zwue7GrpqqovqW6gIlNnmMX4Xzd1R0sgGzr6cZr2SaAv3ryvN/RX/JzHVOSDjlrZIWrj4GznDLehXZieQC1A4H1VjzHazUSJ5PpQ6Vl3F0rW7MqHyaO6O1EMkHv2LwX6Ojp79d3MwyggjUB2VudnXyOYypP6JKGWv0cMV8N8YbyJM+c8nkxr41EV4lM7Z6s7aA+Z0G00A8V8YSsdLOvh045cxOA7ehu0EWIXxl4umR/V5FzN504YyM0a3ILo9/uan6esFRZGBftY1H5Aww0fw6yORkA2oZhB/fClLNhrNzGl2F//BgVY9yjsPI7vCeX3kZNsf8AtMVMeEENnYqfxv334PNVuddkBE3+XmqJQ9Kxz4nsh7AmMwHx/EnIfpi16YI2xJkb/kdnhb8P9BDUpjXd37tIVvNRdVGKPwzvjCkv4Gl7ZfEetsi904io9sj3KNCi3FQSUJrWb/ck7LGSsdgt0thKvjjavOvJC19FWq97YuU2ouV5+MFnQCCbNrF/62RVhmso7MZEdxewQLOnKKJomPuiHcjeQaDvkOepn7L8ost1OLq5jhh51Zv6gpoCkYc8/jlqA="
+    # ATM_CERTIFICATE=[secure]
+    - secure: "obJbDccUmdb5BV0q9eup6qutmT1z9gBo7JEZr33OSCMb4GQGHUmpANLsxcFGwh9NZdoRGGOn1ZNHK28O2oLdIVROTKxKDDNNNyyRl8fnrhhsQRa/L4MNttsrv4J779R0dhMSRgqXXJN5urAYCHMt5A7ZVA48p6KKAsE+H8ukHnHzN7Q9KD67cGm5jml780iy6crzGD9mnZXhjmPp2LTmGclocj6KkRr1p35Ij88/UFtVjw/I0oVmxhG4fhgy52403q1Fb/IEVJQNt1bNpewPiTzKUkZiMM+flOso2A/Rc6Uf5z+6nooGCCu/UbCIRdu2cOGjlORS1vvYppfedxoLX0mwmMEloJ7gLh8DO+hEfocMf24ktT1DoXuOInbXdF5wSzXMiJ+avP+7fB2kveHZNJ/tUiDzZ63dPH7FXr+kXKrWHrTne8MBoUOf8C+/GYmmoEHrzTmn1CvL0t6z7cCzi6xVNNvmzgz+mwxo8NYCT8wYxLtVNwY4Znsx5skMBd6TFumCUZAy3qfCnA2C6lhYleQoJ7aiek7tCJO4czZzGlBJCyYzioRHpbfdC9oMETwEmwFSBwGgBAPjDNcYeBJXz2BrnzWiRxi+tjNDYx7fMMXJF3xDY9jgNGlyhbYr+dIE3D4w8XuXNhlacO4t5SSlfcl4p8Ag4SB4RECwrrf+Ixk="
+
+stage: "Run Unit Tests :clipboard:"
+node_js:
+  - 6
+  - 8
+before_install:
+  - source bin/deploy/init.sh
+script:
+  - recink run unit -c recink-codeclimate -c recink-snyk
+
+jobs:
+  include:
+    - stage: "Deploy To :cloud:"
+      node_js: 6
+      script:
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skipping deploy"; fi
+      after_failure:
+        - deepify undeploy src --loglevel=debug
+
+# Temporarily turned off (Electron issue)
+#    - stage: "Run e2e Tests :clipboard:"
+#      node_js: 8
+#      script:
+#        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run e2e; else echo "Skipping e2e tests"; fi
+#      addons:
+#        firefox: 'latest'
+#        chrome: 'beta'
+#        apt:
+#          packages:
+#            - xvfb
+#      install:
+#        - 'export DISPLAY='':99.0'''
+#        - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
+
+    - stage: "Page speed :rocket:"
+      node_js: 6
+      script:
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed; else echo "Skipping pagespeed"; fi

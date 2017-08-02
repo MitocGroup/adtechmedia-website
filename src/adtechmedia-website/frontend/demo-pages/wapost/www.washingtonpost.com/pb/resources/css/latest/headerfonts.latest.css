@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "PostoniWide";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Regular/PostoniWide-Regular.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Regular/PostoniWide-Regular.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Regular/PostoniWide-Regular.svg#web) format("svg");
+  font-style: normal;
+  font-weight: normal
+}
+
+.postoni-wide {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: normal;
+  font-weight: normal
+}
+
+@font-face {
+  font-family: "PostoniWide";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold/PostoniWide-Bold.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold/PostoniWide-Bold.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold/PostoniWide-Bold.svg#web) format("svg");
+  font-style: normal;
+  font-weight: bold
+}
+
+.postoni-wide-bold {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: normal;
+  font-weight: bold
+}
+
+.postoni-wide strong {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: normal;
+  font-weight: bold
+}
+
+@font-face {
+  font-family: "PostoniWide";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Italic/PostoniWide-Italic.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Italic/PostoniWide-Italic.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Italic/PostoniWide-Italic.woff) format("woff"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Italic/PostoniWide-Italic.ttf) format("truetype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Italic/PostoniWide-Italic.svg#web) format("svg");
+  font-style: italic;
+  font-weight: normal
+}
+
+.postoni-wide-italic {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: italic;
+  font-weight: normal
+}
+
+.postoni-wide em {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: italic;
+  font-weight: normal
+}
+
+@font-face {
+  font-family: "PostoniWide";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold-Italic/PostoniWide-BoldItalic.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold-Italic/PostoniWide-BoldItalic.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold-Italic/PostoniWide-BoldItalic.woff) format("woff"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold-Italic/PostoniWide-BoldItalic.ttf) format("truetype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Postoni-Wide-Bold-Italic/PostoniWide-BoldItalic.svg#web) format("svg");
+  font-style: italic;
+  font-weight: bold
+}
+
+.postoni-wide-bold-italic {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: italic;
+  font-weight: bold
+}
+
+.postoni-wide strong em {
+  font-family: "PostoniWide", Georgia, serif;
+  font-style: italic;
+  font-weight: bold
+}
+
+@font-face {
+  font-family: "FranklinITCProBold";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Bold/e9e4c4dc-e548-4fef-9aa1-80c9cd0f02ce-2.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Bold/e9e4c4dc-e548-4fef-9aa1-80c9cd0f02ce-2.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Bold/e9e4c4dc-e548-4fef-9aa1-80c9cd0f02ce-4.svg#web) format("svg");
+  font-style: normal;
+  font-weight: normal
+}
+
+.franklin-bold {
+  font-family: "FranklinITCProBold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+}
+
+@font-face {
+  font-family: "FranklinITCProLight";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Light/b147bee6-eb48-46e1-86e1-2538a46794b6-2.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Light/b147bee6-eb48-46e1-86e1-2538a46794b6-2.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Light/b147bee6-eb48-46e1-86e1-2538a46794b6-4.svg#web) format("svg");
+  font-style: normal;
+  font-weight: normal
+}
+
+.franklin-light {
+  font-family: "FranklinITCProLight", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+}
+
+@font-face {
+  font-family: "FranklinITCProThin";
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Thin/56bcaf21-92ef-486a-836d-19f261762e57-2.eot);
+  src: url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Thin/56bcaf21-92ef-486a-836d-19f261762e57-2.eot?) format("embedded-opentype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Thin/56bcaf21-92ef-486a-836d-19f261762e57-3.woff) format("woff"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Thin/56bcaf21-92ef-486a-836d-19f261762e57-1.ttf) format("truetype"), url(https://css.washingtonpost.com/wp-stat/wapo-sass-assets/fonts/Franklin-ITC-Pro-Thin/56bcaf21-92ef-486a-836d-19f261762e57-4.svg#web) format("svg");
+  font-style: normal;
+  font-weight: normal
+}
+
+.franklin-thin {
+  font-family: "FranklinITCProThin", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+}
+
+h1 {
+  font-family: "FranklinITCProBold", "HelveticaNeue", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}
+
+h2 {
+  font-family: "FranklinITCProThin", "HelveticaNeue", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}
+
+body {
+  font-family: "FranklinITCProLight", "HelveticaNeue", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}

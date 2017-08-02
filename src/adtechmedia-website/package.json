@@ -1,7 +1,7 @@
 {
   "name": "adtechmedia-website",
-  "description": "Adtechmedia website static pages.",
-  "version": "1.0.0",
+  "description": "Adtechmedia website static pages",
+  "version": "1.0.1",
   "homepage": "https://github.com/AdTechMedia/adtechmedia-website",
   "bugs": {
     "url": "https://github.com/AdTechMedia/adtechmedia-website/issues"
@@ -17,9 +17,12 @@
     "type": "git",
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
   },
-  "scripts": {},
-  "dependencies": {
-    "js-yaml": "^3.8.4"
+  "devDependencies": {
+    "fs-extra": "^4.0.0",
+    "html-minifier": "^3.5.2",
+    "js-yaml": "^3.8.4",
+    "node-sass": "^4.5.3",
+    "uglify-js": "^3.0.23"
   },
   "private": true,
   "preferGlobal": false,

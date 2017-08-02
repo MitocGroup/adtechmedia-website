@@ -8,7 +8,6 @@ tmp/**/*
 **.min.css
 **.css
 docs/
-src/**/frontend/js/app/angular/components/shared/
 
 # third party css files
 **/font-awesome.css
@@ -39,7 +38,6 @@ deep-framework.js
 **/reports
 
 # Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 **/node_modules
 
 # Debug log from npm
@@ -59,12 +57,14 @@ deeploy.*.json
 
 # Backend files
 **/backend/src/**/*.js
+**/backend/src/**/*spec.js
 **/backend/src/**/*.zip
 **/backend/src/**/*.sfv
 **/backend/src/**/_config.json
 
 # Frontend dependencies
 **/frontend/_build/
+**/frontend/js/vendor/
 
 # Jspm config file
 config.core.js
@@ -72,20 +72,9 @@ config.system.js
 config.test.js
 
 # Custom ignore file
-**/assets
-**/www.washingtonpost*
-**/www.bloomberg*
-**/www.nytimes*
-**/wapost*
-**/bloomberg*
-**/nytimes*
-**/atm-build
+**/demo-pages/
 **/src/**/backend/vendor
-**/aws-262
 **/_build/
 
 #####=== DEEP ===#####
 **/src/deep-root-*
-
-/src/adtechmedia-website/frontend/js/
-/src/adtechmedia-website/frontend/sw.js
