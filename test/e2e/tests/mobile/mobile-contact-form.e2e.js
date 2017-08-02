@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
-import libs from '../../libs';
+import config from '../../config.cfg';
+import libs from '../../libs.cfg';
 import ContactForm from '../../poms/forms/contact-form.po';
 
 const contactForm = new ContactForm();

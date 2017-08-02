@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
+import config from '../../config.cfg';
 import Contact from '../../poms/pages/contact.po';
 
 const contact = new Contact();
