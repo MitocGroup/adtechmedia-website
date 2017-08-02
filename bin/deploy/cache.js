@@ -7,11 +7,14 @@ const path = require('path');
 const { spawn } = require('child_process');
 
 const bucket = 'atm-deploy-caches';
-const prefix = 'atm-website';
+const prefix = 'atm-website/npm-registry';
 const appPath = path.join(__dirname, '../../');
 const cacheDir = path.join(process.env.HOME, '.npm_lazy');
 const configPath = path.join(appPath, 'npm_lazy.config.js');
 
+/**
+ * Parent message handler
+ */
 process.on('message', (event) => {
   switch(event.name) {
     case 'get-config': getConfig(); break;
