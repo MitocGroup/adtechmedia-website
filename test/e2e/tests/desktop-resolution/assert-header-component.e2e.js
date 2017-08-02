@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../config';
-import Header from '../pages/header.po';
+import config from '../../config';
+import Header from '../../poms/components/header.po';
 
 const header = new Header();
 
@@ -11,15 +11,15 @@ fixture`Check valid content is displayed on website header`
       .resizeWindow(1920, 1080);
   });
 
+test('Check "Logo" image is displayed on website header', async t => {
+  await t
+    .expect(header.logoImage.exists).ok();
+});
+
 test('Check "CHALLENGES" top-menu link is displayed on website header', async t => {
   await t
     .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.challengesTopMenuLink.innerText).contains('CHALLENGES');
-});
-
-test('Check "Logo" image is displayed on website header', async t => {
-  await t
-    .expect(header.logoImage.exists).ok();
 });
 
 test('Check "SOLUTIONS" top-menu link is displayed on website header', async t => {
@@ -54,5 +54,6 @@ test('Check "BLOG" top-menu link is displayed on website header', async t => {
 
 test('Check "Request a Demo" modal is displayed on website header', async t => {
   await t
-    .expect(header.topMenuRequestDemoModal.exists).ok();
+    .expect(header.topMenuRequestDemoModal.exists).ok()
+    .click(header.topMenuRequestDemoModal);
 });

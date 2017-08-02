@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-export default class socialLinks {
+export default class SocialLinks {
   constructor() {
     this.wordpressLink = Selector('.wordpress');
     this.drupalLink = Selector('.drupal');
