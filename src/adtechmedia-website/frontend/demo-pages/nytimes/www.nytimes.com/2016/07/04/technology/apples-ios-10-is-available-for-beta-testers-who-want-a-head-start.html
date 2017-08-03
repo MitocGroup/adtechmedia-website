@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<!--[if (gt IE 9)|!(IE)]> <!-->
+<html lang="en"
+      class="no-js section-technology format-medium tone-news app-article page-theme-standard type-size-small has-large-lede"
+      itemid="http://www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"
+      itemtype="http://schema.org/NewsArticle" itemscope xmlns:og="http://opengraphprotocol.org/schema/">
+<!--<![endif]-->
+<!--[if IE 9]>
+<html lang="en"
+      class="no-js ie9 lt-ie10 section-technology format-medium tone-news app-article page-theme-standard type-size-small has-large-lede"
+      xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en"
+      class="no-js ie8 lt-ie10 lt-ie9 section-technology format-medium tone-news app-article page-theme-standard type-size-small has-large-lede"
+      xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if (lt IE 8)]>
+<html lang="en"
+      class="no-js lt-ie10 lt-ie9 lt-ie8 section-technology format-medium tone-news app-article page-theme-standard type-size-small has-large-lede"
+      xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title>Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start - The New York Times</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script type="text/javascript">window.NREUM || (NREUM = {}), __nr_require = function (e, n, t) {
+        function r(t) {
+            if (!n[t]) {
+                var o = n[t] = {exports: {}};
+                e[t][0].call(o.exports, function (n) {
+                    var o = e[t][1][n];
+                    return r(o || n)
+                }, o, o.exports)
+            }
+            return n[t].exports
+        }
+
+        if ("function" == typeof __nr_require)return __nr_require;
+        for (var o = 0; o < t.length; o++)r(t[o]);
+        return r
+    }({
+        1: [function (e, n, t) {
+            function r(e, n) {
+                return function () {
+                    o(e, [(new Date).getTime()].concat(a(arguments)), null, n)
+                }
+            }
+
+            var o = e("handle"), i = e(2), a = e(3);
+            "undefined" == typeof window.newrelic && (newrelic = NREUM);
+            var c = ["setPageViewName", "setCustomAttribute", "finished", "addToTrace", "inlineHit"], u = ["addPageAction"], f = "api-";
+            i(c, function (e, n) {
+                newrelic[n] = r(f + n, "api")
+            }), i(u, function (e, n) {
+                newrelic[n] = r(f + n)
+            }), n.exports = newrelic, newrelic.noticeError = function (e) {
+                "string" == typeof e && (e = new Error(e)), o("err", [e, (new Date).getTime()])
+            }
+        }, {}], 2: [function (e, n, t) {
+            function r(e, n) {
+                var t = [], r = "", i = 0;
+                for (r in e)o.call(e, r) && (t[i] = n(r, e[r]), i += 1);
+                return t
+            }
+
+            var o = Object.prototype.hasOwnProperty;
+            n.exports = r
+        }, {}], 3: [function (e, n, t) {
+            function r(e, n, t) {
+                n || (n = 0), "undefined" == typeof t && (t = e ? e.length : 0);
+                for (var r = -1, o = t - n || 0, i = Array(0 > o ? 0 : o); ++r < o;)i[r] = e[n + r];
+                return i
+            }
+
+            n.exports = r
+        }, {}], ee: [function (e, n, t) {
+            function r() {
+            }
+
+            function o(e) {
+                function n(e) {
+                    return e && e instanceof r ? e : e ? c(e, a, i) : i()
+                }
+
+                function t(t, r, o) {
+                    e && e(t, r, o);
+                    for (var i = n(o), a = l(t), c = a.length, u = 0; c > u; u++)a[u].apply(i, r);
+                    var s = f[m[t]];
+                    return s && s.push([w, t, r, i]), i
+                }
+
+                function p(e, n) {
+                    g[e] = l(e).concat(n)
+                }
+
+                function l(e) {
+                    return g[e] || []
+                }
+
+                function d(e) {
+                    return s[e] = s[e] || o(t)
+                }
+
+                function v(e, n) {
+                    u(e, function (e, t) {
+                        n = n || "feature", m[t] = n, n in f || (f[n] = [])
+                    })
+                }
+
+                var g = {}, m = {}, w = {on: p, emit: t, get: d, listeners: l, context: n, buffer: v};
+                return w
+            }
+
+            function i() {
+                return new r
+            }
+
+            var a = "nr@context", c = e("gos"), u = e(2), f = {}, s = {}, p = n.exports = o();
+            p.backlog = f
+        }, {}], gos: [function (e, n, t) {
+            function r(e, n, t) {
+                if (o.call(e, n))return e[n];
+                var r = t();
+                if (Object.defineProperty && Object.keys)try {
+                    return Object.defineProperty(e, n, {value: r, writable: !0, enumerable: !1}), r
+                } catch (i) {
+                }
+                return e[n] = r, r
+            }
+
+            var o = Object.prototype.hasOwnProperty;
+            n.exports = r
+        }, {}], handle: [function (e, n, t) {
+            function r(e, n, t, r) {
+                o.buffer([e], r), o.emit(e, n, t)
+            }
+
+            var o = e("ee").get("handle");
+            n.exports = r, r.ee = o
+        }, {}], id: [function (e, n, t) {
+            function r(e) {
+                var n = typeof e;
+                return !e || "object" !== n && "function" !== n ? -1 : e === window ? 0 : a(e, i, function () {
+                    return o++
+                })
+            }
+
+            var o = 1, i = "nr@id", a = e("gos");
+            n.exports = r
+        }, {}], loader: [function (e, n, t) {
+            function r() {
+                if (!b++) {
+                    var e = y.info = NREUM.info, n = s.getElementsByTagName("script")[0];
+                    if (e && e.licenseKey && e.applicationID && n) {
+                        u(m, function (n, t) {
+                            e[n] || (e[n] = t)
+                        });
+                        var t = "https" === g.split(":")[0] || e.sslForHttp;
+                        y.proto = t ? "https://" : "http://", c("mark", ["onload", a()], null, "api");
+                        var r = s.createElement("script");
+                        r.src = y.proto + e.agent, n.parentNode.insertBefore(r, n)
+                    }
+                }
+            }
+
+            function o() {
+                "complete" === s.readyState && i()
+            }
+
+            function i() {
+                c("mark", ["domContent", a()], null, "api")
+            }
+
+            function a() {
+                return (new Date).getTime()
+            }
+
+            var c = e("handle"), u = e(2), f = window, s = f.document, p = "addEventListener", l = "attachEvent", d = f.XMLHttpRequest, v = d && d.prototype;
+            NREUM.o = {
+                ST: setTimeout,
+                CT: clearTimeout,
+                XHR: d,
+                REQ: f.Request,
+                EV: f.Event,
+                PR: f.Promise,
+                MO: f.MutationObserver
+            }, e(1);
+            var g = "" + location, m = {
+                beacon: "bam.nr-data.net",
+                errorBeacon: "bam.nr-data.net",
+                agent: "js-agent.newrelic.com/nr-952.min.js"
+            }, w = d && v && v[p] && !/CriOS/.test(navigator.userAgent), y = n.exports = {
+                offset: a(),
+                origin: g,
+                features: {},
+                xhrWrappable: w
+            };
+            s[p] ? (s[p]("DOMContentLoaded", i, !1), f[p]("load", r, !1)) : (s[l]("onreadystatechange", o), f[l]("onload", r)), c("mark", ["firstbyte", a()], null, "api");
+            var b = 0
+        }, {}]
+    }, {}, ["loader"]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="shortcut icon" href="../../../../../static01.nyt.com/favicon.ico"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144×144"
+          href="../../../../../static01.nyt.com/images/icons/ios-ipad-144x144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114×114"
+          href="../../../../../static01.nyt.com/images/icons/ios-iphone-114x144.png"/>
+    <link rel="apple-touch-icon-precomposed"
+          href="../../../../../static01.nyt.com/images/icons/ios-default-homescreen-57x57.png"/>
+    <meta name="sourceApp" content="nyt-v5"/>
+    <meta id="applicationName" name="applicationName" content="article"/>
+    <meta id="foundation-build-id" name="foundation-build-id" content=""/>
+    <link rel="canonical" href="why-tech-support-is-purposely-unbearable.html"/>
+    <link rel="alternate" media="only screen and (max-width: 640px)"
+          href="http://mobile.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"/>
+    <link rel="alternate" media="handheld"
+          href="http://mobile.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"/>
+    <meta property="al:android:url" content="nytimes://reader/id/100000004471257"/>
+    <meta property="al:android:package" content="com.nytimes.android"/>
+    <meta property="al:android:app_name" content="NYTimes"/>
+    <meta name="twitter:app:name:googleplay" content="NYTimes"/>
+    <meta name="twitter:app:id:googleplay" content="com.nytimes.android"/>
+    <meta name="twitter:app:url:googleplay" content="nytimes://reader/id/100000004471257"/>
+    <link rel="alternate" href="android-app://com.nytimes.android/nytimes/reader/id/100000004471257"/>
+    <meta property="al:iphone:url"
+          content="nytimes://www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"/>
+    <meta property="al:iphone:app_store_id" content="284862083"/>
+    <meta property="al:iphone:app_name" content="NYTimes"/>
+    <meta property="al:ipad:url"
+          content="nytimes://www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"/>
+    <meta property="al:ipad:app_store_id" content="357066198"/>
+    <meta property="al:ipad:app_name" content="NYTimes"/>
+    <meta name="robots" content="noarchive"/>
+    <meta itemprop="alternativeHeadline" name="hdl_p" content="Why Help on Tech Is Unbearable"/>
+    <meta name="channels" content=""/>
+    <meta itemprop="description" name="description"
+          content="Worse, just as you suspected, companies know the torture they are putting you through, with cable and mobile service providers the most egregious offenders."/>
+    <meta name="genre" itemprop="genre" content="News"/>
+    <meta itemprop="identifier" name="articleid" content="100000004471257"/>
+    <meta itemprop="usageTerms" name="usageTerms"
+          content="http://www.nytimes.com/content/help/rights/sale/terms-of-sale.html"/>
+    <meta itemprop="inLanguage" content="en-US"/>
+    <meta name="hdl" content="Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start"/>
+    <meta name="col" content="" id="column-name"/>
+    <meta name="pdate" content="20160703"/>
+    <meta name="utime" content="20160703234701"/>
+    <meta name="ptime" content="20160703190915"/>
+    <meta name="DISPLAYDATE" content="July 3, 2016"/>
+    <meta name="dat" content="July 3, 2016"/>
+    <meta name="lp"
+          content="Worse, just as you suspected, companies know the torture they are putting you through, with cable and mobile service providers the most egregious offenders."/>
+    <meta name="msapplication-starturl" content="http://www.nytimes.com"/>
+    <meta name="cre" content="The New York Times"/>
+    <meta name="slug" content="04rage"/>
+    <meta property="article:collection"
+          content="../../../../../static01.nyt.com/services/json/sectionfronts/technology/index.jsonp"/>
+    <meta name="sectionfront_jsonp"
+          content="../../../../../static01.nyt.com/services/json/sectionfronts/technology/index.jsonp"/>
+    <meta property="og:url"
+          content="http://www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start"/>
+    <meta property="og:description"
+          content="Worse, just as you suspected, companies know the torture they are putting you through, with cable and mobile service providers the most egregious offenders."/>
+    <meta property="article:published" itemprop="datePublished" content="2016-07-03"/>
+    <meta property="article:section" itemprop="articleSection" content="Technology"/>
+    <meta property="article:section-taxonomy-id" itemprop="articleSection"
+          content="78FBAD45-31A9-4EC7-B172-7D62A2B9955E"/>
+    <meta property="article:section_url" content="http://www.nytimes.com/pages/technology/index.html"/>
+    <meta property="fb:app_id" content="9869919170"/>
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" value="@nytimes"/>
+    <meta property="twitter:url"
+          content="http://www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"/>
+    <meta property="twitter:title" content="Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start"/>
+    <meta property="twitter:description"
+          content="Worse, just as you suspected, companies know the torture they are putting you through, with cable and mobile service providers the most egregious offenders."/>
+    <meta name="author" content="Brian X. Chen"/>
+    <meta name="tone" content="news" id="article-tone"/>
+    <meta name="byl" content="By KATE MURPHY"/>
+    <meta name="PT" content="article"/>
+    <meta name="CG" content="technology"/>
+    <meta name="SCG" content=""/>
+    <meta name="PST" content="News"/>
+    <meta name="tom" content="News"/>
+    <meta name="edt" content="NewYork"/>
+    <meta property="og:image"
+          content="../../../../../static01.nyt.com/images/2016/07/04/business/04RAGE1/04RAGE1-facebookJumbo.jpg"/>
+    <meta property="article:author" content=""/>
+    <meta property="article:tag" content="Customer Relations"/>
+    <meta name="des" content="Customer Relations"/>
+    <meta property="article:tag" content="Computers and the Internet"/>
+    <meta name="des" content="Computers and the Internet"/>
+    <meta property="article:tag" content="Social Media"/>
+    <meta name="des" content="Social Media"/>
+    <meta property="article:tag" content="Telephones and Telecommunications"/>
+    <meta name="des" content="Telephones and Telecommunications"/>
+    <meta name="keywords"
+          content="Customer Relations,Computers and the Internet,Social Media,Telephones and Telecommunications"/>
+    <meta name="news_keywords" content="iPad,iPhone,Apple"/>
+    <meta property="article:modified" itemprop="dateModified" content="2016-07-03"/>
+    <meta name="thumbnail_150"
+          content="../../../../../static01.nyt.com/images/2016/07/04/business/04RAGE1/04RAGE1-thumbLarge-v2.jpg"/>
+    <meta name="thumbnail_150_height" content="150"/>
+    <meta name="thumbnail_150_width" content="150"/>
+    <meta property="twitter:image"
+          content="../../../../../static01.nyt.com/images/2016/07/04/business/04RAGE1/04RAGE1-thumbLarge-v2.jpg"/>
+    <meta itemprop="thumbnailUrl" name="thumbnail"
+          content="../../../../../static01.nyt.com/images/2016/07/04/business/04RAGE1/04RAGE1-thumbStandard-v2.jpg"/>
+    <meta name="thumbnail_height" content="75"/>
+    <meta name="thumbnail_width" content="75"/>
+    <meta name="dfp-ad-unit-path" content="technology"/>
+    <meta name="dfp-amazon-enabled" content="false"/>
+    <link rel="alternate" type="application/json+oembed"
+          href="https://www.nytimes.com/svc/oembed/json/?url=http%3A%2F%2Fwww.nytimes.com%2F2016%2F07%2F04%2Ftechnology%2Fwhy-tech-support-is-purposely-unbearable.html"
+          title="Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start"/>
+
+    <!--[if (gt IE 9)|!(IE)]> <!-->
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="../../../../../a1.nyt.com/assets/article/20160630-145302/css/article/story/styles.css"/>
+    <!--<![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="../../../../../a1.nyt.com/assets/article/20160630-145302/css/article/story/styles-ie.css"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="print"
+          href="../../../../../a1.nyt.com/assets/article/20160630-145302/css/article/story/styles-print.css"/>
+    <script id="page-config-data" type="text/json">
+{"pageconfig":{"ledeMediaSize":"large","keywords":["article-medium"],"collections":{"syndicated":["apple","facebook"]}}}
+    </script>
+
+    <!-- ATM vendor START -->
+    <script src="/js/vendor/deep-framework.min.js"></script>
+    <!-- ATM vendor -->
+
+    <script id="display_overrides">
+        []    </script>
+
+    <!-- Media.net Initialization Script -->
+    <!--NY times Desktop-->
+    <script type="text/javascript">
+        // var PREBID_TIMEOUT = 300;
+        // var googletag = googletag || {};
+        // googletag.cmd = googletag.cmd || [];
+        // (function () {
+        //     window.advBidxc = window.advBidxc || {};
+        //     window.advBidxc.renderAd = function () {};
+        //     window.advBidxc.startTime = new Date().getTime();
+        //     window.advBidxc.customerId = "8CU2553YN"; //Media.net Customer ID
+        //     function loadScript(tagSrc) {
+        //         if (tagSrc.substr(0, 4) !== 'http') {
+        //             var isSSL = 'https:' == document.location.protocol;
+        //             tagSrc = (isSSL ? 'https:' : '') + tagSrc;
+        //         }
+        //         var scriptTag = document.createElement('script'),
+        //             placeTag = document.getElementsByTagName("script")[0];
+        //         scriptTag.type = 'text/javascript';
+        //         scriptTag.async = true;
+        //         scriptTag.src = tagSrc;
+        //         placeTag.parentNode.insertBefore(scriptTag, placeTag);
+        //     }
+
+        //     function loadGPT() {
+        //         if (!window.advBidxc.isAdServerLoaded) {
+        //             loadScript('//www.googletagservices.com/tag/js/gpt.js');
+        //             window.advBidxc.isAdServerLoaded = true;
+        //         }
+        //     }
+
+        //     window.advBidxc.loadGPT = setTimeout(loadGPT, PREBID_TIMEOUT);
+
+        //     var isSSL = 'https:' == document.location.protocol;
+        //     var mnSrc = (isSSL ? 'https:' : 'http:') + '//contextual.media.net/bidexchange.js?cid=' + window.advBidxc.customerId + (isSSL ? '&https=1' : '');
+        //     document.write('<scr' + 'ipt type="text/javascript" src="' + mnSrc + '"></scr' + 'ipt>');
+        // })();
+    </script>
+    <script type="text/json" id="trending-link-json">
+			{"url":"http:\/\/www.nytimes.com\/2016\/07\/04\/technology\/why-tech-support-is-purposely-unbearable.html","trending_type":"trending_page","rank":6,"data_type":"article","labels":[]}
+    </script>
+
+    <script id="abtestconfig" type="application/json">
+        [
+            {
+                "testId": "0063",
+                "throttle": "1",
+                "allocation": "0.5",
+                "variants": "1",
+                "applications": [
+                    "homepage"
+                ],
+                "testName": "paidPostFivePack",
+                "isEnabled": true
+            },
+            {
+                "testId": "0067",
+                "throttle": "0.02",
+                "allocation": "0.5",
+                "variants": "1",
+                "applications": [
+                    "homepage"
+                ],
+                "testName": "pinnedMasthead",
+                "isEnabled": true
+            },
+            {
+                "testId": "0074",
+                "throttle": "1",
+                "allocation": "0.5",
+                "variants": "1",
+                "applications": [
+                    "article"
+                ],
+                "testName": "simpleExtendedByline",
+                "isEnabled": false
+            },
+            {
+                "testId": "0093",
+                "throttle": "1",
+                "variants": "3",
+                "allocation": "0.75",
+                "applications": [
+                    "newsletters"
+                ],
+                "testName": "newsletterPersonalization",
+                "isEnabled": false
+            }
+        ]
+    </script>
+
+    <!--  begin abra  -->
+
+    <script>
+        // /* nyt-a: 85023beabe14f78a95f94018a6ee446b */var NYTD=NYTD||{};NYTD.Abra=function(t,n,e){"use strict";function o(e,o){var u=n[e]||{};u[1]?r("ab-expose",e,u[0],o):o&&t.setTimeout(function(){o(null)},0)}function u(t){var e=n[t]||{};return e[0]||null}function r(n,e,o,u){f+="subject="+n+"&test="+encodeURIComponent(e)+"&variant="+encodeURIComponent(o||0)+"&instant=1&skipAugment=true\n",u&&p.push(u),c||(c=t.setTimeout(a,0))}function a(){var n=new t.XMLHttpRequest,o=p;n.withCredentials=!0,n.open("POST",e),n.onreadystatechange=function(){var t,e;if(4==n.readyState)for(t=200==n.status?null:new Error(n.statusText);e=o.shift();)e(t)},n.send(f),f="",p=[],c=null}var s,i,c,l=[],f="",p=[];for(s in n)i=n[s],i[0]&&l.push(s+"="+i[0]),i[1]&&r("ab-alloc",s,i[0]);return l.length&&t.document.documentElement.setAttribute("data-nyt-ab",l.join(" ")),u.reportExposure=o,u}(this,{"www-article-sample":["2a",1],"EC_SampleTest":["variantB"]},"http://et.nytimes.com");
+    </script>
+
+    <!--  end abra  -->
+
+    <script id="user-info-data" type="application/json">
+        {
+            "meta": {},
+            "data": {
+                "id": "0",
+                "name": "",
+                "subscription": [
+                    "",
+                    "_RPV"
+                ],
+                "demographics": {}
+            }
+        }
+    </script>
+
+    <!-- <script>
+        var require = {
+            baseUrl: '../../../../../a1.nyt.com/assets/',
+            waitSeconds: 20,
+            paths: {
+                'foundation': 'article/20160630-145302/js/foundation',
+                'shared': 'article/20160630-145302/js/shared',
+                'article': 'article/20160630-145302/js/article',
+                'application': 'article/20160630-145302/js/article/story',
+                'videoFactory': '../../../../../static01.nyt.com/js2/build/video/2.0/videofactoryrequire',
+                'videoPlaylist': '../../../../../static01.nyt.com/js2/build/video/players/extended/2.0/appRequire',
+                // 'auth/mtr': '../../../../../static01.nyt.com/js/mtr',
+                // 'auth/growl': '../../../../../static01.nyt.com/js/auth/growl/default',
+                'vhs': '../../../../../static01.nyt.com/video/vhs/build/vhs-2.x.min'
+            },
+            map: {
+                '*': {
+                    'story/main': 'article/story/main'
+                }
+            }
+        };
+    </script> -->
+    <!--[if (gte IE 9)|!(IE)]> <!-->
+    <script data-main="foundation/main"
+            src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/foundation/lib/framework.js"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <script>
+        require.map['*']['foundation/main'] = 'foundation/legacy_main';
+    </script>
+    <script data-main="foundation/legacy_main"
+            src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/foundation/lib/framework.js"></script>
+    <![endif]-->
+    <!-- <script>
+        window.magnum.processFlags(["limitFabrikSave", "moreFollowSuggestions", "unfollowComments", "scoopTool", "videoVHSCover", "videoVHSShareTools", "videoVHSLive", "videoVHSNewControls", "videoVHSEmbeddedOnly", "allTheEmphases", "freeTrial", "dedupeWhatsNext", "trendingPageLinks", "sprinklePaidPost", "headerBidder", "largeLedeXXL", "standardizeWhatsNextCollection", "onlyLayoutA", "simple", "simpleExtendedByline", "collectionsWhatsNext", "shareToolsUnderHeadline", "mobileMediaViewer", "whitelistInterstitial", "storyPrint", "podcastInLede", "MovieTickets", "requestTragedyAd", "MoreInSubsectionFix", "seriesIssueMarginalia", "serverSideCollectionUrls", "multipleBylines", "minimalAds", "adDisclaimer", "bleedtransitions", "inlineAdStyles", "fabrikWebsocketsOnly", "reviewsMapZoom"]);
+    </script>
+    <script>
+        require(['foundation/main'], function () {
+            // require(['auth/mtr', 'auth/growl']);
+        });
+    </script>
+    <script src="../../../../../a1.nyt.com/assets/article/20160630-145302/js/article/common/layout.js"></script> -->
+</head>
+<body>
+
+<style>
+    .lt-ie10 .messenger.suggestions {
+        display: block !important;
+        height: 50px;
+    }
+
+    .lt-ie10 .messenger.suggestions .message-bed {
+        background-color: #f8e9d2;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .lt-ie10 .messenger.suggestions .message-container {
+        padding: 11px 18px 11px 30px;
+    }
+
+    .lt-ie10 .messenger.suggestions .action-link {
+        font-family: "nyt-franklin", arial, helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #a81817;
+        text-transform: uppercase;
+    }
+
+    .lt-ie10 .messenger.suggestions .alert-icon {
+        background: url('../../../../../static01.nyt.com/images/icons/icon-alert-12x12-a81817.png') no-repeat;
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin-top: -2px;
+        float: none;
+    }
+
+    .lt-ie10 .masthead,
+    .lt-ie10 .navigation,
+    .lt-ie10 .comments-panel {
+        margin-top: 50px !important;
+    }
+
+    .lt-ie10 .ribbon {
+        margin-top: 97px !important;
+    }
+</style>
+<div id="suggestions" class="suggestions messenger nocontent robots-nocontent" style="display:none;">
+    <div class="message-bed">
+        <div class="message-container last-message-container">
+            <div class="message">
+                <span class="message-content">
+                    <i class="icon alert-icon"></i><span class="message-title">NYTimes.com no longer supports Internet Explorer 9 or earlier. Please upgrade your browser.</span>
+                    <a href="http://www.nytimes.com/content/help/site/ie9-support.html"
+                       class="action-link">LEARN MORE »</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="shell" class="shell">
+    <header id="masthead" class="masthead masthead-theme-standard" role="banner">
+        <div class="container">
+            <div class="quick-navigation button-group">
+                <button class="button sections-button"><i class="icon sprite-icon"></i><span class="button-text">Sections</span>
+                </button>
+                <button class="button home-button" data-href="http://www.nytimes.com/"
+                        title="Go to the home page to see the latest top stories."><i class="icon sprite-icon"></i>
+                    <span class="button-text">Home</span>
+                </button>
+                <button class="button search-button"><i class="icon sprite-icon"></i><span
+                        class="button-text">Search</span></button>
+                <a class="button skip-button skip-to-content visually-hidden focusable"
+                   href="why-tech-support-is-purposely-unbearable.html#story-header">Skip to content</a>
+                <a class="button skip-button skip-to-navigation visually-hidden focusable"
+                   href="why-tech-support-is-purposely-unbearable.html#site-index-navigation">Skip to navigation</a>
+                <a class="button skip-button skip-to-mobile visually-hidden focusable"
+                   href="http://mobile.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html">View
+                    mobile version</a>
+            </div><!-- close button-group -->
+            <div class="branding">
+                <h2 class="branding-heading">
+                    <a id="branding-heading-link" href="http://www.nytimes.com/">
+                        <span class="visually-hidden">The New York Times</span>
+                    </a>
+                </h2>
+                <script>window.magnum.writeLogo('small', '../../../../../a1.nyt.com/assets/article/20160630-145302/images/foundation/logos/', 'technology', 'masthead-theme-standard', 'standard', 'branding-heading-link', 'article');</script>
+            </div><!-- close branding -->
+            <div class="story-meta">
+                <h6 class="kicker"><span class="kicker-label"><a
+                        href="http://www.nytimes.com/pages/technology/index.html">Technology</a></span><span
+                        class="pipe">|</span>Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start</h6>
+            </div><!-- close story-meta -->
+            <div id="TopNavAd" class="ad top-nav-ad nocontent robots-nocontent">
+                <div class="accessibility-ad-header visually-hidden">
+                    <p>Advertisement</p>
+                </div>
+            </div>
+            <div class="user-tools">
+                <div id="sharetools-masthead" aria-label="tools" role="group"
+                     class="sharetools theme-classic  sharetools-masthead  "
+                     data-shares="facebook,twitter,email,show-all,save"
+                     data-url="http://www.nytimes.com/2016/07/04/technology/why-tech-support-is-purposely-unbearable.html"
+                     data-title="Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start"
+                     data-author="By KATE MURPHY"
+                     data-media="../../../../../static01.nyt.com/images/2016/07/04/business/04RAGE1/04RAGE1-jumbo.jpg"
+                     data-description="Worse, just as you suspected, companies know the torture they are putting you through, with cable and mobile service providers the most egregious offenders."
+                     data-publish-date="July 3, 2016"
+                >
+                    <div class="ad sharetools-inline-article-ad hidden nocontent robots-nocontent">
+                    </div>
+                </div><!-- close shareTools -->
+                <button class="button search-button"><i class="icon sprite-icon"></i><span
+                        class="button-text">Search</span></button>
+                <div id="Bar1" class="ad bar1-ad nocontent robots-nocontent"></div>
+                <div class="user-tools-button-group button-group">
+                    <button class="button subscribe-button hidden"
+                            data-href="http://www.nytimes.com/subscriptions/Multiproduct/lp3004.html?campaignId=4XUYF">
+                        Subscribe Now
+                    </button>
+                    <button class="button login-button login-modal-trigger hidden">Log In</button>
+                    <button class="button notifications-button hidden"><i class="icon sprite-icon"></i><span
+                            class="button-text">0</span></button>
+                    <button class="button user-settings-button"><i class="icon sprite-icon"></i><span
+                            class="button-text">Settings</span></button>
+                </div><!-- close user-tools-button-group -->
+            </div><!-- close user-tools -->
+        </div><!-- close container -->
+        <div class="search-flyout-panel flyout-panel">
+            <button class="button close-button" type="button"><i class="icon"></i><span class="visually-hidden">Close search</span>
+            </button>
+            <div class="ad">
+                <div id="SponsorAd" class="sponsor-ad">
+                    <small class="ad-sponsor">search sponsored by</small>
+                </div>
+            </div>
+            <nav class="search-form-control form-control layout-horizontal">
+                <h2 class="visually-hidden">Site Search Navigation</h2>
+                <form class="search-form" role="search">
+                    <div class="control">
+                        <div class="label-container visually-hidden">
+                            <label for="search-input">Search NYTimes.com</label>
+                        </div>
+                        <div class="field-container">
+                            <input id="search-input" name="search-input" type="text" class="search-input text"
+                                   autocomplete="off" placeholder="Search NYTimes.com"/>
+
+                            <button type="button" class="button clear-button" tabindex="-1"
+                                    aria-describedby="clear-search-input"><i class="icon"></i><span
+                                    id="clear-search-input" class="visually-hidden">Clear this text input</span>
+                            </button>
+                            <div class="auto-suggest" style="display: none;">
+                                <ol></ol>
+                            </div>
+                            <button class="button submit-button" type="submit">Go</button>
+                        </div>
+                    </div><!-- close control -->
+                </form>
+            </nav>
+
+
+        </div><!-- close flyout-panel -->
+        <div id="notification-modals" class="notification-modals"></div>
+        <span class="story-short-url"><a href="http://nyti.ms/29rEDDs">http://nyti.ms/29rEDDs</a></span></header>
+    <nav id="ribbon" class="ribbon ribbon-start nocontent robots-nocontent" aria-hidden="true">
+        <div class="nocontent robots-nocontent">
+            <ol class="ribbon-menu">
+                %_ATM_NYT_RIBBON_PLACEHOLDER_%
+                <li class="collection ribbon-loader">
+                    <div class="loader loader-t-logo-32x32-ecedeb-ffffff"><span
+                            class="visually-hidden">Loading...</span></div>
+                </li>
+            </ol>
+            <div class="ribbon-navigation-container">
+                <nav class="ribbon-navigation next">
+                    <span class="visually-hidden">See next articles</span>
+                    <div class="arrow arrow-right">
+                        <div class="arrow-conceal"></div>
+                    </div>
+                </nav>
+                <nav class="ribbon-navigation previous">
+                    <span class="visually-hidden">See previous articles</span>
+                    <div class="arrow arrow-left">
+                        <div class="arrow-conceal"></div>
+                    </div>
+                </nav>
+            </div>
+        </div><!-- close nocontent -->
+    </nav>
+    <nav id="navigation" class="navigation">
+        <h2 class="visually-hidden">Site Navigation</h2>
+    </nav><!-- close navigation -->
+
+    <nav id="mobile-navigation" class="mobile-navigation hidden">
+        <h2 class="visually-hidden">Site Mobile Navigation</h2>
+    </nav><!-- close mobile-navigation -->
+
+    <div id="navigation-edge" class="navigation-edge"></div>
+    <div id="page" class="page">
+        <div id="TopAd" class="ad top-ad nocontent robots-nocontent">
+            <div class="accessibility-ad-header visually-hidden">
+                <p>Advertisement</p>
+            </div>
+        </div>
+        <main id="main" class="main" role="main">
+            <article id="story" class="story theme-main">
+
+                <div id="TragedyAd" class="ad tragedy-ad nocontent robots-nocontent"></div>
+
+                <header id="story-header" class="story-header">
+                    <div id="story-meta" class="story-meta ">
+                        <div class="supported-by hidden nocontent robots-nocontent">
+                            <span class="ad-label">Supported by</span>
+                            <div style="display: none;" id="supported-by-ad" class="supported-by-ad ad hidden">
+                                <div style="border: 0pt none;"
+                                     id="google_ads_iframe_/29390238/NYT/technology/personaltech_3__container__">
+                                    <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                            style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                            marginwidth="0" scrolling="no"
+                                            name="google_ads_iframe_/29390238/NYT/technology/personaltech_3"
+                                            title="3rd party ad content"
+                                            id="google_ads_iframe_/29390238/NYT/technology/personaltech_3"
+                                            frameborder="0" height="50" width="150"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="kicker">
+                            <span class="kicker-label"><a
+                                    href="http://www.nytimes.com/pages/technology/personaltech/index.html">Personal Tech</a></span>
+                        </h3>
+                        <h1 itemprop="headline" id="headline" class="headline">Apple’s iOS 10 Is Available for Beta
+                            Testers Who Want a Head Start</h1>
+                        <div id="story-meta-footer" class="story-meta-footer">
+
+
+                            <p class="byline-dateline"><span class="byline" itemprop="author creator" itemscope=""
+                                                             itemtype="http://schema.org/Person"
+                                                             itemid="http://topics.nytimes.com/top/reference/timestopics/people/c/brian_x_chen/index.html">By <a
+                                    href="http://topics.nytimes.com/top/reference/timestopics/people/c/brian_x_chen/index.html"
+                                    title="More Articles by BRIAN X. CHEN"><span class="byline-author"
+                                                                                 data-byline-name="BRIAN X. CHEN"
+                                                                                 itemprop="name"
+                                                                                 data-twitter-handle="bxchen">BRIAN X. CHEN</span></a></span>
+                                <time class="dateline" datetime="2016-07-07 11:00" itemprop="datePublished"
+                                      content="2016-07-07 11:00">JULY 7, 2016
+                                </time>
+                            </p>
+                            <div class="story-meta-footer-sharetools">
+                                <div data-share-tools-initialized="1" id="sharetools-story-meta-footer"
+                                     aria-label="tools" role="group"
+                                     class="sharetools theme-classic  sharetools-story-meta-footer  "
+                                     data-shares="facebook,twitter,email,show-all,save"
+                                     data-url="http://www.nytimes.com/2016/07/08/technology/personaltech/apples-ios-10-is-available-for-beta-testers-who-want-a-head-start.html"
+                                     data-title="Apple’s iOS 10 Is Available for Beta Testers Who Want a Head Start"
+                                     data-author="By BRIAN X. CHEN"
+                                     data-media="https://static01.nyt.com/images/2016/07/08/business/08APPLE-1/08APPLE-1-jumbo.jpg"
+                                     data-description="Early adopters can try the new messaging app and improved photo software, and they can help the tech giant fix problems before the full release in the fall."
+                                     data-publish-date="July 7, 2016">
+                                    <a class="visually-hidden skip-to-text-link" href="#story-continues-1">Continue
+                                        reading the main story</a>
+                                    <span class="sharetools-label visually-hidden">Share This Page</span>
+                                    <div class="ad sharetools-inline-article-ad hidden nocontent robots-nocontent">
+                                        <a class="visually-hidden skip-to-text-link" href="#story-continues-1">Continue
+                                            reading the main story</a>
+                                    </div>
+                                </div><!-- close shareTools -->
+                            </div>
+                        </div><!-- close story-meta-footer -->
+                    </div><!-- close story-meta -->
+                </header>
+
+
+                <div class="story-body-supplemental">
+                    <div class="story-body story-body-1">
+                        <figure id="media-100000004517584" class="media photo lede layout-large-horizontal"
+                                data-media-action="modal" itemprop="associatedMedia" itemscope=""
+                                itemid="https://static01.nyt.com/images/2016/07/08/business/08APPLE-1/08APPLE-1-master768.jpg"
+                                itemtype="http://schema.org/ImageObject" aria-label="media" role="group">
+                            <span class="visually-hidden">Photo</span>
+                            <div class="image">
+                                <img src="https://static01.nyt.com/images/2016/07/08/business/08APPLE-1/08APPLE-1-master768.jpg"
+                                     alt="" class="media-viewer-candidate"
+                                     data-mediaviewer-src="https://static01.nyt.com/images/2016/07/08/business/08APPLE-1/08APPLE-1-superJumbo.jpg"
+                                     data-mediaviewer-caption="An Apple store in San Francisco. The tech giant released an early version of its iOS 10 operating system for early adopters who want to help test it before its wider release in the fall."
+                                     data-mediaviewer-credit="Noah Berger/Reuters" itemprop="url"
+                                     itemid="https://static01.nyt.com/images/2016/07/08/business/08APPLE-1/08APPLE-1-master768.jpg">
+                                <div class="media-action-overlay">
+                                    <i class="icon sprite-icon"></i>
+                                </div>
+                                <meta itemprop="height" content="511">
+                                <meta itemprop="width" content="768">
+                            </div>
+                            <figcaption class="caption" itemprop="caption description">
+                                <span class="caption-text">An Apple store in San Francisco. The tech giant released an early version of its iOS 10 operating system for early adopters who want to help test it before its wider release in the fall.</span>
+                        <span class="credit" itemprop="copyrightHolder">
+            <span class="visually-hidden">Credit</span>
+            Noah Berger/Reuters        </span>
+                            </figcaption>
+                        </figure>
+                        <p class="story-body-text story-content" data-para-count="167" data-total-count="167"><a
+                                href="http://www.nytimes.com/topic/company/apple-incorporated?inline=nyt-org"
+                                title="More information about Apple Incorporated" class="meta-org">Apple</a> on Thursday
+                            released an early version of its next mobile operating system, which will deliver <a
+                                    href="http://www.nytimes.com/2016/06/14/technology/apple-to-offer-app-developers-access-to-siri-and-imessage.html">some
+                                of the most substantial changes</a> to iPhones and iPads in years.</p>
+                        <p class="story-body-text story-content" data-para-count="163" data-total-count="330">So for
+                            those who are eager to try all the new features and are willing to be guinea pigs, there are
+                            a few important things to know about upgrading to the software.</p>
+                        <p class="story-body-text story-content" data-para-count="259" data-total-count="589">The
+                            system, iOS 10, became available as a public beta, which means intrepid <a
+                                    href="http://topics.nytimes.com/top/reference/timestopics/subjects/i/iphone/index.html?inline=nyt-classifier"
+                                    title="Recent and archival news about the iPhone."
+                                    class="meta-classifier">iPhone</a> and <a
+                                    href="http://topics.nytimes.com/top/reference/timestopics/subjects/i/ipad/index.html?inline=nyt-classifier"
+                                    title="More articles about iPad." class="meta-classifier">iPad</a> owners get to
+                            sample it and give feedback while Apple and developers continue to test it and to stomp out
+                            bugs before the software is more widely released in the fall.</p>
+                        <p class="story-body-text story-content" data-para-count="225" data-total-count="814">For most
+                            consumers, there is little reason to upgrade this soon; the free, official iOS upgrade is
+                            only a few months away, and operating systems generally get better with time. Yet there can
+                            be some benefits to upgrading now.</p>
+                        <figure id="media-100000004517585"
+                                class="media photo embedded layout-large-vertical media-100000004517585"
+                                data-media-action="modal" itemprop="associatedMedia" itemscope=""
+                                itemid="https://static01.nyt.com/images/2016/07/08/business/08APPLE-2/08APPLE-2-blog427.jpg"
+                                itemtype="http://schema.org/ImageObject" aria-label="media" role="group">
+                            <span class="visually-hidden">Photo</span>
+                            <div class="image">
+                                <img src="https://static01.nyt.com/images/2016/07/08/business/08APPLE-2/08APPLE-2-blog427.jpg"
+                                     alt="" class="media-viewer-candidate"
+                                     data-mediaviewer-src="https://static01.nyt.com/images/2016/07/08/business/08APPLE-2/08APPLE-2-superJumbo.jpg"
+                                     data-mediaviewer-caption="Apple’s iOS 10, which is now available as a public beta, includes new messaging features."
+                                     data-mediaviewer-credit="" itemprop="url"
+                                     itemid="https://static01.nyt.com/images/2016/07/08/business/08APPLE-2/08APPLE-2-blog427.jpg">
+                                <div class="media-action-overlay">
+                                    <i class="icon sprite-icon"></i>
+                                </div>
+                                <meta itemprop="height" content="539">
+                                <meta itemprop="width" content="427">
+                            </div>
+                            <figcaption class="caption" itemprop="caption description">
+                                <span class="caption-text">Apple’s iOS 10, which is now available as a public beta, includes new messaging features.</span>
+                            </figcaption>
+                        </figure>
+                        <p class="story-body-text story-content" data-para-count="158" data-total-count="972">Early
+                            adopters who want a head start on using some of the <a
+                                    href="http://www.nytimes.com/2016/06/16/technology/personaltech/what-you-need-to-know-about-apples-software-upgrades.html?ref=topics&amp;_r=0">
+                                iOS 10 features</a>, like a new messaging app and improved photo software, should jump
+                            in, for example.</p>
+                        <p class="story-body-text story-content" data-para-count="410" data-total-count="1382">There is
+                            a communal benefit to upgrading now, too. If more early testers report bugs and give other
+                            feedback to Apple, it is less likely that major problems will remain on release. Microsoft
+                            used a similar public testing process for its operating system Windows 10, to gather
+                            information and fix problems. Though many consumers have run into <a
+                                    href="http://www.nytimes.com/2016/05/19/technology/personaltech/why-windows-10-upgrades-go-wrong-and-how-to-avoid-it.html">hiccups
+                                with Windows 10</a>, it has generally received positive reviews.</p>
+                        <div id="story-ad-1" class="story-ad ad ad-placeholder nocontent robots-nocontent hidden">
+                            <div class="accessibility-ad-header visually-hidden">
+                                <p>Advertisement</p>
+                            </div>
+                            <a class="visually-hidden skip-to-text-link" href="#story-continues-1">Continue reading the
+                                main story</a>
+                        </div>
+                        <p class="story-body-text story-content" data-para-count="135" data-total-count="1517"
+                           id="story-continues-1">If you are hopping on the early-upgrade train for iOS, here are some
+                            tips for making the experience smoother and for avoiding disaster.</p><h4
+                            class="story-subheading story-content" data-para-count="18" data-total-count="1535">Enroll
+                        Your Device</h4>
+                        <p class="story-body-text story-content" data-para-count="151" data-total-count="1686">The first
+                            step in obtaining the iOS beta is to sign up for Apple’s testing program, which involves
+                            signing in with your Apple ID on an <a href="https://beta.apple.com/sp/betaprogram/">Apple
+                                webpage</a>.</p>
+                        <figure id="media-100000004517586"
+                                class="media photo embedded layout-large-horizontal media-100000004517586"
+                                data-media-action="modal" itemprop="associatedMedia" itemscope=""
+                                itemid="https://static01.nyt.com/images/2016/07/08/business/08APPLE-3/08APPLE-3-master675.jpg"
+                                itemtype="http://schema.org/ImageObject" aria-label="media" role="group">
+                            <span class="visually-hidden">Photo</span>
+                            <div class="image">
+                                <img src="https://static01.nyt.com/images/2016/07/08/business/08APPLE-3/08APPLE-3-master675.jpg"
+                                     alt="" class="media-viewer-candidate"
+                                     data-mediaviewer-src="https://static01.nyt.com/images/2016/07/08/business/08APPLE-3/08APPLE-3-superJumbo.jpg"
+                                     data-mediaviewer-caption="Images from iOS 10, provided by Apple. The beta release is intended to help Apple developers discover and stomp out bugs."
+                                     data-mediaviewer-credit="" itemprop="url"
+                                     itemid="https://static01.nyt.com/images/2016/07/08/business/08APPLE-3/08APPLE-3-master675.jpg">
+                                <div class="media-action-overlay">
+                                    <i class="icon sprite-icon"></i>
+                                </div>
+                                <meta itemprop="height" content="327">
+                                <meta itemprop="width" content="675">
+                            </div>
+                            <figcaption class="caption" itemprop="caption description">
+                                <span class="caption-text">Images from iOS 10, provided by Apple. The beta release is intended to help Apple developers discover and stomp out bugs.</span>
+                            </figcaption>
+                        </figure>
+                        <p class="story-body-text story-content" data-para-count="80" data-total-count="1766">After
+                            enrolling, you will receive an email with steps on installing the upgrade.</p><h4
+                            class="story-subheading story-content" data-para-count="17" data-total-count="1783">Back Up
+                        Your Data</h4>
+                        <p class="story-body-text story-content" data-para-count="353" data-total-count="2136">Before
+                            installing the upgrade, it is crucial to back up your device data in case something goes
+                            wrong. Apple recommends backing up your iPhone or iPad over a wired connection to a computer
+                            running the latest version of its iTunes software. After opening iTunes, select your Apple
+                            device and hit the Back Up Now button to create a backup on the computer.</p><h4
+                            class="story-subheading story-content" data-para-count="22" data-total-count="2158">Have an
+                        Emergency Plan</h4>
+                        <p class="story-body-text story-content" data-para-count="343" data-total-count="2501">If
+                            something goes awry — for example, if an important app ceases to work properly — be aware of
+                            the steps to roll back to the previous version of iOS, which are listed on <a
+                                    href="https://support.apple.com/en-us/HT201263">Apple’s support website</a>. You
+                            will need to erase the new software and use iTunes to restore the backup you created on your
+                            computer, which will kick you back to iOS 9.</p><h4 class="story-subheading story-content"
+                                                                                data-para-count="14"
+                                                                                data-total-count="2515">Get
+                        Acclimated</h4>
+                        <p class="story-body-text story-content" data-para-count="255" data-total-count="2770">After you
+                            have safely installed the iOS 10 beta, get familiar with some of the <a
+                                    href="http://www.apple.com/ios/ios10-preview/">new features</a>. Some big changes
+                            won’t be usable yet — a smarter Siri voice assistant, for example, is awaiting third-party
+                            developers to update their apps to work with Siri.</p>
+                        <p class="story-body-text story-content" data-para-count="369" data-total-count="3139">For now,
+                            a new Messages app, which lets you send drawings and animations to other iOS 10 users, will
+                            be the biggest change. Apple also made its Photos app smarter — a feature called Memories
+                            will automatically compile multiple photos from an occasion, like your trip to Spain, into
+                            video montages. You can also test Apple’s redesigned apps for music, maps and news.</p>
+                        <p data-node-uid="1" class="story-body-text story-content" data-para-count="526"
+                           data-total-count="3665">A bonus for iPhone 6S or 6S Plus owners is they can use 3D Touch, the
+                            feature that triggers different actions based on how hard you press the touch screen, to try
+                            some new tricks in iOS 10. When sending a text message, pressing harder on the send arrow
+                            opens a menu where you can select an animation to embed, like neon lasers or birthday
+                            balloons. Also, when a text-message notification pops up on the iPhone’s lock screen, you
+                            can use 3D Touch to press down on the notification and reply to the message without logging
+                            in.</p>
+                        <footer class="story-footer story-content">
+                            <div class="story-meta">
+
+
+                                <p class="story-print-citation">A version of this article appears in print on July 8,
+                                    2016, on page B2 of the <span itemprop="printEdition">New York edition</span> with
+                                    the headline: Apple’s iOS 10 Is Available for Beta Testers Who Want a Head
+                                    Start. <span class="story-footer-links">  <span><a
+                                            href="http://www.nytreprints.com/" target="_blank">Order Reprints</a><span
+                                            class="pipe">|</span></span>  <span><a
+                                            href="http://www.nytimes.com/pages/todayspaper/index.html" target="_blank">Today's Paper</a><span
+                                            class="pipe">|</span></span><span><a
+                                            href="http://www.nytimes.com/subscriptions/Multiproduct/lp839RF.html?campaignId=48JQY"
+                                            target="_blank">Subscribe</a></span>
+</span>
+                                </p>
+
+                            </div><!-- close story-meta -->
+                        </footer>
+                        <a class="visually-hidden skip-to-text-link" href="#whats-next">Continue reading the main
+                            story</a>
+                    </div><!-- close story-body -->
+                    <div data-post-height="3558" data-last-item-height="923" data-minimum="400" data-remaining="723"
+                         data-max-items="4" data-pre-height="3558" class="supplemental first" id="supplemental-1">
+                        <div class="supplemental-items" data-supplemental-order="0">
+                            <div id="lede-ad"
+                                 class="ad lede-ad marginalia-anchor-ad marginalia-item nocontent robots-nocontent">
+                                <div style="border: 0pt none;"
+                                     id="google_ads_iframe_/29390238/NYT/technology/personaltech_1__container__">
+                                    <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                            style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                            marginwidth="0" scrolling="no"
+                                            name="google_ads_iframe_/29390238/NYT/technology/personaltech_1"
+                                            title="3rd party ad content"
+                                            id="google_ads_iframe_/29390238/NYT/technology/personaltech_1"
+                                            frameborder="0" height="250" width="300"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="supplemental-items" data-supplemental-order="1">
+                            <aside id="middle-right-paid-post-container"
+                                   class="ad middle-right-ad paid-post-ad marginalia-item hidden nocontent robots-nocontent">
+                                <h2 class="marginalia-heading"></h2>
+                                <ul class="story-menu">
+                                    <li style="display: none;" id="MiddleRightPaidPost1"
+                                        class="story-menu-item ad hidden">
+                                        <div style="border: 0pt none;"
+                                             id="google_ads_iframe_/29390238/NYT/technology/personaltech_4__container__">
+                                            <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                                    style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                                    marginwidth="0" scrolling="no"
+                                                    name="google_ads_iframe_/29390238/NYT/technology/personaltech_4"
+                                                    title="3rd party ad content"
+                                                    id="google_ads_iframe_/29390238/NYT/technology/personaltech_4"
+                                                    frameborder="0" height="77" width="300"></iframe>
+                                        </div>
+                                    </li>
+                                    <li style="display: none;" id="MiddleRightPaidPost2"
+                                        class="story-menu-item ad hidden">
+                                        <div style="border: 0pt none;"
+                                             id="google_ads_iframe_/29390238/NYT/technology/personaltech_5__container__">
+                                            <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                                    style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                                    marginwidth="0" scrolling="no"
+                                                    name="google_ads_iframe_/29390238/NYT/technology/personaltech_5"
+                                                    title="3rd party ad content"
+                                                    id="google_ads_iframe_/29390238/NYT/technology/personaltech_5"
+                                                    frameborder="0" height="77" width="300"></iframe>
+                                        </div>
+                                    </li>
+                                    <li style="display: none;" id="MiddleRightPaidPost3"
+                                        class="story-menu-item ad hidden">
+                                        <div style="border: 0pt none;"
+                                             id="google_ads_iframe_/29390238/NYT/technology/personaltech_6__container__">
+                                            <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                                    style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                                    marginwidth="0" scrolling="no"
+                                                    name="google_ads_iframe_/29390238/NYT/technology/personaltech_6"
+                                                    title="3rd party ad content"
+                                                    id="google_ads_iframe_/29390238/NYT/technology/personaltech_6"
+                                                    frameborder="0" height="77" width="300"></iframe>
+                                        </div>
+                                    </li>
+                                    <li style="display: none;" id="MiddleRightPaidPost4"
+                                        class="story-menu-item ad hidden">
+                                        <div style="border: 0pt none;"
+                                             id="google_ads_iframe_/29390238/NYT/technology/personaltech_7__container__">
+                                            <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                                    style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                                    marginwidth="0" scrolling="no"
+                                                    name="google_ads_iframe_/29390238/NYT/technology/personaltech_7"
+                                                    title="3rd party ad content"
+                                                    id="google_ads_iframe_/29390238/NYT/technology/personaltech_7"
+                                                    frameborder="0" height="77" width="300"></iframe>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </aside>
+                            <div id="medium-rectangle-ad-1"
+                                 class="ad ad-placeholder medium-rectangle-ad marginalia-item nocontent robots-nocontent"></div>
+                        </div>
+                        <div class="supplemental-items" data-supplemental-order="2">
+                            <div id="medium-rectangle-ad-2"
+                                 class="ad ad-placeholder medium-rectangle-ad marginalia-item nocontent robots-nocontent"></div>
+                        </div>
+                        <div class="supplemental-items" data-supplemental-order="3">
+                            <div id="marketing-ad"
+                                 class="ad marketing-ad marginalia-anchor-ad marginalia-item nocontent robots-nocontent"></div>
+                            <div id="medium-rectangle-ad-3"
+                                 class="ad ad-placeholder medium-rectangle-ad marginalia-item nocontent robots-nocontent"></div>
+                        </div>
+                    </div><!-- close supplemental -->
+                </div><!-- close story-body-supplemental -->
+
+
+                <!-- ABTEST STORY-23 -->
+
+                <div id="storage-drawer" class="hidden">
+                    <div class="supplemental-sub-item" data-attribute-position="0" data-attribute-name="PaidPost"
+                         data-attribute-type="PaidPost" data-attribute-subtype="">
+
+                    </div>
+                </div>
+
+            </article>
+            <aside style="" class="module trending-module nocontent robots-nocontent" data-truncate-enabled="true">
+                <div class="nocontent robots-nocontent">
+                    <header>
+                        <h2 class="module-heading">Trending</h2>
+                    </header>
+                    <ol>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/09/us/dallas-police-shooting.html">
+                                <article class="story theme-summary"><h2 class="headline">
+<span class="headline-text truncate-text">
+
+5 Dallas Police Officers Killed by Snipers at Protest
+</span>
+                                </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/10/opinion/sunday/what-white-america-fails-to-see.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/10/opinion/sunday/10dyson/10dyson-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+Contributing Op-Ed Writer:
+
+What White America Fails to See
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/08/us/politics/donald-trump-president.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/08/us/09TRUMPNOVEMBERweb1/09TRUMPNOVEMBERweb1-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+Would Donald Trump Quit if He Wins the Election? He Doesn’t Rule It Out
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/08/us/philando-castile-falcon-heights-shooting.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/08/us/08MINNESOTA-jp1/08MINNESOTA-jp1-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+After Philando Castile’s Killing, Obama Calls Police Shootings ‘an American Issue’
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/09/business/theranos-elizabeth-holmes-ban.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/09/world/09THERANOS-web1/09THERANOS-web1-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+Theranos Founder, Elizabeth Holmes, Barred From Running Lab for Two Years
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/08/us/politics/donald-trump-republican-party.html">
+                                <article class="story theme-summary"><h2 class="headline">
+<span class="headline-text truncate-text">
+
+Peacemaking Goes Awry as Donald Trump Lashes Out at G.O.P. Senators
+</span>
+                                </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/interactive/2016/07/08/us/dallas-police-shooting-map.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/08/us/dallas-police-shooting-1467965526264/dallas-police-shooting-1467965526264-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+How the Attack on Dallas Officers Unfolded
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/09/us/philando-castile-jeronimo-yanez.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/09/world/09minnesota-web1/09minnesota-web1-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+Details Emerge of Philando Castile Shooting, and Protests Carry Into Morning
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/08/opinion/all-the-nominees-enablers.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/08/opinion/08krugmanWeb/08krugmanWeb-thumbStandard.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+Op-Ed Columnist:
+
+All the Nominee’s Enablers
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="story-link"
+                               href="http://www.nytimes.com/2016/07/08/nytnow/your-friday-briefing-dallas-donald-trump-euro-2016.html">
+                                <article class="story theme-summary">
+                                    <div class="thumb">
+                                        <img src="https://static01.nyt.com/images/2016/07/09/nytnow/08nytnow-dallas1/08nytnow-dallas1-thumbStandard-v2.jpg">
+                                    </div>
+                                    <h2 class="headline">
+<span class="headline-text truncate-text">
+
+Dallas, Donald Trump, Euro 2016: Your Friday Briefing
+</span>
+                                    </h2></article>
+                            </a>
+                        </li>
+
+                    </ol>
+                    <footer>
+                        <p class="user-action"><a href="/trending">View More Trending Stories »</a></p>
+                        <div style="display: none;" id="MostEm" class="ad most-em-ad hidden">
+                            <div style="border: 0pt none;"
+                                 id="google_ads_iframe_/29390238/NYT/technology/personaltech_18__container__">
+                                <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                        style="border: 0px none; vertical-align: bottom;" marginheight="0"
+                                        marginwidth="0" scrolling="no"
+                                        name="google_ads_iframe_/29390238/NYT/technology/personaltech_18"
+                                        title="3rd party ad content"
+                                        id="google_ads_iframe_/29390238/NYT/technology/personaltech_18" frameborder="0"
+                                        height="31" width="88"></iframe>
+                            </div>
+                            <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;"
+                                    style="border: 0px none; vertical-align: bottom; visibility: hidden; display: none;"
+                                    marginheight="0" marginwidth="0" scrolling="no"
+                                    name="google_ads_iframe_/29390238/NYT/technology/personaltech_18__hidden__" title=""
+                                    id="google_ads_iframe_/29390238/NYT/technology/personaltech_18__hidden__"
+                                    frameborder="0" height="0" width="0"></iframe>
+                        </div>
+                    </footer>
+                </div>
+            </aside>
+            <section id="whats-next" class="whats-next nocontent robots-nocontent">
+                <h2 class="visually-hidden">What's Next</h2>
+                <div class="nocontent robots-nocontent">
+                    <div class="loader-container">
+                        <div class="loader loader-t-logo-32x32-ecedeb-ffffff"><span
+                                class="visually-hidden">Loading...</span></div>
+                    </div>
+                </div><!-- close nocontent -->
+            </section>
+            <div id="TopAd1" class="text-ad bottom-left-ad nocontent robots-nocontent"></div>
+            <div id="Top5" class="ad top5-ad hidden nocontent robots-nocontent"></div>
+            <div class="search-overlay"></div>
+            <aside id="media-viewer" class="media-viewer" style="display:none;">
+                <button class="button close-button"><i class="icon"></i><span
+                        class="visually-hidden">Close this overlay</span></button>
+                <h2 class="media-viewer-headline"></h2>
+                <div class="media-viewer-wrapper"></div>
+                <nav class="media-viewer-nav">
+                    <div class="media-viewer-counter"></div>
+                    <div class="media-viewer-previous">
+                        <span class="visually-hidden">Go to previous</span>
+                        <div class="arrow arrow-left">
+                            <div class="arrow-conceal"></div>
+                        </div>
+                    </div>
+                    <div class="media-viewer-next">
+                        <span class="visually-hidden">Go to next</span>
+                        <div class="arrow arrow-right">
+                            <div class="arrow-conceal"></div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="loader-container" style="display:none;">
+                    <div class="loader loader-t-logo-32x32-ecedeb-ffffff"><span
+                            class="visually-hidden">Loading...</span></div>
+                </div>
+            </aside>
+        </main>
+        <!-- close main -->
+        <section id="site-index" class="site-index">
+            <header class="section-header">
+                <p class="user-action"><a href="http://www.nytimes.com/">Go to Home Page &raquo;</a></p>
+                <h2 class="section-heading">
+                    <span class="visually-hidden">Site Index</span>
+                    <a id="site-index-branding-link" href="http://www.nytimes.com/">
+                        <span class="visually-hidden">The New York Times</span>
+                    </a>
+                </h2>
+                <script>window.magnum.writeLogo('small', '../../../../../a1.nyt.com/assets/article/20160630-145302/images/foundation/logos/', '', '', 'standard', 'site-index-branding-link', '');</script>
+            </header>
+
+            <nav id="site-index-navigation" class="site-index-navigation" role="navigation">
+                <h2 class="visually-hidden">Site Index Navigation</h2>
+                <div class="split-6-layout layout">
+
+
+                    <div class="column">
+                        <h3 class="menu-heading">News</h3>
+                        <ul class="menu">
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/world/index.html">World</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/national/index.html">U.S.</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/politics/index.html">Politics</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/nyregion/index.html">N.Y.</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/business/index.html">Business</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/technology/index.html">Tech</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/section/science">Science</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/health/index.html">Health</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/sports/index.html">Sports</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/education/index.html">Education</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/obituaries/index.html">Obituaries</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/todayspaper/index.html">Today's Paper</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/corrections/index.html">Corrections</a>
+                            </li>
+
+
+                        </ul>
+                    </div><!-- close column -->
+
+
+                    <div class="column">
+                        <h3 class="menu-heading">Opinion</h3>
+                        <ul class="menu">
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html">Today's Opinion</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#columnists">Op-Ed
+                                    Columnists</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#editorials">Editorials</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#contributing">Contributing
+                                    Writers</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#op-ed">Op-Ed Contributors</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#opinionator">Opinionator</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#letters">Letters</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#sundayreview">Sunday Review</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/opinion/index.html#takingNote">Taking Note</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/roomfordebate">Room for Debate</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://topics.nytimes.com/top/opinion/thepubliceditor/index.html">Public
+                                    Editor</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/video/opinion">Video: Opinion</a>
+                            </li>
+
+
+                        </ul>
+                    </div><!-- close column -->
+
+
+                    <div class="column">
+                        <h3 class="menu-heading">Arts</h3>
+                        <ul class="menu">
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/arts/index.html">Today's Arts</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/arts/design/index.html">Art & Design</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/books/index.html">Books</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/arts/dance/index.html">Dance</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/movies/index.html">Movies</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/arts/music/index.html">Music</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/events/">N.Y.C. Events Guide</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/arts/television/index.html">Television</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/theater/index.html">Theater</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/video/arts">Video: Arts</a>
+                            </li>
+
+
+                        </ul>
+                    </div><!-- close column -->
+
+
+                    <div class="column">
+                        <h3 class="menu-heading">Living</h3>
+                        <ul class="menu">
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/automobiles/index.html">Automobiles</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/crosswords/">Crossword</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/dining/index.html">Food</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/education/index.html">Education</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/fashion/index.html">Fashion & Style</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/health/index.html">Health</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/section/jobs">Jobs</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/magazine/index.html">Magazine</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/events/">N.Y.C. Events Guide</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/realestate/index.html">Real Estate</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/section/t-magazine">T Magazine</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/section/travel">Travel</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/fashion/weddings/index.html">Weddings &
+                                    Celebrations</a>
+                            </li>
+
+
+                        </ul>
+                    </div><!-- close column -->
+
+
+                    <div class="column">
+                        <h3 class="menu-heading">Listings & More</h3>
+                        <ul class="menu">
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/ref/classifieds/">Classifieds</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/marketing/tools-and-services/">Tools & Services</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/topics/">Times Topics</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://topics.nytimes.com/top/opinion/thepubliceditor/index.html">Public
+                                    Editor</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/events/">N.Y.C. Events Guide</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/interactive/blogs/directory.html">Blogs</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/pages/multimedia/index.html">Multimedia</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://lens.blogs.nytimes.com/">Photography</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/video">Video</a>
+                            </li>
+
+
+                            <li>
+                                <a href="https://www.nytimes.com/store/?&t=qry542&utm_source=nytimes&utm_medium=HPB&utm_content=hp_browsetree&utm_campaign=NYT-HP&module=SectionsNav&action=click&region=TopBar&version=BrowseTree&contentCollection=NYT%20Store&contentPlacement=2&pgtype=Homepage">NYT
+                                    Store</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/times-journeys/?utm_source=nytimes&utm_medium=HPLink&utm_content=hp_browsetree&utm_campaign=NYT-HP">Times
+                                    Journeys</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/seeallnav">Subscribe</a>
+                            </li>
+
+
+                            <li>
+                                <a href="http://www.nytimes.com/membercenter">Manage My Account</a>
+                            </li>
+
+
+                        </ul>
+                    </div><!-- close column -->
+
+
+                    <div class="column last-column">
+
+                        <h3 class="menu-heading">Subscribe</h3>
+
+                        <ul class="menu primary-menu">
+                            <li class="menu-label">Subscribe</li>
+                            <li class="times-premier">
+                                <i class="icon sprite-icon"></i>
+                                <a href="http://www.nytimes.com/tpnav">Times Insider</a>
+                            </li>
+
+                            <li class="home-delivery">
+                                <i class="icon sprite-icon"></i>
+                                <a href="http://www.nytimes.com/hdleftnav">Home Delivery</a>
+                            </li>
+                            <li class="digital-subscriptions">
+                                <i class="icon sprite-icon"></i>
+                                <a href="http://www.nytimes.com/digitalleftnav">Digital Subscriptions</a>
+                            </li>
+                            <li class="nyt-opinion">
+                                <i class="icon sprite-icon"></i>
+                                <a href="http://www.nytimes.com/opinionindex">NYT Opinion</a>
+                            </li>
+                            <li class="nyt-crossword last-item">
+                                <i class="icon sprite-icon"></i>
+                                <a id="nyt-crossword" href="http://www.nytimes.com/crosswords/index.html">Crossword</a>
+                            </li>
+
+                        </ul>
+
+                        <ul class="menu secondary-menu">
+
+                            <li>
+                                <a href="http://www.nytimes.com/marketing/newsletters">Email Newsletters</a>
+                            </li>
+                            <li>
+                                <a href="https://myaccount.nytimes.com/mem/tnt.html">Alerts</a>
+                            </li>
+                            <li>
+                                <a href="http://www.nytimes.com/giftleftnav">Gift Subscriptions</a>
+                            </li>
+                            <li>
+                                <a href="http://www.nytimes.com/corporateleftnav">Corporate Subscriptions</a>
+                            </li>
+                            <li>
+                                <a href="http://www.nytimes.com/educationleftnav">Education Rate</a>
+                            </li>
+
+                        </ul>
+                        <ul class="menu secondary-menu">
+                            <li>
+                                <a href="http://www.nytimes.com/services/mobile/index.html">Mobile Applications</a>
+                            </li>
+                            <li>
+                                <a href="http://eedition.nytimes.com/cgi-bin/signup.cgi?cc=37FYY">Replica Edition</a>
+                            </li>
+                            <li>
+                                <a href="https://subscribe.inyt.com">International New York Times</a>
+                            </li>
+
+                        </ul>
+
+                    </div><!-- close column -->
+
+                </div><!-- close split-6-layout -->
+
+            </nav><!-- close nav -->
+
+        </section><!-- close site-index -->
+
+        <footer id="page-footer" class="page-footer" role="contentinfo">
+            <nav>
+                <h2 class="visually-hidden">Site Information Navigation</h2>
+                <ul>
+                    <li>
+                        <a href="http://www.nytimes.com/content/help/rights/copyright/copyright-notice.html"
+                           itemprop="copyrightNotice">
+                            &copy; <span itemprop="copyrightYear">2016</span><span
+                                itemprop="copyrightHolder provider sourceOrganization" itemscope
+                                itemtype="http://schema.org/Organization" itemid="http://www.nytimes.com"><span
+                                itemprop="name"> The New York Times Company</span><meta itemprop="tickerSymbol"
+                                                                                        content="NYSE NYT"/></span>
+                        </a>
+                    </li>
+                    <li class="visually-hidden"><a href="http://www.nytimes.com">Home</a></li>
+                    <li class="visually-hidden"><a href="http://query.nytimes.com/search/sitesearch/#/">Search</a></li>
+                    <li class="visually-hidden">Accessibility concerns? Email us at <a
+                            href="mailto:accessibility@nytimes.com">accessibility@nytimes.com</a>. We would love to hear
+                        from you.
+                    </li>
+                    <li class="wide-viewport-item"><a
+                            href="http://www.nytimes.com/ref/membercenter/help/infoservdirectory.html">Contact Us</a>
+                    </li>
+                    <li class="wide-viewport-item"><a href="http://www.nytco.com/careers">Work With Us</a></li>
+                    <li class="wide-viewport-item"><a href="http://www.nytimes.whsites.net/mediakit">Advertise</a></li>
+                    <li class="wide-viewport-item"><a
+                            href="http://www.nytimes.com/content/help/rights/privacy/policy/privacy-policy.html#pp">Your
+                        Ad Choices</a></li>
+                    <li><a href="http://www.nytimes.com/privacy">Privacy</a></li>
+                    <li><a href="http://www.nytimes.com/ref/membercenter/help/agree.html" itemprop="usageTerms">Terms of
+                        Service</a></li>
+                    <li class="wide-viewport-item last-item"><a
+                            href="http://www.nytimes.com/content/help/rights/sale/terms-of-sale.html">Terms of Sale</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="last-nav">
+                <h2 class="visually-hidden">Site Information Navigation</h2>
+                <ul>
+                    <li><a href="http://spiderbites.nytimes.com">Site Map</a></li>
+                    <li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a></li>
+                    <li><a href="https://myaccount.nytimes.com/membercenter/feedback.html">Site Feedback</a></li>
+                    <li class="wide-viewport-item last-item"><a
+                            href="http://www.nytimes.com/subscriptions/Multiproduct/lp5558.html?campaignId=37WXW">Subscriptions</a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </div><!-- close page -->
+</div><!-- close shell -->
+<script>
+    require(['foundation/main'], function () {
+        require(['story/main']);
+        require(['jquery/nyt', 'foundation/views/page-manager'], function ($, pageManager) {
+            // if (window.location.search.indexOf('disable_tagx') > 0) {
+            //     return;
+            // }
+            // $(document).ready(function () {
+            //     require(['../../../../../a1.nyt.com/analytics/tagx-simple.min.js'], function () {
+            //         pageManager.trackingFireEventQueue();
+            //     });
+            // });
+        });
+    });
+</script>
+
+
+<div id="Inv1" class="ad inv1-ad hidden"></div>
+<div id="Inv2" class="ad inv2-ad hidden"></div>
+<div id="Inv3" class="ad inv3-ad hidden"></div>
+<div id="ab1" class="ad ab1-ad hidden"></div>
+<div id="ab2" class="ad ab2-ad hidden"></div>
+<div id="ab3" class="ad ab3-ad hidden"></div>
+<div id="prop1" class="ad prop1-ad hidden"></div>
+<div id="prop2" class="ad prop2-ad hidden"></div>
+<div id="Anchor" class="ad anchor-ad hidden"></div>
+<div id="ADX_CLIENTSIDE" class="ad adx-clientside-ad hidden"></div>
+<script type="text/javascript">window.NREUM || (NREUM = {});
+NREUM.info = {
+    "beacon": "bam.nr-data.net",
+    "licenseKey": "b5bcf2eba4",
+    "applicationID": "4491951",
+    "transactionName": "YwFXZhRYVhAEVUZcX1pLYEAPFlkTFRhCXUA=",
+    "queueTime": 0,
+    "applicationTime": 124,
+    "ttGuid": "",
+    "agentToken": "",
+    "userAttributes": "",
+    "errorBeacon": "bam.nr-data.net",
+    "agent": ""
+}</script>
+
+<!-- ATM start -->
+<script>
+    window.ATM_DOMAIN = 'www.nytimes.com';
+    window.ATM_CONFIG_PATH = 'atm-core/atm-domains';
+    window.ATM_BASE_URL = '%_ATM_BASE_URL_PLACEHOLDER_%';
+    window.ATM_SERVICE_WORKER = '%_ATM_SW_PATH_PLACEHOLDER_%';
+</script>
+<script src="%_ATM_URL_PLACEHOLDER_%"></script>
+<!-- ATM -->
+
+</body>
+</html>

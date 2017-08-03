@@ -1,0 +1,68 @@
+#mediumPosts {
+  margin: 0 -10px;
+}
+
+.blog-post {
+  text-align: left;
+  line-height: normal;
+  flex: 1;
+  -webkit-flex: 1;
+  padding: 0 10px;
+  .blog-title {
+    font-size: 18px;
+    a {
+      color: $base-color;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+
+  .post-description  {
+    font-size: 16px;
+    margin: 10px 0 15px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  .post-meta {
+    background: url(../images/mitoc-medium.png) left center/36px 36px no-repeat;
+    padding: 0 0 0 45px;
+    font-size: 14px;
+    line-height: normal;
+    & > * {
+      display: block;
+      &.post-date {
+        font-size: 13px;
+        color: rgba(0, 0, 0, .44);
+      }
+    }
+  }
+}
+
+.medium-btn {
+  display: inline-block;
+  border: 1px solid #1C9963;
+  color: #1C9963;
+  text-align: center;
+  cursor: pointer;
+  font: 13px FuturaICG, sans-serif;
+  padding: 2px 16px;
+  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  &:hover {
+    background: #1C9963;
+    color: #fff;
+    border-color: transparent;
+  }
+}
+
+.medium-content {
+  border-bottom: 1px solid #F2F2F2;
+  padding: 20px 0;
+  .posts-info {
+    padding: 0 20px 0 0;
+  }
+}
