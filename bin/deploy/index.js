@@ -312,11 +312,11 @@ function warmUpCache(config) {
   });
 
   return configure.then(() => {
-    if (env === 'master') {
+    // if (env !== 'test') {
       return runChildCmd(config.pullCommand, /^-$/);
-    }
+    // }
 
-    return Promise.resolve();
+    // return Promise.resolve();
   }).then(() => {
     forked.send({ name: 'run-registry' });
     return Promise.resolve();

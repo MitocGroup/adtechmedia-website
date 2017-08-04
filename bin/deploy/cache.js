@@ -58,6 +58,8 @@ function configure() {
     fs.mkdirSync(cacheDir);
   }
 
+
+  // @todo use readOnly: ${['master', 'stage'].includes(env)},
   fs.writeFileSync(
     configPath,
     `module.exports = {
@@ -65,7 +67,7 @@ function configure() {
         logRequesterIP: true,
         logToConsole: true
       },
-      readOnly: ${['master', 'stage'].includes(env)},
+      readOnly: ${['master', 'stage', 'test'].includes(env)},
       cacheDirectory: '${cacheDir}',
       cacheAge: 0,
       httpTimeout: 4000,
