@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
+import config from '../../config.cfg';
 import Home from '../../poms/pages/home.po';
 
 const home = new Home();
