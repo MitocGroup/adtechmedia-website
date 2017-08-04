@@ -142,7 +142,7 @@ isEnvironmentLocked().then(isLocked => {
   });
 
   if (env !== 'master') {
-    promises.push(runChildCmd(cacheInfo.pushCommand, /.*upload.*/));
+    promises.push(runChildCmd(cacheInfo.pushCommand, /^-$/));
   }
 
   return Promise.all(promises);
@@ -313,7 +313,7 @@ function warmUpCache(config) {
 
   return configure.then(() => {
     if (env === 'master') {
-      return runChildCmd(config.pullCommand, /.*download.*/);
+      return runChildCmd(config.pullCommand, /^-$/);
     }
 
     return Promise.resolve();
