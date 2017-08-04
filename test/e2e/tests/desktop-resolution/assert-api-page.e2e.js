@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
+import config from '../../config.cfg';
 import Api from '../../poms/pages/api.po';
 
 const api = new Api();

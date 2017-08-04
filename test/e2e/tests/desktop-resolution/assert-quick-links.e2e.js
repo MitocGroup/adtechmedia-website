@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
+import config from '../../config.cfg';
 import QuickLinks from '../../poms/components/quick-links.po';
 
 const quickLinks = new QuickLinks();

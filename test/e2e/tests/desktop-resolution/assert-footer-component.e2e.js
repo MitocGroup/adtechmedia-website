@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
+import config from '../../config.cfg';
 import Footer from '../../poms/components/footer.po';
 
 const footer = new Footer();
