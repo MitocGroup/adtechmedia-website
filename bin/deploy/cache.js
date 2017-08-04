@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { runChildCmd } = require('../helpers/utils');
 
+const env = process.env.DEPLOY_ENV || 'test';
 const bucket = 'atm-deploy-caches';
 const prefix = 'atm-website/npm-registry';
 const appPath = path.join(__dirname, '../../');
@@ -49,9 +50,11 @@ function runRegistry() {
  * Configure local registry for environment
  */
 function configure() {
-  runChildCmd('npm config set registry http://localhost:8080/').then(() => {
-    console.log('Local npm registry configured');
-  });
+  if (['master', 'stage'].includes(env)) {
+    runChildCmd('npm config set registry http://localhost:8080/').then(() => {
+      console.log('Local npm registry configured');
+    });
+  }
 
   if (!fs.existsSync(cacheDir)){
     fs.mkdirSync(cacheDir);
@@ -64,7 +67,7 @@ function configure() {
         logRequesterIP: true,
         logToConsole: true
       },
-      readOnly: ${(process.env.DEPLOY_ENV === 'master')},
+      readOnly: ${(env === 'master')},
       cacheDirectory: '${cacheDir}',
       cacheAge: 0,
       httpTimeout: 4000,
