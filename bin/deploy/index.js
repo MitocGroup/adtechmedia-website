@@ -4,16 +4,19 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawn, fork } = require('child_process');
-const AwsHelper = require('./aws-helper');
+const AwsHelper = require('../helpers/aws');
+const { fork } = require('child_process');
+const { runChildCmd, findProvisioningFile, findLambdasByMicroAppName } = require('../helpers/utils');
 
+const deepRegexp = /\d{2}:\d{2}:\d{2}/;
+const microAppName = 'adtechmedia-website';
 const env = process.env.DEPLOY_ENV || 'test';
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
 const logPath = path.join(appPath, 'docs/deploy.log');
-const awsh = new AwsHelper();
-const timerId = setInterval(() => { console.log('.'); }, 60000);
 const forked = fork('bin/deploy/cache.js', { cwd: appPath });
+const timerId = setInterval(() => { console.log('.'); }, 60000);
+const awsh = new AwsHelper('atm-deploy-assets');
 
 let newAppInfo = {};
 let cacheInfo = {};
@@ -41,7 +44,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Installing DEEP microservice');
-  return runChildCmd(`cd ${srcPath} && deepify install`);
+  return runChildCmd(`cd ${srcPath} && deepify install`, deepRegexp);
 
 }).then(() => {
 
@@ -57,7 +60,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Deploying application');
-  return runChildCmd(`cd ${srcPath} && deepify deploy`).then(() => {
+  return runChildCmd(`cd ${srcPath} && deepify deploy`, deepRegexp).then(() => {
     newAppInfo = getNewApplicationInfo();
     return Promise.resolve();
   });
@@ -111,7 +114,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Checkout to dev branch');
-  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev', true);
+  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev');
 
 }).then(() => {
 
@@ -119,17 +122,30 @@ isEnvironmentLocked().then(isLocked => {
   updateDeployLog();
 
   console.log('Committing deploy.log changes');
-  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`, true);
+  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`);
 
 }).then(() => {
 
   console.log('Pushing deploy.log changes');
-  return runChildCmd('git push origin dev', true);
+  return runChildCmd('git push origin dev');
 
 }).then(() => {
 
-  console.log('Handle cached modules');
-  return (env === 'stage') ? runChildCmd(cacheInfo.pushCommand) : Promise.resolve();
+  console.log('Caching node_modules & lambdas');
+
+  const s3Prefix = `atm-website/lambdas/${env}`;
+  const helper = new AwsHelper('atm-deploy-caches');
+
+  let promises = findLambdasByMicroAppName(microAppName).map(lambdaPath => {
+    let stream = fs.createReadStream(lambdaPath);
+    return helper.uploadZipToS3(lambdaPath.replace(srcPath, s3Prefix), stream);
+  });
+
+  if (env === 'stage') {
+    promises.push(runChildCmd(cacheInfo.pushCommand, /.*upload.*/));
+  }
+
+  return Promise.all(promises);
 
 }).then(() => {
 
@@ -227,22 +243,6 @@ function parseInfoFromLog() {
 }
 
 /**
- * Find provisioning file path
- * @returns {*}
- */
-function findProvisioningFile() {
-  let files = fs.readdirSync(srcPath).filter(file => {
-    return /^.([a-z0-9]+).([a-z]+).provisioning.json$/.test(file);
-  });
-
-  if (files.length <= 0) {
-    throw 'Provisioning file was not found';
-  }
-
-  return path.join(srcPath, files[0]);
-}
-
-/**
  * Update deeploy.json with aws credentials
  */
 function updateDeeployJson() {
@@ -308,15 +308,13 @@ function isEnvironmentLocked() {
 function warmUpCache(config) {
   const configure = new Promise((resolve, reject) => {
     forked.send({ name: 'configure' });
-    setTimeout(() => { resolve(); }, 500);
+    setTimeout(() => { resolve(); }, 1000);
   });
 
   if (['master', 'stage'].includes(env)) {
     return configure.then(() => {
-      return runChildCmd('npm config set registry http://localhost:8080/');
-    }).then(() => {
       if (env === 'master') {
-        return runChildCmd(config.pullCommand);
+        return runChildCmd(config.pullCommand, /.*download.*/);
       }
 
       return Promise.resolve();
@@ -345,43 +343,6 @@ function getCacheConfig() {
       return reject(error);
     });
   });
-}
-
-/**
- * Run child shell command
- * @param cmd
- * @param verbose
- * @returns {Promise}
- */
-function runChildCmd(cmd, verbose = false) {
-  return new Promise((resolve, reject) => {
-    const isVerbose = verbose;
-    const childCmd = spawn(cmd, { shell: true });
-
-    childCmd.stdout.on('data', data => {
-      isVerbose ? console.log(data.toString()) : logOutput(data.toString());
-    });
-
-    childCmd.stderr.on('data', error => {
-      isVerbose ? console.error(error.toString()) : logOutput(error.toString());
-    });
-
-    childCmd.on('exit', code => {
-      return (code === 1) ? reject(code) : resolve(code);
-    });
-  });
-}
-
-/**
- * Print output (filtered)
- * @param str
- */
-function logOutput(str) {
-  const regExp = /\d{2}:\d{2}:\d{2}/;
-
-  if (regExp.test(str)) {
-    console.log(str.trim());
-  }
 }
 
 /**

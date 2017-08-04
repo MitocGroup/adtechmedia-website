@@ -15,14 +15,6 @@ class AwsHelper {
   }
 
   /**
-   * ATM deploy assets bucket name
-   * @returns {string}
-   */
-  static assetsBucket() {
-    return 'atm-deploy-assets';
-  }
-
-  /**
    * Wait timeout
    * @returns {number}
    */
@@ -33,11 +25,12 @@ class AwsHelper {
   /**
    * Constructor
    */
-  constructor() {
+  constructor(bucketName) {
     AWS.config.credentials = process.env.CI
       ? new AWS.EnvironmentCredentials('AWS')
       : new AWS.SharedIniFileCredentials({ profile: 'mitoc' });
 
+    this.bucket = bucketName;
     this.s3 = new AWS.S3();
     this.route53 = new AWS.Route53();
     this.cloudfront = new AWS.CloudFront();
@@ -48,7 +41,26 @@ class AwsHelper {
    * @returns {Promise}
    */
   getS3Object(objectKey) {
-    return this.s3.getObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+    return this.s3.getObject({ Bucket: this.bucket, Key: objectKey }).promise();
+  }
+
+  /**
+   * @param objectKey
+   * @param body
+   * @returns {Promise}
+   */
+  putS3Object(objectKey, body = '') {
+    return this.s3.putObject({ Bucket: this.bucket, Key: objectKey, Body: body }).promise();
+  }
+
+  /**
+   * Upload zip to s3
+   * @param objectKey
+   * @param stream
+   * @returns {Promise}
+   */
+  uploadZipToS3(objectKey, stream) {
+    return this.s3.upload({ Bucket: this.bucket, Key: objectKey, Body: stream }).promise();
   }
 
   /**
@@ -75,16 +87,8 @@ class AwsHelper {
    * @param objectKey
    * @returns {Promise}
    */
-  putS3Object(objectKey) {
-    return this.s3.putObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
-  }
-
-  /**
-   * @param objectKey
-   * @returns {Promise}
-   */
   deleteS3Object(objectKey) {
-    return this.s3.deleteObject({ Bucket: AwsHelper.assetsBucket(), Key: objectKey }).promise();
+    return this.s3.deleteObject({ Bucket: this.bucket, Key: objectKey }).promise();
   }
 
   /**
