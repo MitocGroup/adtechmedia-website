@@ -141,7 +141,7 @@ isEnvironmentLocked().then(isLocked => {
     return helper.uploadZipToS3(lambdaPath.replace(srcPath, s3Prefix), stream);
   });
 
-  if (env === 'stage') {
+  if (env !== 'master') {
     promises.push(runChildCmd(cacheInfo.pushCommand, /.*upload.*/));
   }
 
@@ -306,25 +306,21 @@ function isEnvironmentLocked() {
  * @returns {*}
  */
 function warmUpCache(config) {
-  const configure = new Promise((resolve, reject) => {
+  const configure = new Promise(resolve => {
     forked.send({ name: 'configure' });
     setTimeout(() => { resolve(); }, 1000);
   });
 
-  if (['master', 'stage'].includes(env)) {
-    return configure.then(() => {
-      if (env === 'master') {
-        return runChildCmd(config.pullCommand, /.*download.*/);
-      }
+  return configure.then(() => {
+    if (env === 'master') {
+      return runChildCmd(config.pullCommand, /.*download.*/);
+    }
 
-      return Promise.resolve();
-    }).then(() => {
-      forked.send({ name: 'run-registry' });
-      return Promise.resolve();
-    });
-  }
-
-  return Promise.resolve();
+    return Promise.resolve();
+  }).then(() => {
+    forked.send({ name: 'run-registry' });
+    return Promise.resolve();
+  });
 }
 
 /**
