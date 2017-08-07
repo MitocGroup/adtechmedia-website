@@ -69,7 +69,7 @@ function configure() {
       },
       readOnly: ${['master', 'stage', 'test'].includes(env)},
       cacheDirectory: '${cacheDir}',
-      cacheAge: 99999999999999,
+      cacheAge: 9999999999,
       httpTimeout: 4000,
       maxRetries: 2,
       externalUrl: 'http://localhost:8080',
