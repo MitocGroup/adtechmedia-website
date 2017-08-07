@@ -49,13 +49,12 @@ function runRegistry() {
  * Configure local registry for environment
  */
 function configure() {
-  runChildCmd('npm config set registry http://localhost:8080/').then(() => {
+  Promise.all([
+    runChildCmd('npm config set registry http://localhost:8080/'),
+    runChildCmd(`rm -rf ${cacheDir} && mkdir ${cacheDir}`)
+  ]).then(() => {
     console.log('Local npm registry configured');
   });
-
-  if (!fs.existsSync(cacheDir)){
-    fs.mkdirSync(cacheDir);
-  }
 
   fs.writeFileSync(
     configPath,
