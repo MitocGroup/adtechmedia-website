@@ -25,7 +25,7 @@ ensure_required_deps() {
         recink-pagespeed
         recink-codeclimate
         aws-sdk
-        adtechmedia/npm_lazy
+        sergiik/npm_lazy
         uglifyjs-webpack-plugin
         mishoo/UglifyJS2#harmony-v2.8.22
         webpack

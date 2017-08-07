@@ -8,7 +8,7 @@ const AwsHelper = require('../helpers/aws');
 const { fork } = require('child_process');
 const { runChildCmd, findProvisioningFile, findLambdasByMicroAppName } = require('../helpers/utils');
 
-const deepRegexp = /\d{2}:\d{2}:\d{2}/;
+const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
 const microAppName = 'adtechmedia-website';
 const env = process.env.DEPLOY_ENV || 'test';
 const appPath = path.join(__dirname, '../../');
@@ -44,7 +44,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Installing DEEP microservice');
-  return runChildCmd(`cd ${srcPath} && deepify install`, deepRegexp);
+  return runChildCmd(`cd ${srcPath} && deepify install`, deepifyRegexp);
 
 }).then(() => {
 
@@ -60,7 +60,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Deploying application');
-  return runChildCmd(`cd ${srcPath} && deepify deploy`, deepRegexp).then(() => {
+  return runChildCmd(`cd ${srcPath} && deepify deploy`, deepifyRegexp).then(() => {
     newAppInfo = getNewApplicationInfo();
     return Promise.resolve();
   });
