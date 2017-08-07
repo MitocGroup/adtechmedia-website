@@ -9,9 +9,8 @@ const { runChildCmd } = require('../helpers/utils');
 const env = process.env.DEPLOY_ENV || 'test';
 const bucket = 'atm-deploy-caches';
 const prefix = 'atm-website/npm-registry';
-const appPath = path.join(__dirname, '../../');
 const cacheDir = path.join(process.env.HOME, '.npm_lazy');
-const configPath = path.join(appPath, 'npm_lazy.config.js');
+const configPath = path.join(__dirname, '../../', 'npm_lazy.config.js');
 
 /**
  * Parent message handler
@@ -42,7 +41,7 @@ function getConfig() {
  */
 function runRegistry() {
   runChildCmd(`npm_lazy --config ${configPath}`, /.*(Request|Reusing).*/).then(() => {
-    console.log(`npm_lazy server stopped`);
+    console.log('npm_lazy server stopped');
   })
 }
 
@@ -50,13 +49,12 @@ function runRegistry() {
  * Configure local registry for environment
  */
 function configure() {
-  runChildCmd('npm config set registry http://localhost:8080/').then(() => {
+  Promise.all([
+    runChildCmd('npm config set registry http://localhost:8080/'),
+    runChildCmd(`rm -rf ${cacheDir} && mkdir ${cacheDir}`)
+  ]).then(() => {
     console.log('Local npm registry configured');
   });
-
-  if (!fs.existsSync(cacheDir)){
-    fs.mkdirSync(cacheDir);
-  }
 
   fs.writeFileSync(
     configPath,
@@ -67,7 +65,7 @@ function configure() {
       },
       readOnly: ${['master', 'stage'].includes(env)},
       cacheDirectory: '${cacheDir}',
-      cacheAge: 0,
+      cacheAge: 9999999999,
       httpTimeout: 4000,
       maxRetries: 2,
       externalUrl: 'http://localhost:8080',

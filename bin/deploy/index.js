@@ -6,9 +6,10 @@ const fs = require('fs');
 const path = require('path');
 const AwsHelper = require('../helpers/aws');
 const { fork } = require('child_process');
-const { runChildCmd, findProvisioningFile, findLambdasByMicroAppName } = require('../helpers/utils');
+const { runChildCmd, findProvisioningFile } = require('../helpers/utils');
+const { compileMicroservice, cacheMicroserviceLambdas } = require('./compile');
 
-const deepRegexp = /\d{2}:\d{2}:\d{2}/;
+const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
 const microAppName = 'adtechmedia-website';
 const env = process.env.DEPLOY_ENV || 'test';
 const appPath = path.join(__dirname, '../../');
@@ -34,17 +35,17 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
-  console.log('Initializing deploy cache');
+  console.log('Initializing node-modules cache');
   return getCacheConfig().then(cache => {
     cacheInfo = cache;
 
-    return warmUpCache(cacheInfo);
-  })
+    return warmUpModulesCache(cacheInfo);
+  });
 
 }).then(() => {
 
   console.log('Installing DEEP microservice');
-  return runChildCmd(`cd ${srcPath} && deepify install`, deepRegexp);
+  return runChildCmd(`cd ${srcPath} && deepify install`, deepifyRegexp);
 
 }).then(() => {
 
@@ -59,8 +60,13 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
+  console.log('Compiling backend');
+  return compileMicroservice(microAppName);
+
+}).then(() => {
+
   console.log('Deploying application');
-  return runChildCmd(`cd ${srcPath} && deepify deploy`, deepRegexp).then(() => {
+  return runChildCmd(`cd ${srcPath} && deepify deploy`, deepifyRegexp).then(() => {
     newAppInfo = getNewApplicationInfo();
     return Promise.resolve();
   });
@@ -132,16 +138,9 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Caching node_modules & lambdas');
+  let promises = [cacheMicroserviceLambdas(microAppName)];
 
-  const s3Prefix = `atm-website/lambdas/${env}`;
-  const helper = new AwsHelper('atm-deploy-caches');
-
-  let promises = findLambdasByMicroAppName(microAppName).map(lambdaPath => {
-    let stream = fs.createReadStream(lambdaPath);
-    return helper.uploadZipToS3(lambdaPath.replace(srcPath, s3Prefix), stream);
-  });
-
-  if (env !== 'master') {
+  if (env === 'test') {
     promises.push(runChildCmd(cacheInfo.pushCommand, /^-$/));
   }
 
@@ -303,16 +302,16 @@ function isEnvironmentLocked() {
 /**
  * Configure and prepare cache
  * @param config
- * @returns {*}
+ * @returns {Promise}
  */
-function warmUpCache(config) {
+function warmUpModulesCache(config) {
   const configure = new Promise(resolve => {
     forked.send({ name: 'configure' });
     setTimeout(() => { resolve(); }, 1000);
   });
 
   return configure.then(() => {
-    if (env === 'master') {
+    if (env !== 'test') {
       return runChildCmd(config.pullCommand, /^-$/);
     }
 
