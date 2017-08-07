@@ -12,11 +12,7 @@ const { execSync } = require('child_process');
  * Install required npm modules
  */
 if (!fs.existsSync(path.join(__dirname, 'node_modules'))) {
-  try {
-    execSync('npm install', { cwd: __dirname, shell: true });
-  } catch (err) {
-    console.log('Cannot install modules');
-  }
+  execSync('npm install', { cwd: __dirname, shell: true });
 }
 
 const fse = require('fs-extra');
