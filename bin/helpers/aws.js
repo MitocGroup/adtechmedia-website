@@ -37,6 +37,15 @@ class AwsHelper {
   }
 
   /**
+   * Get list of S3 objects
+   * @param prefix
+   * @returns {Promise}
+   */
+  listS3Objects(prefix = '') {
+    return this.s3.listObjectsV2({ Bucket: this.bucket, Prefix: prefix }).promise();
+  }
+
+  /**
    * @param objectKey
    * @returns {Promise}
    */
@@ -70,16 +79,14 @@ class AwsHelper {
    * @returns {Promise}
    */
   getAndSaveS3Object(objectKey, pathToSave) {
-    return this.getS3Object(objectKey).then(data => {
-      return new Promise((resolve, reject) => {
-        fs.writeFile(pathToSave, data.Body.toString(), err => {
-          if (err) {
-            return reject(err);
-          }
+    return new Promise((resolve, reject) => {
+      const writable = fs.createWriteStream(pathToSave);
 
-          return resolve();
-        });
-      });
+      this.s3.getObject({ Bucket: this.bucket, Key: objectKey })
+        .createReadStream()
+        .pipe(writable)
+        .on('finish', res => resolve())
+        .on('error', err => reject(err));
     });
   }
 

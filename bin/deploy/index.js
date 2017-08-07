@@ -6,7 +6,8 @@ const fs = require('fs');
 const path = require('path');
 const AwsHelper = require('../helpers/aws');
 const { fork } = require('child_process');
-const { runChildCmd, findProvisioningFile, findLambdasByMicroAppName } = require('../helpers/utils');
+const { runChildCmd, findProvisioningFile } = require('../helpers/utils');
+const { compileMicroservice, cacheMicroserviceLambdas } = require('./compile');
 
 const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
 const microAppName = 'adtechmedia-website';
@@ -34,12 +35,12 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
-  console.log('Initializing deploy cache');
+  console.log('Initializing node-modules cache');
   return getCacheConfig().then(cache => {
     cacheInfo = cache;
 
-    return warmUpCache(cacheInfo);
-  })
+    return warmUpModulesCache(cacheInfo);
+  });
 
 }).then(() => {
 
@@ -56,6 +57,11 @@ isEnvironmentLocked().then(isLocked => {
     `atm-website/${env}/.parameters.json`,
     `${srcPath}/adtechmedia-website/.parameters.json`
   );
+
+}).then(() => {
+
+  console.log('Compiling backend');
+  return compileMicroservice(microAppName);
 
 }).then(() => {
 
@@ -132,16 +138,9 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Caching node_modules & lambdas');
+  let promises = [cacheMicroserviceLambdas(microAppName)];
 
-  const s3Prefix = `atm-website/lambdas/${env}`;
-  const helper = new AwsHelper('atm-deploy-caches');
-
-  let promises = findLambdasByMicroAppName(microAppName).map(lambdaPath => {
-    let stream = fs.createReadStream(lambdaPath);
-    return helper.uploadZipToS3(lambdaPath.replace(srcPath, s3Prefix), stream);
-  });
-
-  if (env !== 'master') {
+  if (env === 'test') {
     promises.push(runChildCmd(cacheInfo.pushCommand, /^-$/));
   }
 
@@ -303,20 +302,20 @@ function isEnvironmentLocked() {
 /**
  * Configure and prepare cache
  * @param config
- * @returns {*}
+ * @returns {Promise}
  */
-function warmUpCache(config) {
+function warmUpModulesCache(config) {
   const configure = new Promise(resolve => {
     forked.send({ name: 'configure' });
     setTimeout(() => { resolve(); }, 1000);
   });
 
   return configure.then(() => {
-    // if (env !== 'test') {
+    if (env !== 'test') {
       return runChildCmd(config.pullCommand, /^-$/);
-    // }
+    }
 
-    // return Promise.resolve();
+    return Promise.resolve();
   }).then(() => {
     forked.send({ name: 'run-registry' });
     return Promise.resolve();
