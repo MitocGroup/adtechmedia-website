@@ -2,21 +2,31 @@
 
 /* eslint  max-len: 0, no-catch-shadow: 0, no-use-before-define: 0 */
 
-const path = require('path');
-const fs = require('fs');
 const https = require('https');
+const path = require('path');
 const zlib = require('zlib');
+const fs = require('fs');
 const { execSync } = require('child_process');
 
 /**
  * Install required npm modules
  */
 if (!fs.existsSync(path.join(__dirname, 'node_modules'))) {
-  execSync('npm install', {cwd: __dirname});
+  execSync('npm install', { cwd: __dirname, shell: true });
 }
 
+const fse = require('fs-extra');
 const yaml = require('js-yaml');
+const sass = require('node-sass');
+const uglifyJs = require('uglify-js');
+const { minify } = require('html-minifier');
 
+/**
+ * Read directory recursively
+ * @param dir
+ * @param filter
+ * @param callback
+ */
 function walkDir(dir, filter, callback) {
   if (!fs.existsSync(dir)) {
     return;
@@ -36,87 +46,36 @@ function walkDir(dir, filter, callback) {
   }
 }
 
+/**
+ * Replace by pattern
+ * @param file
+ * @param pattern
+ * @param replacement
+ */
 function replaceInFile(file, pattern, replacement) {
-  fs.writeFileSync(
-    file,
-    fs.readFileSync(file).toString().replace(pattern, replacement)
-  );
+  fs.writeFileSync(file, fs.readFileSync(file).toString().replace(pattern, replacement));
 }
 
 function get(url, cb) {
-  https.get(url, function(response) {
-    var rawData = '';
-    var output = response;
+  https.get(url, response => {
+    let rawData = '';
+    let output = response;
 
     if (response.headers['content-encoding'] === 'gzip') {
       output = zlib.createGunzip();
       response.pipe(output);
     }
 
-    output.on('data', function(chunk) {
+    output.on('data', chunk => {
       rawData += chunk;
     });
 
-    output.on('end', function() {
+    output.on('end', () => {
       cb(null, rawData);
     });
-  }).on('error', function(error) {
+  }).on('error', error => {
     cb(error, null);
   });
-}
-
-function copyFileSync(source, target) {
-  var targetFile = target;
-
-  //if target is a directory a new file with the same name will be created
-  if (fs.existsSync(target)) {
-    if (fs.lstatSync(target).isDirectory()) {
-      targetFile = path.join(target, path.basename(source));
-    }
-  }
-
-  fs.writeFileSync(targetFile, fs.readFileSync(source));
-}
-
-function copyFolderRecursiveSync(source, target, level) {
-  var targetFolder = target;
-  level = level || 0;
-
-  // check if folder needs to be created or integrated (skip first level)
-  if (level > 0) {
-    targetFolder = path.join(target, path.basename(source));
-    if (!fs.existsSync(targetFolder)) {
-      fs.mkdirSync(targetFolder);
-    }
-  }
-
-  if (fs.lstatSync(source).isDirectory()) {
-    fs.readdirSync(source).forEach(function(item) {
-      var curSource = path.join(source, item);
-
-      if (fs.lstatSync(curSource).isDirectory()) {
-        copyFolderRecursiveSync(curSource, targetFolder, ++level);
-      } else {
-        copyFileSync(curSource, targetFolder);
-      }
-    });
-  }
-}
-
-function getRootMicroservice(microservices) {
-  for (let i in microservices) {
-    if (!microservices.hasOwnProperty(i)) {
-      continue;
-    }
-
-    let microservice = microservices[i];
-
-    if (microservice.isRoot) {
-      return microservice;
-    }
-  }
-
-  return null;
 }
 
 const articlesPaths = [
@@ -127,118 +86,168 @@ const articlesPaths = [
 ];
 
 module.exports = function(callback) {
-  var mService = this.microservice;
-  var env = mService.property.env;
-  var frontendPath = mService.autoload.frontend;
-  var frontendParams = mService.parameters.frontend;
-  var atmSwUrl = frontendParams.atm.swSource;
+  const mService = this.microservice;
+  const env = mService.property.env;
+  const frontendPath = path.join(__dirname, 'frontend');
+  const buildPath = path.join(frontendPath, '_build');
+  const frontendParams = mService.parameters.frontend;
 
   console.log('Downloading latest Swagger Specification file');
-  get(frontendParams.atm.swaggerUrl, function (err, res) {
+  get(frontendParams.swaggerUrl, (err, res) => {
     if (err) {
       throw err;
     }
 
-    var json = yaml.load(res);
-    if (env !== 'prod') {
-      json.host = 'api-dev.adtechmedia.io'
+    let subDomain;
+    switch (env) {
+      case 'prod':
+        subDomain = 'api';
+        break;
+      case 'stage':
+        subDomain = 'api-stage';
+        break;
+      default:
+        subDomain = 'api-test';
     }
 
-    fs.writeFileSync(path.join(frontendPath, 'files/swagger.json'), JSON.stringify(json));
+    let json = yaml.load(res);
+    json.host = `${subDomain}.adtechmedia.io`;
 
-    console.log('Inject corresponding robots.txt');
-    injectRobotsTxt();
+    fse.ensureDirSync(`${buildPath}/files`);
+    fs.writeFileSync(`${buildPath}/files/swagger.json`, JSON.stringify(json));
+
+    getDeepFramework();
   });
 
-  function injectRobotsTxt() {
-    var sourceRobots = (env === 'prod') ? 'prod-robots.txt' : 'dev-robots.txt';
+  function getDeepFramework() {
+    console.log('Installing latest deep-framework from GitHub');
+    const deepFramework = 'https://raw.githubusercontent.com/MitocGroup/deep-framework/master/src/deep-framework/browser/framework.js';
 
-    fs.writeFileSync(
-      path.join(frontendPath, 'static-pages/robots.txt'),
-      fs.readFileSync(path.join(frontendPath, 'files', sourceRobots))
-    );
-
-    console.log('Copying all static pages into root microservice');
-    copyStaticPages();
-  }
-
-  function copyStaticPages() {
-    var rootMs = getRootMicroservice(mService.property.microservices);
-
-    if (rootMs) {
-      var source = path.join(frontendPath, 'static-pages');
-      var target = rootMs.autoload.frontend;
-
-      copyFolderRecursiveSync(source, target);
-    } else {
-      console.error('Error copying static pages. Root microservice is not found.');
-    }
-
-    injectServiceWorker();
-  }
-  
-  function swContent(cb) {
-    if (/^https?:\/\//i.test(atmSwUrl)) {
-      console.log('Downloading latest ATM Service Worker from ' + atmSwUrl);
-      
-      return get(atmSwUrl, cb);
-    }
-    
-    try {
-      console.log('Reading ATM Service Worker from ' + atmSwUrl);
-      
-      cb(null, fs.readFileSync(path.join(__dirname, atmSwUrl)));
-    } catch (error) {
-      cb(error, null);
-    }
-  }
-
-  function injectServiceWorker() {
-    swContent(function(error, swContent) {
-      if (error) {
-        throw error;
+    get(deepFramework, (err, res) => {
+      if (err) {
+        throw err;
       }
 
-      var atmHost = frontendParams.atm.host;
-      var atmSwPath = frontendParams.atm.swPath;
-      var atmSwPathFull = path.join(frontendPath, atmSwPath);
-      var atmSwWebPath = '/' + path.join(mService.identifier, atmSwPath);
-      var nytRibbonPath = path.join(__dirname, 'assets/nyt-ribbon.html');
-      var nytRibbonContent;
-
-      console.log('Persist NYT Ribbon content from ' + nytRibbonPath);
-      try {
-        nytRibbonContent = fs.readFileSync(nytRibbonPath);
-      } catch (error) {
-        console.error(error);
-      }
-
-      console.log('Persist ATM Service Worker to ' + atmSwPathFull);
-      try {
-        fs.writeFileSync(atmSwPathFull, swContent);
-      } catch (error) {
-        console.error(error);
-      }
-
-      articlesPaths.forEach(function(articlesPath) {
-        var fullArticlesPath = path.join(frontendPath, articlesPath);
-
-        walkDir(fullArticlesPath, /\.html$/, function(filename) {
-          console.log('Inject ATM base url (' + atmHost + ') in ' + articlesPath);
-          console.log('Inject SW path (' + atmSwWebPath + ') in ' + articlesPath);
-
-          try {
-            replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, nytRibbonContent);
-            replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, atmHost);
-            replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, atmSwWebPath);
-          } catch (error) {
-            console.error(error);
-          }
-        });
-      });
-
-      callback();
+      fs.writeFileSync(`${buildPath}/js/vendor/deep-framework.min.js`, res);
     });
+
+    injectRobotsTxt();
   }
 
+  function injectRobotsTxt() {
+    console.log('Inject corresponding robots.txt');
+
+    let sourceRobots = (env === 'prod') ? 'prod-robots.txt' : 'dev-robots.txt';
+    fs.writeFileSync(`${buildPath}/robots.txt`, fs.readFileSync(`${frontendPath}/files/${sourceRobots}`));
+    fs.writeFileSync(`${buildPath}/sitemap.xml`, fs.readFileSync(`${frontendPath}/files/sitemap.xml`));
+
+    minifyJsFiles();
+  }
+
+  function minifyJsFiles() {
+    console.log('Minifying js files');
+
+    const srcPath = path.join(frontendPath, 'js/src');
+    fse.ensureDirSync(`${buildPath}/js`);
+
+    walkDir(srcPath, /\.js$/, srcFilePath => {
+      let sourceJs = fs.readFileSync(srcFilePath, {encoding: 'utf8'});
+      let minResult = uglifyJs.minify(sourceJs);
+
+      fs.writeFileSync(
+        `${buildPath}/js/${path.basename(srcFilePath)}`,
+        minResult.code
+      );
+    });
+
+    fse.copySync(`${frontendPath}/js/vendor`, `${buildPath}/js/vendor`);
+
+    minifyStaticPages();
+  }
+
+  function minifyStaticPages() {
+    console.log('Minifying static pages');
+
+    let srcDir = `${frontendPath}/static-pages`;
+    walkDir(srcDir, /\.html$/, srcFile => {
+      // fs.copySync(srcFile, srcFile.replace(srcDir, buildPath));
+      const destFile = srcFile.replace(srcDir, buildPath);
+      fse.ensureDirSync(path.dirname(destFile));
+
+      let srcFileContent = fs.readFileSync(srcFile, { encoding: 'utf8' });
+      fs.writeFileSync(destFile, minify(srcFileContent, {
+        minifyJS: true,
+        minifyCSS: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        removeStyleLinkTypeAttributes: true
+      }));
+
+    });
+
+    minifyCssFiles();
+  }
+
+  function minifyCssFiles() {
+    console.log('Compiling sass to css');
+
+    fse.ensureDirSync(`${buildPath}/css`);
+
+    const srcDir = `${frontendPath}/css/src`;
+    walkDir(srcDir, /main\.scss$/, sassFile => {
+      sass.render({ file: sassFile, outputStyle: 'compressed' }, (error, result) => {
+        if (error) {
+          throw error;
+        }
+
+        const name = path.dirname(sassFile.replace(srcDir, ''));
+        const cssName = (name !== '/') ? `${name}.min.css` : 'main.min.css';
+
+        fs.writeFileSync(`${buildPath}/css/${cssName}`, result.css);
+      });
+    });
+
+    fse.copySync(`${frontendPath}/css/vendor`, `${buildPath}/css/vendor`);
+
+    copyAssets();
+  }
+
+  function copyAssets() {
+    console.log('Preparing site assets');
+
+    fse.copySync(`${frontendPath}/data`, `${buildPath}/data`);
+    fse.copySync(`${frontendPath}/fonts`, `${buildPath}/fonts`);
+    fse.copySync(`${frontendPath}/images`, `${buildPath}/images`);
+    fse.copySync(`${frontendPath}/demo-pages`, `${buildPath}/demo-pages`);
+    fse.copySync(`${frontendPath}/.well-known`, `${buildPath}/.well-known`);
+
+    prepareDemoPages();
+  }
+
+  function prepareDemoPages() {
+    console.log('Injecting ATM base, SW and ribbon');
+
+    articlesPaths.forEach(articlesPath => {
+      const swSource = frontendParams.swSource;
+      const atmSource = frontendParams.atmSource;
+      const manageBaseUrl = frontendParams.dashboardUrl;
+      const fullArticlesPath = path.join(buildPath, 'demo-pages', articlesPath);
+      const ribbonContent = fs.readFileSync(`${frontendPath}/files/nyt-ribbon.html`).toString();
+
+      walkDir(fullArticlesPath, /\.html$/, filename => {
+        console.log(`Injecting into article: ${path.basename(filename)}`);
+
+        try {
+          replaceInFile(filename, /%_ATM_NYT_RIBBON_PLACEHOLDER_%/g, ribbonContent);
+          replaceInFile(filename, /%_ATM_BASE_URL_PLACEHOLDER_%/g, manageBaseUrl);
+          replaceInFile(filename, /%_ATM_SW_PATH_PLACEHOLDER_%/g, swSource);
+          replaceInFile(filename, /%_ATM_URL_PLACEHOLDER_%/g, atmSource);
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    });
+
+    callback();
+  }
 };
