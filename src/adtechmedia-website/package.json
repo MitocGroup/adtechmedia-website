@@ -17,7 +17,7 @@
     "type": "git",
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "fs-extra": "^4.0.0",
     "html-minifier": "^3.5.2",
     "js-yaml": "^3.8.4",

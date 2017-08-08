@@ -4,13 +4,13 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawn } = require('child_process');
+const { runChildCmd } = require('../helpers/utils');
 
+const env = process.env.DEPLOY_ENV || 'test';
 const bucket = 'atm-deploy-caches';
 const prefix = 'atm-website/npm-registry';
-const appPath = path.join(__dirname, '../../');
 const cacheDir = path.join(process.env.HOME, '.npm_lazy');
-const configPath = path.join(appPath, 'npm_lazy.config.js');
+const configPath = path.join(__dirname, '../../', 'npm_lazy.config.js');
 
 /**
  * Parent message handler
@@ -20,7 +20,7 @@ process.on('message', (event) => {
     case 'get-config': getConfig(); break;
     case 'configure': configure(); break;
     case 'run-registry': runRegistry(); break;
-    case 'exit': process.exit(0); break;
+    case 'exit': onExit(); break;
   }
 });
 
@@ -31,7 +31,7 @@ function getConfig() {
   process.send({
     cacheDir: cacheDir,
     configPath: configPath,
-    pullCommand: `aws s3 sync s3://${bucket}/${prefix} ${cacheDir}`,
+    pullCommand: `aws s3 sync s3://${bucket}/${prefix} ${cacheDir} --delete`,
     pushCommand: `aws s3 sync ${cacheDir} s3://${bucket}/${prefix} --delete`
   });
 }
@@ -40,28 +40,21 @@ function getConfig() {
  * Run local npm registry
  */
 function runRegistry() {
-  const childCmd = spawn(`npm_lazy --config ${configPath}`, { shell: true, cwd: appPath });
-
-  childCmd.stdout.on('data', data => {
-    let str = data.toString();
-
-    if (/.*(Request|Reusing).*/.test(str)) {
-      console.log(str.trim());
-    }
-  });
-
-  childCmd.stderr.on('data', error => {
-    console.error(error.toString());
-  });
+  runChildCmd(`npm_lazy --config ${configPath}`, /.*(Request|Reusing).*/).then(() => {
+    console.log('npm_lazy server stopped');
+  })
 }
 
 /**
  * Configure local registry for environment
  */
 function configure() {
-  if (!fs.existsSync(cacheDir)){
-    fs.mkdirSync(cacheDir);
-  }
+  Promise.all([
+    runChildCmd('npm config set registry http://localhost:8080/'),
+    runChildCmd(`rm -rf ${cacheDir} && mkdir ${cacheDir}`)
+  ]).then(() => {
+    console.log('Local npm registry configured');
+  });
 
   fs.writeFileSync(
     configPath,
@@ -70,9 +63,9 @@ function configure() {
         logRequesterIP: true,
         logToConsole: true
       },
-      readOnly: ${(process.env.DEPLOY_ENV === 'master')},
+      readOnly: ${['master', 'stage'].includes(env)},
       cacheDirectory: '${cacheDir}',
-      cacheAge: 0,
+      cacheAge: 9999999999,
       httpTimeout: 4000,
       maxRetries: 2,
       externalUrl: 'http://localhost:8080',
@@ -82,4 +75,13 @@ function configure() {
       proxy: {}
     };`
   );
+}
+
+/**
+ * Reset registry config and exit
+ */
+function onExit() {
+  runChildCmd('npm config delete registry').then(() => {
+    process.exit(0);
+  });
 }

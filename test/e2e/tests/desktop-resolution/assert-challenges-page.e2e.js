@@ -1,5 +1,5 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
+import config from '../../config.cfg';
 import Challenges from '../../poms/pages/challenges.po';
 
 const challenges = new Challenges();

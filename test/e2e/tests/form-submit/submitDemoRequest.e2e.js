@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
-import config from '../../config';
-import libs from '../../libs';
+import config from '../../config.cfg';
+import libs from '../../libs.cfg';
 import Home from '../../poms/pages/home.po';
 import RequestDemoModal from '../../poms/forms/demo-modal.po';
 
