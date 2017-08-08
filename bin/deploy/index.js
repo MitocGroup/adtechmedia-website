@@ -66,18 +66,17 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Deploying application');
-  return runChildCmd(`cd ${srcPath} && deepify deploy`, deepifyRegexp).then(() => {
+  return runChildCmd(`cd ${srcPath} && DEEP_CONFIRMATION_REFUSE=1 deepify deploy`, deepifyRegexp).then(() => {
     newAppInfo = getNewApplicationInfo();
     return Promise.resolve();
   });
 
 }).then(() => {
 
-  let promises = [];
-  promises.push(awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId));
-
   console.log('Mark old distributions with REMOVE mark');
   console.log('Waiting freshly deployed CloudFront will get status deployed');
+  let promises = [awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId)];
+
   return getOldDistributionIds().then(ids => {
     promises.push(ids.map(id => {
       return handleOldDistribution(id);
@@ -111,7 +110,7 @@ isEnvironmentLocked().then(isLocked => {
 
 }).then(() => {
 
-  console.log('Repointing Route53 to freshly deployed CloudFront');
+  console.log('Repointing Route53 to a freshly deployed CloudFront');
   return awsh.getResourceRecordByName(getDomain()).then(recordSet => {
     recordSet.ResourceRecords[0].Value = newAppInfo.cloudfrontDomain;
     return awsh.updateResourceRecord(recordSet);

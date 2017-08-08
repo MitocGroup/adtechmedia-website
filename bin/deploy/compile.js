@@ -59,18 +59,6 @@ function cacheMicroserviceLambdas(microApp) {
 exports.cacheMicroserviceLambdas = cacheMicroserviceLambdas;
 
 /**
- * Deploy frontend and/or backend
- * @returns {Promise}
- */
-function deployApplication() {
-  let deployCommand = deployBackend ? 'deepify deploy' : 'deepify deploy --frontend';
-
-  return runChildCmd(`cd ${srcPath} && ${deployCommand}`, deepifyRegexp);
-}
-
-exports.deployApplication = deployApplication;
-
-/**
  * Download compiled lambdas
  * @param microApp
  * @returns {Promise}
