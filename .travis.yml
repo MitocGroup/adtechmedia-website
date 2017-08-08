@@ -51,7 +51,7 @@ jobs:
       after_failure:
         - deepify undeploy src --loglevel=debug
 
-# Temporarily turned off (Electron issue)
+## Temporarily turned off (Electron issue)
 #    - stage: "Run e2e Tests :clipboard:"
 #      node_js: 8
 #      script:
