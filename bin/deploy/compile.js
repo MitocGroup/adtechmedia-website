@@ -15,8 +15,6 @@ const awsh = new AwsHelper('atm-deploy-caches');
 const s3Prefix = `atm-website/lambdas/${env}`;
 const compareBranch = process.env.DEPLOY_ENV ? `origin/${env}` : '';
 
-let deployBackend = false;
-
 /**
  * Compile microservise
  * @param microApp
@@ -32,8 +30,6 @@ function compileMicroservice(microApp) {
       });
     }
   }).then(compileBackend => {
-    deployBackend = compileBackend;
-
     return compileBackend
       ? runChildCmd(`cd ${srcPath} && deepify compile prod ${microApp}`, deepifyRegexp)
       : reuseCompiledLambdas(microApp);
@@ -107,18 +103,16 @@ function checkForBackendChanges(microApp) {
         return reject(error);
       }
 
-      let hasChanges = false;
       let files = stdout.split('\n').filter(item => item.trim());
       let regExp = new RegExp(`${microApp}/backend`, 'gi');
 
       for (let i = 0, len = files.length; i < len; i++) {
         if (regExp.test(files[i])) {
-          hasChanges = true;
-          break;
+          return resolve(true);
         }
       }
 
-      resolve(hasChanges);
+      resolve(false);
     });
   });
 }

@@ -15,9 +15,9 @@ const env = process.env.DEPLOY_ENV || 'test';
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
 const logPath = path.join(appPath, 'docs/deploy.log');
+const awsh = new AwsHelper('atm-deploy-assets');
 const forked = fork('bin/deploy/cache.js', { cwd: appPath });
 const timerId = setInterval(() => { console.log('.'); }, 60000);
-const awsh = new AwsHelper('atm-deploy-assets');
 
 let newAppInfo = {};
 let cacheInfo = {};
@@ -54,8 +54,7 @@ isEnvironmentLocked().then(isLocked => {
 
   console.log('Updating .parameters.json');
   return awsh.getAndSaveS3Object(
-    `atm-website/${env}/.parameters.json`,
-    `${srcPath}/adtechmedia-website/.parameters.json`
+    `atm-website/${env}/.parameters.json`, `${srcPath}/adtechmedia-website/.parameters.json`
   );
 
 }).then(() => {
@@ -88,25 +87,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Configuring freshly deployed CloudFront');
-  return awsh.getDistributionById(newAppInfo.cloudfrontId).then(distInfo => {
-    const id = distInfo.Distribution.Id;
-    const etag = distInfo.ETag;
-    const config = distInfo.Distribution.DistributionConfig;
-
-    config.Aliases = {
-      Quantity: 1,
-      Items: [getDomain()]
-    };
-    config.ViewerCertificate = {
-      SSLSupportMethod: 'sni-only',
-      ACMCertificateArn: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
-      MinimumProtocolVersion: 'TLSv1',
-      Certificate: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
-      CertificateSource: 'acm'
-    };
-
-    return awsh.updateDistributionAndWait(id, config, etag);
-  });
+  return configureNewDistribution();
 
 }).then(() => {
 
@@ -119,7 +100,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Checkout to dev branch');
-  return runChildCmd('git fetch origin dev && git checkout . && git checkout dev');
+  return runChildCmd('git checkout . && git checkout dev', /.*Switched.*/);
 
 }).then(() => {
 
@@ -127,7 +108,7 @@ isEnvironmentLocked().then(isLocked => {
   updateDeployLog();
 
   console.log('Committing deploy.log changes');
-  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`);
+  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`, /.*#ATM.*/);
 
 }).then(() => {
 
@@ -260,6 +241,33 @@ function updateDeeployJson() {
     fs.writeFileSync(deeployPath, JSON.stringify(deeploy));
   }
 }
+
+/**
+ * Assign alias and certificate for cloudfront
+ * @returns {Promise}
+ */
+function configureNewDistribution() {
+  return awsh.getDistributionById(newAppInfo.cloudfrontId).then(distInfo => {
+    const id = distInfo.Distribution.Id;
+    const etag = distInfo.ETag;
+    const config = distInfo.Distribution.DistributionConfig;
+
+    config.Aliases = {
+      Quantity: 1,
+      Items: [getDomain()]
+    };
+    config.ViewerCertificate = {
+      SSLSupportMethod: 'sni-only',
+      ACMCertificateArn: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
+      MinimumProtocolVersion: 'TLSv1',
+      Certificate: `arn:aws:acm:us-east-1:${process.env.AWS_ACCOUNT_ID}:certificate/${process.env.ATM_CERTIFICATE}`,
+      CertificateSource: 'acm'
+    };
+
+    return awsh.updateDistributionAndWait(id, config, etag);
+  });
+}
+
 
 /**
  * Update deploy log with freshly deployed cloudfront info
