@@ -6,10 +6,6 @@ const quickLinks = new QuickLinks();
 
 fixture`Check valid links are displayed on "Quick Links" area`
   .page`${config.www_base_host}`
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1920, 1080);
-  });
 
 test('Check "Challenges" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
@@ -114,13 +110,4 @@ test('Check "Blog" quick-link is clickable and valid information is displayed on
     .expect(quickLinks.blogQuickLink.exists).ok()
     .hover(quickLinks.blogQuickLink)
     .click(quickLinks.blogQuickLink), { speed: 0.5 }
-
-  const pageElementBlog = await Selector('.collectionHeader-blockNav > div > nav > div > li:nth-child(1) > a');
-
-  await t
-    .expect(pageElementBlog.with({
-      selectorTimeout: 5000,
-      visibilityCheck: true,
-    }).visible).ok()
-    .expect(pageElementBlog.innerText).contains('AD BLOCKING');
 });

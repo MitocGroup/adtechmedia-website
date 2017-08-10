@@ -6,10 +6,6 @@ const header = new Header();
 
 fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1920, 1080);
-  });
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t

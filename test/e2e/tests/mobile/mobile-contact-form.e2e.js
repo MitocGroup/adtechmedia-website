@@ -9,9 +9,10 @@ fixture`Check "Contact" form request submit`
   .page`${config.www_base_host}/contact`
   .beforeEach(async t => {
     await t
-      .resizeWindowToFitDevice('iPhone 6 Plus', {
-        portraitOrientation: true
-      });
+      .resizeWindow(400, 600);  
+      // .resizeWindowToFitDevice('iPhone 6 Plus', {
+      //   portraitOrientation: true
+      // });
   });
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
