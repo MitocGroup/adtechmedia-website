@@ -11,9 +11,10 @@ fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
   .beforeEach(async t => {
     await t
-      .resizeWindowToFitDevice('iPhone 6 Plus', {
-        portraitOrientation: true
-      });
+      .resizeWindow(400, 600);  
+      // .resizeWindowToFitDevice('iPhone 6 Plus', {
+      //   portraitOrientation: true
+      // });
   });
 
 test('Check "Request a demo" form can be submitted on mobile resolution', async t => {
@@ -33,5 +34,5 @@ test('Check "Request a demo" form can be submitted on mobile resolution', async 
     }).visible).ok()
     .expect(
       Selector(requestDemoModal.responseText).innerText)
-      .contains('\nThank you for the interest in AdTechMedia WordPress Plugin\nPlease check your inbox to schedule your demo.\n');
+      .contains('Thank you for the interest in AdTechMedia WordPress Plugin');
 });
