@@ -44,8 +44,8 @@ $:
       - /.+\.e2e\.js$/i                                        # Files to include
     ignore: ~
     browsers:                                                  # Browsers to run the tests against
-    - chrome
-    - firefox
+      - chrome
+      - firefox
     wait:
       interval: 500                                            # Interval of running uri checks
       timeout: 60000                                           # Timeout to wait for uri's available
