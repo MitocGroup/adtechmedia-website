@@ -78,15 +78,17 @@ function findLambdasByMicroAppName(microApp) {
   let lambdas = [];
   let searchDir = `${srcPath}/${microApp}/backend/src`;
 
-  fs.readdirSync(searchDir).map(item => {
-    let lambdaDir = `${searchDir}/${item}`;
+  if (fs.existsSync(searchDir)) {
+    fs.readdirSync(searchDir).map(item => {
+      let lambdaDir = `${searchDir}/${item}`;
 
-    if (fs.lstatSync(lambdaDir).isDirectory()) {
-      lambdas = lambdas.concat(
-        fs.readdirSync(lambdaDir).filter(item => /.*\.zip$/.test(item)).map(item => `${lambdaDir}/${item}`)
-      )
-    }
-  });
+      if (fs.lstatSync(lambdaDir).isDirectory()) {
+        lambdas = lambdas.concat(
+          fs.readdirSync(lambdaDir).filter(item => /.*\.zip$/.test(item)).map(item => `${lambdaDir}/${item}`)
+        )
+      }
+    });
+  }
 
   return lambdas;
 }
