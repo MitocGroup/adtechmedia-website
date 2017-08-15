@@ -15,7 +15,6 @@ fixture`Check "Contact" form request submit`
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
-    .debug()  
     .expect(contactForm.formModal.exists).ok()
     .typeText(contactForm.nameField, libs.chance.name())
     .pressKey('tab')

@@ -44,9 +44,9 @@ $:
       - /.+\.e2e\.js$/i                                        # Files to include
     ignore: ~
     browsers: 
-      # - nightmare                                              # Browsers to run the tests against
-      - chrome
-      - firefox
+      - chrome                                                 # Browsers to run the tests against
+      # - firefox
+      # - nightmare                                              
       # - safari
     wait:
       interval: 500                                            # Interval of running uri checks
