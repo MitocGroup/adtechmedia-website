@@ -24,6 +24,8 @@ function compileMicroservice(microApp) {
   return awsh.listS3Objects(`${cacheFrom()}/${microApp}`).then(res => {
     if (res.KeyCount === 0) {
       return Promise.resolve(true);
+    } else if (['master', 'stage'].includes(env) && (process.env.HOTFIX === 0)) {
+      return Promise.resolve(false);
     } else {
       return checkForBackendChanges(microApp).then(res => {
         return Promise.resolve(res);
