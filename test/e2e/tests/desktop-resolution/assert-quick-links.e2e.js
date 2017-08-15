@@ -14,7 +14,10 @@ fixture`Check valid links are displayed on "Quick Links" area`
 
 test('Check "Challenges" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
-    .expect(quickLinks.challengesQuickLink.exists).ok()
+    .expect(quickLinks.challengesQuickLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(quickLinks.challengesQuickLink)
     .click(quickLinks.challengesQuickLink), { speed: 0.5 }
 
@@ -30,7 +33,10 @@ test('Check "Challenges" quick-link is clickable and valid information is displa
 
 test('Check "Solutions" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
-    .expect(quickLinks.solutionsQuickLink.exists).ok()
+    .expect(quickLinks.solutionsQuickLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(quickLinks.solutionsQuickLink)
     .click(quickLinks.solutionsQuickLink), { speed: 0.5 }
 
@@ -46,7 +52,10 @@ test('Check "Solutions" quick-link is clickable and valid information is display
 
 test('Check "API" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
-    .expect(quickLinks.apiQuickLink.exists).ok()
+    .expect(quickLinks.apiQuickLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(quickLinks.apiQuickLink)
     .click(quickLinks.apiQuickLink), { speed: 0.5 }
 
@@ -80,7 +89,10 @@ test('Check "API" quick-link is clickable and valid information is displayed on 
 
 test('Check "Team" quick-link link is clickable and valid information is displayed on the page', async t => {
   await t
-    .expect(quickLinks.teamQuickLink.exists).ok()
+    .expect(quickLinks.teamQuickLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(quickLinks.teamQuickLink)
     .click(quickLinks.teamQuickLink), { speed: 0.5 }
 
@@ -96,7 +108,10 @@ test('Check "Team" quick-link link is clickable and valid information is display
 
 test('Check "Contact" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
-    .expect(quickLinks.contactQuickLink.exists).ok()
+    .expect(quickLinks.contactQuickLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(quickLinks.contactQuickLink)
     .click(quickLinks.contactQuickLink), { speed: 0.5 }
 

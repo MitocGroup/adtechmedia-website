@@ -17,7 +17,10 @@ fixture`Check valid content is displayed on website header`
 
 test('Check "Request a demo" form can be submitted on mobile resolution', async t => {
   await t
-    .expect(header.mobileMenuRequestDemoModal.exists).ok()
+    .expect(header.mobileMenuRequestDemoModal.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .click(header.mobileMenuRequestDemoModal);
 
   await t

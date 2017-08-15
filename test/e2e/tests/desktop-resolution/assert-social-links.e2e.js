@@ -14,49 +14,70 @@ fixture`Check valid links are displayed on "Social Links" area`
 
 test('Check "WordPress" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.wordpressLink.exists).ok()
+    .expect(socialLinks.wordpressLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.wordpressLink)
     .click(socialLinks.wordpressLink);
 });
 
 test('Check "Drupal" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.drupalLink.exists).ok()
+    .expect(socialLinks.drupalLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.drupalLink)
     .click(socialLinks.drupalLink);
 });
 
 test('Check "Github" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.githubLink.exists).ok()
+    .expect(socialLinks.githubLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.githubLink)
     .click(socialLinks.githubLink);
 });
 
 test('Check "Linkedin" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.linkedinLink.exists).ok()
+    .expect(socialLinks.linkedinLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.linkedinLink)
     .click(socialLinks.linkedinLink);
 });
 
 test('Check "Twitter" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.twitterLink.exists).ok()
+    .expect(socialLinks.twitterLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.twitterLink)
     .click(socialLinks.twitterLink);
 });
 
 test('Check "Facebook" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.facebookLink.exists).ok()
+    .expect(socialLinks.facebookLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.facebookLink)
     .click(socialLinks.facebookLink);
 });
 
 test('Check "YouTube" clickable link is displayed on the page', async t => {
   await t
-    .expect(socialLinks.youtubeLink.exists).ok()
+    .expect(socialLinks.youtubeLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(socialLinks.youtubeLink)
     .click(socialLinks.youtubeLink);
 });

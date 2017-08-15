@@ -14,9 +14,10 @@ fixture`Check valid content is displayed on "Challenges" page`
 
 test('Check "Request a Demo" modal is displayed on "Challenges" page and can be opened by the click', async t => {
   await t
-    .expect(challenges.requestDemoModal.exists).ok();
-
-  await t
+    .expect(challenges.requestDemoModal.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(challenges.requestDemoModal)
     .click(challenges.requestDemoModal, { speed: 0.5 })
     .click(challenges.requestDemoModalClose, { speed: 0.5 });

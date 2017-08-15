@@ -14,9 +14,10 @@ fixture`Check valid content is displayed on "Home" page`
 
 test('Check "Request a Demo" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
-    .expect(home.requestDemoModal.exists).ok();
-
-  await t
+    .expect(home.requestDemoModal.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(home.requestDemoModal)
     .click(home.requestDemoModal, { speed: 0.5 })
     .click(home.requestDemoModalClose, { speed: 0.5 });
@@ -24,9 +25,10 @@ test('Check "Request a Demo" modal is displayed on "Home" page and can be opened
 
 test('Check "Watch now" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
-    .expect(home.watchNowModal.exists).ok();
-
-  await t
+    .expect(home.watchNowModal.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .hover(home.watchNowModal)
     .click(home.watchNowModal, { speed: 0.5 })
     .click(home.watchNowModalClose, { speed: 0.5 });

@@ -15,7 +15,10 @@ fixture`Check "Contact" form request submit`
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
-    .expect(contactForm.formModal.exists).ok()
+    .expect(contactForm.formModal.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
     .typeText(contactForm.nameField, libs.chance.name())
     .typeText(contactForm.phoneField, libs.chance.phone())
     .typeText(contactForm.emailField, libs.chance.email())
