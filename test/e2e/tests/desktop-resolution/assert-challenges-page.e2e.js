@@ -7,6 +7,11 @@ const challenges = new Challenges();
 fixture`Check valid content is displayed on "Challenges" page`
   .page`${config.www_base_host}/challenges/`
  
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600);  
+  });
+
 test('Check "Request a Demo" modal is displayed on "Challenges" page and can be opened by the click', async t => {
   await t
     .expect(challenges.requestDemoModal.exists).ok();

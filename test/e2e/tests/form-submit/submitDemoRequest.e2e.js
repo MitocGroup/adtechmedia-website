@@ -6,10 +6,11 @@ import RequestDemoModal from '../../poms/forms/demo-modal.po';
 
 fixture`Check "Request a Demo" form submit`
   .page`${config.www_base_host}`
-  // .beforeEach(async t => {
-  //   await t
-  //     .resizeWindow(1920, 1080);
-  // });
+ 
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600);  
+  });
 
 test('Check user can submit "Request a demo" form with valid email address', async t => {
   const home = new Home();

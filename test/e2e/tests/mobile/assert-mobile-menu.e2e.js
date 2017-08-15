@@ -8,12 +8,10 @@ const home = new Home();
 
 fixture`Check menu visibility for mobile resolution`
   .page`${config.www_base_host}`
+  
   .beforeEach(async t => {
     await t
-      .resizeWindow(400, 600);  
-      // .resizeWindowToFitDevice('iPhone 6 Plus', {
-      //   portraitOrientation: true
-      // });
+      .resizeWindow(400, 600);
   });
 
 test('Check "Top Menu" with included links is visible for mobile view and can be expanded by the click', async t => {
