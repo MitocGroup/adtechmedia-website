@@ -12,6 +12,8 @@ setup_variables() {
         ;;
         master ) ALLOW_DEPLOY=1 ;;
     esac
+
+    echo ${TRAVIS_PULL_REQUEST_BRANCH};
 }
 
 ensure_required_deps() {
