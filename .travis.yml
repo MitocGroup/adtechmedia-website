@@ -12,6 +12,7 @@ branches:
     - master
     - stage
     - test
+    - build
     - dev
 env:
   global:
