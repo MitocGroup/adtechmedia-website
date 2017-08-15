@@ -7,6 +7,11 @@ const quickLinks = new QuickLinks();
 fixture`Check valid links are displayed on "Quick Links" area`
   .page`${config.www_base_host}`
 
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600);  
+  });
+
 test('Check "Challenges" quick-link is clickable and valid information is displayed on the page', async t => {
   await t
     .expect(quickLinks.challengesQuickLink.exists).ok()
@@ -103,11 +108,4 @@ test('Check "Contact" quick-link is clickable and valid information is displayed
       visibilityCheck: true,
     }).visible).ok()
     .expect(pageElementContact.innerText).contains('Contact');
-});
-
-test('Check "Blog" quick-link is clickable and valid information is displayed on the page', async t => {
-  await t
-    .expect(quickLinks.blogQuickLink.exists).ok()
-    .hover(quickLinks.blogQuickLink)
-    .click(quickLinks.blogQuickLink), { speed: 0.5 }
 });

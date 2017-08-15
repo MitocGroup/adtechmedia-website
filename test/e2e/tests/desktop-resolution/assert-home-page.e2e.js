@@ -7,6 +7,11 @@ const home = new Home();
 fixture`Check valid content is displayed on "Home" page`
   .page`${config.www_base_host}`
 
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600);  
+  });
+
 test('Check "Request a Demo" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
     .expect(home.requestDemoModal.exists).ok();

@@ -9,12 +9,10 @@ const requestDemoModal = new RequestDemoModal();
 
 fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
+  
   .beforeEach(async t => {
     await t
       .resizeWindow(400, 600);  
-      // .resizeWindowToFitDevice('iPhone 6 Plus', {
-      //   portraitOrientation: true
-      // });
   });
 
 test('Check "Request a demo" form can be submitted on mobile resolution', async t => {

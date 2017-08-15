@@ -6,6 +6,11 @@ const api = new Api();
 
 fixture`Check valid content is displayed on "API" page`
   .page`${config.www_base_host}/api`
+ 
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600);  
+  });  
   
 test('Assert "Case Studies" content is displayed on "API" page', async t => {
   await t
