@@ -6,10 +6,6 @@ const socialLinks = new SocialLinks();
 
 fixture`Check valid links are displayed on "Social Links" area`
   .page`${config.www_base_host}`
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1920, 1080);
-  });
 
 test('Check "WordPress" clickable link is displayed on the page', async t => {
   await t

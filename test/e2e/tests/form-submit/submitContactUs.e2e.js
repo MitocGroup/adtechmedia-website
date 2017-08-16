@@ -7,10 +7,6 @@ const contactForm = new ContactForm();
 
 fixture`Check "Contact" form request submit`
   .page`${config.www_base_host}/contact`
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1920, 1080);
-  });
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
