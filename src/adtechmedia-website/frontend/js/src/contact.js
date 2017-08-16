@@ -27,8 +27,6 @@
 }());
 
 var contactUsCaptcha;
-var phoneMask = '(999) 999-9999';
-var emailMask = '*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]';
 var phoneInput = document.getElementById('phone-field');
 var contactForm = {
   phoneElement: phoneInput,
@@ -41,7 +39,7 @@ var contactForm = {
 /**
  * Init phone mask
  */
-Inputmask({mask: phoneMask}).mask(phoneInput);
+Inputmask({ alias: 'phone'}).mask(phoneInput);
 
 /**
  * Execute google captcha
@@ -152,8 +150,8 @@ jQuery(function($) {
   'use strict';
 
   $('#contact-button').on('click', function() {
-    var isPhoneValid = Inputmask.isValid(contactForm.phoneElement.value, {alias: phoneMask});
-    var isEmailValid = Inputmask.isValid(contactForm.emailElement.value, {alias: emailMask});
+    var isPhoneValid = Inputmask.isValid(contactForm.phoneElement.value, {alias: 'phone'});
+    var isEmailValid = Inputmask.isValid(contactForm.emailElement.value, {alias: 'email'});
 
     if (contactForm.nameElement.value.trim()
       && contactForm.messageElement.value.trim() && isPhoneValid && isEmailValid) {
