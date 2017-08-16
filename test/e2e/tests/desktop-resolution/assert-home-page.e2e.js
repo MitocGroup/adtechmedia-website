@@ -1,23 +1,18 @@
 import { Selector } from 'testcafe';
 import config from '../../config.cfg';
 import Home from '../../poms/pages/home.po';
+import sharedFunctions from '../../shared-func';
 
 const home = new Home();
 
-fixture`Check valid content is displayed on "Home" page`
-  .page`${config.www_base_host}`
+const fix = fixture`Check valid content is displayed on "Home" page`
+  .page`${config.www_base_host}`;
 
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1280, 600);  
-  });
+sharedFunctions.fictureResize(fix);
 
 test('Check "Request a Demo" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
-    .expect(home.requestDemoModal.with({
-      selectorTimeout: 5000,
-      visibilityCheck: true,
-    }).visible).ok()
+    .expect(sharedFunctions.visible(home.requestDemoModal)).ok()
     .hover(home.requestDemoModal)
     .click(home.requestDemoModal, { speed: 0.5 })
     .click(home.requestDemoModalClose, { speed: 0.5 });
@@ -25,10 +20,7 @@ test('Check "Request a Demo" modal is displayed on "Home" page and can be opened
 
 test('Check "Watch now" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
-    .expect(home.watchNowModal.with({
-      selectorTimeout: 5000,
-      visibilityCheck: true,
-    }).visible).ok()
+    .expect(sharedFunctions.visible(home.watchNowModal)).ok()
     .hover(home.watchNowModal)
     .click(home.watchNowModal, { speed: 0.5 })
     .click(home.watchNowModalClose, { speed: 0.5 });
