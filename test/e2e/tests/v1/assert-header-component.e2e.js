@@ -8,10 +8,10 @@ const header = new Header();
 fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
 
-  // .beforeEach(async t => {
-  //   await t
-  //     .resizeWindow(400, 600) 
-  // });
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600) 
+  });
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
@@ -23,10 +23,11 @@ test('Check "Logo" image is displayed on website header', async t => {
 
 test('Check "CHALLENGES" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.with({
-      selectorTimeout: 5000,
-      visibilityCheck: true,
-    }).visible).ok();
+    .expect(header.challengesTopMenuLink.exists).ok();
+    // .expect(header.challengesTopMenuLink.with({
+    //   selectorTimeout: 5000,
+    //   visibilityCheck: true,
+    // }).visible).ok();
   
   await t  
     .expect(header.challengesTopMenuLink.innerText).match(
@@ -34,13 +35,13 @@ test('Check "CHALLENGES" top-menu link is displayed on website header', async t 
     );
 });
 
-// test('Check "SOLUTIONS" top-menu link is displayed on website header', async t => {
-//   await t
-//     .expect(sharedFunctions.visible(header.solutionsTopMenuLink)).ok()
-//     .expect(header.solutionsTopMenuLink.innerText).match(
-//       sharedFunctions.anyCase('SOLUTIONS')
-//     );
-// });
+test('Check "SOLUTIONS" top-menu link is displayed on website header', async t => {
+  await t
+    .expect(sharedFunctions.visible(header.solutionsTopMenuLink)).ok()
+    .expect(header.solutionsTopMenuLink.innerText).match(
+      sharedFunctions.anyCase('SOLUTIONS')
+    );
+});
 
 // test('Check "API" top-menu link is displayed on website header', async t => {
 //   await t
