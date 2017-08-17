@@ -17,7 +17,7 @@ test('Check "Logo" image is displayed on website header', async t => {
 
 test('Check "CHALLENGES" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.challengesTopMenuLink.innerText).match(
       sharedFunctions.anyCase('CHALLENGES')
     );
@@ -25,7 +25,7 @@ test('Check "CHALLENGES" top-menu link is displayed on website header', async t 
 
 test('Check "SOLUTIONS" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.solutionsTopMenuLink.innerText).match(
       sharedFunctions.anyCase('SOLUTIONS')
     );
@@ -33,7 +33,7 @@ test('Check "SOLUTIONS" top-menu link is displayed on website header', async t =
 
 test('Check "API" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.apiTopMenuLink.innerText).match(
       sharedFunctions.anyCase('API')
     );
@@ -41,7 +41,7 @@ test('Check "API" top-menu link is displayed on website header', async t => {
 
 test('Check "TEAM" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.teamTopMenuLink.innerText).match(
       sharedFunctions.anyCase('TEAM')
     );
@@ -49,7 +49,7 @@ test('Check "TEAM" top-menu link is displayed on website header', async t => {
 
 test('Check "CONTACT" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.contactTopMenuLink.innerText).match(
       sharedFunctions.anyCase('CONTACT')
     );
@@ -57,7 +57,7 @@ test('Check "CONTACT" top-menu link is displayed on website header', async t => 
 
 test('Check "BLOG" top-menu link is displayed on website header', async t => {
   await t
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .expect(header.blogTopMenuLink.innerText).match(
       sharedFunctions.anyCase('BLOG')
     );
@@ -65,6 +65,6 @@ test('Check "BLOG" top-menu link is displayed on website header', async t => {
 
 test('Check "Request a Demo" modal is displayed on website header', async t => {
   await t 
-    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.challengesTopMenuLink.exists).ok()
     .click(header.topMenuRequestDemoModal);
 });
