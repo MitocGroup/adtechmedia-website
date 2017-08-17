@@ -5,10 +5,13 @@ import sharedFunctions from '../../shared-func.js';
 
 const header = new Header();
 
-const fix = fixture`Check valid content is displayed on website header`
-  .page`${config.www_base_host}`;
+fixture`Check valid content is displayed on website header`
+  .page`${config.www_base_host}`
 
-sharedFunctions.fictureResize(fix);
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(1280, 600);  
+  });
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
