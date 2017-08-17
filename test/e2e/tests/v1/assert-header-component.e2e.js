@@ -5,31 +5,19 @@ import sharedFunctions from '../../shared-func.js';
 
 const header = new Header();
 
-fixture`Check valid content is displayed on website header`
-  .page`${config.www_base_host}`
+const fix = fixture`Check valid content is displayed on website header`
+.page`${config.www_base_host}`;
 
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1280, 600) 
-  });
+sharedFunctions.fictureResize(fix);
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
-    .expect(header.logoImage.with({
-      selectorTimeout: 5000,
-      visibilityCheck: true,
-    }).visible).ok()
+    .expect(header.challengesTopMenuLink.exists).ok();
 });
 
 test('Check "CHALLENGES" top-menu link is displayed on website header', async t => {
   await t
     .expect(header.challengesTopMenuLink.exists).ok();
-    // .expect(header.challengesTopMenuLink.with({
-    //   selectorTimeout: 5000,
-    //   visibilityCheck: true,
-    // }).visible).ok();
-  
-  await t  
     .expect(header.challengesTopMenuLink.innerText).match(
       sharedFunctions.anyCase('CHALLENGES')
     );
@@ -37,46 +25,46 @@ test('Check "CHALLENGES" top-menu link is displayed on website header', async t 
 
 test('Check "SOLUTIONS" top-menu link is displayed on website header', async t => {
   await t
-    .expect(sharedFunctions.visible(header.solutionsTopMenuLink)).ok()
+    .expect(header.challengesTopMenuLink.exists).ok();
     .expect(header.solutionsTopMenuLink.innerText).match(
       sharedFunctions.anyCase('SOLUTIONS')
     );
 });
 
-// test('Check "API" top-menu link is displayed on website header', async t => {
-//   await t
-//     .expect(sharedFunctions.visible(header.apiTopMenuLink)).ok()
-//     .expect(header.apiTopMenuLink.innerText).match(
-//       sharedFunctions.anyCase('API')
-//     );
-// });
+test('Check "API" top-menu link is displayed on website header', async t => {
+  await t
+    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.apiTopMenuLink.innerText).match(
+      sharedFunctions.anyCase('API')
+    );
+});
 
-// test('Check "TEAM" top-menu link is displayed on website header', async t => {
-//   await t
-//     .expect(sharedFunctions.visible(header.teamTopMenuLink)).ok()
-//     .expect(header.teamTopMenuLink.innerText).match(
-//       sharedFunctions.anyCase('TEAM')
-//     );
-// });
+test('Check "TEAM" top-menu link is displayed on website header', async t => {
+  await t
+    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.teamTopMenuLink.innerText).match(
+      sharedFunctions.anyCase('TEAM')
+    );
+});
 
-// test('Check "CONTACT" top-menu link is displayed on website header', async t => {
-//   await t
-//     .expect(sharedFunctions.visible(header.contactTopMenuLink)).ok()
-//     .expect(header.contactTopMenuLink.innerText).match(
-//       sharedFunctions.anyCase('CONTACT')
-//     );
-// });
+test('Check "CONTACT" top-menu link is displayed on website header', async t => {
+  await t
+    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.contactTopMenuLink.innerText).match(
+      sharedFunctions.anyCase('CONTACT')
+    );
+});
 
-// test('Check "BLOG" top-menu link is displayed on website header', async t => {
-//   await t
-//     .expect(sharedFunctions.visible(header.blogTopMenuLink)).ok()
-//     .expect(header.blogTopMenuLink.innerText).match(
-//       sharedFunctions.anyCase('BLOG')
-//     );
-// });
+test('Check "BLOG" top-menu link is displayed on website header', async t => {
+  await t
+    .expect(header.challengesTopMenuLink.exists).ok();
+    .expect(header.blogTopMenuLink.innerText).match(
+      sharedFunctions.anyCase('BLOG')
+    );
+});
 
-// test('Check "Request a Demo" modal is displayed on website header', async t => {
-//   await t 
-//     .expect(sharedFunctions.visible(header.topMenuRequestDemoModal)).ok()
-//     .click(header.topMenuRequestDemoModal);
-// });
+test('Check "Request a Demo" modal is displayed on website header', async t => {
+  await t 
+    .expect(header.challengesTopMenuLink.exists).ok();
+    .click(header.topMenuRequestDemoModal);
+});
