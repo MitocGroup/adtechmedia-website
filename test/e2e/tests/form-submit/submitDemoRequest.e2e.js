@@ -27,6 +27,6 @@ test('Check user can submit "Request a demo" form with valid email address', asy
     .click(requestDemoModal.submitButton, { speed: 0.5 });
 
   await t
-    .expect(sharedFunctions.visible(requestDemoModal.responseText)).ok()
+    .expect(requestDemoModal.responseText.exists).ok()
     .expect(Selector(requestDemoModal.responseText).innerText).contains('Thank you for the interest in AdTechMedia WordPress Plugin');
 });

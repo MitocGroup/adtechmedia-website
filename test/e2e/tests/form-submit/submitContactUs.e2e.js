@@ -13,7 +13,7 @@ sharedFunctions.fictureResize(fix);
 
 test('Check "Contact" form request can be submitted by user with valid data', async t => {
   await t
-    .expect(sharedFunctions.visible(contactForm.formModal)).ok()
+    .expect(contactForm.formModal.exists).ok()
     .typeText(contactForm.nameField, libs.chance.name())
     .pressKey('tab')
     .typeText(contactForm.phoneField, libs.chance.phone())

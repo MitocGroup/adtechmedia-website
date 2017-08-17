@@ -12,7 +12,7 @@ sharedFunctions.fictureResize(fix);
 
 test('Check "Request a Demo" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
-    .expect(sharedFunctions.visible(home.requestDemoModal)).ok()
+    .expect(home.requestDemoModal.exists).ok()
     .hover(home.requestDemoModal)
     .click(home.requestDemoModal, { speed: 0.5 })
     .click(home.requestDemoModalClose, { speed: 0.5 });
@@ -20,7 +20,7 @@ test('Check "Request a Demo" modal is displayed on "Home" page and can be opened
 
 test('Check "Watch now" modal is displayed on "Home" page and can be opened by the click', async t => {
   await t
-    .expect(sharedFunctions.visible(home.watchNowModal)).ok()
+    .expect(home.watchNowModal.exists).ok()
     .hover(home.watchNowModal)
     .click(home.watchNowModal, { speed: 0.5 })
     .click(home.watchNowModalClose, { speed: 0.5 });
