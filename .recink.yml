@@ -19,11 +19,7 @@ $:
         region: 'process.env.AWS_DEFAULT_REGION'
         accessKeyId: 'process.env.AWS_ACCESS_KEY_ID'
         secretAccessKey: 'process.env.AWS_SECRET_ACCESS_KEY'
-  npm:
-    scripts: []
-      # - 'compile-travis'
-    dependencies:
-      # chai: 'latest'
+  npm: ~
   emit:
     pattern:
       - /^src.es6\/lib\/.+\.js$/i
@@ -45,8 +41,8 @@ $:
     ignore: ~
     browsers: 
       - chrome                                                 # Browsers to run the tests against
-      # - firefox
-      # - nightmare                                              
+      - firefox
+      - nightmare                                              
       # - safari
     wait:
       interval: 500                                            # Interval of running uri checks
@@ -83,8 +79,12 @@ $:
       ['challenges', 'solutions', 'api', 'team', 'contact'].map(item => `${process.env.DEPLOY_HOST}/${item}`)
 
 ### Add other modules here...
-#email-send:
-#  root: src/adtechmedia-website/backend/src/email/send
+email-send:
+  root: src/adtechmedia-website/backend/src/email/send
+  scripts:
+    - 'compile-travis'
+  dependencies:
+    chai: 'latest'
 website:
   root: test/e2e
   dependencies:
