@@ -15,7 +15,7 @@ fixture`Check valid content is displayed on website header`
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
-    .resizeWindow(1280, 600)
+    .maximizeWindow()
     .expect(header.logoImage.with({
       selectorTimeout: 5000,
       visibilityCheck: true,
