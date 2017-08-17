@@ -8,13 +8,14 @@ const header = new Header();
 fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
 
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(1280, 666);  
-  });
+  // .beforeEach(async t => {
+  //   await t
+  //     .maximizeWindow(); 
+  // });
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
+    .resizeWindow(1280, 600)
     .expect(header.logoImage.with({
       selectorTimeout: 5000,
       visibilityCheck: true,
