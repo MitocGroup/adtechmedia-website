@@ -8,27 +8,29 @@ const header = new Header();
 fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
 
-  // .beforeEach(async t => {
-  //   await t
-  //     .maximizeWindow(); 
-  // });
+  .beforeEach(async t => {
+    await t
+      .resizeWindow(400, 600) 
+  });
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
-    .maximizeWindow()
     .expect(header.logoImage.with({
       selectorTimeout: 5000,
       visibilityCheck: true,
     }).visible).ok()
 });
 
-// test('Check "CHALLENGES" top-menu link is displayed on website header', async t => {
-//   await t
-//     .expect(sharedFunctions.visible(header.challengesTopMenuLink)).ok()
-//     .expect(header.challengesTopMenuLink.innerText).match(
-//       sharedFunctions.anyCase('CHALLENGES')
-//     );
-// });
+test('Check "CHALLENGES" top-menu link is displayed on website header', async t => {
+  await t
+    .expect(header.challengesTopMenuLink.with({
+      selectorTimeout: 5000,
+      visibilityCheck: true,
+    }).visible).ok()
+    .expect(header.challengesTopMenuLink.innerText).match(
+      sharedFunctions.anyCase('CHALLENGES')
+    );
+});
 
 // test('Check "SOLUTIONS" top-menu link is displayed on website header', async t => {
 //   await t
