@@ -34,28 +34,30 @@ env:
     # ATM_CERTIFICATE=[secure]
     - secure: "obJbDccUmdb5BV0q9eup6qutmT1z9gBo7JEZr33OSCMb4GQGHUmpANLsxcFGwh9NZdoRGGOn1ZNHK28O2oLdIVROTKxKDDNNNyyRl8fnrhhsQRa/L4MNttsrv4J779R0dhMSRgqXXJN5urAYCHMt5A7ZVA48p6KKAsE+H8ukHnHzN7Q9KD67cGm5jml780iy6crzGD9mnZXhjmPp2LTmGclocj6KkRr1p35Ij88/UFtVjw/I0oVmxhG4fhgy52403q1Fb/IEVJQNt1bNpewPiTzKUkZiMM+flOso2A/Rc6Uf5z+6nooGCCu/UbCIRdu2cOGjlORS1vvYppfedxoLX0mwmMEloJ7gLh8DO+hEfocMf24ktT1DoXuOInbXdF5wSzXMiJ+avP+7fB2kveHZNJ/tUiDzZ63dPH7FXr+kXKrWHrTne8MBoUOf8C+/GYmmoEHrzTmn1CvL0t6z7cCzi6xVNNvmzgz+mwxo8NYCT8wYxLtVNwY4Znsx5skMBd6TFumCUZAy3qfCnA2C6lhYleQoJ7aiek7tCJO4czZzGlBJCyYzioRHpbfdC9oMETwEmwFSBwGgBAPjDNcYeBJXz2BrnzWiRxi+tjNDYx7fMMXJF3xDY9jgNGlyhbYr+dIE3D4w8XuXNhlacO4t5SSlfcl4p8Ag4SB4RECwrrf+Ixk="
 
-stage: "Run Unit Tests :clipboard:"
-node_js:
-  - 6
-  - 8
+# stage: "Run Unit Tests :clipboard:"
+# node_js:
+#   - 6
+#   - 8
 before_install:
-  - source bin/deploy/init.sh
-script:
-  - recink run unit -c recink-codeclimate -c recink-snyk
+    - npm install -g recink
+#   - source bin/deploy/init.sh
+# script:
+#   - recink run unit -c recink-codeclimate -c recink-snyk
 
 jobs:
   include:
-    - stage: "Deploy To :cloud:"
-      node_js: 6
-      script:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skipping deploy"; fi
-      after_failure:
-        - deepify undeploy src --loglevel=debug
+    # - stage: "Deploy To :cloud:"
+    #   node_js: 6
+    #   script:
+    #     - if [ ${ALLOW_DEPLOY} == 1 ]; then node bin/deploy; else echo "Skipping deploy"; fi
+    #   after_failure:
+    #     - deepify undeploy src --loglevel=debug
 
     - stage: "Run e2e Tests :clipboard:"
       node_js: 8
       script:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run e2e; else echo "Skipping e2e tests"; fi
+        #- if [ ${ALLOW_DEPLOY} == 1 ]; then while true; do free; sleep 3; done & recink run e2e; else echo "Skipping e2e tests"; fi
+        - DEPLOY_HOST='https://www-test.adtechmedia.io' recink run e2e
       addons:
         firefox: 'latest'
         chrome: 'beta'
@@ -66,7 +68,7 @@ jobs:
         - 'export DISPLAY='':99.0'''
         - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
 
-    - stage: "Page speed :rocket:"
-      node_js: 6
-      script:
-        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed; else echo "Skipping pagespeed"; fi
+    # - stage: "Page speed :rocket:"
+    #   node_js: 6
+    #   script:
+    #     - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run unit -s emit -c recink-pagespeed; else echo "Skipping pagespeed"; fi
