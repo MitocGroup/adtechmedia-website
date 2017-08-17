@@ -100,7 +100,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Checkout to dev branch');
-  return runChildCmd('git checkout . && git checkout dev', /.*Switched.*/);
+  return runChildCmd('git checkout . && git checkout dev && git pull origin dev', /.*Switched.*/);
 
 }).then(() => {
 
