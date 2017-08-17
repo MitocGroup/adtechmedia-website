@@ -62,9 +62,3 @@ test('Check "BLOG" top-menu link is displayed on website header', async t => {
       sharedFunctions.anyCase('BLOG')
     );
 });
-
-test('Check "Request a Demo" modal is displayed on website header', async t => {
-  await t 
-    .expect(header.topMenuRequestDemoModal.exists).ok()
-    .click(header.topMenuRequestDemoModal);
-});
