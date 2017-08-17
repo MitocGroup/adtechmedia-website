@@ -14,18 +14,20 @@ const srcPath = path.join(appPath, 'src');
  */
 function runChildCmd(cmd, filerRegexp = /.*/) {
   return new Promise((resolve, reject) => {
-    const childCmd = spawn(cmd, { shell: true, cwd: appPath });
+    let err = new Error(cmd);
+    let childCmd = spawn(cmd, { shell: true, cwd: appPath });
 
     childCmd.stdout.on('data', data => {
       filterLog(data.toString(), filerRegexp);
     });
 
     childCmd.stderr.on('data', error => {
+      err.message = error.toString();
       filterLog(error.toString(), filerRegexp);
     });
 
     childCmd.on('exit', code => {
-      return (code === 1) ? reject(code) : resolve(code);
+      return (code === 1) ? reject(err) : resolve(code);
     });
   });
 }

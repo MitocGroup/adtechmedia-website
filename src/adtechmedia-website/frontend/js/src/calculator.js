@@ -1,5 +1,11 @@
+/* global noty, Inputmask */
+
 jQuery(function($) {
   'use strict';
+
+  function showWarn(msg) {
+    return noty({ text: msg, type: 'warning', timeout: 3000 });
+  }
 
   function calculatorActions(calculatorEndpoint) {
     /**
@@ -86,23 +92,35 @@ jQuery(function($) {
 
       var $calculatorReportSubmit = $('#calculator-report-submit');
       // Send email report
-      $calculatorReportSubmit.on('click', function () {
+      $calculatorReportSubmit.on('click', function (e) {
+        var isFormValid = true;
         var data = {
           'id': resultToken
         };
 
         $calculatorReport.serializeArray().forEach(function (input) {
-          data[input.name] = input.value;
+          var inputName = input.name;
+          var inputValue = input.value;
+
+          if (!Inputmask.isValid(inputValue, {alias: inputName})) {
+            showWarn(inputName + ' field is not valid');
+            isFormValid = false;
+            return;
+          }
+
+          data[inputName] = inputValue;
         });
 
-        $.ajax({
-          type: 'POST',
-          url: calculatorEndpoint + '/calculator',
-          data: data,
-          success: function (responseContent) {
-            window.location.href = '/calculator-confirmation'
-          }
-        });
+        if (isFormValid) {
+          $.ajax({
+            type: 'POST',
+            url: calculatorEndpoint + '/calculator',
+            data: data,
+            success: function (response) {
+              window.location.href = '/calculator-confirmation'
+            }
+          });
+        }
       });
     }
   }

@@ -12,10 +12,8 @@ const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
 const env = process.env.DEPLOY_ENV || 'test';
 const srcPath = path.join(__dirname, '../../', 'src');
 const awsh = new AwsHelper('atm-deploy-caches');
-const s3Prefix = `atm-website/lambdas/${env}`;
+const mainPrefix = `atm-website/lambdas`;
 const compareBranch = process.env.DEPLOY_ENV ? `origin/${env}` : '';
-
-let deployBackend = false;
 
 /**
  * Compile microservise
@@ -23,17 +21,17 @@ let deployBackend = false;
  * @returns {Promise}
  */
 function compileMicroservice(microApp) {
-  return awsh.listS3Objects(`${s3Prefix}/${microApp}`).then(res => {
+  return awsh.listS3Objects(`${cacheFrom()}/${microApp}`).then(res => {
     if (res.KeyCount === 0) {
       return Promise.resolve(true);
+    } else if (['master', 'stage'].includes(env) && (process.env.HOTFIX === 0)) {
+      return Promise.resolve(false);
     } else {
       return checkForBackendChanges(microApp).then(res => {
         return Promise.resolve(res);
       });
     }
   }).then(compileBackend => {
-    deployBackend = compileBackend;
-
     return compileBackend
       ? runChildCmd(`cd ${srcPath} && deepify compile prod ${microApp}`, deepifyRegexp)
       : reuseCompiledLambdas(microApp);
@@ -48,27 +46,19 @@ exports.compileMicroservice = compileMicroservice;
  * @returns {Promise}
  */
 function cacheMicroserviceLambdas(microApp) {
-  return Promise.all(
-    findLambdasByMicroAppName(microApp).map(lambdaPath => {
-      let stream = fs.createReadStream(lambdaPath);
-      return awsh.uploadZipToS3(lambdaPath.replace(srcPath, s3Prefix), stream);
-    })
-  );
+  if (cacheTo()) {
+    return Promise.all(
+      findLambdasByMicroAppName(microApp).map(lambdaPath => {
+        let stream = fs.createReadStream(lambdaPath);
+        return awsh.uploadZipToS3(lambdaPath.replace(srcPath, cacheTo()), stream);
+      })
+    );
+  }
+
+  return Promise.resolve();
 }
 
 exports.cacheMicroserviceLambdas = cacheMicroserviceLambdas;
-
-/**
- * Deploy frontend and/or backend
- * @returns {Promise}
- */
-function deployApplication() {
-  let deployCommand = deployBackend ? 'deepify deploy' : 'deepify deploy --frontend';
-
-  return runChildCmd(`cd ${srcPath} && ${deployCommand}`, deepifyRegexp);
-}
-
-exports.deployApplication = deployApplication;
 
 /**
  * Download compiled lambdas
@@ -76,11 +66,11 @@ exports.deployApplication = deployApplication;
  * @returns {Promise}
  */
 function reuseCompiledLambdas(microApp) {
-  return awsh.listS3Objects(`${s3Prefix}/${microApp}`).then(res => {
+  return awsh.listS3Objects(`${cacheFrom()}/${microApp}`).then(res => {
     let keys = res.Contents.map(item => item.Key);
 
     return Promise.all(keys.map(key => {
-      return awsh.getAndSaveS3Object(key, key.replace(s3Prefix, srcPath));
+      return awsh.getAndSaveS3Object(key, key.replace(cacheFrom(), srcPath));
     }));
   });
 }
@@ -94,15 +84,17 @@ function findLambdasByMicroAppName(microApp) {
   let lambdas = [];
   let searchDir = `${srcPath}/${microApp}/backend/src`;
 
-  fs.readdirSync(searchDir).map(item => {
-    let lambdaDir = `${searchDir}/${item}`;
+  if (fs.existsSync(searchDir)) {
+    fs.readdirSync(searchDir).map(item => {
+      let lambdaDir = `${searchDir}/${item}`;
 
-    if (fs.lstatSync(lambdaDir).isDirectory()) {
-      lambdas = lambdas.concat(
-        fs.readdirSync(lambdaDir).filter(item => /.*\.zip$/.test(item)).map(item => `${lambdaDir}/${item}`)
-      )
-    }
-  });
+      if (fs.lstatSync(lambdaDir).isDirectory()) {
+        lambdas = lambdas.concat(
+          fs.readdirSync(lambdaDir).filter(item => /.*\.zip$/.test(item)).map(item => `${lambdaDir}/${item}`)
+        )
+      }
+    });
+  }
 
   return lambdas;
 }
@@ -119,18 +111,46 @@ function checkForBackendChanges(microApp) {
         return reject(error);
       }
 
-      let hasChanges = false;
       let files = stdout.split('\n').filter(item => item.trim());
       let regExp = new RegExp(`${microApp}/backend`, 'gi');
 
       for (let i = 0, len = files.length; i < len; i++) {
         if (regExp.test(files[i])) {
-          hasChanges = true;
-          break;
+          return resolve(true);
         }
       }
 
-      resolve(hasChanges);
+      resolve(false);
     });
   });
+}
+
+/**
+ * S3 path to fetch cache
+ * @returns {string}
+ */
+function cacheFrom() {
+  if (('master' === env) || (process.env.HOTFIX === 1)) {
+    return `${mainPrefix}/regression`;
+  }
+
+  return `${mainPrefix}/functional`;
+}
+
+/**
+ * S3 path to upload cache
+ * @returns {*}
+ */
+function cacheTo() {
+  if (process.env.HOTFIX === 1) {
+    return false;
+  }
+
+  if ('test' === env) {
+    return `${mainPrefix}/functional`;
+  } else if ('stage' === env) {
+    return `${mainPrefix}/regression`;
+  }
+
+  return false;
 }
