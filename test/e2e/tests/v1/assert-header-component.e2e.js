@@ -8,10 +8,10 @@ const header = new Header();
 fixture`Check valid content is displayed on website header`
   .page`${config.www_base_host}`
 
-  .beforeEach(async t => {
-    await t
-      .resizeWindow(400, 600) 
-  });
+  // .beforeEach(async t => {
+  //   await t
+  //     .resizeWindow(400, 600) 
+  // });
 
 test('Check "Logo" image is displayed on website header', async t => {
   await t
@@ -26,7 +26,9 @@ test('Check "CHALLENGES" top-menu link is displayed on website header', async t 
     .expect(header.challengesTopMenuLink.with({
       selectorTimeout: 5000,
       visibilityCheck: true,
-    }).visible).ok()
+    }).visible).ok();
+  
+  await t  
     .expect(header.challengesTopMenuLink.innerText).match(
       sharedFunctions.anyCase('CHALLENGES')
     );
