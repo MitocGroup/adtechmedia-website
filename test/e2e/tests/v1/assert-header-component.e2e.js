@@ -10,7 +10,7 @@ fixture`Check valid content is displayed on website header`
 
   .beforeEach(async t => {
     await t
-      .resizeWindow(1280, 600);  
+      .resizeWindow(1280, 666);  
   });
 
 test('Check "Logo" image is displayed on website header', async t => {
