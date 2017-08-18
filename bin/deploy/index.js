@@ -93,7 +93,7 @@ isEnvironmentLocked().then(isLocked => {
 
   console.log('Repointing Route53 to a freshly deployed CloudFront');
   return awsh.getResourceRecordByName(getDomain()).then(recordSet => {
-    recordSet.ResourceRecords[0].Value = newAppInfo.cloudfrontDomain;
+    recordSet.AliasTarget.DNSName = newAppInfo.cloudfrontDomain;
     return awsh.updateResourceRecord(recordSet);
   });
 
