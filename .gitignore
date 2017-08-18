@@ -36,6 +36,7 @@ src/adtechmedia-website/.parameters.json
 deeploy.json*
 *_config.json*
 *.provisioning.json*
+hotfix_*.patch
 
 # Backend files
 **/backend/src/**/*.js
