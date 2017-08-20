@@ -145,22 +145,17 @@ class AwsHelper {
    * @returns {Promise}
    */
   getListOfActiveDistributions() {
-    return new Promise((resolve, reject) => {
-      this.cloudfront.listDistributions({}, (err, data) => {
-        if (err) {
-          return reject(err.stack);
+    return this.getAllDistributions().then(data => {
+      let result = [];
+
+      data.Items.forEach(item => {
+        if (!item.Comment.startsWith('REMOVE')) {
+          result.push(item);
         }
-
-        let result = [];
-        data.Items.forEach(item => {
-          if (!item.Comment.startsWith('REMOVE')) {
-            result.push(item);
-          }
-        });
-
-        resolve(result);
       });
-    })
+
+      return Promise.resolve(result);
+    });
   }
 
   /**
@@ -178,6 +173,29 @@ class AwsHelper {
     });
 
     return Promise.race([forceResolver, waitFor]);
+  }
+
+  /**
+   * Find distribution by associated alias
+   * @param alias
+   * @returns {Promise}
+   */
+  findDistributionByAlias(alias) {
+    return this.getAllDistributions().then(data => {
+      let result = data.Items.filter(item => {
+        return item.Aliases.Items.includes(alias);
+      });
+
+      return Promise.resolve(result.length > 1 ? result[0] : false);
+    });
+  }
+
+  /**
+   * Get all distributions
+   * @returns {Promise}
+   */
+  getAllDistributions() {
+    return this.cloudfront.listDistributions({}).promise();
   }
 
   /**

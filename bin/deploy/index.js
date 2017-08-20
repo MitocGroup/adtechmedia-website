@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const AwsHelper = require('../helpers/aws');
 const { fork } = require('child_process');
-const { runChildCmd, findProvisioningFile } = require('../helpers/utils');
+const { runChildCmd, findProvisioningFile, timeoutPromise } = require('../helpers/utils');
 const { compileMicroservice, cacheMicroserviceLambdas } = require('./compile');
 
 const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
@@ -73,16 +73,24 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Mark old distributions with REMOVE mark');
-  console.log('Waiting freshly deployed CloudFront will get status deployed');
-  let promises = [awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId)];
-
   return getOldDistributionIds().then(ids => {
-    promises.push(ids.map(id => {
-      return handleOldDistribution(id);
+    return Promise.all(ids.map(id => {
+      return markDistributionForRemoval(id);
     }));
-
-    return Promise.all(promises);
   });
+
+}).then(() => {
+
+  console.log('Waiting freshly deployed CloudFront will get status deployed');
+  return awsh.waitForDistributionIsDeployed(newAppInfo.cloudfrontId);
+
+}).then(() => {
+
+  console.log('Removing alias from active CloudFront');
+  return Promise.all([
+    timeoutPromise(60000),
+    removeAliasFromActiveDistribution()
+  ]);
 
 }).then(() => {
 
@@ -94,6 +102,11 @@ isEnvironmentLocked().then(isLocked => {
   console.log('Repointing Route53 to a freshly deployed CloudFront');
   return awsh.getResourceRecordByName(getDomain()).then(recordSet => {
     recordSet.AliasTarget.DNSName = newAppInfo.cloudfrontDomain;
+
+    if (recordSet.hasOwnProperty('ResourceRecords')) {
+      delete recordSet['ResourceRecords'];
+    }
+
     return awsh.updateResourceRecord(recordSet);
   });
 
@@ -137,28 +150,51 @@ isEnvironmentLocked().then(isLocked => {
 
   console.error(`Deployment failed: ${error}, releasing environment`);
   awsh.deleteS3Object(getLockFileKey()).then(() => {
-    exit(1);
+    markDistributionForRemoval(newAppInfo.cloudfrontId, 'REMOVE FAIL').then(() => {
+      exit(1);
+    })
   });
 });
 
 /* End continuous deployment script */
 
 /**
- * Handle old distribution and wait till is deployed
+ * Update Distribution comment
  * @param distId
+ * @param commentPrefix
  * @returns {Promise}
  */
-function handleOldDistribution(distId) {
+function markDistributionForRemoval(distId, commentPrefix = 'REMOVE') {
   return awsh.getDistributionById(distId).then(distInfo => {
+    const etag = distInfo.ETag;
+    const config = distInfo.Distribution.DistributionConfig;
+
+    config.Comment = `${commentPrefix} ${config.Comment}`;
+
+    return awsh.updateDistributionConfig(distId, config, etag);
+  });
+}
+
+/**
+ * Remove alias from active distribution
+ * @returns {Promise}
+ */
+function removeAliasFromActiveDistribution() {
+  return awsh.findDistributionByAlias(getDomain()).then(distInfo => {
+    if (!distInfo) {
+      console.log(`No distribution found associated with ${getDomain()}`);
+      return Promise.resolve();
+    }
+
     const id = distInfo.Distribution.Id;
     const etag = distInfo.ETag;
     const config = distInfo.Distribution.DistributionConfig;
 
-    config.Comment = `REMOVE ${config.Comment}`;
-    config.Aliases = {
-      Items: [],
-      Quantity: 0
-    };
+    config.Aliases = { Items: [], Quantity: 0 };
+
+    if (!config.Comment.startsWith('REMOVE')) {
+      config.Comment = `REMOVE ${config.Comment}`;
+    }
 
     return awsh.updateDistributionConfig(id, config, etag);
   });
