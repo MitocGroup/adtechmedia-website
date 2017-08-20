@@ -186,7 +186,7 @@ class AwsHelper {
         return item.Aliases.Items.includes(alias);
       });
 
-      return Promise.resolve(result.length > 1 ? result[0] : false);
+      return Promise.resolve(result.length > 0 ? result[0] : false);
     });
   }
 

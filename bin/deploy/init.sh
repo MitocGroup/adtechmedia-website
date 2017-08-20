@@ -14,7 +14,7 @@ setup_variables() {
         master ) ALLOW_DEPLOY=1 ;;
     esac
 
-    if [ ${TRAVIS_PULL_REQUEST_BRANCH} == "hotfix" ]; then HOTFIX=1; fi
+    if [[ ${TRAVIS_PULL_REQUEST_BRANCH} =~ ^hotfix ]]; then echo HOTFIX=1; fi
 
     echo ${HOTFIX}
 }
