@@ -40,7 +40,7 @@ function getConfig() {
  * Run local npm registry
  */
 function runRegistry() {
-  runChildCmd(`npm_lazy --config ${configPath}`, /.*(Request|Reusing).*/).then(() => {
+  runChildCmd(`npm_lazy --config ${configPath}`, /.*(Reusing).*/).then(() => {
     console.log('npm_lazy server stopped');
   })
 }

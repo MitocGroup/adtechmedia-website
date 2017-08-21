@@ -180,23 +180,24 @@ function markDistributionForRemoval(distId, commentPrefix = 'REMOVE') {
  * @returns {Promise}
  */
 function removeAliasFromActiveDistribution() {
-  return awsh.findDistributionByAlias(getDomain()).then(distInfo => {
-    if (!distInfo) {
+  return awsh.findDistributionByAlias(getDomain()).then(result => {
+    if (!result) {
       console.log(`No distribution found associated with ${getDomain()}`);
       return Promise.resolve();
     }
 
-    const id = distInfo.Distribution.Id;
-    const etag = distInfo.ETag;
-    const config = distInfo.Distribution.DistributionConfig;
+    return awsh.getDistributionById(result.Id).then(distInfo => {
+      const etag = distInfo.ETag;
+      const config = distInfo.Distribution.DistributionConfig;
 
-    config.Aliases = { Items: [], Quantity: 0 };
+      config.Aliases = { Items: [], Quantity: 0 };
 
-    if (!config.Comment.startsWith('REMOVE')) {
-      config.Comment = `REMOVE ${config.Comment}`;
-    }
+      if (!config.Comment.startsWith('REMOVE')) {
+        config.Comment = `REMOVE ${config.Comment}`;
+      }
 
-    return awsh.updateDistributionConfig(id, config, etag);
+      return awsh.updateDistributionConfig(result.Id, config, etag);
+    });
   });
 }
 
