@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 setup_variables() {
+    export HOTFIX=0
     export ALLOW_DEPLOY=0
     export DEPLOY_ENV=${TRAVIS_BRANCH}
     export DEPLOY_HOST="https://www.adtechmedia.io"
@@ -12,6 +13,10 @@ setup_variables() {
         ;;
         master ) ALLOW_DEPLOY=1 ;;
     esac
+
+    if [[ ${TRAVIS_PULL_REQUEST_BRANCH} =~ ^hotfix ]]; then HOTFIX=1; fi
+
+    echo ${HOTFIX}
 }
 
 ensure_required_deps() {
