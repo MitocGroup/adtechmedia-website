@@ -15,7 +15,7 @@ sharedFunctions.fictureResize(fix, 'mobile');
 
 test('Check "Request a demo" form can be submitted on mobile resolution', async t => {
   await t
-    .expect(sharedFunctions.visible(header.mobileMenuRequestDemoModal)).ok()
+    .expect(header.mobileMenuRequestDemoModal.exists).ok()
     .click(header.mobileMenuRequestDemoModal);
 
   await t
@@ -24,7 +24,7 @@ test('Check "Request a demo" form can be submitted on mobile resolution', async 
     .click(requestDemoModal.submitButton, { speed: 0.5 });
 
   await t
-    .expect(sharedFunctions.visible(requestDemoModal.responseText)).ok()
+    .expect(requestDemoModal.responseText.exists).ok()
     .expect(
       Selector(requestDemoModal.responseText).innerText)
       .contains('Thank you for the interest in AdTechMedia WordPress Plugin');

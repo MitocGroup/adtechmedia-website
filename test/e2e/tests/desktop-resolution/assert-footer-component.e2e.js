@@ -12,7 +12,7 @@ sharedFunctions.fictureResize(fix);
 
 test('Check "Request a Demo" modal is displayed on page footer and can be opened by the click', async t => {
   await t
-    .expect(sharedFunctions.visible(footer.requestDemoModal)).ok()
+    .expect(footer.requestDemoModal.exists).ok()
     .hover(footer.requestDemoModal)
     .click(footer.requestDemoModal, { speed: 0.5 })
     .click(footer.requestDemoModalClose, { speed: 0.5 });
@@ -20,18 +20,18 @@ test('Check "Request a Demo" modal is displayed on page footer and can be opened
 
 test('Check "Mitoc Group" link is displayed on the page footer', async t => {
   await t
-    .expect(sharedFunctions.visible(footer.company)).ok()
+    .expect(footer.company.exists).ok()
     .expect(footer.company.innerText).contains('Mitoc Group');
 });
 
 test('Check "Terms of Use" link is displayed on the page footer', async t => {
   await t
-    .expect(sharedFunctions.visible(footer.termsOfUse)).ok()
+    .expect(footer.termsOfUse.exists).ok()
     .expect(footer.termsOfUse.innerText).contains('Terms of Use');
 });
 
 test('Check "Privacy Policy" link is displayed on the page footer', async t => {
   await t
-    .expect(sharedFunctions.visible(footer.privacyPolicy)).ok()
+    .expect(footer.privacyPolicy.exists).ok()
     .expect(footer.privacyPolicy.innerText).contains('Privacy Policy');
 });

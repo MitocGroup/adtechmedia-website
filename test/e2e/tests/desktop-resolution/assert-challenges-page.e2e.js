@@ -12,7 +12,7 @@ sharedFunctions.fictureResize(fix);
 
 test('Check "Request a Demo" modal is displayed on "Challenges" page and can be opened by the click', async t => {
   await t
-    .expect(sharedFunctions.visible(challenges.requestDemoModal)).ok()
+    .expect(challenges.requestDemoModal.exists).ok()
     .hover(challenges.requestDemoModal)
     .click(challenges.requestDemoModal, { speed: 0.5 })
     .click(challenges.requestDemoModalClose, { speed: 0.5 });

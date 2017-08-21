@@ -12,49 +12,49 @@ sharedFunctions.fictureResize(fix);
 
 test('Check "WordPress" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.wordpressLink)).ok()
+    .expect(socialLinks.wordpressLink.exists).ok()
     .hover(socialLinks.wordpressLink)
     .click(socialLinks.wordpressLink);
 });
 
 test('Check "Drupal" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.drupalLink)).ok()
+    .expect(socialLinks.drupalLink.exists).ok()
     .hover(socialLinks.drupalLink)
     .click(socialLinks.drupalLink);
 });
 
 test('Check "Github" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.githubLink)).ok()
+    .expect(socialLinks.githubLink.exists).ok()
     .hover(socialLinks.githubLink)
     .click(socialLinks.githubLink);
 });
 
 test('Check "Linkedin" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.linkedinLink)).ok()
+    .expect(socialLinks.linkedinLink.exists).ok()
     .hover(socialLinks.linkedinLink)
     .click(socialLinks.linkedinLink);
 });
 
 test('Check "Twitter" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.twitterLink)).ok()
+    .expect(socialLinks.twitterLink.exists).ok()
     .hover(socialLinks.twitterLink)
     .click(socialLinks.twitterLink);
 });
 
 test('Check "Facebook" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.facebookLink)).ok()
+    .expect(socialLinks.facebookLink.exists).ok()
     .hover(socialLinks.facebookLink)
     .click(socialLinks.facebookLink);
 });
 
 test('Check "YouTube" clickable link is displayed on the page', async t => {
   await t
-    .expect(sharedFunctions.visible(socialLinks.youtubeLink)).ok()
+    .expect(socialLinks.youtubeLink.exists).ok()
     .hover(socialLinks.youtubeLink)
     .click(socialLinks.youtubeLink);
 });
