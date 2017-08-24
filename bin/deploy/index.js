@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const AwsHelper = require('../helpers/aws');
 const { fork } = require('child_process');
-const { runChildCmd, findProvisioningFile, timeoutPromise } = require('../helpers/utils');
+const { runChildCmd, findProvisioningFile } = require('../helpers/utils');
 const { compileMicroservice, cacheMicroserviceLambdas } = require('./compile');
 
 const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
@@ -87,15 +87,12 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Removing alias from active CloudFront');
-  return Promise.all([
-    timeoutPromise(60000),
-    removeAliasFromActiveDistribution()
-  ]);
+  return removeAliasFromActiveDistribution();
 
 }).then(() => {
 
   console.log('Configuring freshly deployed CloudFront');
-  return configureNewDistribution();
+  return configureNewDistributionWithRetry();
 
 }).then(() => {
 
@@ -113,7 +110,7 @@ isEnvironmentLocked().then(isLocked => {
 }).then(() => {
 
   console.log('Checkout to dev branch');
-  return runChildCmd('git checkout . && git checkout dev && git pull origin dev', /.*Switched.*/);
+  return runChildCmd('git clean -fd && git checkout . && git checkout dev && git pull origin dev', /^-$/);
 
 }).then(() => {
 
@@ -121,12 +118,12 @@ isEnvironmentLocked().then(isLocked => {
   updateDeployLog();
 
   console.log('Committing deploy.log changes');
-  return runChildCmd(`git commit -m "#ATM continuous deployment logger [skip ci]" -- ${logPath}`, /.*#ATM.*/);
+  return runChildCmd(`git commit -m "#ATM-WEB continuous deployment logger" -- ${logPath}`, /.*#ATM.*/);
 
 }).then(() => {
 
   console.log('Pushing deploy.log changes');
-  return runChildCmd('git push origin dev');
+  return runChildCmd('git push origin dev', /^-$/);
 
 }).then(() => {
 
@@ -152,7 +149,7 @@ isEnvironmentLocked().then(isLocked => {
   awsh.deleteS3Object(getLockFileKey()).then(() => {
     markDistributionForRemoval(newAppInfo.cloudfrontId, 'REMOVE FAIL').then(() => {
       exit(1);
-    })
+    });
   });
 });
 
@@ -305,6 +302,36 @@ function configureNewDistribution() {
   });
 }
 
+/**
+ * Configure cloudfront with retries
+ * @returns {Promise}
+ */
+function configureNewDistributionWithRetry() {
+  return new Promise((resolve, reject) => {
+    let error;
+    let retries = 4;
+
+    let attempt = function() {
+      if (retries === 0) {
+        reject(error);
+      } else {
+        configureNewDistribution().then(resolve).catch(err => {
+          if (err.code !== 'CNAMEAlreadyExists') {
+            console.error(err.message);
+            return reject(err)
+          }
+
+          retries--;
+          error = err;
+          console.error('Retrying...');
+          setTimeout(() => { attempt() }, 15000);
+        });
+      }
+    };
+
+    attempt();
+  });
+}
 
 /**
  * Update deploy log with freshly deployed cloudfront info
