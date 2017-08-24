@@ -42,7 +42,8 @@ $:
   e2e:
     pattern:
       - /.+\.e2e\.js$/i                                        # Files to include
-    ignore: ~
+    ignore: 
+      - assert-home-page.e2e.js
     browsers: 
       # - chrome                                               # Browsers to run the tests against
       # - firefox
