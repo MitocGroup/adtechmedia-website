@@ -45,6 +45,7 @@ $:
     ignore: 
       - assert-home-page.e2e.js
       - assert-quick-links.e2e.js
+      - submitDemoRequest.e2e.js
     browsers: 
       # - chrome                                               # Browsers to run the tests against
       # - firefox
