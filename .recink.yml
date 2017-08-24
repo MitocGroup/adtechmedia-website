@@ -50,7 +50,7 @@ $:
       - chrome                                                # Browsers to run the tests against
       - firefox
       - nightmare                                              
-      - safari
+      # - safari
     wait:
       interval: 500                                            # Interval of running uri checks
       timeout: 60000                                           # Timeout to wait for uri's available
