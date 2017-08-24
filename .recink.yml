@@ -48,7 +48,7 @@ $:
      - submitDemoRequest.e2e.js
     browsers: 
       - chrome                                                # Browsers to run the tests against
-      - firefox
+      # - firefox
       # - nightmare                                              
       # - safari
     wait:
