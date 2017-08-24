@@ -6,8 +6,8 @@ const sharedFunctions = {
   },
   visible: (selector) => {
     return selector.with({
-      selectorTimeout: 5000,
       visibilityCheck: true,
+      timeout: 60000,
     }).visible;
   },
   fictureResize: (fix, type = 'desktop') => {
@@ -23,7 +23,8 @@ const sharedFunctions = {
 
     fix.beforeEach(async t => {
       await t
-        .resizeWindow(width, height);  
+        // .resizeWindow(width, height);  
+        .maximizeWindow();
     }); 
   },
 };

@@ -5,7 +5,7 @@ export default {
     height: 600
   },
   desktopResolution : {
-    width: 1280, 
+    width: 1200, 
     height: 600
   },
 }
