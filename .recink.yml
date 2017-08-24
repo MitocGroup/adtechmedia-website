@@ -41,14 +41,16 @@ $:
     ignore: ~
   e2e:
     pattern:
-      # - /.+\.e2e\.js$/i   
-      - assert-api-page.e2e.js                                    # Files to include
-    ignore: ~
+      - /.+\.e2e\.js$/i                                       # Files to include
+    ignore: 
+     - assert-home-page.e2e.js
+     - assert-quick-links.e2e.js
+     - submitDemoRequest.e2e.js
     browsers: 
-      - chrome                                               # Browsers to run the tests against
-      # - firefox
-      # - nightmare                                              
-      # - safari
+      - chrome                                                # Browsers to run the tests against
+      - firefox
+      - nightmare                                              
+      - safari
     wait:
       interval: 500                                            # Interval of running uri checks
       timeout: 60000                                           # Timeout to wait for uri's available
