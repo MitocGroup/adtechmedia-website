@@ -49,7 +49,7 @@ $:
     browsers: 
       - chrome                                                # Browsers to run the tests against
       - firefox
-      - nightmare                                              
+      # - nightmare                                              
       # - safari
     wait:
       interval: 500                                            # Interval of running uri checks
