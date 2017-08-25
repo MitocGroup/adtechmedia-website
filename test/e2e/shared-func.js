@@ -23,8 +23,7 @@ const sharedFunctions = {
 
     fix.beforeEach(async t => {
       await t
-        // .resizeWindow(width, height);  
-        .maximizeWindow();
+        .resizeWindow(width, height);  
     }); 
   },
 };
