@@ -1,4 +1,5 @@
 language: node_js
+dist: trusty
 git:
   depth: 1
 cache:
@@ -56,15 +57,15 @@ jobs:
       node_js: 8
       script:
         - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run e2e; else echo "Skipping e2e tests"; fi
-      addons:
-        firefox: 'latest'
-        chrome: 'beta'
-        apt:
-          packages:
-            - xvfb
-      install:
-        - 'export DISPLAY='':99.0'''
-        - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
+      # addons:
+      #   firefox: 'latest'
+      #   chrome: 'beta'
+      #   apt:
+      #     packages:
+      #       - xvfb
+      # install:
+      #   - 'export DISPLAY='':99.0'''
+      #   - 'Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &'
 
     - stage: "Page speed :rocket:"
       node_js: 6

@@ -17,7 +17,7 @@ test('Check user can submit "Request a demo" form with valid email address', asy
   await t
     .click(home.requestDemoModal, { speed: 0.5 })
     .expect(Selector('#modal').with({
-      selectorTimeout: 5000,
+      timeout: 60000,
       visibilityCheck: true,
     }).visible).ok();
 
