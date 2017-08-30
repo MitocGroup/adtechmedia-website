@@ -56,8 +56,7 @@ jobs:
     - stage: "Run e2e Tests :clipboard:"
       node_js: 8
       script:
-        - DEPLOY_HOST="https://www-test.adtechmedia.io" recink run e2e
-        #- if [ ${ALLOW_DEPLOY} == 1 ]; then recink run e2e; else echo "Skipping e2e tests"; fi
+        - if [ ${ALLOW_DEPLOY} == 1 ]; then recink run e2e; else echo "Skipping e2e tests"; fi
       # addons:
       #   firefox: 'latest'
       #   chrome: 'beta'
