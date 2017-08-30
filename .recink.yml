@@ -41,13 +41,11 @@ $:
     ignore: ~
   e2e:
     pattern:
-      - /.+\.e2e\.js$/i                                       # Files to include
-    ignore: 
-     - assert-home-page.e2e.js
-     - assert-quick-links.e2e.js
-     - submitDemoRequest.e2e.js
+      - /.+\.e2e\.js$/i                                        # Files to include
+    ignore: []
     browsers: 
-      - chrome                                                # Browsers to run the tests against
+      - puppeteer
+      # - chrome                                               # Browsers to run the tests against
       # - firefox
       # - nightmare                                              
       # - safari
