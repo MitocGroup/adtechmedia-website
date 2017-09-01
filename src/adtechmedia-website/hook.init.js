@@ -100,7 +100,7 @@ module.exports = function(callback) {
 
     let subDomain;
     switch (env) {
-      case 'prod':
+      case 'master':
         subDomain = 'api';
         break;
       case 'stage':
