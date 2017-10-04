@@ -6,8 +6,8 @@ const sharedFunctions = {
   },
   visible: (selector) => {
     return selector.with({
-      selectorTimeout: 5000,
       visibilityCheck: true,
+      timeout: 60000,
     }).visible;
   },
   fictureResize: (fix, type = 'desktop') => {
