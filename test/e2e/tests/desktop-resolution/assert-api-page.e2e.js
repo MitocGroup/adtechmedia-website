@@ -17,7 +17,7 @@ test('Assert "Case-Studies" content is displayed on "API" page', async t => {
 });
 
 test('Assert "API-Docs" content is displayed on "API" page', async t => {
-  await t
+  await t  
     .expect(sharedFunctions.visible(api.elementApiDocs)).ok()
     .expect(api.elementApiDocs.innerText).contains('See what APIs we have on offer, including extensive documentation. Sign in to manage your subscriptions, see your current usage, get your API Key, and test against our live API.');
 });
