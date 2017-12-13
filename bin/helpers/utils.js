@@ -62,3 +62,16 @@ function findProvisioningFile() {
 }
 
 exports.findProvisioningFile = findProvisioningFile;
+
+/**
+ * Timeout promise
+ * @param time
+ * @returns {Promise}
+ */
+function timeoutPromise(time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => { resolve(); }, time);
+  });
+}
+
+exports.timeoutPromise = timeoutPromise;

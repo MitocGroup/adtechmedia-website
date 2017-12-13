@@ -46,16 +46,18 @@ exports.compileMicroservice = compileMicroservice;
  * @returns {Promise}
  */
 function cacheMicroserviceLambdas(microApp) {
-  if (cacheTo()) {
-    return Promise.all(
-      findLambdasByMicroAppName(microApp).map(lambdaPath => {
-        let stream = fs.createReadStream(lambdaPath);
-        return awsh.uploadZipToS3(lambdaPath.replace(srcPath, cacheTo()), stream);
-      })
-    );
+  if (!cacheTo()) {
+    return Promise.resolve();
   }
 
-  return Promise.resolve();
+  return Promise.all(
+    findLambdasByMicroAppName(microApp).map(lambdaPath => {
+      let stream = fs.createReadStream(lambdaPath);
+
+      console.log(`Uploading ${lambdaPath} to ${cacheTo()}`);
+      return awsh.uploadZipToS3(lambdaPath.replace(srcPath, cacheTo()), stream);
+    })
+  );
 }
 
 exports.cacheMicroserviceLambdas = cacheMicroserviceLambdas;

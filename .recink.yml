@@ -42,9 +42,10 @@ $:
   e2e:
     pattern:
       - /.+\.e2e\.js$/i                                        # Files to include
-    ignore: ~
+    ignore: []
     browsers: 
-      - chrome                                                 # Browsers to run the tests against
+      - puppeteer
+      # - chrome                                               # Browsers to run the tests against
       # - firefox
       # - nightmare                                              
       # - safari
