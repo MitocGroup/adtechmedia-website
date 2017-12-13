@@ -12,7 +12,6 @@
     "email": "hello@adtechmedia.io",
     "url": "https://www.adtechmedia.io"
   },
-  "main": "lib.compiled/bootstrap.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/AdTechMedia/adtechmedia-website.git"
