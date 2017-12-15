@@ -23,7 +23,7 @@ $:
     scripts: []
       # - 'compile-travis'
     dependencies:
-      chai: 'latest'
+      # chai: 'latest'
   emit:
     pattern:
       - /^src.es6\/lib\/.+\.js$/i
