@@ -42,7 +42,7 @@ echo "Updating parameters"
 aws s3 cp s3://deep-deploy-assets/atm-website/test/.parameters.json src/adtechmedia-website/.parameters.json
 aws s3 cp s3://deep-deploy-assets/atm-website/test/deeploy.json src/deeploy.json
 
-echo "Deploying website..."
+echo "Deploying website"
 export DEEP_NO_INTERACTION=1
 export DEEP_CONFIRMATION_REFUSE=1
 
