@@ -13,7 +13,7 @@ ensure_required_deps() {
 
     NPM_BIN=`which npm`
     REQUIRED_DEPS=(
-        deepify@3.0.49
+        deepify
         recink
         recink-snyk
         recink-pagespeed
@@ -47,3 +47,5 @@ export DEEP_NO_INTERACTION=1
 export DEEP_CONFIRMATION_REFUSE=1
 
 deepify deploy src --loglevel=debug
+
+aws s3 cp --include "*.provisioning.json" src/ s3://deep-deploy-assets/atm-website/test/
