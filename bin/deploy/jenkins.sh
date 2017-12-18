@@ -5,8 +5,7 @@ ensure_required_deps() {
 
     NPM_BIN=`which npm`
     REQUIRED_DEPS=(
-        deepify
-        deep-package-manager
+        deepify@3.0.49
         recink
         recink-snyk
         recink-pagespeed
