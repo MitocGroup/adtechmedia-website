@@ -46,6 +46,7 @@ aws s3 cp s3://deep-deploy-assets/atm-website/test/ src/ --recursive --exclude "
 echo "Deploying website"
 export DEEP_NO_INTERACTION=1
 export DEEP_CONFIRMATION_REFUSE=1
+
 deepify deploy src --loglevel=debug
 
 echo "Backup provisioning file"
