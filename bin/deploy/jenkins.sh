@@ -41,7 +41,7 @@ ensure_required_deps
 echo "Updating parameters"
 aws s3 cp s3://deep-deploy-assets/atm-website/test/.parameters.json src/adtechmedia-website/
 aws s3 cp s3://deep-deploy-assets/atm-website/test/deeploy.json src/
-aws s3 cp --include "*.provisioning.json" s3://deep-deploy-assets/atm-website/test/ src/
+aws s3 cp s3://deep-deploy-assets/atm-website/test/ src/ --recursive --exclude "*" --include "*.provisioning.json" || echo "Provisioning file is missing in S3"
 
 echo "Deploying website"
 export DEEP_NO_INTERACTION=1
@@ -49,4 +49,4 @@ export DEEP_CONFIRMATION_REFUSE=1
 
 deepify deploy src --loglevel=debug
 
-aws s3 cp --include "*.provisioning.json" src/ s3://deep-deploy-assets/atm-website/test/
+aws s3 cp src/ s3://deep-deploy-assets/atm-website/test/ --recursive --exclude "*" --include "*.provisioning.json"
