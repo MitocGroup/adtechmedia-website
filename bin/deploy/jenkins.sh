@@ -39,8 +39,9 @@ echo "Installing required dependencies"
 ensure_required_deps
 
 echo "Updating parameters"
-aws s3 cp s3://deep-deploy-assets/atm-website/test/.parameters.json src/adtechmedia-website/.parameters.json
-aws s3 cp s3://deep-deploy-assets/atm-website/test/deeploy.json src/deeploy.json
+aws s3 cp s3://deep-deploy-assets/atm-website/test/.parameters.json src/adtechmedia-website/
+aws s3 cp s3://deep-deploy-assets/atm-website/test/deeploy.json src/
+aws s3 cp --include "*.provisioning.json" s3://deep-deploy-assets/atm-website/test/ src/
 
 echo "Deploying website"
 export DEEP_NO_INTERACTION=1
