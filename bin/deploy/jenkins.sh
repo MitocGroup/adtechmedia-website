@@ -5,7 +5,7 @@ configure_npm() {
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" > /dev/null
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" > /dev/null
 
-    nvm use 6
+    nvm install 6
 }
 
 ensure_required_deps() {
