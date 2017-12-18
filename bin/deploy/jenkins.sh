@@ -27,6 +27,7 @@ ensure_required_deps() {
 echo "Installing required dependencies"
 ensure_required_deps
 
+echo "Deploying application"
 export DEEP_NO_INTERACTION=1
 export DEEP_CONFIRMATION_REFUSE=1
 
