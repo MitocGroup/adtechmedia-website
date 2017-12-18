@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+configure_npm() {
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" > /dev/null
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" > /dev/null
+
+    nvm use 6
+}
+
 ensure_required_deps() {
     pip install --user awscli > /dev/null
 
@@ -23,6 +31,9 @@ ensure_required_deps() {
         fi
     done
 }
+
+echo "Configuring NPM"
+configure_npm
 
 echo "Installing required dependencies"
 ensure_required_deps
