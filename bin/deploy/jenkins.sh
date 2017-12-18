@@ -38,6 +38,11 @@ configure_npm
 echo "Installing required dependencies"
 ensure_required_deps
 
+echo "Updating parameters"
+aws s3 cp s3://deep-test-private-bd8fe2fe/.bd8fe2fe.test.provisioning.json src/.bd8fe2fe.test.provisioning.json
+aws s3 cp s3://atm-deploy-assets/atm-website/test/.parameters.json src/adtechmedia-website/.parameters.json
+aws s3 cp s3://deep-test-private-bd8fe2fe/deeploy.json src/deeploy.json
+
 echo "Deploying website"
 export DEEP_NO_INTERACTION=1
 export DEEP_CONFIRMATION_REFUSE=1
