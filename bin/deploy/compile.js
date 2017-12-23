@@ -9,11 +9,11 @@ const AwsHelper = require('../helpers/aws');
 const { runChildCmd } = require('../helpers/utils');
 
 const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
-const env = process.env.DEPLOY_ENV || 'test';
+const env = process.env.DEEP_ENV || 'test';
 const srcPath = path.join(__dirname, '../../', 'src');
-const awsh = new AwsHelper('atm-deploy-caches');
-const mainPrefix = `atm-website/lambdas`;
-const compareBranch = process.env.DEPLOY_ENV ? `origin/${env}` : '';
+const awsh = new AwsHelper('deep-deploy-assets');
+const prefix = 'atm-website/lambdas';
+const compareBranch = process.env.DEEP_ENV ? `origin/${env}` : '';
 
 /**
  * Compile microservise
@@ -24,7 +24,7 @@ function compileMicroservice(microApp) {
   return awsh.listS3Objects(`${cacheFrom()}/${microApp}`).then(res => {
     if (res.KeyCount === 0) {
       return Promise.resolve(true);
-    } else if (['master', 'stage'].includes(env) && (process.env.HOTFIX === 0)) {
+    } else if (['master', 'stage'].includes(env) && (process.env.DEEP_HOTFIX === "0")) {
       return Promise.resolve(false);
     } else {
       return checkForBackendChanges(microApp).then(res => {
@@ -132,11 +132,11 @@ function checkForBackendChanges(microApp) {
  * @returns {string}
  */
 function cacheFrom() {
-  if (('master' === env) || (process.env.HOTFIX === 1)) {
-    return `${mainPrefix}/regression`;
+  if ((env === "master") || (process.env.DEEP_HOTFIX === "1")) {
+    return `${prefix}/regression`;
   }
 
-  return `${mainPrefix}/functional`;
+  return `${prefix}/functional`;
 }
 
 /**
@@ -144,14 +144,14 @@ function cacheFrom() {
  * @returns {*}
  */
 function cacheTo() {
-  if (process.env.HOTFIX === 1) {
+  if (process.env.DEEP_HOTFIX === "1") {
     return false;
   }
 
-  if ('test' === env) {
-    return `${mainPrefix}/functional`;
+  if (env === "test") {
+    return `${prefix}/functional`;
   } else if ('stage' === env) {
-    return `${mainPrefix}/regression`;
+    return `${prefix}/regression`;
   }
 
   return false;
