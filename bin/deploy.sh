@@ -66,7 +66,7 @@ setup_git() {
 
 setup_deepify() {
     echo "Setup deepify registry"
-    deepify registry config github --set "travis:${GITHUB_ACCESS_TOKEN}"
+    deepify registry config github --set "travis:${GITHUB_TOKEN}"
 }
 
 setup_variables

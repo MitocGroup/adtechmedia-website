@@ -45,7 +45,7 @@ ensure_required_deps() {
 setup_git() {
     git config user.name "Travis CI"
     git config user.email "travis@adtechmedia.io"
-    git remote set-url origin "https://${GITHUB_ACCESS_TOKEN}@github.com/AdTechMedia/adtechmedia-website.git"
+    git remote set-url origin "https://${GITHUB_TOKEN}@github.com/AdTechMedia/adtechmedia-website.git"
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
     git fetch origin dev
     git fetch origin ${DEPLOY_ENV}
