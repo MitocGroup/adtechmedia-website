@@ -23,7 +23,7 @@ $:
     scripts: []
       # - 'compile-travis'
     dependencies:
-      # chai: 'latest'
+      chai: 'latest'
   emit:
     pattern:
       - /^src.es6\/lib\/.+\.js$/i
@@ -41,7 +41,7 @@ $:
     ignore: ~
   e2e:
     pattern:
-      - /.+\.e2e\.js$/i                                        # Files to include
+      - /.+\.e2e\.js$/i
     ignore: []
     browsers: 
       - puppeteer

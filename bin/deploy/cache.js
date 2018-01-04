@@ -6,8 +6,9 @@ const fs = require('fs');
 const path = require('path');
 const { runChildCmd } = require('../helpers/utils');
 
-const env = process.env.DEPLOY_ENV || 'test';
-const bucket = 'atm-deploy-caches';
+const env = process.env.DEEP_ENV || 'test';
+const region = 'us-east-1';
+const bucket = 'deep-deploy-assets';
 const prefix = 'atm-website/npm-registry';
 const cacheDir = path.join(process.env.HOME, '.npm_lazy');
 const configPath = path.join(__dirname, '../../', 'npm_lazy.config.js');
@@ -31,8 +32,8 @@ function getConfig() {
   process.send({
     cacheDir: cacheDir,
     configPath: configPath,
-    pullCommand: `aws s3 sync s3://${bucket}/${prefix} ${cacheDir} --delete`,
-    pushCommand: `aws s3 sync ${cacheDir} s3://${bucket}/${prefix} --delete`
+    pullCommand: `aws s3 sync --delete --region ${region} s3://${bucket}/${prefix} ${cacheDir}`,
+    pushCommand: `aws s3 sync --delete --region ${region} ${cacheDir} s3://${bucket}/${prefix}`
   });
 }
 
