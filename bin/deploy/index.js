@@ -11,7 +11,7 @@ const { compileMicroservice, cacheMicroserviceLambdas } = require('./compile');
 
 const deepifyRegexp = /\d{2}:\d{2}:\d{2}/;
 const microAppName = 'adtechmedia-website';
-const env = process.env.DEPLOY_ENV || 'test';
+const env = process.env.DEEP_ENV || 'test';
 const appPath = path.join(__dirname, '../../');
 const srcPath = path.join(appPath, 'src');
 const logPath = path.join(appPath, 'docs/deploy.log');
